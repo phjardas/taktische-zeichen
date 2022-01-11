@@ -1,14 +1,9 @@
-name: Test
+name: Publish
 
 on:
-  push: {}
-  # Trigger this workflow on PRs created by Changesets by assigning it to
-  # someone. We need this workaround because PRs created by GitHub Actions do
-  # not trigger workflows per default.
-  pull_request:
+  push:
     branches:
       - main
-    types: [assigned]
 
 jobs:
   test:
