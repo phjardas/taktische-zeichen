@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push: {}
+  # Trigger this workflow on PRs created by Changesets by assigning it to
+  # someone. We need this workaround because PRs created by GitHub Actions do
+  # not trigger workflows per default.
+  pull_request:
+    branches:
+      - main
+    types: [assigned]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          # keep in sync with package.json/volta
+          node-version: 16.13.2
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            packages/*/package-lock.json
+
+      - name: Install npm
+        # keep in sync with package.json/volta
+        run: npm i -g npm@8.3.0
+
+      - run: npm ci
+      - run: npm run bootstrap
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
