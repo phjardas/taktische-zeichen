@@ -1,7 +1,5 @@
 const fs = require("fs").promises;
-const { IconFactory } = require(".");
-
-const factory = new IconFactory();
+const { createIcon } = require(".");
 
 const icons = [
   {
@@ -23,10 +21,6 @@ const icons = [
 
 Promise.all(
   icons.map((descriptor, i) =>
-    factory
-      .createIcon(descriptor)
-      .then((icon) =>
-        fs.writeFile(`icon${i}.svg`, icon.toString(true), "utf-8")
-      )
+        fs.writeFile(`icon${i}.svg`, createIcon(descriptor).toString(true), "utf-8")
   )
 ).catch((error) => console.error(error));

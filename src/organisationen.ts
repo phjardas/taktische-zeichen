@@ -1,23 +1,18 @@
-import { promises as fs } from "fs";
-
 export type Organisation = {
   id: string;
   label: string;
   background: string;
 };
 
-export class Organisationen {
-  private organisationen: Promise<Array<Organisation>>;
-
-  constructor() {
-    this.organisationen = fs
-      .readFile("organisationen.json", "utf8")
-      .then(JSON.parse);
-  }
-
-  async getOrganisation(id: string): Promise<Organisation> {
-    const org = (await this.organisationen).find((o) => o.id === id);
-    if (!org) throw new Error(`Organisation not found: ${id}`);
-    return org;
-  }
-}
+export const organisationen: Array<Organisation> = [
+  { id: "feuerwehr", label: "Feuerwehr", background: "#cc0000" },
+  { id: "thw", label: "THW", background: "#0000cc" },
+  { id: "fuehrung", label: "Führung", background: "#cccc00" },
+  { id: "polizei", label: "Polizei", background: "#00cc00" },
+  {
+    id: "gefahrenabwehr",
+    label: "Gefahrenabwehr",
+    background: "#ff9900",
+  },
+  { id: "drk", label: "DRK", background: "#ffffff" },
+];
