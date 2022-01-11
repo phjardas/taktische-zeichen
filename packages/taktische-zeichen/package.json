@@ -1,0 +1,23 @@
+{
+  "name": "taktische-zeichen",
+  "version": "0.0.0",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "prebuild": "node bundle.js"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "volta": {
+    "node": "16.13.2",
+    "npm": "8.3.0"
+  }
+}

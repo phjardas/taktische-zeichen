@@ -4,12 +4,12 @@ export class SVGBuilder implements SVG {
   private rootProps: Record<string, string> = {};
   private lines: Array<string> = [];
 
-  rootProp(key: string, value: string): typeof this {
+  rootProp(key: string, value: string): SVGBuilder {
     this.rootProps[key] = value;
     return this;
   }
 
-  push(line: string): typeof this {
+  push(line: string): SVGBuilder {
     this.lines.push(line);
     return this;
   }

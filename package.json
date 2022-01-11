@@ -1,16 +1,27 @@
 {
-  "name": "taktische-zeichen-generator",
+  "name": "taktische-zeichen-parent",
   "version": "0.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phjardas/taktische-zeichen.git"
+  },
+  "keywords": [
+    "svg",
+    "dv102"
+  ],
+  "author": "Philipp Jardas <philipp@jardas.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phjardas/taktische-zeichen/issues"
+  },
+  "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
   "scripts": {
-    "build": "tsc",
-    "prebuild": "node bundle.js"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "lerna": "^4.0.0"
   },
   "volta": {
     "node": "16.13.2",

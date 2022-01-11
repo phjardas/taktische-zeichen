@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createIcon, organisationen, fragments } from "../..";
+import { createIcon, organisationen, fragments } from "taktische-zeichen";
 
 export function App() {
   const [grundzeichen, setGrundzeichen]=useState('1.1')
