@@ -1,5 +1,13 @@
+export type OrganisationId =
+  | "feuerwehr"
+  | "thw"
+  | "fuehrung"
+  | "polizei"
+  | "gefahrenabwehr"
+  | "drk";
+
 export type Organisation = {
-  id: string;
+  id: OrganisationId;
   label: string;
   background: string;
 };

@@ -1,49 +1,49 @@
-import { Fragment, fragments } from "./fragments";
-import { Organisation, organisationen } from "./organisationen";
-import { SVGBuilder } from "./svg";
-import { IconDescriptor, SVG } from "./types";
+import { fachaufgaben, type FachaufgabeId } from "./fachaufgaben";
+import { grundzeichen, type GrundzeichenId } from "./grundzeichen";
+import { organisationen, type OrganisationId } from "./organisationen";
+import { SVGElementFactory } from "./svg";
 
-function getOrganisation(id: string): Organisation {
-  const org = organisationen.find((o) => o.id === id);
-  if (!org) throw new Error(`Organisation not found: ${id}`);
-  return org;
+export type IconDescriptor = {
+  grundzeichen: GrundzeichenId;
+  organisation?: OrganisationId;
+  fachaufgabe?: FachaufgabeId;
+};
+
+export type Icon = {
+  svg: string;
+};
+
+function get<T extends { id: string }>(id: string, items: Array<T>): T {
+  const item = items.find((i) => i.id === id);
+  if (!item) throw new Error(`Item not found: ${id}`);
+  return item;
 }
 
-function getFragment(id: string): Fragment {
-  const f = fragments.find((f) => f.id === id);
-  if (!f) throw new Error(`Fragment not found: ${id}`);
-  return f;
-}
-
-export function createIcon(descriptor: IconDescriptor): SVG {
-  const svg = new SVGBuilder();
+export function createIcon(descriptor: IconDescriptor): Icon {
+  const grund = get(descriptor.grundzeichen, grundzeichen);
   const org = descriptor.organisation
-    ? getOrganisation(descriptor.organisation)
+    ? get(descriptor.organisation, organisationen)
+    : undefined;
+  const fachaufgabe = descriptor.fachaufgabe
+    ? get(descriptor.fachaufgabe, fachaufgaben)
     : undefined;
 
-  const grundzeichen = getFragment(descriptor.grundzeichen);
-  svg.rootProp("viewBox", `0 0 ${grundzeichen.size.join(" ")}`);
-  svg.rootProp("fill", "transparent");
-  svg.rootProp("stroke", "#000000");
-  svg.rootProp("stroke-width", "2");
+  const factory = new SVGElementFactory();
+  const svg = factory
+    .svg()
+    .attr("fill", "transparent")
+    .attr("stroke", "#000000")
+    .attr("stroke-width", 2)
+    .attr("viewBox", `0 0 ${grund.size.join(" ")}`);
 
+  svg.push(grund.render({ fill: org?.background }, factory));
   svg.push(
-    org?.background
-      ? grundzeichen.content.replace("/>", ` fill="${org.background}" />`)
-      : grundzeichen.content
+    factory.mask("grundzeichen").push(grund.render({ fill: "white" }, factory))
   );
 
-  svg.push(
-    `<mask id="grundzeichen">${grundzeichen.content.replace(
-      "/>",
-      ` fill="white" />`
-    )}</mask>`
-  );
-
-  if (descriptor.fachaufgabe) {
-    const fachaufgabe = getFragment(descriptor.fachaufgabe);
-    svg.push(`<g mask="url(#grundzeichen)">${fachaufgabe.content}</g>`);
+  if (fachaufgabe) {
+    svg.push(fachaufgabe.render(factory).attr("mask", "url(#grundzeichen)"));
   }
 
-  return svg;
+  return { svg: svg.render() };
 }

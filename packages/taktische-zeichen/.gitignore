@@ -1,5 +1,4 @@
 /dist
 /node_modules
 /icon*.svg
-/src/fragments.ts
 *.log

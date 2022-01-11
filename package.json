@@ -18,6 +18,7 @@
   "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "clean": "lerna run clean",
     "build": "lerna run build"
   },
   "devDependencies": {
