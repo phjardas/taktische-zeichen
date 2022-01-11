@@ -5,6 +5,10 @@ export class SVGElementFactory {
     return new Container("svg").attr("xmlns", "http://www.w3.org/2000/svg");
   }
 
+  defs() {
+    return new Container("defs");
+  }
+
   g() {
     return new Container("g");
   }
@@ -26,6 +30,10 @@ export class SVGElementFactory {
 
   mask(id: string) {
     return new Container("mask").attr("id", id);
+  }
+
+  use(href: string) {
+    return new Leaf("use").attr("href", href);
   }
 }
 

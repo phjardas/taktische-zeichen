@@ -1,7 +1,13 @@
 import { Element, SVGElementFactory } from "./svg";
 import type { Point } from "./types";
 
-export type FachaufgabeId = "brandbekaempfung" | "bergung" | "rettungswesen";
+export type FachaufgabeId =
+  | "brandbekaempfung"
+  | "hoehenrettung"
+  | "wasserversorgung"
+  | "bergung"
+  | "rettungswesen"
+  | "aerztliche-versorgung";
 
 export type Fachaufgabe = {
   id: FachaufgabeId;
@@ -18,6 +24,21 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     render: (factory) => factory.path("M1,22.5 H74 M74,1 L50,22.5 L74,44"),
   },
   {
+    id: "hoehenrettung",
+    label: "Rettung aus Höhen und Tiefen",
+    size: [45, 45],
+    render: (factory) => factory.path("M6,39 L29,16 H39 V6 H29 V16"),
+  },
+  {
+    id: "wasserversorgung",
+    label: "Wasserversorgung und -förderung",
+    size: [75, 45],
+    render: (factory) =>
+      factory.path(
+        "M1,22.5 H74 M74,1 L50,22.5 L74,44 M10,19 V11 c0,-7 5,-7 5,0 V13 c0,7 5,7 5,0 V11 c0,-7 5,-7 5,0 V13 c0,7 5,7 5,0 V11 c0,-7 5,-7 5,0 V19"
+      ),
+  },
+  {
     id: "bergung",
     label: "Bergung",
     size: [75, 45],
@@ -28,5 +49,11 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Rettungswesen, Sanitätswesen, Gesundheitswesen",
     size: [75, 45],
     render: (factory) => factory.path("M1,22.5 H74 M37.5,1 V44"),
+  },
+  {
+    id: "aerztliche-versorgung",
+    label: "Ärztliche Versorgung",
+    size: [75, 45],
+    render: (factory) => factory.path("M1,22.5 H74 M37.5,1 V44 M25,33 H50"),
   },
 ];
