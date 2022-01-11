@@ -1,0 +1,1 @@
+export { IconFactory } from "./icon";

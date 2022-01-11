@@ -1,0 +1,18 @@
+{
+  "name": "taktische-zeichen-generator",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  },
+  "volta": {
+    "node": "16.13.2",
+    "npm": "8.3.0"
+  }
+}
