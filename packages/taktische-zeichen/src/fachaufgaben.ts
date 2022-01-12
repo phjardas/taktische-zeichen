@@ -6,7 +6,12 @@ export type FachaufgabeId =
   | "hoehenrettung"
   | "wasserversorgung"
   | "technische-hilfeleistung"
+  | "heben"
   | "bergung"
+  | "raeumen"
+  | "entschaerfen"
+  | "sprengen"
+  | "beleuchtung"
   | "transport"
   | "abc"
   | "messen"
@@ -14,8 +19,15 @@ export type FachaufgabeId =
   | "rettungswesen"
   | "aerztliche-versorgung"
   | "betreuung"
+  | "seelsorge"
+  | "unterbringung"
   | "logistik"
   | "verpflegung"
+  | "verbrauchsgueter"
+  | "versorgung-trinkwasser"
+  | "versorgung-brauchwasser"
+  | "versorgung-elektrizitaet"
+  | "instandhaltung"
   | "fuehrung"
   | "iuk"
   | "erkundung";
@@ -62,10 +74,57 @@ export const fachaufgaben: Array<Fachaufgabe> = [
       ),
   },
   {
+    id: "heben",
+    label: "Heben von Lasten",
+    size: [30, 30],
+    padding: [10, 10],
+    render: (factory) => factory.path("M1,29 v-28 h8 a5 5 0 0 0 10 0"),
+  },
+  {
     id: "bergung",
     label: "Bergung",
     size: [75, 45],
     render: (factory) => factory.path("M1,15 H15 A22.5 20 180 1 0 60 15 H74"),
+  },
+  {
+    id: "raeumen",
+    label: "Räumen, Beseitigung von Hindernissen",
+    size: [30, 20],
+    padding: [10, 10],
+    render: (factory) => factory.path("M1,10 h21 m0,-9 v14 l8,4"),
+  },
+  {
+    id: "entschaerfen",
+    label: "Entschärfung, Kampfmittelräumung",
+    size: [16, 17],
+    padding: [10, 10],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.circle([8, 9], 1).attr("fill", "black"))
+        .push(factory.circle([8, 9], 7))
+        .push(factory.path("M4,2.5 l-1,-2 M12,2.5 l1,-2")),
+  },
+  {
+    id: "sprengen",
+    label: "Sprengen",
+    size: [9, 21],
+    padding: [10, 10],
+    render: (factory) =>
+      factory
+        .path("M1,1 c0,5 2,18 4,20 2,-2 4,-15 4,-20 Z")
+        .attr("fill", "black"),
+  },
+  {
+    id: "beleuchtung",
+    label: "Beleuchtung",
+    size: [15, 21],
+    padding: [10, 10],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,20 v-14 a5 5 0 0 1 10 0"))
+        .push(factory.circle([11, 9], 3)),
   },
   {
     id: "transport",
@@ -137,27 +196,101 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     render: (factory) => factory.path("M0,45 L37.5,1 L75,45"),
   },
   {
-    id: "logistik",
-    label: "Versorgung, Logistik",
+    id: "seelsorge",
+    label: "Seelsorge",
+    size: [20, 27],
+    padding: [10, 10],
+    render: (factory) => factory.path("M8,1 v25 m4,0 v-25 M1,8 h18 m0,4 h-18"),
+  },
+  {
+    id: "unterbringung",
+    label: "Unterbringung",
     size: [30, 20],
     padding: [10, 10],
-    render: (factory) => factory.path("M2,17 h26 v2 h-26 v-18 m26,0 v18"),
+    render: (factory) =>
+      factory.path("M1,1 v18 m0,-5 h28 m0,5 v-20 m0,15 c0,-8 -28,-8 -28,0"),
+  },
+  {
+    id: "logistik",
+    label: "Versorgung, Logistik",
+    size: [75, 45],
+    render: (factory) =>
+      factory.path("M1,37 h74 v6 h-74").attr("fill", "black"),
   },
   {
     id: "verpflegung",
     label: "Verpflegung",
-    size: [30, 20],
-    padding: [10, 10],
+    size: [75, 45],
     render: (factory) =>
-      factory.path(
-        "M2,17 h26 v2 h-26 v-18 m26,0 v18 M15,8 l4,-3 a5.66 5.66 0 1 0 0 6 z"
-      ),
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(factory.path("M37.5,18 l7,-5 a8.6 8.6 0 1 0 0 10 z")),
+  },
+  {
+    id: "verbrauchsgueter",
+    label: "Versorgung mit Verbrauchsgütern und Betriebsstoffen",
+    size: [75, 45],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(factory.path("M35,32 v-15 l-7,-12 h18 l-7,12 v15")),
+  },
+  {
+    id: "versorgung-trinkwasser",
+    label: "Versorgung mit Trinkwasser",
+    size: [75, 45],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(
+          factory.path("M25,25 v-3 a7 7 0 0 1 7 -7 h20 m-15,-3 v7 m-4,-7 h8")
+        ),
+  },
+  {
+    id: "versorgung-brauchwasser",
+    label: "Versorgung mit Brauchwasser",
+    size: [75, 45],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(factory.path("M25,18 c0,-5 8,-5 8,-1 0,5 8,5 8,1 0,-5 8,-5 8,0")),
+  },
+  {
+    id: "versorgung-elektrizitaet",
+    label: "Versorgung mit Elektrizität",
+    size: [75, 45],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(factory.path("M42.5,5 l-10,10 h10 l-10,10"))
+        .push(
+          factory.path("M32.5,25 l5,2 l-8,0 l2,-7 Z").attr("fill", "black")
+        ),
+  },
+  {
+    id: "instandhaltung",
+    label: "Instandhaltung",
+    size: [75, 45],
+    render: (factory) =>
+      factory
+        .g()
+        .push(factory.path("M1,37 h74 v6 h-74").attr("fill", "black"))
+        .push(
+          factory.path(
+            "M25,18 l25,0 m6,-6 a6 6 0 0 0 0 12 M19,12 a6 6 0 0 1 0 12"
+          )
+        ),
   },
   {
     id: "fuehrung",
     label: "Führung, Leitung, Stab",
     size: [75, 45],
-    render: (factory) => factory.path("M1,3 h73 v-2 h-73 v44 m73,0 v-44"),
+    render: (factory) => factory.path("M1,1 h74 v6 h-74").attr("fill", "black"),
   },
   {
     id: "iuk",

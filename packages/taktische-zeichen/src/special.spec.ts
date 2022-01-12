@@ -15,8 +15,7 @@ async function getIcon(descriptor: IconDescriptor) {
 
 it("special", () =>
   getIcon({
-    grundzeichen: "stelle",
-    organisation: "hilfsorganisation",
-    einheit: "gruppe",
-    funktion: "fuehrungskraft",
+    grundzeichen: "kettenfahrzeug",
+    organisation: "feuerwehr",
+    fachaufgabe: "brandbekaempfung",
   }));

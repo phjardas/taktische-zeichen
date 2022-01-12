@@ -60,9 +60,9 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   svg.push(defs);
 
   svg.push(grund.render({ fill: org?.background }, factory));
-  defs.push(
-    factory.clipPath("gz-mask").push(grund.render({ fill: "white" }, factory))
-  );
+  if (grund.clipPath) {
+    defs.push(factory.clipPath("gz-mask").push(grund.clipPath(factory)));
+  }
 
   if (fachaufgabe) {
     addFachaufgabe({ grundzeichen: grund, fachaufgabe, svg, factory });
@@ -112,7 +112,7 @@ function addFachaufgabe({
     icon: fachaufgabe,
   });
 
-  const icon = fachaufgabe.render(factory).attr("id", "fachaufgabe");
+  const icon = fachaufgabe.render(factory);
 
   const transformations: Array<string> = [];
   if (offset[0] !== 0 || offset[1] !== 0) {
