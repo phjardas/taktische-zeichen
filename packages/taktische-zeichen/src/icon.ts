@@ -9,6 +9,7 @@ import {
   type Grundzeichen,
   type GrundzeichenId,
 } from "./grundzeichen";
+import { funktionen, type FunktionId } from "./funktionen";
 import { organisationen, type OrganisationId } from "./organisationen";
 import { Container, SVGElementFactory } from "./svg";
 import { Point } from "./types";
@@ -18,6 +19,7 @@ export type IconDescriptor = {
   organisation?: OrganisationId;
   fachaufgabe?: FachaufgabeId;
   einheit?: EinheitId;
+  funktion?: FunktionId;
 };
 
 export type Icon = {
@@ -41,6 +43,9 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   const einheit = descriptor.einheit
     ? get(descriptor.einheit, einheiten)
     : undefined;
+  const funktion = descriptor.funktion
+    ? get(descriptor.funktion, funktionen)
+    : undefined;
 
   let viewBox: [Point, Point] = [[0, 0], grund.size];
 
@@ -55,9 +60,12 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   svg.push(defs);
 
   svg.push(grund.render({ fill: org?.background }, factory));
+  defs.push(
+    factory.clipPath("gz-mask").push(grund.render({ fill: "white" }, factory))
+  );
 
   if (fachaufgabe) {
-    addFachaufgabe({ grundzeichen: grund, fachaufgabe, svg, defs, factory });
+    addFachaufgabe({ grundzeichen: grund, fachaufgabe, svg, factory });
   }
 
   if (einheit) {
@@ -71,6 +79,18 @@ export function createIcon(descriptor: IconDescriptor): Icon {
     );
   }
 
+  if (funktion) {
+    const offset = (grund.size[0] - funktion.size[0]) / 2;
+    svg.push(
+      factory
+        .g()
+        .attr("clip-path", "url(#gz-mask)")
+        .push(
+          funktion.render(factory).attr("transform", `translate(${offset},0)`)
+        )
+    );
+  }
+
   svg.attr("viewBox", viewBox.flatMap((p) => p).join(" "));
 
   return { svg: svg.render() };
@@ -80,13 +100,11 @@ function addFachaufgabe({
   grundzeichen,
   fachaufgabe,
   svg,
-  defs,
   factory,
 }: {
   grundzeichen: Grundzeichen;
   fachaufgabe: Fachaufgabe;
   svg: Container;
-  defs: Container;
   factory: SVGElementFactory;
 }) {
   const { scale, offset } = placeIcon({
@@ -94,14 +112,7 @@ function addFachaufgabe({
     icon: fachaufgabe,
   });
 
-  defs.push(
-    factory
-      .mask("gz-mask")
-      .push(grundzeichen.render({ fill: "white" }, factory))
-  );
-  defs.push(fachaufgabe.render(factory).attr("id", "fachaufgabe"));
-
-  const icon = factory.use("#fachaufgabe");
+  const icon = fachaufgabe.render(factory).attr("id", "fachaufgabe");
 
   const transformations: Array<string> = [];
   if (offset[0] !== 0 || offset[1] !== 0) {
@@ -113,7 +124,7 @@ function addFachaufgabe({
     icon.attr("transform", transformations.join(" "));
   }
 
-  svg.push(factory.g().attr("mask", "url(#gz-mask)").push(icon));
+  svg.push(factory.g().attr("clip-path", "url(#gz-mask)").push(icon));
 }
 
 function placeIcon({

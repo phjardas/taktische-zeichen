@@ -17,10 +17,6 @@ export class SVGElementFactory {
     return new Leaf("path").attr("d", d);
   }
 
-  rect() {
-    return new Leaf("rect");
-  }
-
   circle(center: Point, radius: number | string) {
     return new Leaf("circle")
       .attr("cx", center[0])
@@ -30,6 +26,10 @@ export class SVGElementFactory {
 
   mask(id: string) {
     return new Container("mask").attr("id", id);
+  }
+
+  clipPath(id: string) {
+    return new Container("clipPath").attr("id", id);
   }
 
   use(href: string) {

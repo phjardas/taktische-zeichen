@@ -1,13 +1,15 @@
 import { useState } from "react";
 import {
+  einheiten,
+  EinheitId,
   FachaufgabeId,
   fachaufgaben,
+  funktionen,
+  FunktionId,
   grundzeichen as grundzeichens,
   GrundzeichenId,
   organisationen,
   OrganisationId,
-  EinheitId,
-  einheiten,
   TaktischesZeichen,
 } from "taktische-zeichen-react";
 
@@ -18,6 +20,7 @@ export function App() {
   const [fachaufgabe, setFachaufgabe] = useState<FachaufgabeId | "">("");
   const [organisation, setOrganisation] = useState<OrganisationId | "">("");
   const [einheit, setEinheit] = useState<EinheitId | "">("");
+  const [funktion, setFunktion] = useState<FunktionId | "">("");
 
   return (
     <main className="container py-3">
@@ -100,6 +103,24 @@ export function App() {
                 ))}
               </select>
             </div>
+            <div className="mb-3">
+              <label htmlFor="funktion" className="form-label">
+                Funktion
+              </label>
+              <select
+                id="funktion"
+                value={funktion}
+                onChange={(e) => setFunktion(e.currentTarget.value as any)}
+                className="form-control"
+              >
+                <option value="">keine</option>
+                {funktionen.map((o) => (
+                  <option key={o.id} value={o.id}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </form>
         </div>
         <div className="col">
@@ -110,6 +131,7 @@ export function App() {
                 organisation={organisation || undefined}
                 fachaufgabe={fachaufgabe || undefined}
                 einheit={einheit || undefined}
+                funktion={funktion || undefined}
                 alt="Taktisches Zeichen"
               />
             </div>
