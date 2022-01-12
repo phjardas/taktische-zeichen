@@ -48,7 +48,7 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   const svg = factory
     .svg()
     .attr("fill", "transparent")
-    .attr("stroke", "#000000")
+    .attr("stroke", "black")
     .attr("stroke-width", 2);
 
   const defs = factory.defs();
@@ -61,8 +61,8 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   }
 
   if (einheit) {
-    viewBox[0][1] -= einheit.size[1];
-    viewBox[1][1] += einheit.size[1];
+    viewBox[0] = [viewBox[0][0], viewBox[0][1] - einheit.size[1]];
+    viewBox[1] = [viewBox[1][0], viewBox[1][1] + einheit.size[1]];
     const offset = (grund.size[0] - einheit.size[0]) / 2;
     svg.push(
       einheit
