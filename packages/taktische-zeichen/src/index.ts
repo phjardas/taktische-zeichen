@@ -1,3 +1,4 @@
+export { einheiten, type Einheit, type EinheitId } from "./einheiten";
 export {
   fachaufgaben,
   type Fachaufgabe,

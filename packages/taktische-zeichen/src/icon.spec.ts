@@ -1,11 +1,16 @@
 import { promises as fs } from "fs";
+import * as formatXml from "prettify-xml";
 import { fachaufgaben } from "./fachaufgaben";
 import { grundzeichen as grundzeichens } from "./grundzeichen";
 import { createIcon, type Icon } from "./icon";
 import { OrganisationId } from "./organisationen";
 
 async function saveIcon({ svg }: Icon) {
-  await fs.writeFile(expect.getState().currentTestName + ".svg", svg, "utf8");
+  await fs.writeFile(
+    expect.getState().currentTestName + ".svg",
+    formatXml(svg),
+    "utf8"
+  );
 }
 
 describe("icon", () => {

@@ -9,9 +9,15 @@ export default function TaktischesZeichen({
   grundzeichen,
   fachaufgabe,
   organisation,
+  einheit,
   ...props
 }: Props) {
-    const icon = createIcon({ grundzeichen, fachaufgabe, organisation });
+  const icon = createIcon({ grundzeichen, fachaufgabe, organisation, einheit });
 
-  return <img src={`data:image/svg+xml,${encodeURIComponent(icon.svg)}`} {...props} />;
+  return (
+    <img
+      src={`data:image/svg+xml,${encodeURIComponent(icon.svg)}`}
+      {...props}
+    />
+  );
 }

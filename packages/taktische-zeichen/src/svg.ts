@@ -2,7 +2,7 @@ import type { Point } from "./types";
 
 export class SVGElementFactory {
   svg() {
-    return new Container("svg").attr("xmlns", "http://www.w3.org/2000/svg");
+    return new SVG();
   }
 
   defs() {
@@ -92,5 +92,16 @@ export class Container extends Element {
       this.children.map((c) => c.render()).join("") +
       `</${this.name}>`
     );
+  }
+}
+
+export class SVG extends Container {
+  constructor() {
+    super("svg");
+    this.attr("xmlns", "http://www.w3.org/2000/svg");
+  }
+
+  render() {
+    return '<?xml version="1.0" encoding="UTF-8"?>' + super.render();
   }
 }

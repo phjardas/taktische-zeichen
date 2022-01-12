@@ -1,3 +1,4 @@
+import { einheiten, type EinheitId } from "./einheiten";
 import {
   fachaufgaben,
   type Fachaufgabe,
@@ -16,6 +17,7 @@ export type IconDescriptor = {
   grundzeichen: GrundzeichenId;
   organisation?: OrganisationId;
   fachaufgabe?: FachaufgabeId;
+  einheit?: EinheitId;
 };
 
 export type Icon = {
@@ -36,14 +38,18 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   const fachaufgabe = descriptor.fachaufgabe
     ? get(descriptor.fachaufgabe, fachaufgaben)
     : undefined;
+  const einheit = descriptor.einheit
+    ? get(descriptor.einheit, einheiten)
+    : undefined;
+
+  let viewBox: [Point, Point] = [[0, 0], grund.size];
 
   const factory = new SVGElementFactory();
   const svg = factory
     .svg()
     .attr("fill", "transparent")
     .attr("stroke", "#000000")
-    .attr("stroke-width", 2)
-    .attr("viewBox", `0 0 ${grund.size.join(" ")}`);
+    .attr("stroke-width", 2);
 
   const defs = factory.defs();
   svg.push(defs);
@@ -53,6 +59,19 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   if (fachaufgabe) {
     addFachaufgabe({ grundzeichen: grund, fachaufgabe, svg, defs, factory });
   }
+
+  if (einheit) {
+    viewBox[0][1] -= einheit.size[1];
+    viewBox[1][1] += einheit.size[1];
+    const offset = (grund.size[0] - einheit.size[0]) / 2;
+    svg.push(
+      einheit
+        .render(factory)
+        .attr("transform", `translate(${offset},${-einheit.size[1]})`)
+    );
+  }
+
+  svg.attr("viewBox", viewBox.flatMap((p) => p).join(" "));
 
   return { svg: svg.render() };
 }
