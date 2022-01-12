@@ -1,0 +1,3 @@
+[build]
+  publish = "packages/demo/dist"
+  command = "npm bootstrap && npm build"
