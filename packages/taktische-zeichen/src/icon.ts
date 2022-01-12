@@ -102,10 +102,13 @@ function placeIcon({
   icon,
 }: {
   paintableArea: [Point, Point];
-  icon: { size: Point };
+  icon: { size: Point; padding?: Point };
 }) {
-  const paintableWidth = paintableArea[1][0] - paintableArea[0][0];
-  const paintableHeight = paintableArea[1][1] - paintableArea[0][1];
+  const padding = icon.padding ?? [0, 0];
+  const paintableWidth =
+    paintableArea[1][0] - paintableArea[0][0] - padding[0] * 2;
+  const paintableHeight =
+    paintableArea[1][1] - paintableArea[0][1] - padding[1] * 2;
   const iconWidth = icon.size[0];
   const iconHeight = icon.size[1];
   const scale = Math.min(
@@ -114,9 +117,10 @@ function placeIcon({
   );
   const actualIconWidth = iconWidth * scale;
   const actualIconHeight = iconHeight * scale;
-  const offsetX = paintableArea[0][0] + (paintableWidth - actualIconWidth) / 2;
+  const offsetX =
+    paintableArea[0][0] + (paintableWidth - actualIconWidth) / 2 + padding[0];
   const offsetY =
-    paintableArea[0][1] + (paintableHeight - actualIconHeight) / 2;
+    paintableArea[0][1] + (paintableHeight - actualIconHeight) / 2 + padding[1];
 
   return { offset: [offsetX, offsetY], scale };
 }
