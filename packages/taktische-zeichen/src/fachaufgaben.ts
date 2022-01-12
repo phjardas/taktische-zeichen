@@ -35,7 +35,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     render: (factory) =>
       factory.path(
-        "M1,22.5 H74 M74,1 L50,22.5 L74,44 M10,19 V11 c0,-7 5,-7 5,0 V13 c0,7 5,7 5,0 V11 c0,-7 5,-7 5,0 V13 c0,7 5,7 5,0 V11 c0,-7 5,-7 5,0 V19"
+        "M1,22.5 H74 M74,1 L50,22.5 L74,44 M10,19 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V19"
       ),
   },
   {

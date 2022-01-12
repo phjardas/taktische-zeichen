@@ -1,7 +1,16 @@
-import { fachaufgaben, type FachaufgabeId } from "./fachaufgaben";
-import { grundzeichen, type GrundzeichenId } from "./grundzeichen";
+import {
+  fachaufgaben,
+  type Fachaufgabe,
+  type FachaufgabeId,
+} from "./fachaufgaben";
+import {
+  grundzeichen,
+  type Grundzeichen,
+  type GrundzeichenId,
+} from "./grundzeichen";
 import { organisationen, type OrganisationId } from "./organisationen";
-import { SVGElementFactory } from "./svg";
+import { Container, SVGElementFactory } from "./svg";
+import { Point } from "./types";
 
 export type IconDescriptor = {
   grundzeichen: GrundzeichenId;
@@ -42,36 +51,72 @@ export function createIcon(descriptor: IconDescriptor): Icon {
   svg.push(grund.render({ fill: org?.background }, factory));
 
   if (fachaufgabe) {
-    const paintableArea = grund.paintableArea ?? [[0, 0], grund.size];
-    const paintableWidth = paintableArea[1][0] - paintableArea[0][0];
-    const paintableHeight = paintableArea[1][1] - paintableArea[0][1];
-    const iconWidth = fachaufgabe.size[0];
-    const iconHeight = fachaufgabe.size[1];
-    const scale = Math.min(
-      paintableWidth / iconWidth,
-      paintableHeight / iconHeight
-    );
-    const actualIconWidth = iconWidth * scale;
-    const actualIconHeight = iconHeight * scale;
-    const offsetX =
-      paintableArea[0][0] + (paintableWidth - actualIconWidth) / 2;
-    const offsetY =
-      paintableArea[0][1] + (paintableHeight - actualIconHeight) / 2;
-
-    defs.push(
-      factory.mask("gz-mask").push(grund.render({ fill: "white" }, factory))
-    );
-    defs.push(fachaufgabe.render(factory).attr("id", "fachaufgabe"));
-
-    const icon = factory
-      .use("#fachaufgabe")
-      .attr("x", offsetX)
-      .attr("y", offsetY);
-
-    if (scale !== 1) icon.attr("transform", `scale(${scale})`);
-
-    svg.push(factory.g().attr("mask", "url(#gz-mask)").push(icon));
+    addFachaufgabe({ grundzeichen: grund, fachaufgabe, svg, defs, factory });
   }
 
   return { svg: svg.render() };
+}
+
+function addFachaufgabe({
+  grundzeichen,
+  fachaufgabe,
+  svg,
+  defs,
+  factory,
+}: {
+  grundzeichen: Grundzeichen;
+  fachaufgabe: Fachaufgabe;
+  svg: Container;
+  defs: Container;
+  factory: SVGElementFactory;
+}) {
+  const { scale, offset } = placeIcon({
+    paintableArea: grundzeichen.paintableArea ?? [[0, 0], grundzeichen.size],
+    icon: fachaufgabe,
+  });
+
+  defs.push(
+    factory
+      .mask("gz-mask")
+      .push(grundzeichen.render({ fill: "white" }, factory))
+  );
+  defs.push(fachaufgabe.render(factory).attr("id", "fachaufgabe"));
+
+  const icon = factory.use("#fachaufgabe");
+
+  const transformations: Array<string> = [];
+  if (offset[0] !== 0 || offset[1] !== 0) {
+    transformations.push(`translate(${offset[0]},${offset[1]})`);
+  }
+  if (scale !== 1) transformations.push(`scale(${scale})`);
+
+  if (transformations.length) {
+    icon.attr("transform", transformations.join(" "));
+  }
+
+  svg.push(factory.g().attr("mask", "url(#gz-mask)").push(icon));
+}
+
+function placeIcon({
+  paintableArea,
+  icon,
+}: {
+  paintableArea: [Point, Point];
+  icon: { size: Point };
+}) {
+  const paintableWidth = paintableArea[1][0] - paintableArea[0][0];
+  const paintableHeight = paintableArea[1][1] - paintableArea[0][1];
+  const iconWidth = icon.size[0];
+  const iconHeight = icon.size[1];
+  const scale = Math.min(
+    paintableWidth / iconWidth,
+    paintableHeight / iconHeight
+  );
+  const actualIconWidth = iconWidth * scale;
+  const actualIconHeight = iconHeight * scale;
+  const offsetX = paintableArea[0][0] + (paintableWidth - actualIconWidth) / 2;
+  const offsetY =
+    paintableArea[0][1] + (paintableHeight - actualIconHeight) / 2;
+
+  return { offset: [offsetX, offsetY], scale };
 }

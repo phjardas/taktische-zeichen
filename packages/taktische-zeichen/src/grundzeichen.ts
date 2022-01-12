@@ -80,7 +80,7 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "kraftfahrzeug-landgebunden",
     label: "Kraftfahrzeug landgebunden",
-    size: [75, 65],
+    size: [75, 55],
     render: ({ fill }, factory) =>
       factory
         .g()
@@ -95,7 +95,7 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "kraftfahrzeug-gelaendegaengig",
     label: "Kraftfahrzeug geländegängig oder geländefähig",
-    size: [75, 65],
+    size: [75, 55],
     render: ({ fill }, factory) =>
       factory
         .g()

@@ -12,13 +12,19 @@ describe("icon", () => {
   grundzeichens
     .map((g) => g.id)
     .forEach((grundzeichen) => {
-      [undefined, "drk" as OrganisationId].forEach((organisation) => {
-        [undefined, ...fachaufgaben.map((f) => f.id)].forEach((fachaufgabe) => {
-          it(`${grundzeichen}_${organisation ?? "keine"}_${
-            fachaufgabe ?? "keine"
-          }`, () =>
-            saveIcon(createIcon({ grundzeichen, fachaufgabe, organisation })));
-        });
-      });
+      [undefined, "hilfsorganisation" as OrganisationId].forEach(
+        (organisation) => {
+          [undefined, ...fachaufgaben.map((f) => f.id)].forEach(
+            (fachaufgabe) => {
+              it(`${grundzeichen}_${organisation ?? "keine"}_${
+                fachaufgabe ?? "keine"
+              }`, () =>
+                saveIcon(
+                  createIcon({ grundzeichen, fachaufgabe, organisation })
+                ));
+            }
+          );
+        }
+      );
     });
 });
