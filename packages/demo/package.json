@@ -6,12 +6,14 @@
   "scripts": {
     "clean": "shx rm -rf dist",
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "format": "prettier --write src",
+    "serve": "sirv dist --single"
   },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "taktische-zeichen": "^0.0.0"
+    "taktische-zeichen-react": "^0.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
@@ -19,6 +21,7 @@
     "parcel": "^2.1.1",
     "prettier": "^2.5.1",
     "shx": "^0.3.4",
+    "sirv-cli": "^2.0.1",
     "typescript": "^4.5.4"
   }
 }

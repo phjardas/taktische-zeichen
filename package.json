@@ -20,7 +20,9 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run clean",
     "build": "lerna run build",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "format": "lerna run format",
+    "start": "lerna run --stream start"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.2",

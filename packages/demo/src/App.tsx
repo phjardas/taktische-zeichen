@@ -1,39 +1,32 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
-  createIcon,
   FachaufgabeId,
   fachaufgaben,
   grundzeichen as grundzeichens,
   GrundzeichenId,
   organisationen,
   OrganisationId,
-} from "taktische-zeichen";
+  TaktischesZeichen,
+} from "taktische-zeichen-react";
 
 export function App() {
   const [grundzeichen, setGrundzeichen] = useState<GrundzeichenId>("fahrzeug");
   const [fachaufgabe, setFachaufgabe] = useState<FachaufgabeId | "">("");
   const [organisation, setOrganisation] = useState<OrganisationId | "">("");
 
-  const icon = useMemo(
-    () =>
-      createIcon({
-        grundzeichen,
-        fachaufgabe: fachaufgabe || undefined,
-        organisation: organisation || undefined,
-      }),
-    [grundzeichen, fachaufgabe, organisation]
-  );
-
   return (
-    <>
+    <main className="container py-3">
       <h1>Taktische Zeichen Generator</h1>
-      <form noValidate>
-        <div>
-          <label htmlFor="grundzeichen">Grundform</label>
+      <div className="row row-cols-1 row-cols-sm-2">
+      <div className="col">
+      <form noValidate onSubmit={e=>e.preventDefault()} className="mb-3">
+        <div className="mb-3">
+          <label htmlFor="grundzeichen" className="form-label">Grundform</label>
           <select
             id="grundzeichen"
             value={grundzeichen}
             onChange={(e) => setGrundzeichen(e.currentTarget.value as any)}
+            className="form-control"
           >
             {grundzeichens.map((gz) => (
               <option key={gz.id} value={gz.id}>
@@ -42,12 +35,13 @@ export function App() {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="fachaufgabe">Fachaufgabe</label>
+        <div className="mb-3">
+          <label htmlFor="fachaufgabe" className="form-label">Fachaufgabe</label>
           <select
             id="fachaufgabe"
             value={fachaufgabe}
             onChange={(e) => setFachaufgabe(e.currentTarget.value as any)}
+            className="form-control"
           >
             <option value="">keine</option>
             {fachaufgaben.map((f) => (
@@ -57,12 +51,13 @@ export function App() {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="organisation">Organisation</label>
+        <div className="mb-3">
+          <label htmlFor="organisation" className="form-label">Organisation</label>
           <select
             id="organisation"
             value={organisation}
             onChange={(e) => setOrganisation(e.currentTarget.value as any)}
+            className="form-control"
           >
             <option value="">keine</option>
             {organisationen.map((o) => (
@@ -72,14 +67,21 @@ export function App() {
             ))}
           </select>
         </div>
-        <div style={{ width: 400, marginTop: "2rem" }}>
-          <img
-            src={`data:image/svg+xml,${encodeURIComponent(icon.svg)}`}
+        </form>
+        </div>
+                <div className="col">
+        <div className="card">
+          <div className="card-body">
+          <TaktischesZeichen
+            grundzeichen={grundzeichen}
+            organisation={organisation || undefined}
+            fachaufgabe={fachaufgabe || undefined}
             alt="Taktisches Zeichen"
           />
+        </div>       
         </div>
-        <pre>{icon.svg}</pre>
-      </form>
-    </>
+      </div>
+      </div>
+          </main>
   );
 }
