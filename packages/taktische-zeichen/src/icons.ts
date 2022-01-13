@@ -43,7 +43,7 @@ export const beleuchtung: Icon = {
 export const bett: Icon = {
   size: [30, 18],
   render: (factory) =>
-    factory.path("M1,0 v18 m0,-5 h28 m0,5 v-20 m0,15 c0,-8 -28,-8 -28,0"),
+    factory.path("M1,0 v18 m0,-5 h28 m0,5 v-18 m0,15 c0,-8 -28,-8 -28,0"),
 };
 
 export const verpflegung: Icon = {
