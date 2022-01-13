@@ -53,7 +53,7 @@ export type Fachaufgabe = {
   id: FachaufgabeId;
   label: string;
   size: Point;
-  padding?: Point;
+  cover?: boolean;
   render(factory: SVGElementFactory): Element;
 };
 
@@ -76,6 +76,7 @@ function logistikFachaufgabe({
 }: Pick<Fachaufgabe, "id" | "label"> & { symbol: SymbolSpec }): Fachaufgabe {
   return {
     ...props,
+    cover: true,
     size: logistik.size,
     render: (factory) =>
       factory
@@ -84,7 +85,8 @@ function logistikFachaufgabe({
         .push(
           placeComponent({
             parent: logistik,
-            component: { ...symbol, padding: [10, 10] },
+            component: symbol,
+            padding: [13, 20, 8],
             factory,
           })
         ),
@@ -95,7 +97,6 @@ const erkunden = (factory: SVGElementFactory) => factory.path("M0,45 L75,0");
 
 const abc: Component = {
   size: [30, 30],
-  padding: [10, 10],
   render: (factory: SVGElementFactory) =>
     factory
       .g()
@@ -109,18 +110,19 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "brandbekaempfung",
     label: "Brandbekämpfung",
     size: [75, 45],
+    cover: true,
     render: brandbekaempfung,
   },
   {
     id: "hoehenrettung",
     label: "Rettung aus Höhen und Tiefen",
-    padding: [10, 10],
     ...drehleiter,
   },
   {
     id: "wasserversorgung",
     label: "Wasserversorgung und -förderung",
     size: [75, 45],
+    cover: true,
     render: (factory) =>
       factory
         .g()
@@ -135,7 +137,6 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "technische-hilfeleistung",
     label: "Technische Hilfeleistung",
     size: [38, 10],
-    padding: [10, 10],
     render: (factory) =>
       factory.path(
         "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0"
@@ -144,44 +145,39 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "heben",
     label: "Heben von Lasten",
-    padding: [10, 10],
     ...hebegeraet,
   },
   {
     id: "bergung",
     label: "Bergung",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.path("M0,15 H15 A22.5 20 180 1 0 60 15 H75"),
   },
   {
     id: "raeumen",
     label: "Räumen, Beseitigung von Hindernissen",
-    padding: [10, 10],
     ...raeumgeraet,
   },
   {
     id: "entschaerfen",
     label: "Entschärfung, Kampfmittelräumung",
-    padding: [10, 10],
     ...sprengmittel,
   },
   {
     id: "sprengen",
     label: "Sprengen",
-    padding: [10, 10],
     ...sprengung,
   },
   {
     id: "beleuchtung",
     label: "Beleuchtung",
-    padding: [10, 10],
     ...beleuchtung,
   },
   {
     id: "transport",
     label: "Transport",
     size: [30, 30],
-    padding: [10, 10],
     render: (factory) =>
       factory
         .g()
@@ -197,6 +193,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "messen",
     label: "Messen, Spüren",
     size: [75, 45],
+    cover: true,
     render: (factory) =>
       factory
         .g()
@@ -205,6 +202,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
           placeComponent({
             parent: { size: [75, 45] },
             component: abc,
+            padding: [10, 20],
             factory,
           })
         ),
@@ -227,36 +225,38 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "rettungswesen",
     label: "Rettungswesen, Sanitätswesen, Gesundheitswesen",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.path("M0,22.5 H75 M37.5,0 V45"),
   },
   {
     id: "aerztliche-versorgung",
     label: "Ärztliche Versorgung",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.path("M0,22.5 H75 M37.5,0 V45 M25,33 H50"),
   },
   {
     id: "betreuung",
     label: "Betreuung",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.path("M0,45 L37.5,1 L75,45"),
   },
   {
     id: "seelsorge",
     label: "Seelsorge",
     size: [20, 27],
-    padding: [10, 10],
     render: (factory) => factory.path("M8,0 V27 m4,0 V0 M0,8 H20 m0,4 H0"),
   },
   {
     id: "unterbringung",
     label: "Unterbringung",
-    padding: [10, 10],
     ...bett,
   },
   {
     id: "logistik",
     label: "Versorgung, Logistik",
+    cover: true,
     ...logistik,
   },
   logistikFachaufgabe({
@@ -293,18 +293,21 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "fuehrung",
     label: "Führung, Leitung, Stab",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.rect([0, 0], [75, 8]).attr("fill", "black"),
   },
   {
     id: "iuk",
     label: "Information und Kommunikation",
     size: [75, 45],
+    cover: true,
     render: (factory) => factory.path("M0,0 l37.5,28 v-11 L75,45"),
   },
   {
     id: "erkundung",
     label: "Erkundung",
     size: [75, 45],
+    cover: true,
     render: erkunden,
   },
 ];

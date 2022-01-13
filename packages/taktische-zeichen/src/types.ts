@@ -7,6 +7,11 @@ import { type SymbolId } from "./symbole";
 
 export type Point = [number, number];
 
+export type Padding =
+  | [number, number]
+  | [number, number, number]
+  | [number, number, number, number];
+
 export type TaktischesZeichen = {
   grundzeichen: GrundzeichenId;
   organisation?: OrganisationId;

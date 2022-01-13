@@ -1,5 +1,5 @@
 import { Element, SVGElementFactory } from "./svg";
-import { Point } from "./types";
+import type { Padding, Point } from "./types";
 
 export type Parent = {
   size: Point;
@@ -8,21 +8,27 @@ export type Parent = {
 
 export type Component = {
   size: Point;
-  padding?: Point;
+  cover?: boolean;
   render: (factory: SVGElementFactory) => Element;
 };
 
 export function placeComponent({
   parent,
   component,
+  padding = [0, 0],
   factory,
 }: {
   parent: Parent;
   component: Component;
+  padding?: Padding;
   factory: SVGElementFactory;
 }) {
   const icon = component.render(factory);
-  const { offset, scale } = calculateComponentPosition({ parent, component });
+  const { offset, scale } = calculateComponentPosition({
+    parent,
+    component,
+    padding,
+  });
 
   const transformations: Array<string> = [];
   if (offset[0] !== 0 || offset[1] !== 0) {
@@ -37,33 +43,47 @@ export function placeComponent({
   return factory.g().push(icon);
 }
 
+// exported for tests
 export function calculateComponentPosition({
   parent,
   component: {
     size: [iconWidth, iconHeight],
-    padding = [0, 0],
+    cover = false,
   },
+  padding = [0, 0, 0, 0],
 }: {
   parent: Parent;
-  component: Pick<Component, "size" | "padding">;
+  component: Pick<Component, "size" | "cover">;
+  padding?: Padding;
 }) {
+  const [paddingTop, paddingRight, paddingBottom, paddingLeft] =
+    resolvePadding(padding);
   const paintableArea = parent.paintableArea ?? [[0, 0], parent.size];
   const paintableWidth =
-    paintableArea[1][0] - paintableArea[0][0] - padding[0] * 2;
+    paintableArea[1][0] - paintableArea[0][0] - paddingLeft - paddingRight;
   const paintableHeight =
-    paintableArea[1][1] - paintableArea[0][1] - padding[1] * 2;
-  const scale = Math.min(
-    paintableWidth / iconWidth,
-    paintableHeight / iconHeight
-  );
+    paintableArea[1][1] - paintableArea[0][1] - paddingTop - paddingBottom;
+  const scale = cover
+    ? Math.max(paintableWidth / iconWidth, paintableHeight / iconHeight)
+    : Math.min(paintableWidth / iconWidth, paintableHeight / iconHeight);
   const actualIconWidth = iconWidth * scale;
   const actualIconHeight = iconHeight * scale;
   const offsetX =
-    paintableArea[0][0] + (paintableWidth - actualIconWidth) / 2 + padding[0];
+    paintableArea[0][0] + paddingLeft + (paintableWidth - actualIconWidth) / 2;
   const offsetY =
-    paintableArea[0][1] + (paintableHeight - actualIconHeight) / 2 + padding[1];
+    paintableArea[0][1] + paddingTop + (paintableHeight - actualIconHeight) / 2;
 
   return { offset: [offsetX, offsetY], scale };
+}
+
+// exported for tests
+export function resolvePadding(
+  padding: Padding
+): [number, number, number, number] {
+  if (padding.length === 4) return padding;
+  if (padding.length === 3)
+    return [padding[0], padding[1], padding[2], padding[1]];
+  return [padding[0], padding[1], padding[0], padding[1]];
 }
 
 export function addPoints(a: Point, b: Point): Point {

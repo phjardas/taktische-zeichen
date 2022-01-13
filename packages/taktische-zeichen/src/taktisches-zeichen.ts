@@ -54,6 +54,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     const icon = placeComponent({
       parent: grund,
       component: fachaufgabe,
+      padding: fachaufgabe.cover ? undefined : grund.padding,
       factory,
     }).attr("clip-path", "url(#gz-mask)");
     svg.push(icon);
@@ -103,7 +104,8 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
         .push(
           placeComponent({
             parent: grund,
-            component: { padding: [5, 5], ...symbol },
+            component: symbol,
+            padding: grund.padding,
             factory,
           })
         )
