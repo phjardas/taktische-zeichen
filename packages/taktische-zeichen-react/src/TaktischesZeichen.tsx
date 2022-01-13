@@ -1,6 +1,6 @@
-import { createIcon, type IconDescriptor } from "taktische-zeichen";
+import { erzeugeTaktischesZeichen, type TaktischesZeichen } from "taktische-zeichen";
 
-export type Props = IconDescriptor & {
+export type Props = TaktischesZeichen & {
   alt?: string;
   className?: string;
 };
@@ -13,7 +13,7 @@ export default function TaktischesZeichen({
   funktion,
   ...props
 }: Props) {
-  const icon = createIcon({
+  const icon = erzeugeTaktischesZeichen({
     grundzeichen,
     fachaufgabe,
     organisation,
@@ -23,7 +23,7 @@ export default function TaktischesZeichen({
 
   return (
     <img
-      src={`data:image/svg+xml,${encodeURIComponent(icon.svg)}`}
+      src={icon.dataUrl}
       {...props}
     />
   );

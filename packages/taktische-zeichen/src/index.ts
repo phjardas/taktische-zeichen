@@ -10,10 +10,10 @@ export {
   type Grundzeichen,
   type GrundzeichenId,
 } from "./grundzeichen";
-export { createIcon, type Icon, type IconDescriptor } from "./icon";
 export {
   organisationen,
   type Organisation,
   type OrganisationId,
 } from "./organisationen";
+export { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
 export * from "./types";

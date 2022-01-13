@@ -24,6 +24,14 @@ export class SVGElementFactory {
       .attr("r", radius);
   }
 
+  rect(pos: Point, size: Point) {
+    return new Leaf("rect")
+      .attr("x", pos[0])
+      .attr("y", pos[1])
+      .attr("width", size[0])
+      .attr("height", size[1]);
+  }
+
   mask(id: string) {
     return new Container("mask").attr("id", id);
   }

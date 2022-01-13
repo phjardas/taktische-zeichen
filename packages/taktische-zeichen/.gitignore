@@ -1,4 +1,5 @@
 /dist
 /node_modules
 /test-icons
+/src/special.spec.ts
 *.log

@@ -25,7 +25,7 @@ async function main() {
                   fachaufgabe,
                   einheit,
                 });
-                return `it('${name}', () => expect(getIcon(${spec})).resolves.toMatchInlineSnapshot());`;
+                return `it("${name}", () => expect(getIcon("${name}", ${spec})).resolves.toMatchInlineSnapshot());`;
               }
             )
         )
@@ -35,16 +35,13 @@ async function main() {
   const suite = `
 import { promises as fs } from "fs";
 import * as formatXml from "prettify-xml";
-import { createIcon, type IconDescriptor } from "./icon";
+import { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
+import { type TaktischesZeichen } from './types';
 
-async function getIcon(descriptor: IconDescriptor) {
-  const { svg } = createIcon(descriptor);
+async function getIcon(name:string, descriptor: TaktischesZeichen) {
+  const { svg } = erzeugeTaktischesZeichen(descriptor);
   await fs.mkdir("test-icons", { recursive: true });
-  await fs.writeFile(
-    \`test-icons/\${expect.getState().currentTestName}.svg\`,
-    formatXml(svg),
-    "utf8"
-  );
+  await fs.writeFile(\`test-icons/\${name}.svg\`, formatXml(svg), "utf8");
   return svg;
 }
 
@@ -53,7 +50,7 @@ ${tests.join("\n\n")}
 });
 `.trim();
 
-  await fs.writeFile(path.join(__dirname, "src/icon.spec.ts"), suite, "utf8");
+  await fs.writeFile(path.join(__dirname, "src/taktisches-zeichen.spec.ts"), suite, "utf8");
 }
 
 main().catch((error) => {
