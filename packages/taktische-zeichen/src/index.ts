@@ -7,6 +7,7 @@ export {
 export { funktionen, type Funktion, type FunktionId } from "./funktionen";
 export {
   grundzeichen,
+  type ComponentType,
   type Grundzeichen,
   type GrundzeichenId,
 } from "./grundzeichen";
@@ -15,5 +16,6 @@ export {
   type Organisation,
   type OrganisationId,
 } from "./organisationen";
+export { symbole, type Symbol, type SymbolId } from "./symbole";
 export { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
 export * from "./types";

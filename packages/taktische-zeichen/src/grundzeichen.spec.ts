@@ -21,7 +21,7 @@ describe("grundzeichen", () => {
       );
 
       // actual item
-      svg.push(render({ fill: "#cc0000" }, factory));
+      if (render) svg.push(render({ fill: "#cc0000" }, factory));
 
       // paintable area
       if (paintableArea) {

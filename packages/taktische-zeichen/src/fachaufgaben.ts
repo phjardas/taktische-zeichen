@@ -1,3 +1,4 @@
+import { Element, SVGElementFactory } from "./svg";
 import {
   beleuchtung,
   bett,
@@ -6,15 +7,14 @@ import {
   elektrizitaet,
   geraete,
   hebegeraet,
-  Icon,
   raeumgeraet,
   sprengmittel,
   sprengung,
+  SymbolSpec,
   trinkwasser,
   verbrauchsgueter,
   verpflegung,
-} from "./icons";
-import { Element, SVGElementFactory } from "./svg";
+} from "./symbole";
 import type { Point } from "./types";
 import { Component, Parent, placeComponent } from "./utils";
 
@@ -71,9 +71,9 @@ const logistik: Parent & Component = {
 };
 
 function logistikFachaufgabe({
-  icon,
+  symbol,
   ...props
-}: Pick<Fachaufgabe, "id" | "label"> & { icon: Icon }): Fachaufgabe {
+}: Pick<Fachaufgabe, "id" | "label"> & { symbol: SymbolSpec }): Fachaufgabe {
   return {
     ...props,
     size: logistik.size,
@@ -84,7 +84,7 @@ function logistikFachaufgabe({
         .push(
           placeComponent({
             parent: logistik,
-            component: { ...icon, padding: [10, 10] },
+            component: { ...symbol, padding: [10, 10] },
             factory,
           })
         ),
@@ -262,32 +262,32 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   logistikFachaufgabe({
     id: "verpflegung",
     label: "Verpflegung",
-    icon: verpflegung,
+    symbol: verpflegung,
   }),
   logistikFachaufgabe({
     id: "verbrauchsgueter",
     label: "Versorgung mit Verbrauchsgütern und Betriebsstoffen",
-    icon: verbrauchsgueter,
+    symbol: verbrauchsgueter,
   }),
   logistikFachaufgabe({
     id: "versorgung-trinkwasser",
     label: "Versorgung mit Trinkwasser",
-    icon: trinkwasser,
+    symbol: trinkwasser,
   }),
   logistikFachaufgabe({
     id: "versorgung-brauchwasser",
     label: "Versorgung mit Brauchwasser",
-    icon: brauchwasser,
+    symbol: brauchwasser,
   }),
   logistikFachaufgabe({
     id: "versorgung-elektrizitaet",
     label: "Versorgung mit Elektrizität",
-    icon: elektrizitaet,
+    symbol: elektrizitaet,
   }),
   logistikFachaufgabe({
     id: "instandhaltung",
     label: "Instandhaltung",
-    icon: geraete,
+    symbol: geraete,
   }),
   {
     id: "fuehrung",

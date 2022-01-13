@@ -1,9 +1,14 @@
 import { einheiten } from "./einheiten";
 import { fachaufgaben } from "./fachaufgaben";
 import { funktionen } from "./funktionen";
-import { grundzeichen } from "./grundzeichen";
+import {
+  grundzeichen,
+  type ComponentType,
+  type Grundzeichen,
+} from "./grundzeichen";
 import { organisationen } from "./organisationen";
 import { SVGElementFactory } from "./svg";
+import { symbole } from "./symbole";
 import { type Image, type Point, type TaktischesZeichen } from "./types";
 import { addPoints, placeComponent, subtractPoints } from "./utils";
 
@@ -23,6 +28,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     : undefined;
   const einheit = spec.einheit ? get(spec.einheit, einheiten) : undefined;
   const funktion = spec.funktion ? get(spec.funktion, funktionen) : undefined;
+  const symbol = spec.symbol ? get(spec.symbol, symbole) : undefined;
 
   let viewBox: [Point, Point] = [[0, 0], grund.size];
 
@@ -36,12 +42,15 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
   const defs = factory.defs();
   svg.push(defs);
 
-  svg.push(grund.render({ fill: org?.background }, factory));
+  if (grund.render) {
+    svg.push(grund.render({ fill: org?.background }, factory));
+  }
+
   if (grund.clipPath) {
     defs.push(factory.clipPath("gz-mask").push(grund.clipPath(factory)));
   }
 
-  if (fachaufgabe) {
+  if (fachaufgabe && accepts(grund, "fachaufgabe")) {
     const icon = placeComponent({
       parent: grund,
       component: fachaufgabe,
@@ -50,7 +59,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     svg.push(icon);
   }
 
-  if (einheit) {
+  if (einheit && accepts(grund, "einheit")) {
     const anchor = grund.einheitAnchor ?? [
       viewBox[0][0] + (viewBox[1][0] - viewBox[0][0]) / 2,
       0,
@@ -74,7 +83,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     );
   }
 
-  if (funktion) {
+  if (funktion && accepts(grund, "funktion")) {
     const offset = (grund.size[0] - funktion.size[0]) / 2;
     svg.push(
       factory
@@ -82,6 +91,21 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
         .attr("clip-path", "url(#gz-mask)")
         .push(
           funktion.render(factory).attr("transform", `translate(${offset},0)`)
+        )
+    );
+  }
+
+  if (symbol && accepts(grund, "symbol")) {
+    svg.push(
+      factory
+        .g()
+        .attr("clip-path", "url(#gz-mask)")
+        .push(
+          placeComponent({
+            parent: grund,
+            component: { padding: [5, 5], ...symbol },
+            factory,
+          })
         )
     );
   }
@@ -99,4 +123,9 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       )}`;
     },
   };
+}
+
+function accepts({ accepts }: Grundzeichen, type: ComponentType): boolean {
+  if (!accepts) return true;
+  return accepts.includes(type);
 }

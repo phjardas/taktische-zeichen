@@ -2,6 +2,7 @@ import { Element, SVGElementFactory } from "./svg";
 import type { Point } from "./types";
 
 export type GrundzeichenId =
+  | "ohne"
   | "taktische-formation"
   | "befehlsstelle"
   | "stelle"
@@ -14,20 +15,26 @@ export type GrundzeichenId =
   | "abrollbehaelter"
   | "anhaenger"
   | "schienenfahrzeug"
-  | "kettenfahrzeug";
+  | "kettenfahrzeug"
+  | "massnahme"
+  | "anlass"
+  | "gefahr";
 
 export type GrundzeichenRenderProps = {
   fill?: string;
 };
 
+export type ComponentType = "einheit" | "funktion" | "fachaufgabe" | "symbol";
+
 export type Grundzeichen = {
   id: GrundzeichenId;
   label: string;
   size: Point;
-  render(props: GrundzeichenRenderProps, factory: SVGElementFactory): Element;
+  render?(props: GrundzeichenRenderProps, factory: SVGElementFactory): Element;
   clipPath?(factory: SVGElementFactory): Element;
   paintableArea?: [Point, Point];
   einheitAnchor?: Point;
+  accepts?: Array<ComponentType>;
 };
 
 function applyProps(element: Element, { fill }: GrundzeichenRenderProps) {
@@ -54,7 +61,7 @@ const fahrzeugShape = (factory: SVGElementFactory) =>
 
 const fahrzeug: Pick<
   Grundzeichen,
-  "render" | "clipPath" | "size" | "paintableArea" | "einheitAnchor"
+  "render" | "clipPath" | "size" | "paintableArea" | "einheitAnchor" | "accepts"
 > = {
   size: [75, 45],
   render: withProps(fahrzeugShape),
@@ -64,13 +71,21 @@ const fahrzeug: Pick<
     [75, 45],
   ],
   einheitAnchor: [37.5, 4.5],
+  accepts: ["einheit", "fachaufgabe", "symbol"],
 };
 
 export const grundzeichen: Array<Grundzeichen> = [
   {
+    id: "ohne",
+    label: "Ohne Grundzeichen",
+    size: [45, 45],
+    accepts: ["symbol"],
+  },
+  {
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
     ...singleShape((factory) => factory.path("M1,1 H74 V44 H1 Z")),
   },
   {
@@ -83,12 +98,14 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 0],
       [75, 45],
     ],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
   },
   {
     id: "stelle",
     label: "Stelle, Einrichtung",
     size: [45, 45],
     ...singleShape((factory) => factory.circle([22.5, 22.5], 21.5)),
+    accepts: ["einheit", "fachaufgabe", "symbol", "funktion"],
   },
   {
     id: "person",
@@ -97,6 +114,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     ...singleShape((factory) =>
       factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
     ),
+    accepts: ["einheit", "fachaufgabe", "symbol", "funktion"],
   },
   {
     id: "gebaeude",
@@ -112,6 +130,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 10],
       [75, 45],
     ],
+    accepts: ["fachaufgabe", "funktion"],
   },
   {
     id: "fahrzeug",
@@ -160,6 +179,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     einheitAnchor: [39.5, 4.5],
+    accepts: ["einheit", "fachaufgabe", "funktion"],
   },
   {
     id: "abrollbehaelter",
@@ -176,6 +196,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
+    accepts: ["einheit", "fachaufgabe", "funktion"],
   },
   {
     id: "anhaenger",
@@ -189,6 +210,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
+    accepts: ["einheit", "fachaufgabe", "funktion"],
   },
   {
     id: "schienenfahrzeug",
@@ -214,5 +236,39 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(applyProps(fahrzeugShape(factory), props))
         .push(factory.path("M5 48 a3 3 0 0 0 0 6 h65 a3 3 0 0 0 0 -6 Z")),
+  },
+  {
+    id: "massnahme",
+    label: "Maßnahme",
+    size: [45, 36],
+    accepts: ["symbol"],
+    ...singleShape((factory) => factory.path("M22.5,1.8 L43.2,35 H1.8 Z")),
+    paintableArea: [
+      [1, 11],
+      [44, 35],
+    ],
+  },
+  {
+    id: "anlass",
+    label: "Anlass, Ereignis",
+    size: [45, 36],
+    render: (_, factory) => factory.path("M1,0.6 L22.5,34 L44,0.6"),
+    clipPath: (factory) => factory.path("M1,0.6 L22.5,34 L44,0.6 Z"),
+    accepts: ["symbol"],
+    paintableArea: [
+      [1, 1],
+      [44, 25],
+    ],
+  },
+  {
+    id: "gefahr",
+    label: "Gefahr",
+    size: [45, 36],
+    accepts: ["symbol"],
+    ...singleShape((factory) => factory.path("M22.5,34 L43.2,1 H1.8 Z")),
+    paintableArea: [
+      [1, 1],
+      [44, 25],
+    ],
   },
 ];

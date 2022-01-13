@@ -1,11 +1,11 @@
 import { promises as fs } from "fs";
 import * as formatXml from "prettify-xml";
-import * as icons from "./icons";
 import { SVGElementFactory } from "./svg";
+import { symbole } from "./symbole";
 
-describe("icons", () => {
-  Object.entries(icons).forEach(([name, { size, render }]) => {
-    it(name, async () => {
+describe("symbole", () => {
+  symbole.forEach(({ id, size, render }) => {
+    it(id, async () => {
       const factory = new SVGElementFactory();
       const svg = factory
         .svg()
@@ -22,8 +22,12 @@ describe("icons", () => {
         .push(render(factory))
         .render();
 
-      await fs.mkdir("test-icons", { recursive: true });
-      await fs.writeFile(`test-icons/icon-${name}.svg`, formatXml(svg), "utf8");
+      await fs.mkdir("test-symbole", { recursive: true });
+      await fs.writeFile(
+        `test-symbole/symbol-${id}.svg`,
+        formatXml(svg),
+        "utf8"
+      );
     });
   });
 });
