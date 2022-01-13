@@ -1,5 +1,5 @@
 {
-  "name": "taktische-zeichen-demo",
+  "name": "taktische-zeichen-website",
   "private": true,
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
@@ -13,11 +13,13 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-syntax-highlighter": "^15.4.5",
     "taktische-zeichen-react": "^0.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "parcel": "^2.1.1",
     "prettier": "^2.5.1",
     "shx": "^0.3.4",

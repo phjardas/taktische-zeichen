@@ -15,7 +15,7 @@ import TaktischesZeichen, {
   ComponentType,
 } from "taktische-zeichen-react";
 
-export function App() {
+export function Demo() {
   const [grundzeichen, setGrundzeichen] = useState<GrundzeichenId>(
     "kraftfahrzeug-gelaendegaengig"
   );
@@ -38,10 +38,7 @@ export function App() {
   );
 
   return (
-    <main className="container py-3">
-      <h1>Taktische Zeichen</h1>
-      <div className="row row-cols-1 row-cols-sm-2">
-        <div className="col">
+<>
           <form
             noValidate
             onSubmit={(e) => e.preventDefault()}
@@ -163,10 +160,6 @@ export function App() {
               </div>
             )}
           </form>
-        </div>
-        <div className="col">
-          <div className="card">
-            <div className="card-body">
               <TaktischesZeichen
                 grundzeichen={grundzeichen}
                 organisation={organisation || undefined}
@@ -176,10 +169,5 @@ export function App() {
                 symbol={symbol || undefined}
                 alt="Taktisches Zeichen"
               />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+</>  );
 }
