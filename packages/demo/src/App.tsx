@@ -17,11 +17,11 @@ import TaktischesZeichen, {
 
 export function App() {
   const [grundzeichen, setGrundzeichen] = useState<GrundzeichenId>(
-    "taktische-formation"
+    "kraftfahrzeug-gelaendegaengig"
   );
-  const [fachaufgabe, setFachaufgabe] = useState<FachaufgabeId | "">("");
-  const [organisation, setOrganisation] = useState<OrganisationId | "">("");
-  const [einheit, setEinheit] = useState<EinheitId | "">("");
+  const [fachaufgabe, setFachaufgabe] = useState<FachaufgabeId | "">("brandbekaempfung");
+  const [organisation, setOrganisation] = useState<OrganisationId | "">("feuerwehr");
+  const [einheit, setEinheit] = useState<EinheitId | "">("gruppe");
   const [funktion, setFunktion] = useState<FunktionId | "">("");
   const [symbol, setSymbol] = useState<SymbolId | "">("");
   const accepts = useMemo(
