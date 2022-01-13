@@ -36,11 +36,13 @@ export function placeComponent({
   }
   if (scale !== 1) transformations.push(`scale(${scale})`);
 
+  const wrapper = factory.g().push(icon);
+
   if (transformations.length) {
-    icon.attr("transform", transformations.join(" "));
+    wrapper.attr("transform", transformations.join(" "));
   }
 
-  return factory.g().push(icon);
+  return wrapper;
 }
 
 // exported for tests

@@ -16,6 +16,11 @@ export type GrundzeichenId =
   | "anhaenger"
   | "schienenfahrzeug"
   | "kettenfahrzeug"
+  | "fahrrad"
+  | "kraftrad"
+  | "wasserfahrzeug"
+  | "flugzeug"
+  | "hubschrauber"
   | "massnahme"
   | "anlass"
   | "gefahr";
@@ -78,7 +83,7 @@ const fahrzeug: Pick<
     [75, 45],
   ],
   einheitAnchor: [37.5, 4.5],
-  accepts: ["einheit", "fachaufgabe"],
+  accepts: ["einheit", "fachaufgabe", "symbol"],
   padding: [15, 20, 10],
 };
 
@@ -93,7 +98,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
-    accepts: ["einheit", "fachaufgabe"],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
     padding: [10, 20],
     ...singleShape((factory) => factory.path("M1,1 H74 V44 H1 Z")),
   },
@@ -108,14 +113,14 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     padding: [10, 20],
-    accepts: ["einheit", "fachaufgabe"],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
   },
   {
     id: "stelle",
     label: "Stelle, Einrichtung",
     size: [45, 45],
     ...singleShape((factory) => factory.circle([22.5, 22.5], 21.5)),
-    accepts: ["einheit", "fachaufgabe", "funktion", "symbol"],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
     padding: [10, 10],
   },
   {
@@ -126,7 +131,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
     ),
     accepts: ["einheit", "fachaufgabe", "funktion", "symbol"],
-    padding: [10, 10],
+    padding: [15, 15],
   },
   {
     id: "gebaeude",
@@ -192,7 +197,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     einheitAnchor: [39.5, 4.5],
-    accepts: ["einheit", "fachaufgabe"],
+    accepts: ["einheit", "fachaufgabe", "symbol"],
     padding: [15, 10, 10],
   },
   {
@@ -210,7 +215,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe"],
+    accepts: ["fachaufgabe", "symbol"],
     padding: [15, 10, 10],
   },
   {
@@ -225,7 +230,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe"],
+    accepts: ["fachaufgabe", "symbol"],
     padding: [15, 10, 10],
   },
   {
@@ -252,6 +257,73 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(applyProps(fahrzeugShape(factory), props))
         .push(factory.path("M5 48 a3 3 0 0 0 0 6 h65 a3 3 0 0 0 0 -6 Z")),
+  },
+  {
+    id: "fahrrad",
+    label: "Fahrrad",
+    size: [42, 45],
+    accepts: [],
+    render: (_, factory) =>
+      factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45"),
+  },
+  {
+    id: "kraftrad",
+    label: "Kraftrad",
+    size: [42, 45],
+    accepts: [],
+    render: (_, factory) =>
+      factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45 m-10,-20 h20"),
+  },
+  {
+    id: "wasserfahrzeug",
+    label: "Wasserfahrzeug",
+    size: [42, 22],
+    accepts: ["einheit", "fachaufgabe"],
+    ...singleShape((factory) => factory.path("M1,1 a20 20 0 0 0 40 0 Z")),
+  },
+  {
+    id: "flugzeug",
+    label: "Flugzeug",
+    size: [38, 15],
+    accepts: ["einheit"],
+    render: (props, factory) =>
+      factory
+        .g()
+        .push(factory.path("M19,0 v15"))
+        .push(
+          applyProps(
+            factory.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+            props
+          )
+        )
+        .push(
+          applyProps(
+            factory.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+            props
+          )
+        ),
+  },
+  {
+    id: "hubschrauber",
+    label: "Hubschrauber",
+    size: [38, 23],
+    accepts: ["einheit"],
+    render: (props, factory) =>
+      factory
+        .g()
+        .push(factory.path("M19,2 v20 m-10,0 h20"))
+        .push(
+          applyProps(
+            factory.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+            props
+          )
+        )
+        .push(
+          applyProps(
+            factory.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+            props
+          )
+        ),
   },
   {
     id: "massnahme",

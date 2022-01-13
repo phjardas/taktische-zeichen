@@ -4,7 +4,9 @@ import { type Point } from "./types";
 export type SymbolId =
   | "drehleiter"
   | "hebegeraet"
+  | "bagger"
   | "raeumgeraet"
+  | "bruecke"
   | "sprengmittel"
   | "beleuchtung"
   | "bett"
@@ -14,7 +16,8 @@ export type SymbolId =
   | "brauchwasser"
   | "elektrizitaet"
   | "geraete"
-  | "sprengung";
+  | "sprengung"
+  | "transport";
 
 export type Symbol = {
   id: SymbolId;
@@ -33,6 +36,21 @@ export const drehleiter: SymbolSpec = {
 export const hebegeraet: SymbolSpec = {
   size: [20, 30],
   render: (factory) => factory.path("M1,30 v-29 h8 a5 5 0 0 0 10 0"),
+};
+
+export const bagger: SymbolSpec = {
+  size: [20, 30],
+  render: (factory) =>
+    hebegeraet
+      .render(factory)
+      .attr("transform", "rotate(45)")
+      .attr("transform-origin", "10 15"),
+};
+
+export const bruecke: SymbolSpec = {
+  size: [41, 16],
+  render: (factory) =>
+    factory.path("M.5,1 l10,5 h20 l10,-5 M.5,15 l10,-5 h20 l10,5"),
 };
 
 export const raeumgeraet: SymbolSpec = {
@@ -108,10 +126,21 @@ export const sprengung: SymbolSpec = {
     factory.path("M1,1 c0,5 3,15 4,15 1,0 4,-10 4,-15 Z").attr("fill", "black"),
 };
 
+export const transport: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) =>
+    factory
+      .g()
+      .push(factory.circle([15, 15], 14))
+      .push(factory.path("M1,15 h28 M15,1 v28 M5,5 l20,20  M5,25 l20,-20")),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
+  { ...bagger, id: "bagger", label: "Bagger" },
   { ...raeumgeraet, id: "raeumgeraet", label: "Räumgerät" },
+  { ...bruecke, id: "bruecke", label: "Brücke" },
   { ...sprengmittel, id: "sprengmittel", label: "Sprengmittel" },
   { ...beleuchtung, id: "beleuchtung", label: "Beleuchtung" },
   { ...bett, id: "bett", label: "Bett" },
@@ -122,4 +151,5 @@ export const symbole: Array<Symbol> = [
   { ...elektrizitaet, id: "elektrizitaet", label: "Elektrizität" },
   { ...geraete, id: "geraete", label: "Geräte" },
   { ...sprengung, id: "sprengung", label: "Sprengung" },
+  { ...transport, id: "transport", label: "Transport" },
 ];

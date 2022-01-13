@@ -56,8 +56,8 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       component: fachaufgabe,
       padding: fachaufgabe.cover ? undefined : grund.padding,
       factory,
-    }).attr("clip-path", "url(#gz-mask)");
-    svg.push(icon);
+    });
+    svg.push(factory.g().push(icon).attr("clip-path", "url(#gz-mask)"));
   }
 
   if (einheit && accepts(grund, "einheit")) {

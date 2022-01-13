@@ -11,6 +11,7 @@ import {
   sprengmittel,
   sprengung,
   SymbolSpec,
+  transport,
   trinkwasser,
   verbrauchsgueter,
   verpflegung,
@@ -177,12 +178,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "transport",
     label: "Transport",
-    size: [30, 30],
-    render: (factory) =>
-      factory
-        .g()
-        .push(factory.circle([15, 15], 14))
-        .push(factory.path("M1,15 h28 M15,1 v28 M5,5 l20,20  M5,25 l20,-20")),
+    ...transport,
   },
   {
     id: "abc",
