@@ -154,7 +154,8 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "person",
     label: "Person",
-    ...symbolShape(person),
+    size: person.size,
+    render: withProps(person.render),
     clipPath: (factory) => person.render(factory),
     accepts: ["einheit", "fachaufgabe", "funktion", "symbol", "organisation"],
     padding: [15, 15],
