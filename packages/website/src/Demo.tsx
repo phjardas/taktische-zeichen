@@ -72,7 +72,7 @@ export function Demo() {
     (key: keyof TaktischesZeichen) => (e: ChangeEvent<HTMLSelectElement>) =>
       setTaktischesZeichen((z) => ({
         ...z,
-        [key]: e.currentTarget.value || undefined,
+        [key]: e.target.value || undefined,
       })),
     []
   );
