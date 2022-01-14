@@ -43,7 +43,13 @@ export type SymbolId =
   | "lautsprecher"
   | "zelt"
   | "ablage"
-  | "veterinaerwesen";
+  | "veterinaerwesen"
+  | "person"
+  | "person-verletzt"
+  | "person-tot"
+  | "person-vermisst"
+  | "person-verschuettet"
+  | "person-gerettet";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -319,6 +325,53 @@ export const veterinaerwesen: SymbolSpec = {
   render: (factory) => factory.path("M0,1 h5 l10,26 l10,-26 h5"),
 };
 
+export const person: SymbolSpec = {
+  size: [45, 45],
+  render: (factory) =>
+    factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z"),
+};
+
+export const personVerletzt: SymbolSpec = {
+  size: [45, 45],
+  render: (factory) =>
+    factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42"),
+};
+
+export const personTot: SymbolSpec = {
+  size: [45, 45],
+  render: (factory) =>
+    factory.path(
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42 M14,10 h17"
+    ),
+};
+
+export const personVermisst: SymbolSpec = {
+  size: [49, 49],
+  render: (factory) =>
+    factory
+      .g()
+      .push(
+        factory
+          .path(
+            "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42 M14,10 h17"
+          )
+          .attr("transform", "translate(2,2)")
+      )
+      .push(factory.path("M1,23 L23,1 M26,48 L48,26")),
+};
+
+export const personVerschuettet: SymbolSpec = {
+  size: [45, 45],
+  render: (factory) =>
+    factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,1 h45"),
+};
+
+export const personGerettet: SymbolSpec = {
+  size: [45, 45],
+  render: (factory) =>
+    factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h45"),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -431,4 +484,14 @@ export const symbole: Array<Symbol> = [
   { ...zelt, id: "zelt", label: "Zelt" },
   { ...ablage, id: "ablage", label: "Ablage" },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
+  { ...person, id: "person", label: "Person" },
+  { ...personVerletzt, id: "person-verletzt", label: "Person verletzt" },
+  { ...personTot, id: "person-tot", label: "Person tot" },
+  { ...personVermisst, id: "person-vermisst", label: "Person vermisst" },
+  {
+    ...personVerschuettet,
+    id: "person-verschuettet",
+    label: "Person verschuettet",
+  },
+  { ...personGerettet, id: "person-gerettet", label: "Person gerettet" },
 ];

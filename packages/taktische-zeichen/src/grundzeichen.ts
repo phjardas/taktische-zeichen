@@ -5,6 +5,7 @@ import {
   flugzeug,
   hubschrauber,
   kraftrad,
+  person,
   SymbolSpec,
 } from "./symbole";
 import type { Padding, Point } from "./types";
@@ -153,10 +154,8 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "person",
     label: "Person",
-    size: [45, 45],
-    ...singleShape((factory) =>
-      factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
-    ),
+    ...symbolShape(person),
+    clipPath: (factory) => person.render(factory),
     accepts: ["einheit", "fachaufgabe", "funktion", "symbol", "organisation"],
     padding: [15, 15],
   },
