@@ -38,7 +38,8 @@ export type SymbolId =
   | "fuehrungsstab"
   | "entstehungsbrand"
   | "fortentwickelter-brand"
-  | "vollbrand";
+  | "vollbrand"
+  | "sirene";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -285,6 +286,11 @@ export const vollbrand: SymbolSpec = {
       .push(factory.use("#brand").attr("x", 20)),
 };
 
+export const sirene: SymbolSpec = {
+  size: [30, 20],
+  render: (factory) => factory.path("M2,8.5 a15 15 0 0 1 26 0 Z M15,8.5 v11.5"),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -392,4 +398,5 @@ export const symbole: Array<Symbol> = [
     label: "Fortentwickelter Brand",
   },
   { ...vollbrand, id: "vollbrand", label: "Vollbrand" },
+  { ...sirene, id: "sirene", label: "Sirene" },
 ];
