@@ -357,9 +357,7 @@ export const personVermisst: SymbolSpec = {
       .g()
       .push(
         factory
-          .path(
-            "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42 M14,10 h17"
-          )
+          .path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
           .attr("transform", "translate(2,2)")
       )
       .push(factory.path("M1,23 L23,1 M26,48 L48,26")),
