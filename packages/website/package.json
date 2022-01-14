@@ -1,6 +1,7 @@
 {
   "name": "taktische-zeichen-website",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "clean": "shx rm -rf public",
     "start": "gatsby develop",
