@@ -22,7 +22,20 @@ export type SymbolId =
   | "fahrrad"
   | "kraftrad"
   | "flugzeug"
-  | "hubschrauber";
+  | "hubschrauber"
+  | "meldekopf"
+  | "katsl"
+  | "einsatzleitung"
+  | "einsatzabschnittsleitung"
+  | "untereinsatzabschnittsleitung"
+  | "leitender-notarzt"
+  | "organisatorischer-leiter-rettungsdienst"
+  | "kreisbrandmeister"
+  | "gemeindebrandinspektor"
+  | "stadtbrandinspektor"
+  | "kreisbrandinspektor"
+  | "leiter-gefahrenabwehr"
+  | "fuehrungsstab";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -205,6 +218,39 @@ export const hubschrauber: SymbolSpec = {
       ),
 };
 
+function getTextHeight(text: string) {
+  return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
+    ? 28
+    : 21.5;
+}
+
+function textSymbol(text: string, width: number): SymbolSpec {
+  return {
+    size: [width, getTextHeight(text)],
+    render: (factory) =>
+      factory
+        .text([-2, 21.5], text)
+        .attr("fill", "black")
+        .attr("stroke-width", 0)
+        .attr("style", "font:bold 30px sans-serif"),
+  };
+}
+
+export const meldekopf = textSymbol("M", 21);
+export const katsl = textSymbol("KatSL", 84);
+export const tel = textSymbol("TEL", 54);
+export const einsatzleitung = textSymbol("EL", 35.5);
+export const einsatzabschnittsleitung = textSymbol("EAL", 57);
+export const untereinsatzabschnittsleitung = textSymbol("UEAL", 79);
+export const leitenderNotarzt = textSymbol("LNA", 59.5);
+export const organisatorischerLeiterRettungsdienst = textSymbol("OrgL", 69);
+export const kreisbrandmeister = textSymbol("KBM", 64.5);
+export const gemeindebrandinspektor = textSymbol("GBI", 49.5);
+export const stadtbrandinspektor = textSymbol("SBI", 46);
+export const kreisbrandinspektor = textSymbol("KBI", 48);
+export const leiterGefahrenabwehr = textSymbol("LtrGA", 83);
+export const fuehrungsstab = textSymbol("FüStab", 98.5);
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -227,4 +273,49 @@ export const symbole: Array<Symbol> = [
   { ...kraftrad, id: "kraftrad", label: "Kraftrad" },
   { ...flugzeug, id: "flugzeug", label: "Flugzeug" },
   { ...hubschrauber, id: "hubschrauber", label: "Hubschrauber" },
+  { ...meldekopf, id: "meldekopf", label: "Meldekopf" },
+  { ...katsl, id: "katsl", label: "Katastrophenschutzleitung" },
+  { ...einsatzleitung, id: "einsatzleitung", label: "Einsatzleitung" },
+  {
+    ...einsatzabschnittsleitung,
+    id: "einsatzabschnittsleitung",
+    label: "Einsatzabschnittsleitung",
+  },
+  {
+    ...untereinsatzabschnittsleitung,
+    id: "untereinsatzabschnittsleitung",
+    label: "Untereinsatzabschnittsleitung",
+  },
+  { ...leitenderNotarzt, id: "leitender-notarzt", label: "Leitender Notarzt" },
+  {
+    ...organisatorischerLeiterRettungsdienst,
+    id: "organisatorischer-leiter-rettungsdienst",
+    label: "Organisatorischer Leiter Rettungsdienst",
+  },
+  {
+    ...kreisbrandmeister,
+    id: "kreisbrandmeister",
+    label: "Kreisbrandmeister",
+  },
+  {
+    ...gemeindebrandinspektor,
+    id: "gemeindebrandinspektor",
+    label: "Gemeindebrandinspektor",
+  },
+  {
+    ...stadtbrandinspektor,
+    id: "stadtbrandinspektor",
+    label: "Stadtbrandinspektor",
+  },
+  {
+    ...kreisbrandinspektor,
+    id: "kreisbrandinspektor",
+    label: "Kreisbrandinspektor",
+  },
+  {
+    ...leiterGefahrenabwehr,
+    id: "leiter-gefahrenabwehr",
+    label: "Leiter Gefahrenabwehr",
+  },
+  { ...fuehrungsstab, id: "fuehrungsstab", label: "Führungsstab" },
 ];
