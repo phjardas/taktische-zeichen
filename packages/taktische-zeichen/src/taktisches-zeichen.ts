@@ -54,16 +54,12 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     const defs = factory.defs();
     svg.push(defs);
 
-    if (grund.render) {
-      svg.push(
-        grund.render(
-          {
-            fill: accepts(grund, "organisation") ? org?.background : undefined,
-          },
-          factory
-        )
-      );
-    }
+    svg.push(
+      grund.render(
+        { fill: accepts(grund, "organisation") ? org?.background : undefined },
+        factory
+      )
+    );
 
     if (grund.clipPath) {
       defs.push(factory.clipPath("gz-mask").push(grund.clipPath(factory)));

@@ -10,7 +10,6 @@ import {
 import type { Padding, Point } from "./types";
 
 export type GrundzeichenId =
-  | "ohne"
   | "taktische-formation"
   | "befehlsstelle"
   | "stelle"
@@ -49,7 +48,7 @@ export type Grundzeichen = {
   id: GrundzeichenId;
   label: string;
   size: Point;
-  render?(props: GrundzeichenRenderProps, factory: SVGElementFactory): Element;
+  render(props: GrundzeichenRenderProps, factory: SVGElementFactory): Element;
   clipPath?(factory: SVGElementFactory): Element;
   paintableArea?: [Point, Point];
   padding?: Padding;
@@ -105,12 +104,6 @@ const fahrzeugGrundzeichen: Pick<
 };
 
 export const grundzeichen: Array<Grundzeichen> = [
-  {
-    id: "ohne",
-    label: "Ohne Grundzeichen",
-    size: [45, 45],
-    accepts: ["symbol"],
-  },
   {
     id: "taktische-formation",
     label: "Taktische Formation",
