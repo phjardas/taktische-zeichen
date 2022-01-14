@@ -3,4 +3,12 @@
 "taktische-zeichen-react": minor
 ---
 
-Initial release
+Erste Veröffentlichung der Bibliothek.
+
+Inhalt:
+
+- 22 Grundzeichen
+- 6 Organisationen
+- 30 Fachaufgaben
+- 53 Symbole
+- 8 Einheiten
