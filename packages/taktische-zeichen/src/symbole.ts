@@ -24,14 +24,22 @@ export type SymbolId =
   | "flugzeug"
   | "hubschrauber";
 
+export type SymbolRenderProps = {
+  fill?: string;
+};
+
 export type Symbol = {
   id: SymbolId;
   label: string;
   size: Point;
-  render(factory: SVGElementFactory): Element;
+  render(factory: SVGElementFactory, props?: SymbolRenderProps): Element;
 };
 
 export type SymbolSpec = Pick<Symbol, "size" | "render">;
+
+function applyProps(element: Element, props?: SymbolRenderProps) {
+  return element.attr("fill", props?.fill);
+}
 
 export const drehleiter: SymbolSpec = {
   size: [35, 35],
@@ -142,7 +150,8 @@ export const transport: SymbolSpec = {
 
 export const fahrzeug: SymbolSpec = {
   size: [75, 45],
-  render: (factory) => factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z"),
+  render: (factory, props) =>
+    applyProps(factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z"), props),
 };
 
 export const fahrrad: SymbolSpec = {
@@ -158,22 +167,42 @@ export const kraftrad: SymbolSpec = {
 
 export const flugzeug: SymbolSpec = {
   size: [38, 15],
-  render: (factory) =>
+  render: (factory, props) =>
     factory
       .g()
       .push(factory.path("M19,0 v15"))
-      .push(factory.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"))
-      .push(factory.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z")),
+      .push(
+        applyProps(
+          factory.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+          props
+        )
+      )
+      .push(
+        applyProps(
+          factory.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+          props
+        )
+      ),
 };
 
 export const hubschrauber: SymbolSpec = {
   size: [38, 23],
-  render: (factory) =>
+  render: (factory, props) =>
     factory
       .g()
       .push(factory.path("M19,2 v20 m-10,0 h20"))
-      .push(factory.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"))
-      .push(factory.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z")),
+      .push(
+        applyProps(
+          factory.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+          props
+        )
+      )
+      .push(
+        applyProps(
+          factory.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
+          props
+        )
+      ),
 };
 
 export const symbole: Array<Symbol> = [

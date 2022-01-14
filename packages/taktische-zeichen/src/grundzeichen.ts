@@ -14,6 +14,7 @@ export type GrundzeichenId =
   | "taktische-formation"
   | "befehlsstelle"
   | "stelle"
+  | "ortsfeste-stelle"
   | "person"
   | "gebaeude"
   | "fahrzeug"
@@ -80,7 +81,7 @@ function symbolShape(
 ): Pick<Grundzeichen, "size" | "render"> {
   return {
     size: symbol.size,
-    render: (_, factory) => symbol.render(factory),
+    render: (props, factory) => symbol.render(factory, props),
   };
 }
 
@@ -95,12 +96,9 @@ const fahrzeugGrundzeichen: Pick<
   | "padding"
 > = {
   size: fahrzeug.size,
-  render: withProps(fahrzeug.render),
-  clipPath: (factory) => factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z"),
-  paintableArea: [
-    [0, 0],
-    [75, 45],
-  ],
+  render: (props, factory) => fahrzeug.render(factory, props),
+  clipPath: fahrzeug.render,
+  paintableArea: [[0, 0], fahrzeug.size],
   einheitAnchor: [37.5, 4.5],
   accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
   padding: [15, 20, 10],
@@ -140,6 +138,23 @@ export const grundzeichen: Array<Grundzeichen> = [
     size: [45, 45],
     ...singleShape((factory) => factory.circle([22.5, 22.5], 21.5)),
     accepts: ["fachaufgabe", "symbol", "organisation"],
+    padding: [10, 10],
+  },
+  {
+    id: "ortsfeste-stelle",
+    label: "Stelle, Einrichtung (ortsfest)",
+    size: [46, 47.5],
+    render: (props, factory) =>
+      factory
+        .g()
+        .push(applyProps(factory.circle([23, 25], 21.5), props))
+        .push(factory.path("M.5,8 L23,1 L45.5,8")),
+    clipPath: (factory) => factory.circle([23, 25], 21.5),
+    accepts: ["fachaufgabe", "symbol", "organisation"],
+    paintableArea: [
+      [1.5, 3.5],
+      [44.5, 46.5],
+    ],
     padding: [10, 10],
   },
   {
@@ -293,19 +308,19 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "wasserfahrzeug",
     label: "Wasserfahrzeug",
     size: [42, 22],
-    accepts: ["einheit", "fachaufgabe"],
+    accepts: ["einheit", "organisation", "fachaufgabe"],
     ...singleShape((factory) => factory.path("M1,1 a20 20 0 0 0 40 0 Z")),
   },
   {
     id: "flugzeug",
     label: "Flugzeug",
-    accepts: ["einheit"],
+    accepts: ["einheit", "organisation"],
     ...symbolShape(flugzeug),
   },
   {
     id: "hubschrauber",
     label: "Hubschrauber",
-    accepts: ["einheit"],
+    accepts: ["einheit", "organisation"],
     ...symbolShape(hubschrauber),
   },
   {
