@@ -35,7 +35,10 @@ export type SymbolId =
   | "stadtbrandinspektor"
   | "kreisbrandinspektor"
   | "leiter-gefahrenabwehr"
-  | "fuehrungsstab";
+  | "fuehrungsstab"
+  | "entstehungsbrand"
+  | "fortentwickelter-brand"
+  | "vollbrand";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -218,6 +221,70 @@ export const hubschrauber: SymbolSpec = {
       ),
 };
 
+export const beschaedigt: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) => factory.path("M1,1 L29,29 M1,29 L29,1"),
+};
+
+export const teilzerstoert: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) =>
+    factory.path("M9,1 L29,20 M1,20 L20,1 M1,9 L20,29 M9,29 L29,9"),
+};
+
+export const zerstoert: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) =>
+    factory.path(
+      "M9,1 L29,20 M1,20 L20,1 M1,9 L20,29 M9,29 L29,9 M5,5 L25,25 M5,25 L25,5"
+    ),
+};
+
+export const teilblockiert: SymbolSpec = {
+  size: [6, 30],
+  render: (factory) => factory.path("M1,0 V30 M5,0 V30"),
+};
+
+export const blockiert: SymbolSpec = {
+  size: [14, 30],
+  render: (factory) => factory.path("M1,0 V30 M5,0 V30 M9,0 V30 M13,0 V30"),
+};
+
+export const entstehungsbrand: SymbolSpec = {
+  size: [13, 34],
+  render: (factory) =>
+    factory
+      .g()
+      .push(
+        factory.clipPath("brand-clip").push(factory.path("M13,0 v34 h-12.5 Z"))
+      )
+      .push(
+        factory
+          .path("M12,5 v28 h-10 l12,-33")
+          .attr("clip-path", "url(#brand-clip)")
+          .attr("stroke", "#cc0000")
+      ),
+};
+
+export const fortentwickelterBrand: SymbolSpec = {
+  size: [23, 34],
+  render: (factory) =>
+    factory
+      .g()
+      .push(entstehungsbrand.render(factory).attr("id", "brand"))
+      .push(factory.use("#brand").attr("x", 10)),
+};
+
+export const vollbrand: SymbolSpec = {
+  size: [33, 34],
+  render: (factory) =>
+    factory
+      .g()
+      .push(entstehungsbrand.render(factory).attr("id", "brand"))
+      .push(factory.use("#brand").attr("x", 10))
+      .push(factory.use("#brand").attr("x", 20)),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -318,4 +385,11 @@ export const symbole: Array<Symbol> = [
     label: "Leiter Gefahrenabwehr",
   },
   { ...fuehrungsstab, id: "fuehrungsstab", label: "Führungsstab" },
+  { ...entstehungsbrand, id: "entstehungsbrand", label: "Entstehungsbrand" },
+  {
+    ...fortentwickelterBrand,
+    id: "fortentwickelter-brand",
+    label: "Fortentwickelter Brand",
+  },
+  { ...vollbrand, id: "vollbrand", label: "Vollbrand" },
 ];

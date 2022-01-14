@@ -40,6 +40,10 @@ export class SVGElementFactory {
     return new Container("clipPath").attr("id", id);
   }
 
+  use(href: string) {
+    return new Leaf("use").attr("href", href);
+  }
+
   text(pos: Point, text: string) {
     return new Text(text).attr("x", pos[0]).attr("y", pos[1]);
   }
