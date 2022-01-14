@@ -42,7 +42,8 @@ export type SymbolId =
   | "sirene"
   | "lautsprecher"
   | "zelt"
-  | "ablage";
+  | "ablage"
+  | "veterinaerwesen";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -313,6 +314,11 @@ export const ablage: SymbolSpec = {
       .attr("fill", "black"),
 };
 
+export const veterinaerwesen: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) => factory.path("M0,1 h5 l10,26 l10,-26 h5"),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -424,4 +430,5 @@ export const symbole: Array<Symbol> = [
   { ...lautsprecher, id: "lautsprecher", label: "Lautsprecher" },
   { ...zelt, id: "zelt", label: "Zelt" },
   { ...ablage, id: "ablage", label: "Ablage" },
+  { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
 ];
