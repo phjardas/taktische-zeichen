@@ -1,4 +1,12 @@
 import { Element, SVGElementFactory } from "./svg";
+import {
+  fahrrad,
+  fahrzeug,
+  flugzeug,
+  hubschrauber,
+  kraftrad,
+  SymbolSpec,
+} from "./symbole";
 import type { Padding, Point } from "./types";
 
 export type GrundzeichenId =
@@ -29,7 +37,12 @@ export type GrundzeichenRenderProps = {
   fill?: string;
 };
 
-export type ComponentType = "einheit" | "funktion" | "fachaufgabe" | "symbol";
+export type ComponentType =
+  | "einheit"
+  | "funktion"
+  | "fachaufgabe"
+  | "symbol"
+  | "organisation";
 
 export type Grundzeichen = {
   id: GrundzeichenId;
@@ -62,10 +75,16 @@ function singleShape(
   };
 }
 
-const fahrzeugShape = (factory: SVGElementFactory) =>
-  factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z");
+function symbolShape(
+  symbol: SymbolSpec
+): Pick<Grundzeichen, "size" | "render"> {
+  return {
+    size: symbol.size,
+    render: (_, factory) => symbol.render(factory),
+  };
+}
 
-const fahrzeug: Pick<
+const fahrzeugGrundzeichen: Pick<
   Grundzeichen,
   | "render"
   | "clipPath"
@@ -75,15 +94,15 @@ const fahrzeug: Pick<
   | "accepts"
   | "padding"
 > = {
-  size: [75, 45],
-  render: withProps(fahrzeugShape),
+  size: fahrzeug.size,
+  render: withProps(fahrzeug.render),
   clipPath: (factory) => factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z"),
   paintableArea: [
     [0, 0],
     [75, 45],
   ],
   einheitAnchor: [37.5, 4.5],
-  accepts: ["einheit", "fachaufgabe", "symbol"],
+  accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
   padding: [15, 20, 10],
 };
 
@@ -98,7 +117,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
-    accepts: ["einheit", "fachaufgabe", "symbol"],
+    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
     padding: [10, 20],
     ...singleShape((factory) => factory.path("M1,1 H74 V44 H1 Z")),
   },
@@ -113,14 +132,14 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     padding: [10, 20],
-    accepts: ["einheit", "fachaufgabe", "symbol"],
+    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
   },
   {
     id: "stelle",
     label: "Stelle, Einrichtung",
     size: [45, 45],
     ...singleShape((factory) => factory.circle([22.5, 22.5], 21.5)),
-    accepts: ["einheit", "fachaufgabe", "symbol"],
+    accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [10, 10],
   },
   {
@@ -130,7 +149,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     ...singleShape((factory) =>
       factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
     ),
-    accepts: ["einheit", "fachaufgabe", "funktion", "symbol"],
+    accepts: ["einheit", "fachaufgabe", "funktion", "symbol", "organisation"],
     padding: [15, 15],
   },
   {
@@ -147,35 +166,35 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 10],
       [75, 45],
     ],
-    accepts: ["fachaufgabe", "symbol"],
+    accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [10, 20],
   },
   {
     id: "fahrzeug",
     label: "Fahrzeug",
-    ...fahrzeug,
+    ...fahrzeugGrundzeichen,
   },
   {
     id: "kraftfahrzeug-landgebunden",
     label: "Kraftfahrzeug landgebunden",
-    ...fahrzeug,
+    ...fahrzeugGrundzeichen,
     size: [75, 55],
     render: (props, factory) =>
       factory
         .g()
-        .push(applyProps(fahrzeugShape(factory), props))
+        .push(applyProps(fahrzeug.render(factory), props))
         .push(factory.circle([10, 49], 5))
         .push(factory.circle([65, 49], 5)),
   },
   {
     id: "kraftfahrzeug-gelaendegaengig",
     label: "Kraftfahrzeug geländegängig oder geländefähig",
-    ...fahrzeug,
+    ...fahrzeugGrundzeichen,
     size: [75, 55],
     render: (props, factory) =>
       factory
         .g()
-        .push(applyProps(fahrzeugShape(factory), props))
+        .push(applyProps(fahrzeug.render(factory), props))
         .push(factory.circle([10, 49], 5))
         .push(factory.circle([37.5, 49], 5))
         .push(factory.circle([65, 49], 5)),
@@ -197,7 +216,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     einheitAnchor: [39.5, 4.5],
-    accepts: ["einheit", "fachaufgabe", "symbol"],
+    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
     padding: [15, 10, 10],
   },
   {
@@ -215,7 +234,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol"],
+    accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [15, 10, 10],
   },
   {
@@ -230,18 +249,18 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol"],
+    accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [15, 10, 10],
   },
   {
     id: "schienenfahrzeug",
     label: "Schienenfahrzeug",
-    ...fahrzeug,
+    ...fahrzeugGrundzeichen,
     size: [75, 55],
     render: (props, factory) =>
       factory
         .g()
-        .push(applyProps(fahrzeugShape(factory), props))
+        .push(applyProps(fahrzeug.render(factory), props))
         .push(factory.circle([10, 49], 5))
         .push(factory.circle([22, 49], 5))
         .push(factory.circle([53, 49], 5))
@@ -250,29 +269,25 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "kettenfahrzeug",
     label: "Kettenfahrzeug",
-    ...fahrzeug,
+    ...fahrzeugGrundzeichen,
     size: [75, 55],
     render: (props, factory) =>
       factory
         .g()
-        .push(applyProps(fahrzeugShape(factory), props))
+        .push(applyProps(fahrzeug.render(factory), props))
         .push(factory.path("M5 48 a3 3 0 0 0 0 6 h65 a3 3 0 0 0 0 -6 Z")),
   },
   {
     id: "fahrrad",
     label: "Fahrrad",
-    size: [42, 45],
     accepts: [],
-    render: (_, factory) =>
-      factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45"),
+    ...symbolShape(fahrrad),
   },
   {
     id: "kraftrad",
     label: "Kraftrad",
-    size: [42, 45],
     accepts: [],
-    render: (_, factory) =>
-      factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45 m-10,-20 h20"),
+    ...symbolShape(kraftrad),
   },
   {
     id: "wasserfahrzeug",
@@ -284,60 +299,31 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "flugzeug",
     label: "Flugzeug",
-    size: [38, 15],
     accepts: ["einheit"],
-    render: (props, factory) =>
-      factory
-        .g()
-        .push(factory.path("M19,0 v15"))
-        .push(
-          applyProps(
-            factory.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-            props
-          )
-        )
-        .push(
-          applyProps(
-            factory.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-            props
-          )
-        ),
+    ...symbolShape(flugzeug),
   },
   {
     id: "hubschrauber",
     label: "Hubschrauber",
-    size: [38, 23],
     accepts: ["einheit"],
-    render: (props, factory) =>
-      factory
-        .g()
-        .push(factory.path("M19,2 v20 m-10,0 h20"))
-        .push(
-          applyProps(
-            factory.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-            props
-          )
-        )
-        .push(
-          applyProps(
-            factory.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-            props
-          )
-        ),
+    ...symbolShape(hubschrauber),
   },
   {
     id: "massnahme",
     label: "Maßnahme",
     size: [45, 36],
     accepts: ["symbol"],
-    ...singleShape((factory) => factory.path("M22.5,1.8 L43.2,35 H1.8 Z")),
+    ...singleShape((factory) =>
+      factory.path("M22.5,1.8 L43.2,35 H1.8 Z").attr("fill", "white")
+    ),
     padding: [15, 15, 5],
   },
   {
     id: "anlass",
     label: "Anlass, Ereignis",
     size: [45, 36],
-    render: (_, factory) => factory.path("M1,0.6 L22.5,34 L44,0.6"),
+    render: (_, factory) =>
+      factory.path("M1,0.6 L22.5,34 L44,0.6").attr("fill", "white"),
     clipPath: (factory) => factory.path("M1,0.6 L22.5,34 L44,0.6 Z"),
     accepts: ["symbol"],
     padding: [5, 15, 15],
@@ -347,7 +333,9 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Gefahr",
     size: [45, 36],
     accepts: ["symbol"],
-    ...singleShape((factory) => factory.path("M22.5,34 L43.2,1 H1.8 Z")),
+    ...singleShape((factory) =>
+      factory.path("M22.5,34 L43.2,1 H1.8 Z").attr("fill", "white")
+    ),
     padding: [5, 15, 15],
   },
 ];

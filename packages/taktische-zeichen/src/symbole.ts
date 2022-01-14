@@ -17,7 +17,12 @@ export type SymbolId =
   | "elektrizitaet"
   | "geraete"
   | "sprengung"
-  | "transport";
+  | "transport"
+  | "fahrzeug"
+  | "fahrrad"
+  | "kraftrad"
+  | "flugzeug"
+  | "hubschrauber";
 
 export type Symbol = {
   id: SymbolId;
@@ -135,6 +140,42 @@ export const transport: SymbolSpec = {
       .push(factory.path("M1,15 h28 M15,1 v28 M5,5 l20,20  M5,25 l20,-20")),
 };
 
+export const fahrzeug: SymbolSpec = {
+  size: [75, 45],
+  render: (factory) => factory.path("M1,44 V1 Q37.5,10 74,1 V44 Z"),
+};
+
+export const fahrrad: SymbolSpec = {
+  size: [42, 45],
+  render: (factory) => factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45"),
+};
+
+export const kraftrad: SymbolSpec = {
+  size: [42, 45],
+  render: (factory) =>
+    factory.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45 m-10,-20 h20"),
+};
+
+export const flugzeug: SymbolSpec = {
+  size: [38, 15],
+  render: (factory) =>
+    factory
+      .g()
+      .push(factory.path("M19,0 v15"))
+      .push(factory.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"))
+      .push(factory.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z")),
+};
+
+export const hubschrauber: SymbolSpec = {
+  size: [38, 23],
+  render: (factory) =>
+    factory
+      .g()
+      .push(factory.path("M19,2 v20 m-10,0 h20"))
+      .push(factory.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"))
+      .push(factory.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z")),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -152,4 +193,9 @@ export const symbole: Array<Symbol> = [
   { ...geraete, id: "geraete", label: "Geräte" },
   { ...sprengung, id: "sprengung", label: "Sprengung" },
   { ...transport, id: "transport", label: "Transport" },
+  { ...fahrzeug, id: "fahrzeug", label: "Fahrzeug" },
+  { ...fahrrad, id: "fahrrad", label: "Fahrrad" },
+  { ...kraftrad, id: "kraftrad", label: "Kraftrad" },
+  { ...flugzeug, id: "flugzeug", label: "Flugzeug" },
+  { ...hubschrauber, id: "hubschrauber", label: "Hubschrauber" },
 ];

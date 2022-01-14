@@ -13,7 +13,7 @@ export type Padding =
   | [number, number, number, number];
 
 export type TaktischesZeichen = {
-  grundzeichen: GrundzeichenId;
+  grundzeichen?: GrundzeichenId;
   organisation?: OrganisationId;
   fachaufgabe?: FachaufgabeId;
   einheit?: EinheitId;

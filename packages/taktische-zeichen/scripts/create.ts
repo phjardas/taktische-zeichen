@@ -19,32 +19,26 @@ async function main() {
   const spec = yargs(process.argv.slice(2))
     .option("grundzeichen", {
       type: "string",
-      demandOption: true,
       choices: grundzeichens.map(({ id }) => id),
     })
     .option("organisation", {
       type: "string",
-      demandOption: false,
       choices: organisationen.map(({ id }) => id),
     })
     .option("fachaufgabe", {
       type: "string",
-      demandOption: false,
       choices: fachaufgaben.map(({ id }) => id),
     })
     .option("einheit", {
       type: "string",
-      demandOption: false,
       choices: einheiten.map(({ id }) => id),
     })
     .option("funktion", {
       type: "string",
-      demandOption: false,
       choices: funktionen.map(({ id }) => id),
     })
     .option("symbol", {
       type: "string",
-      demandOption: false,
       choices: symbole.map(({ id }) => id),
     }).argv;
 
