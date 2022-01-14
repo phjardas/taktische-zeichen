@@ -36,6 +36,7 @@ export type FachaufgabeId =
   | "dekontamination"
   | "rettungswesen"
   | "aerztliche-versorgung"
+  | "krankenhaus"
   | "betreuung"
   | "seelsorge"
   | "unterbringung"
@@ -230,6 +231,14 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: (factory) => factory.path("M0,22.5 H75 M37.5,0 V45 M25,33 H50"),
+  },
+  {
+    id: "krankenhaus",
+    label: "Krankenhaus",
+    size: [75, 45],
+    cover: true,
+    render: (factory) =>
+      factory.path("M0,22.5 H75 M37.5,0 V45 M20,14.5 v16 M55,14.5 v16"),
   },
   {
     id: "betreuung",
