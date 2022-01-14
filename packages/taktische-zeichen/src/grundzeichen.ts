@@ -11,6 +11,7 @@ import {
 import type { Padding, Point, Renderable } from "./types";
 
 export type GrundzeichenId =
+  | "ohne"
   | "taktische-formation"
   | "befehlsstelle"
   | "stelle"
@@ -103,6 +104,13 @@ const fahrzeugGrundzeichen: Pick<
 };
 
 export const grundzeichen: Array<Grundzeichen> = [
+  {
+    id: "ohne",
+    label: "Kein Grundzeichen",
+    size: [45, 45],
+    accepts: ["symbol"],
+    render: (factory) => factory.g(),
+  },
   {
     id: "taktische-formation",
     label: "Taktische Formation",

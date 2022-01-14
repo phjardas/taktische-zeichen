@@ -9,7 +9,7 @@ export default function SymbolListe() {
       <Symbole
         symbole={symbole}
         prop="symbol"
-        base={{ grundzeichen: "stelle" }}
+        base={{ grundzeichen: "ohne" }}
       />
     </Layout>
   );
