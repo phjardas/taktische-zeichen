@@ -1,5 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import TaktischesZeichen, {
   ComponentType,
   einheiten,

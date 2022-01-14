@@ -1,4 +1,11 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
+import {
+  einheiten,
+  fachaufgaben,
+  grundzeichen as grundzeichens,
+  organisationen,
+  symbole,
+} from "taktische-zeichen-react";
 import { Demo } from "./Demo";
 
 const nodeDemo = `
@@ -44,6 +51,14 @@ export function App() {
         Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in
         JavaScript.
       </p>
+      <p>Die Bibliothek enthält:</p>
+      <ul>
+        <li>{grundzeichens.length} Grundzeichen</li>
+        <li>{organisationen.length} Organisationen</li>
+        <li>{fachaufgaben.length} Fachaufgaben</li>
+        <li>{symbole.length} Symbole</li>
+        <li>{einheiten.length} Einheiten</li>
+      </ul>
 
       <div className="row row-cols-1 row-cols-lg-2">
         <div className="col order-lg-last">
