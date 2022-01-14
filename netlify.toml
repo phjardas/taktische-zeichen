@@ -1,3 +1,6 @@
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+
 [build]
   publish = "packages/website/public"
   command = "npm run bootstrap && npm run build && npm run build:website"

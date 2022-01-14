@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: "Taktische Zeichen",
   },
-  plugins: [],
+  plugins: ["gatsby-plugin-netlify"],
 };

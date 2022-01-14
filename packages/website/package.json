@@ -1,17 +1,16 @@
 {
   "name": "taktische-zeichen-website",
   "private": true,
-  "source": "src/index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean": "shx rm -rf public",
     "start": "gatsby develop",
-    "build:website": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
+    "build:website": "gatsby build",
     "format": "prettier --write src"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
     "gatsby": "^4.5.2",
+    "gatsby-plugin-netlify": "^4.0.0-next.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-syntax-highlighter": "^15.4.5",
