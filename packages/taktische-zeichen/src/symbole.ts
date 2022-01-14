@@ -49,7 +49,12 @@ export type SymbolId =
   | "person-tot"
   | "person-vermisst"
   | "person-verschuettet"
-  | "person-gerettet";
+  | "person-gerettet"
+  | "beschaedigt"
+  | "teilzerstoert"
+  | "zerstoert"
+  | "teilblockiert"
+  | "blockiert";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -494,4 +499,9 @@ export const symbole: Array<Symbol> = [
     label: "Person verschuettet",
   },
   { ...personGerettet, id: "person-gerettet", label: "Person gerettet" },
+  { ...beschaedigt, id: "beschaedigt", label: "beschädigt" },
+  { ...teilzerstoert, id: "teilzerstoert", label: "teilzerstört" },
+  { ...zerstoert, id: "zerstoert", label: "zerstört" },
+  { ...teilblockiert, id: "teilblockiert", label: "teilblockiert" },
+  { ...blockiert, id: "blockiert", label: "blockiert" },
 ];
