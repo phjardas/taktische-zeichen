@@ -1,6 +1,6 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { useMemo, useState } from "react";
-import TaktischesZeichen, {
+import { useCallback, useMemo, useState } from "react";
+import TaktischesZeichenComp, {
   ComponentType,
   einheiten,
   EinheitId,
@@ -14,6 +14,7 @@ import TaktischesZeichen, {
   OrganisationId,
   symbole,
   SymbolId,
+  TaktischesZeichen,
 } from "taktische-zeichen-react";
 
 const optionen = {
@@ -24,6 +25,52 @@ const optionen = {
   funktionen: funktionen.sort((a, b) => a.label.localeCompare(b.label)),
   symbole: symbole.sort((a, b) => a.label.localeCompare(b.label)),
 };
+
+const beispiele: Array<{ label: string; tz: TaktischesZeichen }> = [
+  {
+    label: "Löschfahrzeug",
+    tz: {
+      grundzeichen: "kraftfahrzeug-gelaendegaengig",
+      organisation: "feuerwehr",
+      fachaufgabe: "brandbekaempfung",
+      einheit: "gruppe",
+    },
+  },
+  {
+    label: "Verletztenablageplatz",
+    tz: {
+      grundzeichen: "stelle",
+      organisation: "hilfsorganisation",
+      fachaufgabe: "rettungswesen",
+      symbol: "ablage",
+    },
+  },
+  {
+    label: "Katastrophenschutzleitung",
+    tz: {
+      grundzeichen: "befehlsstelle",
+      organisation: "fuehrung",
+      symbol: "katsl",
+    },
+  },
+  {
+    label: "Zugführer THW",
+    tz: {
+      grundzeichen: "person",
+      organisation: "thw",
+      funktion: "fuehrungskraft",
+      einheit: "zug",
+    },
+  },
+  {
+    label: "Hubschrauberlandeplatz",
+    tz: {
+      grundzeichen: "stelle",
+      organisation: "gefahrenabwehr",
+      symbol: "hubschrauber",
+    },
+  },
+];
 
 export function Demo() {
   const [grundzeichen, setGrundzeichen] = useState<GrundzeichenId | "">(
@@ -39,6 +86,15 @@ export function Demo() {
   const [funktion, setFunktion] = useState<FunktionId | "">("");
   const [symbol, setSymbol] = useState<SymbolId | "">("");
 
+  const setTaktischesZeichen = useCallback((tz: TaktischesZeichen) => {
+    setGrundzeichen(tz.grundzeichen ?? "");
+    setFachaufgabe(tz.fachaufgabe ?? "");
+    setOrganisation(tz.organisation ?? "");
+    setEinheit(tz.einheit ?? "");
+    setFunktion(tz.funktion ?? "");
+    setSymbol(tz.symbol ?? "");
+  }, []);
+
   const enabled = useMemo(() => {
     const accepts =
       grundzeichen === ""
@@ -52,6 +108,18 @@ export function Demo() {
 
   return (
     <>
+      <p>
+        Beispiele:
+        {beispiele.map((beispiel, i) => (
+          <button
+            key={i}
+            className="btn btn-link"
+            onClick={() => setTaktischesZeichen(beispiel.tz)}
+          >
+            {beispiel.label}
+          </button>
+        ))}
+      </p>
       <form noValidate onSubmit={(e) => e.preventDefault()} className="mb-3">
         <div className="mb-3">
           <label htmlFor="grundzeichen" className="form-label">
@@ -174,7 +242,7 @@ export function Demo() {
       </form>
       {grundzeichen || symbol ? (
         <>
-          <TaktischesZeichen
+          <TaktischesZeichenComp
             grundzeichen={grundzeichen || undefined}
             organisation={organisation || undefined}
             fachaufgabe={fachaufgabe || undefined}
