@@ -1,21 +1,15 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { useCallback, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useMemo } from "react";
 import TaktischesZeichenComp, {
   ComponentType,
   einheiten,
-  EinheitId,
-  FachaufgabeId,
   fachaufgaben,
   funktionen,
-  FunktionId,
   grundzeichen as grundzeichens,
-  GrundzeichenId,
   organisationen,
-  OrganisationId,
   symbole,
-  SymbolId,
   TaktischesZeichen,
 } from "taktische-zeichen-react";
+import { useTaktischesZeichen } from "./tz";
 
 const optionen = {
   grundzeichen: grundzeichens.sort((a, b) => a.label.localeCompare(b.label)),
@@ -73,38 +67,26 @@ const beispiele: Array<{ label: string; tz: TaktischesZeichen }> = [
 ];
 
 export function Demo() {
-  const [grundzeichen, setGrundzeichen] = useState<GrundzeichenId | "">(
-    "kraftfahrzeug-gelaendegaengig"
+  const { taktischesZeichen, setTaktischesZeichen } = useTaktischesZeichen();
+  const onChange = useCallback(
+    (key: keyof TaktischesZeichen) => (e: ChangeEvent<HTMLSelectElement>) =>
+      setTaktischesZeichen((z) => ({
+        ...z,
+        [key]: e.currentTarget.value || undefined,
+      })),
+    []
   );
-  const [fachaufgabe, setFachaufgabe] = useState<FachaufgabeId | "">(
-    "brandbekaempfung"
-  );
-  const [organisation, setOrganisation] = useState<OrganisationId | "">(
-    "feuerwehr"
-  );
-  const [einheit, setEinheit] = useState<EinheitId | "">("gruppe");
-  const [funktion, setFunktion] = useState<FunktionId | "">("");
-  const [symbol, setSymbol] = useState<SymbolId | "">("");
-
-  const setTaktischesZeichen = useCallback((tz: TaktischesZeichen) => {
-    setGrundzeichen(tz.grundzeichen ?? "");
-    setFachaufgabe(tz.fachaufgabe ?? "");
-    setOrganisation(tz.organisation ?? "");
-    setEinheit(tz.einheit ?? "");
-    setFunktion(tz.funktion ?? "");
-    setSymbol(tz.symbol ?? "");
-  }, []);
 
   const enabled = useMemo(() => {
-    const accepts =
-      grundzeichen === ""
-        ? ["symbol"]
-        : grundzeichens.find((g) => g.id === grundzeichen)?.accepts;
+    const accepts = taktischesZeichen.grundzeichen
+      ? grundzeichens.find((g) => g.id === taktischesZeichen.grundzeichen)
+          ?.accepts
+      : ["symbol"];
     return (type: ComponentType) => {
       if (!accepts) return true;
       return accepts.includes(type);
     };
-  }, [grundzeichen]);
+  }, [taktischesZeichen]);
 
   return (
     <>
@@ -127,8 +109,8 @@ export function Demo() {
           </label>
           <select
             id="grundzeichen"
-            value={grundzeichen}
-            onChange={(e) => setGrundzeichen(e.currentTarget.value as any)}
+            value={taktischesZeichen.grundzeichen ?? ""}
+            onChange={onChange("grundzeichen")}
             className="form-control"
           >
             <option value="">keines</option>
@@ -146,8 +128,8 @@ export function Demo() {
             </label>
             <select
               id="fachaufgabe"
-              value={fachaufgabe}
-              onChange={(e) => setFachaufgabe(e.currentTarget.value as any)}
+              value={taktischesZeichen.fachaufgabe ?? ""}
+              onChange={onChange("fachaufgabe")}
               className="form-control"
             >
               <option value="">keine</option>
@@ -166,8 +148,8 @@ export function Demo() {
             </label>
             <select
               id="organisation"
-              value={organisation}
-              onChange={(e) => setOrganisation(e.currentTarget.value as any)}
+              value={taktischesZeichen.organisation ?? ""}
+              onChange={onChange("organisation")}
               className="form-control"
             >
               <option value="">keine</option>
@@ -186,8 +168,8 @@ export function Demo() {
             </label>
             <select
               id="einheit"
-              value={einheit}
-              onChange={(e) => setEinheit(e.currentTarget.value as any)}
+              value={taktischesZeichen.einheit ?? ""}
+              onChange={onChange("einheit")}
               className="form-control"
             >
               <option value="">keine</option>
@@ -206,8 +188,8 @@ export function Demo() {
             </label>
             <select
               id="funktion"
-              value={funktion}
-              onChange={(e) => setFunktion(e.currentTarget.value as any)}
+              value={taktischesZeichen.funktion ?? ""}
+              onChange={onChange("funktion")}
               className="form-control"
             >
               <option value="">keine</option>
@@ -226,8 +208,8 @@ export function Demo() {
             </label>
             <select
               id="symbol"
-              value={symbol}
-              onChange={(e) => setSymbol(e.currentTarget.value as any)}
+              value={taktischesZeichen.symbol ?? ""}
+              onChange={onChange("symbol")}
               className="form-control"
             >
               <option value="">keines</option>
@@ -240,34 +222,11 @@ export function Demo() {
           </div>
         )}
       </form>
-      {grundzeichen || symbol ? (
-        <>
-          <TaktischesZeichenComp
-            grundzeichen={grundzeichen || undefined}
-            organisation={organisation || undefined}
-            fachaufgabe={fachaufgabe || undefined}
-            einheit={einheit || undefined}
-            funktion={funktion || undefined}
-            symbol={symbol || undefined}
-            alt="Taktisches Zeichen"
-          />
-          <SyntaxHighlighter language="json" className="mt-3">
-            {JSON.stringify(
-              {
-                grundzeichen: grundzeichen || undefined,
-                organisation:
-                  (enabled("organisation") && organisation) || undefined,
-                fachaufgabe:
-                  (enabled("fachaufgabe") && fachaufgabe) || undefined,
-                einheit: (enabled("einheit") && einheit) || undefined,
-                funktion: (enabled("funktion") && funktion) || undefined,
-                symbol: (enabled("symbol") && symbol) || undefined,
-              },
-              null,
-              2
-            )}
-          </SyntaxHighlighter>
-        </>
+      {taktischesZeichen.grundzeichen || taktischesZeichen.symbol ? (
+        <TaktischesZeichenComp
+          {...taktischesZeichen}
+          alt="Taktisches Zeichen"
+        />
       ) : null}
     </>
   );
