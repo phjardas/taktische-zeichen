@@ -283,7 +283,9 @@ export const grundzeichen: Array<Grundzeichen> = [
       factory
         .g()
         .push(applyProps(fahrzeug.render(factory), props))
-        .push(factory.path("M5 48 a3 3 0 0 0 0 6 h65 a3 3 0 0 0 0 -6 Z")),
+        .push(
+          factory.path("M8 45 a4.5 4.5 0 0 0 0 9 h59 a4.5 4.5 0 0 0 0 -9 Z")
+        ),
   },
   {
     id: "fahrrad",
