@@ -68,12 +68,12 @@ export const hebegeraet: SymbolSpec = {
 };
 
 export const bagger: SymbolSpec = {
-  size: [20, 30],
+  size: [35, 23],
   render: (factory) =>
     hebegeraet
       .render(factory)
-      .attr("transform", "rotate(45)")
-      .attr("transform-origin", "10 15"),
+      .attr("transform", "translate(0,-8) rotate(45)")
+      .attr("transform-origin", "1 30"),
 };
 
 export const bruecke: SymbolSpec = {
