@@ -1,5 +1,5 @@
 import React from "react";
-import { funktionen } from "taktische-zeichen";
+import { funktionen } from "taktische-zeichen-core";
 import Layout from "../components/Layout";
 import Symbole from "../components/Symbole";
 

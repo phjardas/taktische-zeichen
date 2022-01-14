@@ -1,7 +1,7 @@
 import {
   erzeugeTaktischesZeichen,
   type TaktischesZeichen,
-} from "taktische-zeichen";
+} from "taktische-zeichen-core";
 
 export type Props = TaktischesZeichen & {
   alt?: string;

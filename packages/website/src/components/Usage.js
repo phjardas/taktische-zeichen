@@ -4,7 +4,7 @@ import { useTaktischesZeichen } from "./tz";
 
 function nodeDemo(tz) {
   return `
-import { erzeugeTaktischesZeichen } from "taktische-zeichen";
+import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
 
 const tz = erzeugeTaktischesZeichen({
 ${Object.entries(tz)

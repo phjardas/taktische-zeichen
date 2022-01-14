@@ -1,2 +1,2 @@
-export * from "taktische-zeichen";
+export * from "taktische-zeichen-core";
 export { default, Props } from "./TaktischesZeichen";

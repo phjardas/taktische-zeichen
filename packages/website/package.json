@@ -15,7 +15,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-syntax-highlighter": "^15.4.5",
-    "taktische-zeichen": "^0.1.0",
+    "taktische-zeichen-core": "^0.1.0",
     "taktische-zeichen-react": "^0.1.0"
   },
   "devDependencies": {

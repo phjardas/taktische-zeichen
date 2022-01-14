@@ -21,7 +21,7 @@ Beide Bibliotheken beinhalten TypeScript-Definitionen.
 In NodeJS oder im Browser:
 
 ```javascript
-import { erzeugeTaktischesZeichen } from "taktische-zeichen";
+import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
 
 const tz = erzeugeTaktischesZeichen({
   grundzeichen: "kraftfahrzeug-gelaendegaengig",
