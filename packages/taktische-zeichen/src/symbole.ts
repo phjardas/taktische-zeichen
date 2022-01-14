@@ -39,7 +39,8 @@ export type SymbolId =
   | "entstehungsbrand"
   | "fortentwickelter-brand"
   | "vollbrand"
-  | "sirene";
+  | "sirene"
+  | "lautsprecher";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -291,6 +292,12 @@ export const sirene: SymbolSpec = {
   render: (factory) => factory.path("M2,8.5 a15 15 0 0 1 26 0 Z M15,8.5 v11.5"),
 };
 
+export const lautsprecher: SymbolSpec = {
+  size: [27, 23],
+  render: (factory) =>
+    factory.path("M1,3.5 l5,3 v10 l-5,3 Z m5,3 l20,-5 v20 l-20,-5 Z"),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -399,4 +406,5 @@ export const symbole: Array<Symbol> = [
   },
   { ...vollbrand, id: "vollbrand", label: "Vollbrand" },
   { ...sirene, id: "sirene", label: "Sirene" },
+  { ...lautsprecher, id: "lautsprecher", label: "Lautsprecher" },
 ];
