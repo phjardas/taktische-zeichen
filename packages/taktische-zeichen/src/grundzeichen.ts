@@ -8,7 +8,7 @@ import {
   person,
   SymbolSpec,
 } from "./symbole";
-import type { Padding, Point } from "./types";
+import type { Padding, Point, Renderable } from "./types";
 
 export type GrundzeichenId =
   | "taktische-formation"
@@ -45,11 +45,9 @@ export type ComponentType =
   | "symbol"
   | "organisation";
 
-export type Grundzeichen = {
+export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   id: GrundzeichenId;
   label: string;
-  size: Point;
-  render(props: GrundzeichenRenderProps, factory: SVGElementFactory): Element;
   clipPath?(factory: SVGElementFactory): Element;
   paintableArea?: [Point, Point];
   padding?: Padding;
@@ -57,14 +55,14 @@ export type Grundzeichen = {
   accepts?: Array<ComponentType>;
 };
 
-function applyProps(element: Element, { fill }: GrundzeichenRenderProps) {
-  return element.attr("fill", fill);
+function applyProps(element: Element, props?: GrundzeichenRenderProps) {
+  return element.attr("fill", props?.fill);
 }
 
 function withProps(
   render: (factory: SVGElementFactory) => Element
 ): Grundzeichen["render"] {
-  return (props, factory) => applyProps(render(factory), props);
+  return (factory, props) => applyProps(render(factory), props);
 }
 
 function singleShape(
@@ -81,7 +79,7 @@ function symbolShape(
 ): Pick<Grundzeichen, "size" | "render"> {
   return {
     size: symbol.size,
-    render: (props, factory) => symbol.render(factory, props),
+    render: (factory, props) => symbol.render(factory, props),
   };
 }
 
@@ -96,7 +94,7 @@ const fahrzeugGrundzeichen: Pick<
   | "padding"
 > = {
   size: fahrzeug.size,
-  render: (props, factory) => fahrzeug.render(factory, props),
+  render: (factory, props) => fahrzeug.render(factory, props),
   clipPath: fahrzeug.render,
   paintableArea: [[0, 0], fahrzeug.size],
   einheitAnchor: [37.5, 4.5],
@@ -138,7 +136,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "ortsfeste-stelle",
     label: "Stelle, Einrichtung (ortsfest)",
     size: [46, 47.5],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(factory.circle([23, 25], 21.5), props))
@@ -164,10 +162,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "gebaeude",
     label: "Gebäude",
     size: [75, 45],
-    render: ({ fill }, factory) =>
+    render: (factory, props) =>
       factory
         .g()
-        .push(factory.path("M1,10 H74 V44 H1 Z").attr("fill", fill))
+        .push(factory.path("M1,10 H74 V44 H1 Z").attr("fill", props?.fill))
         .push(factory.path("M1,10 L37.5,1 L74,10")),
     clipPath: (factory) => factory.path("M1,10 H74 V44 H1 Z"),
     paintableArea: [
@@ -187,7 +185,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Kraftfahrzeug landgebunden",
     ...fahrzeugGrundzeichen,
     size: [75, 55],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(fahrzeug.render(factory), props))
@@ -199,7 +197,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Kraftfahrzeug geländegängig oder geländefähig",
     ...fahrzeugGrundzeichen,
     size: [75, 55],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(fahrzeug.render(factory), props))
@@ -211,7 +209,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "wechsellader",
     label: "Wechsellader",
     size: [75, 55],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(factory.path("M1,1 v43 h73"))
@@ -231,7 +229,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "abrollbehaelter",
     label: "Abrollbehälter, Container",
     size: [75, 45],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(factory.path("M7,44 V1 Q35,10 74,1 V44 Z"), props))
@@ -249,7 +247,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "anhaenger",
     label: "Anhänger",
     size: [75, 45],
-    render: (props, factory) =>
+    render: (factory, props) =>
       applyProps(factory.path("M7,44 V1 Q35,10 74,1 V44 Z M7,10 h-7"), props),
     clipPath: (factory) => factory.path("M7,44 V1 Q35,10 74,1 V44 Z"),
     paintableArea: [
@@ -265,7 +263,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Schienenfahrzeug",
     ...fahrzeugGrundzeichen,
     size: [75, 55],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(fahrzeug.render(factory), props))
@@ -279,7 +277,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Kettenfahrzeug",
     ...fahrzeugGrundzeichen,
     size: [75, 55],
-    render: (props, factory) =>
+    render: (factory, props) =>
       factory
         .g()
         .push(applyProps(fahrzeug.render(factory), props))
@@ -332,7 +330,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "anlass",
     label: "Anlass, Ereignis",
     size: [45, 36],
-    render: (_, factory) =>
+    render: (factory) =>
       factory.path("M1,0.6 L22.5,34 L44,0.6").attr("fill", "white"),
     clipPath: (factory) => factory.path("M1,0.6 L22.5,34 L44,0.6 Z"),
     accepts: ["symbol"],

@@ -1,5 +1,4 @@
-import { Element, SVGElementFactory } from "./svg";
-import type { Point } from "./types";
+import type { Renderable } from "./types";
 
 export type EinheitId =
   | "trupp"
@@ -11,11 +10,9 @@ export type EinheitId =
   | "abteilung"
   | "grossverband";
 
-export type Einheit = {
+export type Einheit = Renderable & {
   id: EinheitId;
   label: string;
-  size: Point;
-  render(factory: SVGElementFactory): Element;
 };
 
 export const einheiten: Array<Einheit> = [

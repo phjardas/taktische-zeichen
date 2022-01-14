@@ -1,5 +1,5 @@
-import { Element, SVGElementFactory } from "./svg";
-import { type Point } from "./types";
+import { Element } from "./svg";
+import { type Renderable } from "./types";
 
 export type SymbolId =
   | "drehleiter"
@@ -60,11 +60,9 @@ export type SymbolRenderProps = {
   fill?: string;
 };
 
-export type Symbol = {
+export type Symbol = Renderable<SymbolRenderProps> & {
   id: SymbolId;
   label: string;
-  size: Point;
-  render(factory: SVGElementFactory, props?: SymbolRenderProps): Element;
 };
 
 export type SymbolSpec = Pick<Symbol, "size" | "render">;
@@ -406,7 +404,7 @@ export const gemeindebrandinspektor = textSymbol("GBI", 49.5);
 export const stadtbrandinspektor = textSymbol("SBI", 46);
 export const kreisbrandinspektor = textSymbol("KBI", 48);
 export const leiterGefahrenabwehr = textSymbol("LtrGA", 83);
-export const fuehrungsstab = textSymbol("FüStab", 98.5);
+export const fuehrungsstab = textSymbol("F&#xFC;Stab", 98.5);
 
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },

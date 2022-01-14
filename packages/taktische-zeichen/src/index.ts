@@ -19,3 +19,4 @@ export {
 export { symbole, type Symbol, type SymbolId } from "./symbole";
 export { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
 export type { Image, TaktischesZeichen } from "./types";
+export { render } from "./utils";

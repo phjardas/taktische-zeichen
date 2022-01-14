@@ -10,7 +10,7 @@ import { organisationen } from "./organisationen";
 import { SVGElementFactory } from "./svg";
 import { symbole } from "./symbole";
 import { type Image, type Point, type TaktischesZeichen } from "./types";
-import { addPoints, placeComponent, subtractPoints } from "./utils";
+import { addPoints, ImageImpl, placeComponent, subtractPoints } from "./utils";
 
 function get<T extends { id: string }>(
   id: string | undefined,
@@ -55,10 +55,9 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     svg.push(defs);
 
     svg.push(
-      grund.render(
-        { fill: accepts(grund, "organisation") ? org?.background : undefined },
-        factory
-      )
+      grund.render(factory, {
+        fill: accepts(grund, "organisation") ? org?.background : undefined,
+      })
     );
 
     if (grund.clipPath) {
@@ -137,17 +136,10 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
   svg.attr("viewBox", viewBox.flatMap((p) => p).join(" "));
 
-  return {
-    get svg() {
-      return svg.render();
-    },
-    size: [viewBox[1][0] - viewBox[0][0], viewBox[1][1] - viewBox[0][1]],
-    get dataUrl() {
-      return `data:image/svg+xml;base64,${Buffer.from(this.svg).toString(
-        "base64"
-      )}`;
-    },
-  };
+  return new ImageImpl(svg.render(), [
+    viewBox[1][0] - viewBox[0][0],
+    viewBox[1][1] - viewBox[0][1],
+  ]);
 }
 
 function accepts({ accepts }: Grundzeichen, type: ComponentType): boolean {

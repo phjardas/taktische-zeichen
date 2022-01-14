@@ -1,13 +1,11 @@
-import { ChangeEvent, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import TaktischesZeichenComp, {
-  ComponentType,
   einheiten,
   fachaufgaben,
   funktionen,
   grundzeichen as grundzeichens,
   organisationen,
   symbole,
-  TaktischesZeichen,
 } from "taktische-zeichen-react";
 import { useTaktischesZeichen } from "./tz";
 
@@ -20,7 +18,7 @@ const optionen = {
   symbole: symbole.sort((a, b) => a.label.localeCompare(b.label)),
 };
 
-const beispiele: Array<{ label: string; tz: TaktischesZeichen }> = [
+const beispiele = [
   {
     label: "Löschfahrzeug",
     tz: {
@@ -69,12 +67,12 @@ const beispiele: Array<{ label: string; tz: TaktischesZeichen }> = [
 export function Demo() {
   const { taktischesZeichen, setTaktischesZeichen } = useTaktischesZeichen();
   const onChange = useCallback(
-    (key: keyof TaktischesZeichen) => (e: ChangeEvent<HTMLSelectElement>) =>
+    (key) => (e) =>
       setTaktischesZeichen((z) => ({
         ...z,
         [key]: e.target.value || undefined,
       })),
-    []
+    [setTaktischesZeichen]
   );
 
   const enabled = useMemo(() => {
@@ -82,7 +80,7 @@ export function Demo() {
       ? grundzeichens.find((g) => g.id === taktischesZeichen.grundzeichen)
           ?.accepts
       : ["symbol"];
-    return (type: ComponentType) => {
+    return (type) => {
       if (!accepts) return true;
       return accepts.includes(type);
     };
@@ -102,7 +100,7 @@ export function Demo() {
           </button>
         ))}
       </p>
-      <form noValidate onSubmit={(e) => e.preventDefault()} className="mb-3">
+      <form noValidate onSubmit={(e) => e.preventDefault()} className="mb-5">
         <div className="mb-3">
           <label htmlFor="grundzeichen" className="form-label">
             Grundform

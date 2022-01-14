@@ -1,4 +1,4 @@
-import { Element, SVGElementFactory } from "./svg";
+import { SVGElementFactory } from "./svg";
 import {
   beleuchtung,
   bett,
@@ -16,7 +16,7 @@ import {
   verbrauchsgueter,
   verpflegung,
 } from "./symbole";
-import type { Point } from "./types";
+import type { Renderable } from "./types";
 import { Component, Parent, placeComponent } from "./utils";
 
 export type FachaufgabeId =
@@ -51,12 +51,10 @@ export type FachaufgabeId =
   | "iuk"
   | "erkundung";
 
-export type Fachaufgabe = {
+export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
   label: string;
-  size: Point;
   cover?: boolean;
-  render(factory: SVGElementFactory): Element;
 };
 
 const brandbekaempfung = (factory: SVGElementFactory) =>
@@ -107,6 +105,15 @@ const abc: Component = {
       .push(factory.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
 };
 
+function symbolFachaufgabe(
+  symbol: SymbolSpec
+): Pick<Fachaufgabe, "size" | "render"> {
+  return {
+    size: symbol.size,
+    render: (factory) => symbol.render(factory),
+  };
+}
+
 export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "brandbekaempfung",
@@ -118,7 +125,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "hoehenrettung",
     label: "Rettung aus Höhen und Tiefen",
-    ...drehleiter,
+    ...symbolFachaufgabe(drehleiter),
   },
   {
     id: "wasserversorgung",
@@ -147,7 +154,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "heben",
     label: "Heben von Lasten",
-    ...hebegeraet,
+    ...symbolFachaufgabe(hebegeraet),
   },
   {
     id: "bergung",
@@ -159,27 +166,27 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "raeumen",
     label: "Räumen, Beseitigung von Hindernissen",
-    ...raeumgeraet,
+    ...symbolFachaufgabe(raeumgeraet),
   },
   {
     id: "entschaerfen",
     label: "Entschärfung, Kampfmittelräumung",
-    ...sprengmittel,
+    ...symbolFachaufgabe(sprengmittel),
   },
   {
     id: "sprengen",
     label: "Sprengen",
-    ...sprengung,
+    ...symbolFachaufgabe(sprengung),
   },
   {
     id: "beleuchtung",
     label: "Beleuchtung",
-    ...beleuchtung,
+    ...symbolFachaufgabe(beleuchtung),
   },
   {
     id: "transport",
     label: "Transport",
-    ...transport,
+    ...symbolFachaufgabe(transport),
   },
   {
     id: "abc",
@@ -256,7 +263,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "unterbringung",
     label: "Unterbringung",
-    ...bett,
+    ...symbolFachaufgabe(bett),
   },
   {
     id: "logistik",

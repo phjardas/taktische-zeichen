@@ -1,13 +1,10 @@
-import { Element, SVGElementFactory } from "./svg";
-import type { Point } from "./types";
+import type { Renderable } from "./types";
 
 export type FunktionId = "fuehrungskraft" | "sonderfunktion";
 
-export type Funktion = {
+export type Funktion = Renderable & {
   id: FunktionId;
   label: string;
-  size: Point;
-  render(factory: SVGElementFactory): Element;
 };
 
 export const funktionen: Array<Funktion> = [

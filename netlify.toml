@@ -1,3 +1,3 @@
 [build]
-  publish = "packages/website/dist"
-  command = "npm run bootstrap && npm run build"
+  publish = "packages/website/public"
+  command = "npm run bootstrap && npm run build && npm run build:website"

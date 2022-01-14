@@ -1,16 +1,41 @@
-import { Element, SVGElementFactory } from "./svg";
-import type { Padding, Point } from "./types";
+import { SVG, SVGElementFactory } from "./svg";
+import type { Padding, Point, Renderable, Image } from "./types";
 
 export type Parent = {
   size: Point;
   paintableArea?: [Point, Point];
 };
 
-export type Component = {
+export type Component = Renderable<any> & {
   size: Point;
   cover?: boolean;
-  render: (factory: SVGElementFactory) => Element;
 };
+
+export function render(renderable: Renderable): Image {
+  const factory = new SVGElementFactory();
+  const svg = factory
+    .svg()
+    .attr("fill", "transparent")
+    .attr("stroke", "black")
+    .attr("stroke-width", 2)
+    .attr("viewBox", `0 0 ${renderable.size[0]} ${renderable.size[1]}`)
+    .push(renderable.render(factory))
+    .render();
+
+  return new ImageImpl(svg, renderable.size);
+}
+
+export class ImageImpl implements Image {
+  constructor(public readonly svg: string, public readonly size: Point) {}
+
+  get dataUrl() {
+    const data =
+      typeof window !== "undefined"
+        ? btoa(this.svg)
+        : Buffer.from(this.svg).toString("base64");
+    return `data:image/svg+xml;base64,${data}`;
+  }
+}
 
 export function placeComponent({
   parent,

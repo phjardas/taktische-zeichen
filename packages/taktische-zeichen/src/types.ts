@@ -3,7 +3,13 @@ import { type FachaufgabeId } from "./fachaufgaben";
 import { type FunktionId } from "./funktionen";
 import { type GrundzeichenId } from "./grundzeichen";
 import { type OrganisationId } from "./organisationen";
+import { SVGElementFactory, type Element } from "./svg";
 import { type SymbolId } from "./symbole";
+
+export type Renderable<Props = unknown> = {
+  size: Point;
+  render: (factory: SVGElementFactory, props?: Props) => Element;
+};
 
 export type Point = [number, number];
 

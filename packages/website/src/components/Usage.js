@@ -1,8 +1,8 @@
+import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { TaktischesZeichen } from "taktische-zeichen-react";
 import { useTaktischesZeichen } from "./tz";
 
-function nodeDemo(tz: TaktischesZeichen) {
+function nodeDemo(tz) {
   return `
 import { erzeugeTaktischesZeichen } from "taktische-zeichen";
 
@@ -19,7 +19,7 @@ console.log(tz.svg);
 `.trim();
 }
 
-function reactDemo(tz: TaktischesZeichen) {
+function reactDemo(tz) {
   return `
 import { TaktischesZeichen } from "taktische-zeichen-react";
 
