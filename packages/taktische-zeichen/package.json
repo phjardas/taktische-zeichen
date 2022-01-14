@@ -1,6 +1,6 @@
 {
   "name": "taktische-zeichen",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
   "repository": {
     "type": "git",
