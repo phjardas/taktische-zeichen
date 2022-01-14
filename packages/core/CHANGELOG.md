@@ -1,14 +1,19 @@
 # taktische-zeichen
 
+## 0.1.1
+
+### Patch Changes
+
+- [`c6d9a5f`](https://github.com/phjardas/taktische-zeichen/commit/c6d9a5f560013e86973451d063e19bc541456e16) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: ohne
+
 ## 0.1.0
+
 ### Minor Changes
 
-
-
 - [`efe8e03`](https://github.com/phjardas/taktische-zeichen/commit/efe8e0300c03dddc8d6bdc72602848ba186a5220) Thanks [@phjardas](https://github.com/phjardas)! - Erste Veröffentlichung der Bibliothek.
-  
+
   Inhalt:
-  
+
   - 22 Grundzeichen
   - 6 Organisationen
   - 30 Fachaufgaben
