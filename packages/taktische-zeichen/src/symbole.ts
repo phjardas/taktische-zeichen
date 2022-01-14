@@ -41,7 +41,8 @@ export type SymbolId =
   | "vollbrand"
   | "sirene"
   | "lautsprecher"
-  | "zelt";
+  | "zelt"
+  | "ablage";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -304,6 +305,14 @@ export const zelt: SymbolSpec = {
   render: (factory) => factory.path("M13,1 l15,28 h-26 l15,-28"),
 };
 
+export const ablage: SymbolSpec = {
+  size: [30, 30],
+  render: (factory) =>
+    factory
+      .path("M7,3 l-3,2 l3,2 Z m0,2 h16 m0,-2 l3,2 l-3,2 Z")
+      .attr("fill", "black"),
+};
+
 function getTextHeight(text: string) {
   return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
     ? 28
@@ -414,4 +423,5 @@ export const symbole: Array<Symbol> = [
   { ...sirene, id: "sirene", label: "Sirene" },
   { ...lautsprecher, id: "lautsprecher", label: "Lautsprecher" },
   { ...zelt, id: "zelt", label: "Zelt" },
+  { ...ablage, id: "ablage", label: "Ablage" },
 ];
