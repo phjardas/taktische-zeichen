@@ -1,5 +1,16 @@
 # taktische-zeichen-react
 
+## 0.2.0
+
+### Minor Changes
+
+- [`1e476a2`](https://github.com/phjardas/taktische-zeichen/commit/1e476a23e879a6329e0b3f9dc1c6ed553d57f2f2) Thanks [@phjardas](https://github.com/phjardas)! - Text-Symbole werden jetzt mit einer Slab-Schriftart gerendert.
+
+### Patch Changes
+
+- Updated dependencies [[`1e476a2`](https://github.com/phjardas/taktische-zeichen/commit/1e476a23e879a6329e0b3f9dc1c6ed553d57f2f2)]:
+  - taktische-zeichen-core@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
