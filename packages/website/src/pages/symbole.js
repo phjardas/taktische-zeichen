@@ -10,6 +10,7 @@ export default function SymbolListe() {
         symbole={symbole}
         prop="symbol"
         base={{ grundzeichen: "ohne" }}
+        preview={{ style: { margin: "2rem" } }}
       />
     </Layout>
   );
