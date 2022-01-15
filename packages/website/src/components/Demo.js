@@ -88,19 +88,7 @@ export function Demo() {
 
   return (
     <>
-      <p>
-        Beispiele:
-        {beispiele.map((beispiel, i) => (
-          <button
-            key={i}
-            className="btn btn-link"
-            onClick={() => setTaktischesZeichen(beispiel.tz)}
-          >
-            {beispiel.label}
-          </button>
-        ))}
-      </p>
-      <form noValidate onSubmit={(e) => e.preventDefault()} className="mb-5">
+      <form noValidate onSubmit={(e) => e.preventDefault()} className="mb-3">
         <div className="mb-3">
           <label htmlFor="grundzeichen" className="form-label">
             Grundform
@@ -220,6 +208,18 @@ export function Demo() {
           </div>
         )}
       </form>
+      <p>
+        Beispiele:
+        {beispiele.map((beispiel, i) => (
+          <button
+            key={i}
+            className="btn btn-link"
+            onClick={() => setTaktischesZeichen(beispiel.tz)}
+          >
+            {beispiel.label}
+          </button>
+        ))}
+      </p>
       {taktischesZeichen.grundzeichen || taktischesZeichen.symbol ? (
         <TaktischesZeichenComp
           {...taktischesZeichen}

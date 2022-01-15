@@ -7,7 +7,7 @@ export default function Symbole({ symbole, prop, base = {}, preview = {} }) {
       {[...symbole].sort(sort).map((gz) => (
         <div key={gz.id} className="col">
           <div className="card h-100">
-            <div className="card-body">
+            <div className="card-body d-flex flex-column justify-content-between">
               <p className="card-text">
                 <TaktischesZeichen
                   {...{ ...base, [prop]: gz.id }}
