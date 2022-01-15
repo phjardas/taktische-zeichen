@@ -410,7 +410,7 @@ export const gemeindebrandinspektor = textSymbol("GBI", 45);
 export const stadtbrandinspektor = textSymbol("SBI", 44);
 export const kreisbrandinspektor = textSymbol("KBI", 47);
 export const leiterGefahrenabwehr = textSymbol("LtrGA", 76);
-export const fuehrungsstab = textSymbol("FüStb", 77);
+export const fuehrungsstab = textSymbol("F&#xFC;Stb", 77);
 
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },

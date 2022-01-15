@@ -131,9 +131,7 @@ export class TextNode extends Element {
   }
 
   render() {
-    return (
-      this.renderTag(false) + "<![CDATA[" + this.text + `]]></${this.name}>`
-    );
+    return this.renderTag(false) + this.text + `</${this.name}>`;
   }
 }
 
