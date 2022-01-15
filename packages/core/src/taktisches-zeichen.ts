@@ -51,9 +51,6 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
   if (grund) {
     viewBox[1] = grund.size;
 
-    const defs = factory.defs();
-    svg.push(defs);
-
     svg.push(
       grund.render(factory, {
         fill: accepts(grund, "organisation") ? org?.background : undefined,
@@ -61,7 +58,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     );
 
     if (grund.clipPath) {
-      defs.push(factory.clipPath("gz-mask").push(grund.clipPath(factory)));
+      factory.def(factory.clipPath("gz-mask").push(grund.clipPath(factory)));
     }
 
     if (fachaufgabe && accepts(grund, "fachaufgabe")) {

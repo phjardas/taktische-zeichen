@@ -25,6 +25,7 @@ export type SymbolId =
   | "hubschrauber"
   | "meldekopf"
   | "katsl"
+  | "tel"
   | "einsatzleitung"
   | "einsatzabschnittsleitung"
   | "untereinsatzabschnittsleitung"
@@ -379,32 +380,37 @@ function getTextHeight(text: string) {
     : 21.5;
 }
 
-function textSymbol(text: string, width: number): SymbolSpec {
+function textSymbol(
+  text: string,
+  width: number
+): SymbolSpec & { text: string } {
   return {
+    text,
     size: [width, getTextHeight(text)],
     render: (factory) =>
       factory
+        .registerText()
         .text([-2, 21.5], text)
         .attr("fill", "black")
         .attr("stroke-width", 0)
-        .attr("style", "font:bold 30px sans-serif"),
+        .attr("class", "slab"),
   };
 }
 
-export const meldekopf = textSymbol("M", 21);
-export const katsl = textSymbol("KatSL", 84);
-export const tel = textSymbol("TEL", 54);
-export const einsatzleitung = textSymbol("EL", 35.5);
-export const einsatzabschnittsleitung = textSymbol("EAL", 57);
-export const untereinsatzabschnittsleitung = textSymbol("UEAL", 79);
-export const leitenderNotarzt = textSymbol("LNA", 59.5);
-export const organisatorischerLeiterRettungsdienst = textSymbol("OrgL", 69);
+export const meldekopf = textSymbol("M", 24.5);
+export const katsl = textSymbol("KatSL", 77);
+export const tel = textSymbol("TEL", 52);
+export const einsatzleitung = textSymbol("EL", 33);
+export const einsatzabschnittsleitung = textSymbol("EAL", 54);
+export const untereinsatzabschnittsleitung = textSymbol("UEAL", 75);
+export const leitenderNotarzt = textSymbol("LNA", 56);
+export const organisatorischerLeiterRettungsdienst = textSymbol("OrgL", 62);
 export const kreisbrandmeister = textSymbol("KBM", 64.5);
-export const gemeindebrandinspektor = textSymbol("GBI", 49.5);
-export const stadtbrandinspektor = textSymbol("SBI", 46);
-export const kreisbrandinspektor = textSymbol("KBI", 48);
-export const leiterGefahrenabwehr = textSymbol("LtrGA", 83);
-export const fuehrungsstab = textSymbol("F&#xFC;Stab", 98.5);
+export const gemeindebrandinspektor = textSymbol("GBI", 45);
+export const stadtbrandinspektor = textSymbol("SBI", 44);
+export const kreisbrandinspektor = textSymbol("KBI", 47);
+export const leiterGefahrenabwehr = textSymbol("LtrGA", 76);
+export const fuehrungsstab = textSymbol("FüStb", 77);
 
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
@@ -430,6 +436,7 @@ export const symbole: Array<Symbol> = [
   { ...hubschrauber, id: "hubschrauber", label: "Hubschrauber" },
   { ...meldekopf, id: "meldekopf", label: "Meldekopf" },
   { ...katsl, id: "katsl", label: "Katastrophenschutzleitung" },
+  { ...tel, id: "tel", label: "Technische Einsatzleitung" },
   { ...einsatzleitung, id: "einsatzleitung", label: "Einsatzleitung" },
   {
     ...einsatzabschnittsleitung,

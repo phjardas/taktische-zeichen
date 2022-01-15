@@ -16,7 +16,7 @@ import {
 const basedir = path.resolve("icons");
 
 async function main() {
-  const spec = yargs(process.argv.slice(2))
+  const { output, ...spec } = yargs(process.argv.slice(2))
     .option("grundzeichen", {
       type: "string",
       choices: grundzeichens.map(({ id }) => id),
@@ -40,15 +40,15 @@ async function main() {
     .option("symbol", {
       type: "string",
       choices: symbole.map(({ id }) => id),
+    })
+    .option("output", {
+      type: "string",
+      default: "custom.svg",
     }).argv;
 
   const tz = erzeugeTaktischesZeichen(spec as TaktischesZeichen);
   await fs.mkdir(basedir, { recursive: true });
-  await fs.writeFile(
-    path.resolve(basedir, "custom.svg"),
-    formatXml(tz.svg),
-    "utf8"
-  );
+  await fs.writeFile(path.resolve(basedir, output), formatXml(tz.svg), "utf8");
 }
 
 main().catch((error) => {

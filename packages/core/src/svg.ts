@@ -1,12 +1,26 @@
+import { createFontStyle } from "./font";
 import type { Point } from "./types";
 
 export class SVGElementFactory {
+  private isTextRegistered = false;
+  private defs = new Container("defs");
+
   svg() {
-    return new SVG();
+    return new SVG().push(this.defs);
   }
 
-  defs() {
-    return new Container("defs");
+  def(element: Element) {
+    this.defs.push(element);
+    return this;
+  }
+
+  registerText() {
+    if (!this.isTextRegistered) {
+      this.def(createFontStyle(this));
+      this.isTextRegistered = true;
+    }
+
+    return this;
   }
 
   g() {
@@ -45,7 +59,11 @@ export class SVGElementFactory {
   }
 
   text(pos: Point, text: string) {
-    return new Text(text).attr("x", pos[0]).attr("y", pos[1]);
+    return this.textNode("text", text).attr("x", pos[0]).attr("y", pos[1]);
+  }
+
+  textNode(name: string, content: string) {
+    return new TextNode(name, content);
   }
 }
 
@@ -107,13 +125,15 @@ export class Container extends Element {
   }
 }
 
-export class Text extends Element {
-  constructor(private readonly text: string) {
-    super("text");
+export class TextNode extends Element {
+  constructor(name: string, private readonly text: string) {
+    super(name);
   }
 
   render() {
-    return this.renderTag(false) + this.text + `</${this.name}>`;
+    return (
+      this.renderTag(false) + "<![CDATA[" + this.text + `]]></${this.name}>`
+    );
   }
 }
 
