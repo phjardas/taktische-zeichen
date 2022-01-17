@@ -5,6 +5,7 @@ import {
   grundzeichen as grundzeichens,
   organisationen,
   symbole,
+  verwaltungsstufen,
 } from "taktische-zeichen-react";
 
 export default function Statistics() {
@@ -17,6 +18,7 @@ export default function Statistics() {
         <li>{fachaufgaben.length} Fachaufgaben</li>
         <li>{symbole.length} Symbole</li>
         <li>{einheiten.length} Einheiten</li>
+        <li>{verwaltungsstufen.length} Verwaltungsstufen</li>
       </ul>
     </>
   );

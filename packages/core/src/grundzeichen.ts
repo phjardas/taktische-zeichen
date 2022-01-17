@@ -41,6 +41,7 @@ export type GrundzeichenRenderProps = {
 
 export type ComponentType =
   | "einheit"
+  | "verwaltungsstufe"
   | "funktion"
   | "fachaufgabe"
   | "symbol"
@@ -97,7 +98,13 @@ const fahrzeugGrundzeichen: Pick<
   clipPath: fahrzeug.render,
   paintableArea: [[0, 0], fahrzeug.size],
   einheitAnchor: [37.5, 4.5],
-  accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
+  accepts: [
+    "einheit",
+    "verwaltungsstufe",
+    "fachaufgabe",
+    "symbol",
+    "organisation",
+  ],
   padding: [15, 20, 10],
 };
 
@@ -113,7 +120,13 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
-    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "fachaufgabe",
+      "symbol",
+      "organisation",
+    ],
     padding: [10, 20],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
   },
@@ -128,7 +141,13 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     padding: [10, 20],
-    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "fachaufgabe",
+      "symbol",
+      "organisation",
+    ],
   },
   {
     id: "stelle",
@@ -161,7 +180,14 @@ export const grundzeichen: Array<Grundzeichen> = [
     size: person.size,
     render: withProps(person.render),
     clipPath: (svg) => person.render(svg),
-    accepts: ["einheit", "fachaufgabe", "funktion", "symbol", "organisation"],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "fachaufgabe",
+      "funktion",
+      "symbol",
+      "organisation",
+    ],
     padding: [15, 15],
   },
   {
@@ -228,7 +254,13 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     einheitAnchor: [39.5, 4.5],
-    accepts: ["einheit", "fachaufgabe", "symbol", "organisation"],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "fachaufgabe",
+      "symbol",
+      "organisation",
+    ],
     padding: [15, 10, 10],
   },
   {
@@ -305,19 +337,19 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "wasserfahrzeug",
     label: "Wasserfahrzeug",
     size: [42, 22],
-    accepts: ["einheit", "organisation", "fachaufgabe"],
+    accepts: ["einheit", "verwaltungsstufe", "organisation", "fachaufgabe"],
     ...singleShape((svg) => svg.path("M1,1 a20 20 0 0 0 40 0 Z")),
   },
   {
     id: "flugzeug",
     label: "Flugzeug",
-    accepts: ["einheit", "organisation"],
+    accepts: ["einheit", "verwaltungsstufe", "organisation"],
     ...symbolShape(flugzeug),
   },
   {
     id: "hubschrauber",
     label: "Hubschrauber",
-    accepts: ["einheit", "organisation"],
+    accepts: ["einheit", "verwaltungsstufe", "organisation"],
     ...symbolShape(hubschrauber),
   },
   {

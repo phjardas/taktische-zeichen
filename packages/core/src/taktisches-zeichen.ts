@@ -1,3 +1,4 @@
+import { verwaltungsstufen } from ".";
 import { einheiten } from "./einheiten";
 import { fachaufgaben } from "./fachaufgaben";
 import { funktionen } from "./funktionen";
@@ -39,6 +40,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
   const org = get(spec.organisation, organisationen);
   const fachaufgabe = get(spec.fachaufgabe, fachaufgaben);
   const einheit = get(spec.einheit, einheiten);
+  const verwaltungsstufe = get(spec.verwaltungsstufe, verwaltungsstufen);
   const funktion = get(spec.funktion, funktionen);
   const symbol = get(spec.symbol, symbole);
 
@@ -81,15 +83,18 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       svg.push(svg.g().push(icon).attr("clip-path", "url(#gz-mask)"));
     }
 
+    let topAnchor = grund.einheitAnchor ?? [
+      viewBox[0][0] + (viewBox[1][0] - viewBox[0][0]) / 2,
+      0,
+    ];
+
     if (einheit && accepts(grund, "einheit")) {
-      const anchor = grund.einheitAnchor ?? [
-        viewBox[0][0] + (viewBox[1][0] - viewBox[0][0]) / 2,
-        0,
-      ];
       const position = [
-        anchor[0] - einheit.size[0] / 2,
-        anchor[1] - einheit.size[1],
+        topAnchor[0] - einheit.size[0] / 2,
+        topAnchor[1] - einheit.size[1],
       ];
+
+      topAnchor = addPoints(topAnchor, [0, -einheit.size[1]]);
 
       // extend the viewbox if the icon protrudes to the top
       const ydiff = viewBox[0][1] - position[1];
@@ -100,6 +105,28 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       svg.push(
         einheit
+          .render(svg)
+          .attr("transform", `translate(${position[0]},${position[1]})`)
+      );
+    }
+
+    if (verwaltungsstufe && accepts(grund, "verwaltungsstufe")) {
+      const position = [
+        topAnchor[0] - verwaltungsstufe.size[0] / 2,
+        topAnchor[1] - verwaltungsstufe.size[1],
+      ];
+
+      topAnchor = addPoints(topAnchor, [0, -verwaltungsstufe.size[1]]);
+
+      // extend the viewbox if the icon protrudes to the top
+      const ydiff = viewBox[0][1] - position[1];
+      if (ydiff > 0) {
+        viewBox[0] = subtractPoints(viewBox[0], [0, ydiff]);
+        viewBox[1] = addPoints(viewBox[1], [0, ydiff]);
+      }
+
+      svg.push(
+        verwaltungsstufe
           .render(svg)
           .attr("transform", `translate(${position[0]},${position[1]})`)
       );

@@ -5,6 +5,7 @@ import { type GrundzeichenId } from "./grundzeichen";
 import { type OrganisationId } from "./organisationen";
 import { SVG, type Element } from "./svg";
 import { type SymbolId } from "./symbole";
+import { type VerwaltungsstufeId } from "./verwaltungsstufen";
 
 export type Renderable<Props = unknown> = {
   size: Point;
@@ -23,6 +24,7 @@ export type TaktischesZeichen = {
   organisation?: OrganisationId;
   fachaufgabe?: FachaufgabeId;
   einheit?: EinheitId;
+  verwaltungsstufe?: VerwaltungsstufeId;
   funktion?: FunktionId;
   symbol?: SymbolId;
   text?: string;

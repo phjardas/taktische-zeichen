@@ -6,6 +6,7 @@ import TaktischesZeichenComp, {
   grundzeichen as grundzeichens,
   organisationen,
   symbole,
+  verwaltungsstufen,
 } from "taktische-zeichen-react";
 import { useTaktischesZeichen } from "./tz";
 
@@ -14,6 +15,9 @@ const optionen = {
   organisationen: organisationen.sort((a, b) => a.label.localeCompare(b.label)),
   fachaufgaben: fachaufgaben.sort((a, b) => a.label.localeCompare(b.label)),
   einheiten: einheiten.sort((a, b) => a.label.localeCompare(b.label)),
+  verwaltungsstufen: verwaltungsstufen.sort((a, b) =>
+    a.label.localeCompare(b.label)
+  ),
   funktionen: funktionen.sort((a, b) => a.label.localeCompare(b.label)),
   symbole: symbole.sort((a, b) => a.label.localeCompare(b.label)),
 };
@@ -79,6 +83,16 @@ const beispiele = [
       grundzeichen: "stelle",
       organisation: "gefahrenabwehr",
       symbol: "hubschrauber",
+    },
+  },
+  {
+    label: "Kreisbrandinspektor",
+    tz: {
+      grundzeichen: "person",
+      organisation: "feuerwehr",
+      funktion: "fuehrungskraft",
+      verwaltungsstufe: "kreis",
+      text: "KBI",
     },
   },
 ];
@@ -179,6 +193,26 @@ export function Demo() {
             >
               <option value="">keine</option>
               {optionen.einheiten.map((o) => (
+                <option key={o.id} value={o.id}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        {enabled("verwaltungsstufe") && (
+          <div className="mb-3">
+            <label htmlFor="verwaltungsstufe" className="form-label">
+              Verwaltungsstufe
+            </label>
+            <select
+              id="verwaltungsstufe"
+              value={taktischesZeichen.verwaltungsstufe ?? ""}
+              onChange={onChange("verwaltungsstufe")}
+              className="form-control"
+            >
+              <option value="">keine</option>
+              {optionen.verwaltungsstufen.map((o) => (
                 <option key={o.id} value={o.id}>
                   {o.label}
                 </option>

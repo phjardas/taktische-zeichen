@@ -1,7 +1,8 @@
 import { SVGProps } from "react";
 import {
   Container,
-TextNode,  Element,
+  TextNode,
+  Element,
   erzeugeTaktischesZeichen,
   type TaktischesZeichen,
 } from "taktische-zeichen-core";
@@ -13,6 +14,7 @@ export default function TaktischesZeichen({
   fachaufgabe,
   organisation,
   einheit,
+  verwaltungsstufe,
   funktion,
   symbol,
   text,
@@ -23,6 +25,7 @@ export default function TaktischesZeichen({
     fachaufgabe,
     organisation,
     einheit,
+    verwaltungsstufe,
     funktion,
     symbol,
     text,
@@ -32,7 +35,12 @@ export default function TaktischesZeichen({
 }
 
 function render(element: Element, additionalProps?: any) {
-  const children = element instanceof Container ? element.children.map((child, key) => render(child, { key })) : element instanceof TextNode ? element.text :null;
+  const children =
+    element instanceof Container
+      ? element.children.map((child, key) => render(child, { key }))
+      : element instanceof TextNode
+      ? element.text
+      : null;
 
   return (
     <element.name
@@ -45,12 +53,14 @@ function render(element: Element, additionalProps?: any) {
   );
 }
 
-function withCamelCaseKeys(obj: Record<string,any>): Record<string,any> {
-  return Object.entries(obj).map(([key, value]) => [toCamelCase(key), value]).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+function withCamelCaseKeys(obj: Record<string, any>): Record<string, any> {
+  return Object.entries(obj)
+    .map(([key, value]) => [toCamelCase(key), value])
+    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
 }
 
-function toCamelCase(str: string):string {
-  return str.replace(/^([A-Z])|[\s-_](\w)/g, function(_, p1, p2) {
+function toCamelCase(str: string): string {
+  return str.replace(/^([A-Z])|[\s-_](\w)/g, function (_, p1, p2) {
     if (p2) return p2.toUpperCase();
     return p1.toLowerCase();
   });

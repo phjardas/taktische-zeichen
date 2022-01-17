@@ -13,6 +13,7 @@ Die Bibliothek enthält:
 - 30 Fachaufgaben
 - 40 Symbole
 - 8 Einheiten
+- 6 Verwaltungsstufen
 
 ## Anwendung
 

@@ -11,6 +11,7 @@ import {
   organisationen,
   symbole,
   TaktischesZeichen,
+  verwaltungsstufen,
 } from "../src";
 
 const basedir = path.resolve("icons");
@@ -33,6 +34,10 @@ async function main() {
       type: "string",
       choices: einheiten.map(({ id }) => id),
     })
+    .option("verwaltungsstufe", {
+      type: "string",
+      choices: verwaltungsstufen.map(({ id }) => id),
+    })
     .option("funktion", {
       type: "string",
       choices: funktionen.map(({ id }) => id),
@@ -51,7 +56,11 @@ async function main() {
 
   const tz = erzeugeTaktischesZeichen(spec as TaktischesZeichen);
   await fs.mkdir(basedir, { recursive: true });
-  await fs.writeFile(path.resolve(basedir, output), formatXml(tz.svg), "utf8");
+  await fs.writeFile(
+    path.resolve(basedir, output),
+    formatXml(tz.toString()),
+    "utf8"
+  );
 }
 
 main().catch((error) => {
