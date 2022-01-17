@@ -172,7 +172,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 component: createTextSymbol(spec.text, {
                   fill: org?.textColor ?? "black",
                 }),
-                padding: getTextPadding(grund.padding),
+                padding: grund.textPadding ?? grund.padding,
                 svg,
               })
             )
@@ -194,12 +194,6 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     viewBox[1][0] - viewBox[0][0],
     viewBox[1][1] - viewBox[0][1],
   ]);
-}
-
-function getTextPadding(padding?: Padding): Padding | undefined {
-  if (!padding) return undefined;
-  const pad = resolvePadding(padding);
-  return [pad[0], pad[1] / 2, pad[2], pad[3] / 2];
 }
 
 function accepts({ accepts }: Grundzeichen, type: ComponentType): boolean {

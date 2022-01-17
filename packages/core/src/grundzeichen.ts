@@ -53,6 +53,7 @@ export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   clipPath?(svg: SVG): Element;
   paintableArea?: [Point, Point];
   padding?: Padding;
+  textPadding?: Padding;
   einheitAnchor?: Point;
   accepts?: Array<ComponentType>;
 };
@@ -92,6 +93,7 @@ const fahrzeugGrundzeichen: Pick<
   | "einheitAnchor"
   | "accepts"
   | "padding"
+  | "textPadding"
 > = {
   size: fahrzeug.size,
   render: (svg, props) => fahrzeug.render(svg, props),
@@ -106,6 +108,7 @@ const fahrzeugGrundzeichen: Pick<
     "organisation",
   ],
   padding: [15, 20, 10],
+  textPadding: [15, 10, 10],
 };
 
 export const grundzeichen: Array<Grundzeichen> = [
@@ -128,6 +131,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       "organisation",
     ],
     padding: [10, 20],
+    textPadding: [10, 10],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
   },
   {
@@ -141,6 +145,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     padding: [10, 20],
+    textPadding: [10, 10],
     accepts: [
       "einheit",
       "verwaltungsstufe",
@@ -156,6 +161,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     ...singleShape((svg) => svg.circle([22.5, 22.5], 21.5)),
     accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [10, 10],
+    textPadding: [10, 5],
   },
   {
     id: "ortsfeste-stelle",
@@ -173,6 +179,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       [44.5, 46.5],
     ],
     padding: [10, 10],
+    textPadding: [10, 5],
   },
   {
     id: "person",
@@ -189,6 +196,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       "organisation",
     ],
     padding: [15, 15],
+    textPadding: [10, 12],
   },
   {
     id: "gebaeude",
@@ -206,6 +214,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     ],
     accepts: ["fachaufgabe", "symbol", "organisation"],
     padding: [10, 20],
+    textPadding: [10, 10],
   },
   {
     id: "fahrzeug",
