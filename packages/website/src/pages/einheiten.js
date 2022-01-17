@@ -10,6 +10,7 @@ export default function Einheiten() {
         symbole={einheiten}
         prop="einheit"
         base={{ grundzeichen: "taktische-formation" }}
+        keepOrder
       />
     </Layout>
   );

@@ -14,10 +14,8 @@ const optionen = {
   grundzeichen: grundzeichens.sort((a, b) => a.label.localeCompare(b.label)),
   organisationen: organisationen.sort((a, b) => a.label.localeCompare(b.label)),
   fachaufgaben: fachaufgaben.sort((a, b) => a.label.localeCompare(b.label)),
-  einheiten: einheiten.sort((a, b) => a.label.localeCompare(b.label)),
-  verwaltungsstufen: verwaltungsstufen.sort((a, b) =>
-    a.label.localeCompare(b.label)
-  ),
+  einheiten,
+  verwaltungsstufen,
   funktionen: funktionen.sort((a, b) => a.label.localeCompare(b.label)),
   symbole: symbole.sort((a, b) => a.label.localeCompare(b.label)),
 };
@@ -47,15 +45,6 @@ const beispiele = [
       grundzeichen: "befehlsstelle",
       organisation: "fuehrung",
       text: "KatSL",
-    },
-  },
-  {
-    label: "Zugführer THW",
-    tz: {
-      grundzeichen: "person",
-      organisation: "thw",
-      funktion: "fuehrungskraft",
-      einheit: "zug",
     },
   },
   {

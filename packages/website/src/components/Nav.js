@@ -8,6 +8,7 @@ const routes = [
   { path: "/fachaufgaben", label: "Fachaufgaben" },
   { path: "/organisationen", label: "Organisationen" },
   { path: "/einheiten", label: "Einheiten" },
+  { path: "/verwaltungsstufen", label: "Verwaltungsstufen" },
   { path: "/funktionen", label: "Funktionen" },
   { path: "/symbole", label: "Symbole" },
 ];

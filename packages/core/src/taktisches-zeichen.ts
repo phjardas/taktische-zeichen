@@ -118,11 +118,17 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       topAnchor = addPoints(topAnchor, [0, -verwaltungsstufe.size[1]]);
 
-      // extend the viewbox if the icon protrudes to the top
+      // extend the viewbox if the icon is too large
       const ydiff = viewBox[0][1] - position[1];
       if (ydiff > 0) {
         viewBox[0] = subtractPoints(viewBox[0], [0, ydiff]);
         viewBox[1] = addPoints(viewBox[1], [0, ydiff]);
+      }
+
+      const xdiff = viewBox[0][0] - position[0];
+      if (xdiff > 0) {
+        viewBox[0] = subtractPoints(viewBox[0], [xdiff, 0]);
+        viewBox[1] = addPoints(viewBox[1], [2 * xdiff, 0]);
       }
 
       svg.push(

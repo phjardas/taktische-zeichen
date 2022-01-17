@@ -1,10 +1,16 @@
 import React from "react";
 import TaktischesZeichen from "taktische-zeichen-react";
 
-export default function Symbole({ symbole, prop, base = {}, preview = {} }) {
+export default function Symbole({
+  symbole,
+  prop,
+  keepOrder,
+  base = {},
+  preview = {},
+}) {
   return (
     <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-      {[...symbole].sort(sort).map((gz) => (
+      {(keepOrder ? symbole : [...symbole].sort(sort)).map((gz) => (
         <div key={gz.id} className="col">
           <div className="card h-100">
             <div className="card-body d-flex flex-column justify-content-between">
