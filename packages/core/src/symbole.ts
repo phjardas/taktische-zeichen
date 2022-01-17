@@ -44,7 +44,11 @@ export type SymbolId =
   | "blockiert"
   | "tendenz-steigend"
   | "tendenz-fallend"
-  | "tendenz-unveraendert";
+  | "tendenz-unveraendert"
+  | "ausfall-25"
+  | "ausfall-50"
+  | "ausfall-75"
+  | "ausfall-100";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -98,6 +102,69 @@ export const sprengmittel: SymbolSpec = {
       .push(svg.circle([8, 9], 1).attr("fill", "black"))
       .push(svg.circle([8, 9], 7))
       .push(svg.path("M4,2.5 l-1,-2 M11.5,2.5 l1,-2")),
+};
+
+export const ausfall25: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()    
+      .push(svg.rect([1, 1], [43, 43]).attr("fill","green"))
+      .push(svg.rect([22, 1], [22, 22]).attr("fill","red"))
+      .push(svg.circle([22, 22], 10).attr("fill","white"))
+      .push(svg.registerText().textNode("text", "1")
+        .attr("x", "18")
+        .attr("y", "27")
+        .attr("stroke", "none")
+        .attr("fill", "black"))
+      ,
+};
+
+export const ausfall50: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()    
+      .push(svg.rect([1, 1], [43, 43]).attr("fill","green"))
+      .push(svg.rect([22, 1], [22, 43]).attr("fill","red"))
+      .push(svg.circle([22, 22], 10).attr("fill","white"))
+      .push(svg.registerText().textNode("text", "2")
+        .attr("x", "18")
+        .attr("y", "27")
+        .attr("stroke", "none")
+        .attr("fill", "black"))
+      ,
+};
+
+export const ausfall75: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()    
+      .push(svg.rect([1, 1], [43, 43]).attr("fill","red"))
+      .push(svg.rect([1, 1], [21, 21]).attr("fill","green"))
+      .push(svg.circle([22, 22], 10).attr("fill","white"))
+      .push(svg.registerText().textNode("text", "3")
+        .attr("x", "18")
+        .attr("y", "27")
+        .attr("stroke", "none")
+        .attr("fill", "black"))
+      ,
+};
+
+export const ausfall100: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()    
+      .push(svg.rect([1, 1], [43, 43]).attr("fill","red"))
+      .push(svg.circle([22, 22], 10).attr("fill","white"))
+      .push(svg.registerText().textNode("text", "4")
+        .attr("x", "18")
+        .attr("y", "27")
+        .attr("stroke", "none")
+        .attr("fill", "black"))
+      ,
 };
 
 export const tendenzSteigend: SymbolSpec = {
@@ -440,4 +507,8 @@ export const symbole: Array<Symbol> = [
   { ...tendenzSteigend, id: "tendenz-steigend", label: "Tendenz steigend" },
   { ...tendenzFallend, id: "tendenz-fallend", label: "Tendenz fallend" },
   { ...tendenzUnveraendert, id: "tendenz-unveraendert", label: "Tendenz unverändert" },
+  { ...ausfall25, id: "ausfall-25", label: "Ausfall 25%" },
+  { ...ausfall50, id: "ausfall-50", label: "Ausfall 50%" },
+  { ...ausfall75, id: "ausfall-75", label: "Ausfall 75%" },
+  { ...ausfall100, id: "ausfall-100", label: "Totalausfall" },
 ];
