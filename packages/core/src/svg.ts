@@ -34,7 +34,7 @@ export abstract class Element {
 
     const style = Object.entries(this.styles)
       .sort((a, b) => a[0].localeCompare(b[0]))
-      .map(([key, value]) => `${key}:"${value}"`)
+      .map(([key, value]) => `${key}:${value}`)
       .join(";");
     if (style) attrs.style = style;
 

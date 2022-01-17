@@ -10,17 +10,36 @@ export type Organisation = {
   id: OrganisationId;
   label: string;
   background: string;
+  textColor?: string;
 };
 
 export const organisationen: Array<Organisation> = [
-  { id: "feuerwehr", label: "Feuerwehr", background: "#cc0000" },
-  { id: "thw", label: "THW", background: "#3333cc" },
-  { id: "fuehrung", label: "Führung", background: "#dddd00" },
-  { id: "polizei", label: "Polizei", background: "#006600" },
+  {
+    id: "feuerwehr",
+    label: "Feuerwehr",
+    background: "#cc0000",
+    textColor: "#ffffff",
+  },
+  {
+    id: "thw",
+    label: "THW",
+    background: "#0000ff",
+    textColor: "#ffffff",
+  },
+  {
+    id: "fuehrung",
+    label: "Führung",
+    background: "#dddd00",
+  },
+  {
+    id: "polizei",
+    label: "Polizei",
+    background: "#009900",
+  },
   {
     id: "gefahrenabwehr",
     label: "Gefahrenabwehr",
-    background: "#cc6600",
+    background: "#ff9900",
   },
   {
     id: "hilfsorganisation",

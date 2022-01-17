@@ -22,24 +22,13 @@ export function applyFontStyles(element: Element): Element {
   );
 }
 
+const defaultChar = "x";
+
 export function calculateTextWidth(text: string): number {
   const width = text
     .split("")
-    .map((char) => {
-      if (!(char in widths)) {
-        throw new Error(
-          `Ungültiges Zeichen im Text: ${char}, erlaubte Zeichen sind: ${Object.keys(
-            widths
-          )
-            .sort()
-            .join("")}`
-        );
-      }
-      return widths[char];
-    })
+    .map((char) => widths[char] ?? widths[defaultChar])
     .reduce((a, b) => a + b, 0);
 
   return width + text.length - 1 * letterSpacing;
 }
-
-export const supportedTextCharacters = Object.keys(widths);

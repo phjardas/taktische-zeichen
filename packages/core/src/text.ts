@@ -1,7 +1,10 @@
 import { applyFontStyles, calculateTextWidth } from "./font";
 import { Component } from "./utils";
 
-export function createTextSymbol(text: string): Component {
+export function createTextSymbol(
+  text: string,
+  { fill }: { fill: string }
+): Component {
   const width = calculateTextWidth(text);
 
   return {
@@ -11,7 +14,7 @@ export function createTextSymbol(text: string): Component {
         .attr("x", "0")
         .attr("y", "21.5")
         .attr("stroke", "none")
-        .attr("fill", "black"),
+        .attr("fill", fill),
     cover: false,
   };
 }

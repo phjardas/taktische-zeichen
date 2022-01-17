@@ -4,7 +4,6 @@ export {
   type Fachaufgabe,
   type FachaufgabeId,
 } from "./fachaufgaben";
-export { supportedTextCharacters } from "./font";
 export { funktionen, type Funktion, type FunktionId } from "./funktionen";
 export {
   grundzeichen,

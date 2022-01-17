@@ -1,22 +1,43 @@
 import { promises as fs } from "fs";
 import * as path from "path";
-import { erzeugeTaktischesZeichen } from "../src";
+import {
+  erzeugeTaktischesZeichen,
+  GrundzeichenId,
+  organisationen,
+  OrganisationId,
+} from "../src";
 
 const basedir = path.resolve("icons/text");
 
+const orgs: Array<OrganisationId | undefined> = [
+  undefined,
+  ...organisationen.map((o) => o.id),
+];
+const grundzeichens: Array<GrundzeichenId> = ["person", "stelle"];
 const texte = ["M", "KatSL", "TEL", "OrgL", "EL", "FüStab"];
 
 async function main() {
   await fs.mkdir(basedir, { recursive: true });
 
   await Promise.all(
-    texte.map(async (text) => {
-      const { svg } = erzeugeTaktischesZeichen({
-        grundzeichen: "stelle",
-        text,
-      });
-      await fs.writeFile(path.resolve(basedir, `${text}.svg`), svg, "utf8");
-    })
+    orgs.flatMap((organisation) =>
+      grundzeichens.flatMap((grundzeichen) =>
+        texte.map(async (text) =>
+          fs.writeFile(
+            path.resolve(
+              basedir,
+              `${grundzeichen}_${organisation ?? "keine"}_${text}.svg`
+            ),
+            erzeugeTaktischesZeichen({
+              grundzeichen,
+              organisation,
+              text,
+            }).toString(),
+            "utf8"
+          )
+        )
+      )
+    )
   );
 }
 

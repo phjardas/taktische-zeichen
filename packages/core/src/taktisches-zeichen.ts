@@ -142,7 +142,9 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
             .push(
               placeComponent({
                 parent: grund,
-                component: createTextSymbol(spec.text),
+                component: createTextSymbol(spec.text, {
+                  fill: org?.textColor ?? "black",
+                }),
                 padding: getTextPadding(grund.padding),
                 svg,
               })

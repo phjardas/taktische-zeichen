@@ -55,6 +55,25 @@ const beispiele = [
     },
   },
   {
+    label: "Organisatorischer Leiter Rettungsdienst",
+    tz: {
+      grundzeichen: "person",
+      organisation: "hilfsorganisation",
+      funktion: "fuehrungskraft",
+      text: "OrgL",
+    },
+  },
+  {
+    label: "THW: Technischer Zug mit FGr Räumen",
+    tz: {
+      grundzeichen: "taktische-formation",
+      organisation: "thw",
+      fachaufgabe: "logistik",
+      einheit: "zug",
+      text: "TZ-R",
+    },
+  },
+  {
     label: "Hubschrauberlandeplatz",
     tz: {
       grundzeichen: "stelle",
@@ -219,9 +238,6 @@ export function Demo() {
               onChange={onChange("text")}
               className="form-control"
             />
-            <div className="form-text">
-              Erlaubte Zeichen: A-Z a-z 0-9 / - _ ( ) ? ! Leerzeichen.
-            </div>
           </div>
         )}
       </form>
