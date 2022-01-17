@@ -1,5 +1,26 @@
 # taktische-zeichen
 
+## 0.3.0
+
+### Minor Changes
+
+- [`b2f8290`](https://github.com/phjardas/taktische-zeichen/commit/b2f829011c803d5a3cebfa6e9bd776b0df24c2e6) Thanks [@phjardas](https://github.com/phjardas)! - Text-Symbole können jetzt beliebige Zeichen enthalten
+
+* [`dbd5c3f`](https://github.com/phjardas/taktische-zeichen/commit/dbd5c3f6e24069e840deca4fdcc171f0473cfe69) Thanks [@phjardas](https://github.com/phjardas)! - React rendert das SVG jetzt direkt statt über ein <img>
+
+- [`b2f8290`](https://github.com/phjardas/taktische-zeichen/commit/b2f829011c803d5a3cebfa6e9bd776b0df24c2e6) Thanks [@phjardas](https://github.com/phjardas)! - Kontrast der Farben bei Text verbessert
+
+* [`5ec9d29`](https://github.com/phjardas/taktische-zeichen/commit/5ec9d29ccc23d4e0e0749c118e6edd9b6a944df7) Thanks [@phjardas](https://github.com/phjardas)! - Neues Element: Verwaltungsstufe
+
+- [`7729231`](https://github.com/phjardas/taktische-zeichen/commit/772923118aac156a687e3b7eeee6ef25bab0d0d0) Thanks [@phjardas](https://github.com/phjardas)! - Padding von Text-Symbolen verbessert
+
+* [`41b98aa`](https://github.com/phjardas/taktische-zeichen/commit/41b98aac0f1d0d457bf8ece13b942f6b270b1c32) Thanks [@phjardas](https://github.com/phjardas)! - Neue Organisation: Bundeswehr
+
+- [`6f91d3a`](https://github.com/phjardas/taktische-zeichen/commit/6f91d3aef4c684b69cdb8089625092a6fff2439b) Thanks [@phjardas](https://github.com/phjardas)! - Neuer Parameter zur Eingabe eines beliebigen Textes als Symbol.
+
+  Durch diese Änderung werden alle Text-Symbole abgeschafft.
+  Noch gibt es leider keinen Support für Umlaute und andere Sonderzeichen.
+
 ## 0.2.0
 
 ### Minor Changes
