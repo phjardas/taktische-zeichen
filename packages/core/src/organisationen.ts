@@ -4,7 +4,8 @@ export type OrganisationId =
   | "fuehrung"
   | "polizei"
   | "gefahrenabwehr"
-  | "hilfsorganisation";
+  | "hilfsorganisation"
+  | "bundeswehr";
 
 export type Organisation = {
   id: OrganisationId;
@@ -45,5 +46,11 @@ export const organisationen: Array<Organisation> = [
     id: "hilfsorganisation",
     label: "Hilfsorganisationen",
     background: "#ffffff",
+  },
+  {
+    id: "bundeswehr",
+    label: "Bundeswehr",
+    background: "#764a2f",
+    textColor: "#ffffff",
   },
 ];

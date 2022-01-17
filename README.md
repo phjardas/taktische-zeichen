@@ -9,7 +9,7 @@ Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app
 Die Bibliothek enthält:
 
 - 23 Grundzeichen
-- 6 Organisationen
+- 7 Organisationen
 - 30 Fachaufgaben
 - 40 Symbole
 - 8 Einheiten
@@ -32,7 +32,7 @@ const tz = erzeugeTaktischesZeichen({
 });
 
 // <?xml version="1.0" encoding="UTF-8"?><svg>...</svg>
-console.log(tz.svg);
+console.log(tz.toString());
 
 // data:image/svg+xml;base64,...
 console.log(tz.dataUrl);

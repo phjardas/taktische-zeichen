@@ -9,17 +9,13 @@ Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app
 Die Bibliothek enthält:
 
 - 23 Grundzeichen
-- 6 Organisationen
+- 7 Organisationen
 - 30 Fachaufgaben
 - 40 Symbole
 - 8 Einheiten
 - 6 Verwaltungsstufen
 
 ## Anwendung
-
-Beide Bibliotheken beinhalten TypeScript-Definitionen.
-
-In NodeJS oder im Browser:
 
 ```jsx
 import { TaktischesZeichen } from "taktische-zeichen-react";
@@ -31,13 +27,13 @@ function App() {
       organisation="feuerwehr"
       fachaufgabe="brandbekaempfung"
       einheit="gruppe"
-      {/* weitere Props werden durchgereicht */}
+      {/* weitere Props werden an <svg> durchgereicht */}
       className="..."
     />
   );
 }
 
-// Rendert <img src="data:image/svg+xml;base64,..." />
+// Rendert <svg>...</svg>
 ```
 
 ## Lizenz
