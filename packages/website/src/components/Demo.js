@@ -42,7 +42,7 @@ const beispiele = [
     tz: {
       grundzeichen: "befehlsstelle",
       organisation: "fuehrung",
-      symbol: "katsl",
+      text: "KatSL",
     },
   },
   {
@@ -205,6 +205,23 @@ export function Demo() {
                 </option>
               ))}
             </select>
+          </div>
+        )}
+        {enabled("symbol") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Text
+            </label>
+            <input
+              id="text"
+              type="text"
+              value={taktischesZeichen.text ?? ""}
+              onChange={onChange("text")}
+              className="form-control"
+            />
+            <div className="form-text">
+              Erlaubte Zeichen: A-Z a-z 0-9 / - _ ( ) ? ! Leerzeichen.
+            </div>
           </div>
         )}
       </form>

@@ -41,6 +41,9 @@ async function main() {
       type: "string",
       choices: symbole.map(({ id }) => id),
     })
+    .option("text", {
+      type: "string",
+    })
     .option("output", {
       type: "string",
       default: "custom.svg",

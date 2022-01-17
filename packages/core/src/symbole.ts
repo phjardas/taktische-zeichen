@@ -23,20 +23,6 @@ export type SymbolId =
   | "kraftrad"
   | "flugzeug"
   | "hubschrauber"
-  | "meldekopf"
-  | "katsl"
-  | "tel"
-  | "einsatzleitung"
-  | "einsatzabschnittsleitung"
-  | "untereinsatzabschnittsleitung"
-  | "leitender-notarzt"
-  | "organisatorischer-leiter-rettungsdienst"
-  | "kreisbrandmeister"
-  | "gemeindebrandinspektor"
-  | "stadtbrandinspektor"
-  | "kreisbrandinspektor"
-  | "leiter-gefahrenabwehr"
-  | "fuehrungsstab"
   | "entstehungsbrand"
   | "fortentwickelter-brand"
   | "vollbrand"
@@ -374,44 +360,6 @@ export const personGerettet: SymbolSpec = {
     factory.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h45"),
 };
 
-function getTextHeight(text: string) {
-  return ["g", "j", "p", "q", "y"].some((letter) => text.includes(letter))
-    ? 28
-    : 21.5;
-}
-
-function textSymbol(
-  text: string,
-  width: number
-): SymbolSpec & { text: string } {
-  return {
-    text,
-    size: [width, getTextHeight(text)],
-    render: (factory) =>
-      factory
-        .registerText()
-        .text([-2, 21.5], text)
-        .attr("fill", "black")
-        .attr("stroke-width", 0)
-        .attr("class", "slab"),
-  };
-}
-
-export const meldekopf = textSymbol("M", 24.5);
-export const katsl = textSymbol("KatSL", 77);
-export const tel = textSymbol("TEL", 52);
-export const einsatzleitung = textSymbol("EL", 33);
-export const einsatzabschnittsleitung = textSymbol("EAL", 54);
-export const untereinsatzabschnittsleitung = textSymbol("UEAL", 75);
-export const leitenderNotarzt = textSymbol("LNA", 56);
-export const organisatorischerLeiterRettungsdienst = textSymbol("OrgL", 62);
-export const kreisbrandmeister = textSymbol("KBM", 64.5);
-export const gemeindebrandinspektor = textSymbol("GBI", 45);
-export const stadtbrandinspektor = textSymbol("SBI", 44);
-export const kreisbrandinspektor = textSymbol("KBI", 47);
-export const leiterGefahrenabwehr = textSymbol("LtrGA", 76);
-export const fuehrungsstab = textSymbol("F&#xFC;Stb", 77);
-
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -434,52 +382,6 @@ export const symbole: Array<Symbol> = [
   { ...kraftrad, id: "kraftrad", label: "Kraftrad" },
   { ...flugzeug, id: "flugzeug", label: "Flugzeug" },
   { ...hubschrauber, id: "hubschrauber", label: "Hubschrauber" },
-  { ...meldekopf, id: "meldekopf", label: "Meldekopf" },
-  { ...katsl, id: "katsl", label: "Katastrophenschutzleitung" },
-  { ...tel, id: "tel", label: "Technische Einsatzleitung" },
-  { ...einsatzleitung, id: "einsatzleitung", label: "Einsatzleitung" },
-  {
-    ...einsatzabschnittsleitung,
-    id: "einsatzabschnittsleitung",
-    label: "Einsatzabschnittsleitung",
-  },
-  {
-    ...untereinsatzabschnittsleitung,
-    id: "untereinsatzabschnittsleitung",
-    label: "Untereinsatzabschnittsleitung",
-  },
-  { ...leitenderNotarzt, id: "leitender-notarzt", label: "Leitender Notarzt" },
-  {
-    ...organisatorischerLeiterRettungsdienst,
-    id: "organisatorischer-leiter-rettungsdienst",
-    label: "Organisatorischer Leiter Rettungsdienst",
-  },
-  {
-    ...kreisbrandmeister,
-    id: "kreisbrandmeister",
-    label: "Kreisbrandmeister",
-  },
-  {
-    ...gemeindebrandinspektor,
-    id: "gemeindebrandinspektor",
-    label: "Gemeindebrandinspektor",
-  },
-  {
-    ...stadtbrandinspektor,
-    id: "stadtbrandinspektor",
-    label: "Stadtbrandinspektor",
-  },
-  {
-    ...kreisbrandinspektor,
-    id: "kreisbrandinspektor",
-    label: "Kreisbrandinspektor",
-  },
-  {
-    ...leiterGefahrenabwehr,
-    id: "leiter-gefahrenabwehr",
-    label: "Leiter Gefahrenabwehr",
-  },
-  { ...fuehrungsstab, id: "fuehrungsstab", label: "Führungsstab" },
   { ...entstehungsbrand, id: "entstehungsbrand", label: "Entstehungsbrand" },
   {
     ...fortentwickelterBrand,

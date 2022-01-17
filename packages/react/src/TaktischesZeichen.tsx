@@ -15,6 +15,7 @@ export default function TaktischesZeichen({
   einheit,
   funktion,
   symbol,
+  text,
   ...props
 }: Props) {
   const icon = erzeugeTaktischesZeichen({
@@ -24,6 +25,7 @@ export default function TaktischesZeichen({
     einheit,
     funktion,
     symbol,
+    text,
   });
 
   return <img src={icon.dataUrl} {...props} />;

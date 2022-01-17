@@ -58,10 +58,6 @@ export class SVGElementFactory {
     return new Leaf("use").attr("href", href);
   }
 
-  text(pos: Point, text: string) {
-    return this.textNode("text", text).attr("x", pos[0]).attr("y", pos[1]);
-  }
-
   textNode(name: string, content: string) {
     return new TextNode(name, content);
   }
@@ -142,6 +138,6 @@ export class SVG extends Container {
   }
 
   render() {
-    return '<?xml version="1.0" encoding="UTF-8"?>' + super.render();
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + super.render();
   }
 }

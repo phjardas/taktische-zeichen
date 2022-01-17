@@ -9,8 +9,20 @@ import {
 import { organisationen } from "./organisationen";
 import { SVGElementFactory } from "./svg";
 import { symbole } from "./symbole";
-import { type Image, type Point, type TaktischesZeichen } from "./types";
-import { addPoints, ImageImpl, placeComponent, subtractPoints } from "./utils";
+import { createTextSymbol } from "./text";
+import {
+  type Image,
+  type Point,
+  type TaktischesZeichen,
+  type Padding,
+} from "./types";
+import {
+  addPoints,
+  ImageImpl,
+  placeComponent,
+  resolvePadding,
+  subtractPoints,
+} from "./utils";
 
 function get<T extends { id: string }>(
   id: string | undefined,
@@ -107,20 +119,38 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       );
     }
 
-    if (symbol && accepts(grund, "symbol")) {
-      svg.push(
-        factory
-          .g()
-          .attr("clip-path", "url(#gz-mask)")
-          .push(
-            placeComponent({
-              parent: grund,
-              component: symbol,
-              padding: grund.padding,
-              factory,
-            })
-          )
-      );
+    if (accepts(grund, "symbol")) {
+      if (symbol) {
+        svg.push(
+          factory
+            .g()
+            .attr("clip-path", "url(#gz-mask)")
+            .push(
+              placeComponent({
+                parent: grund,
+                component: symbol,
+                padding: grund.padding,
+                factory,
+              })
+            )
+        );
+      }
+
+      if (spec.text) {
+        svg.push(
+          factory
+            .g()
+            .attr("clip-path", "url(#gz-mask)")
+            .push(
+              placeComponent({
+                parent: grund,
+                component: createTextSymbol(spec.text),
+                padding: getTextPadding(grund.padding),
+                factory,
+              })
+            )
+        );
+      }
     }
   } else if (symbol) {
     viewBox[1] = symbol.size;
@@ -137,6 +167,12 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     viewBox[1][0] - viewBox[0][0],
     viewBox[1][1] - viewBox[0][1],
   ]);
+}
+
+function getTextPadding(padding?: Padding): Padding | undefined {
+  if (!padding) return undefined;
+  const pad = resolvePadding(padding);
+  return [pad[0], pad[1] / 2, pad[2], pad[3] / 2];
 }
 
 function accepts({ accepts }: Grundzeichen, type: ComponentType): boolean {

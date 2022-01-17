@@ -48,7 +48,6 @@ export function placeComponent({
   padding?: Padding;
   factory: SVGElementFactory;
 }) {
-  const icon = component.render(factory);
   const { offset, scale } = calculateComponentPosition({
     parent,
     component,
@@ -61,7 +60,7 @@ export function placeComponent({
   }
   if (scale !== 1) transformations.push(`scale(${scale})`);
 
-  const wrapper = factory.g().push(icon);
+  const wrapper = factory.g().push(component.render(factory));
 
   if (transformations.length) {
     wrapper.attr("transform", transformations.join(" "));

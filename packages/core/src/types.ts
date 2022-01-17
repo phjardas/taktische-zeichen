@@ -25,6 +25,7 @@ export type TaktischesZeichen = {
   einheit?: EinheitId;
   funktion?: FunktionId;
   symbol?: SymbolId;
+  text?: string;
 };
 
 export type Image = {
