@@ -41,7 +41,10 @@ export type SymbolId =
   | "teilzerstoert"
   | "zerstoert"
   | "teilblockiert"
-  | "blockiert";
+  | "blockiert"
+  | "tendenz-steigend"
+  | "tendenz-fallend"
+  | "tendenz-unveraendert";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -95,6 +98,36 @@ export const sprengmittel: SymbolSpec = {
       .push(svg.circle([8, 9], 1).attr("fill", "black"))
       .push(svg.circle([8, 9], 7))
       .push(svg.path("M4,2.5 l-1,-2 M11.5,2.5 l1,-2")),
+};
+
+export const tendenzSteigend: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.path("M5,40 L38,7"))
+      .push(svg.path("M40,5 l-8,3 l5,5 l3,-8").attr("fill", "black").attr("stroke-width", 0))      
+      .push(svg.rect([1, 1], [43, 43])),
+};
+
+export const tendenzFallend: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.path("M5,5 L38,38"))
+      .push(svg.path("M40,40 l-8,-3 l5,-5 l3,8").attr("fill", "black").attr("stroke-width", 0))      
+      .push(svg.rect([1, 1], [43, 43])),
+};
+
+export const tendenzUnveraendert: SymbolSpec = {
+  size: [45, 45],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.path("M5,23 L38,23"))
+      .push(svg.path("M40,23 l-8,4 l0,-8 l8,4").attr("fill", "black").attr("stroke-width", 0))      
+      .push(svg.rect([1, 1], [43, 43])),
 };
 
 export const beleuchtung: SymbolSpec = {
@@ -404,4 +437,7 @@ export const symbole: Array<Symbol> = [
   { ...zerstoert, id: "zerstoert", label: "zerstört" },
   { ...teilblockiert, id: "teilblockiert", label: "teilblockiert" },
   { ...blockiert, id: "blockiert", label: "blockiert" },
+  { ...tendenzSteigend, id: "tendenz-steigend", label: "Tendenz steigend" },
+  { ...tendenzFallend, id: "tendenz-fallend", label: "Tendenz fallend" },
+  { ...tendenzUnveraendert, id: "tendenz-unveraendert", label: "Tendenz unverändert" },
 ];
