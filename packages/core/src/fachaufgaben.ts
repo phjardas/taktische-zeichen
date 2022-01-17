@@ -1,4 +1,4 @@
-import { SVGElementFactory } from "./svg";
+import { SVG } from "./svg";
 import {
   beleuchtung,
   bett,
@@ -57,8 +57,8 @@ export type Fachaufgabe = Renderable & {
   cover?: boolean;
 };
 
-const brandbekaempfung = (factory: SVGElementFactory) =>
-  factory.path("M0,22.5 H75 M75,0 L50,22.5 L75,45");
+const brandbekaempfung = (svg: SVG) =>
+  svg.path("M0,22.5 H75 M75,0 L50,22.5 L75,45");
 
 const logistik: Parent & Component = {
   size: [74, 45],
@@ -66,8 +66,7 @@ const logistik: Parent & Component = {
     [0, 0],
     [74, 37],
   ],
-  render: (factory: SVGElementFactory) =>
-    factory.rect([0, 37], [75, 8]).attr("fill", "black"),
+  render: (svg: SVG) => svg.rect([0, 37], [75, 8]).attr("fill", "black"),
 };
 
 function logistikFachaufgabe({
@@ -78,31 +77,31 @@ function logistikFachaufgabe({
     ...props,
     cover: true,
     size: logistik.size,
-    render: (factory) =>
-      factory
+    render: (svg) =>
+      svg
         .g()
-        .push(logistik.render(factory))
+        .push(logistik.render(svg))
         .push(
           placeComponent({
             parent: logistik,
             component: symbol,
             padding: [13, 20, 8],
-            factory,
+            svg,
           })
         ),
   };
 }
 
-const erkunden = (factory: SVGElementFactory) => factory.path("M0,45 L75,0");
+const erkunden = (svg: SVG) => svg.path("M0,45 L75,0");
 
 const abc: Component = {
   size: [30, 30],
-  render: (factory: SVGElementFactory) =>
-    factory
+  render: (svg: SVG) =>
+    svg
       .g()
-      .push(factory.circle([4, 4], 3).attr("fill", "black"))
-      .push(factory.circle([26, 4], 3).attr("fill", "black"))
-      .push(factory.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
+      .push(svg.circle([4, 4], 3).attr("fill", "black"))
+      .push(svg.circle([26, 4], 3).attr("fill", "black"))
+      .push(svg.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
 };
 
 function symbolFachaufgabe(
@@ -110,7 +109,7 @@ function symbolFachaufgabe(
 ): Pick<Fachaufgabe, "size" | "render"> {
   return {
     size: symbol.size,
-    render: (factory) => symbol.render(factory),
+    render: (svg) => symbol.render(svg),
   };
 }
 
@@ -132,12 +131,12 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Wasserversorgung und -förderung",
     size: [75, 45],
     cover: true,
-    render: (factory) =>
-      factory
+    render: (svg) =>
+      svg
         .g()
-        .push(brandbekaempfung(factory))
+        .push(brandbekaempfung(svg))
         .push(
-          factory.path(
+          svg.path(
             "M10,19 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V19"
           )
         ),
@@ -146,8 +145,8 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "technische-hilfeleistung",
     label: "Technische Hilfeleistung",
     size: [38, 10],
-    render: (factory) =>
-      factory.path(
+    render: (svg) =>
+      svg.path(
         "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0"
       ),
   },
@@ -161,7 +160,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Bergung",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.path("M0,15 H15 A22.5 20 180 1 0 60 15 H75"),
+    render: (svg) => svg.path("M0,15 H15 A22.5 20 180 1 0 60 15 H75"),
   },
   {
     id: "raeumen",
@@ -198,16 +197,16 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Messen, Spüren",
     size: [75, 45],
     cover: true,
-    render: (factory) =>
-      factory
+    render: (svg) =>
+      svg
         .g()
-        .push(erkunden(factory))
+        .push(erkunden(svg))
         .push(
           placeComponent({
             parent: { size: [75, 45] },
             component: abc,
             padding: [10, 20],
-            factory,
+            svg,
           })
         ),
   },
@@ -215,12 +214,12 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "dekontamination",
     label: "Dekontamination",
     ...abc,
-    render: (factory) =>
-      factory
+    render: (svg) =>
+      svg
         .g()
-        .push(abc.render(factory))
+        .push(abc.render(svg))
         .push(
-          factory.path(
+          svg.path(
             "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
           )
         ),
@@ -230,35 +229,35 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Rettungswesen, Sanitätswesen, Gesundheitswesen",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.path("M0,22.5 H75 M37.5,0 V45"),
+    render: (svg) => svg.path("M0,22.5 H75 M37.5,0 V45"),
   },
   {
     id: "aerztliche-versorgung",
     label: "Ärztliche Versorgung",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.path("M0,22.5 H75 M37.5,0 V45 M25,33 H50"),
+    render: (svg) => svg.path("M0,22.5 H75 M37.5,0 V45 M25,33 H50"),
   },
   {
     id: "krankenhaus",
     label: "Krankenhaus",
     size: [75, 45],
     cover: true,
-    render: (factory) =>
-      factory.path("M0,22.5 H75 M37.5,0 V45 M20,14.5 v16 M55,14.5 v16"),
+    render: (svg) =>
+      svg.path("M0,22.5 H75 M37.5,0 V45 M20,14.5 v16 M55,14.5 v16"),
   },
   {
     id: "betreuung",
     label: "Betreuung",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.path("M0,45 L37.5,1 L75,45"),
+    render: (svg) => svg.path("M0,45 L37.5,1 L75,45"),
   },
   {
     id: "seelsorge",
     label: "Seelsorge",
     size: [20, 27],
-    render: (factory) => factory.path("M8,0 V27 m4,0 V0 M0,8 H20 m0,4 H0"),
+    render: (svg) => svg.path("M8,0 V27 m4,0 V0 M0,8 H20 m0,4 H0"),
   },
   {
     id: "unterbringung",
@@ -306,14 +305,14 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Führung, Leitung, Stab",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.rect([0, 0], [75, 8]).attr("fill", "black"),
+    render: (svg) => svg.rect([0, 0], [75, 8]).attr("fill", "black"),
   },
   {
     id: "iuk",
     label: "Information und Kommunikation",
     size: [75, 45],
     cover: true,
-    render: (factory) => factory.path("M0,0 l37.5,28 v-11 L75,45"),
+    render: (svg) => svg.path("M0,0 l37.5,28 v-11 L75,45"),
   },
   {
     id: "erkundung",

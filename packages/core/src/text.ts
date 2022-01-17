@@ -6,8 +6,8 @@ export function createTextSymbol(text: string): Component {
 
   return {
     size: [width, getTextHeight(text)],
-    render: (factory) =>
-      applyFontStyles(factory.registerText().textNode("text", text))
+    render: (svg) =>
+      applyFontStyles(svg.registerText().textNode("text", text))
         .attr("x", "0")
         .attr("y", "21.5")
         .attr("stroke", "none")

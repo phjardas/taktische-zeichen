@@ -7,7 +7,7 @@ import {
   type Grundzeichen,
 } from "./grundzeichen";
 import { organisationen } from "./organisationen";
-import { SVGElementFactory } from "./svg";
+import { SVG } from "./svg";
 import { symbole } from "./symbole";
 import { createTextSymbol } from "./text";
 import {
@@ -48,9 +48,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     );
   }
 
-  const factory = new SVGElementFactory();
-  const svg = factory
-    .svg()
+  const svg = new SVG()
     .attr("fill", "transparent")
     .attr("stroke", "black")
     .attr("stroke-width", 2);
@@ -64,13 +62,13 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     viewBox[1] = grund.size;
 
     svg.push(
-      grund.render(factory, {
+      grund.render(svg, {
         fill: accepts(grund, "organisation") ? org?.background : undefined,
       })
     );
 
     if (grund.clipPath) {
-      factory.def(factory.clipPath("gz-mask").push(grund.clipPath(factory)));
+      svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
     }
 
     if (fachaufgabe && accepts(grund, "fachaufgabe")) {
@@ -78,9 +76,9 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
         parent: grund,
         component: fachaufgabe,
         padding: fachaufgabe.cover ? undefined : grund.padding,
-        factory,
+        svg,
       });
-      svg.push(factory.g().push(icon).attr("clip-path", "url(#gz-mask)"));
+      svg.push(svg.g().push(icon).attr("clip-path", "url(#gz-mask)"));
     }
 
     if (einheit && accepts(grund, "einheit")) {
@@ -102,7 +100,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       svg.push(
         einheit
-          .render(factory)
+          .render(svg)
           .attr("transform", `translate(${position[0]},${position[1]})`)
       );
     }
@@ -110,11 +108,11 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     if (funktion && accepts(grund, "funktion")) {
       const offset = (grund.size[0] - funktion.size[0]) / 2;
       svg.push(
-        factory
+        svg
           .g()
           .attr("clip-path", "url(#gz-mask)")
           .push(
-            funktion.render(factory).attr("transform", `translate(${offset},0)`)
+            funktion.render(svg).attr("transform", `translate(${offset},0)`)
           )
       );
     }
@@ -122,7 +120,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     if (accepts(grund, "symbol")) {
       if (symbol) {
         svg.push(
-          factory
+          svg
             .g()
             .attr("clip-path", "url(#gz-mask)")
             .push(
@@ -130,7 +128,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 parent: grund,
                 component: symbol,
                 padding: grund.padding,
-                factory,
+                svg,
               })
             )
         );
@@ -138,7 +136,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       if (spec.text) {
         svg.push(
-          factory
+          svg
             .g()
             .attr("clip-path", "url(#gz-mask)")
             .push(
@@ -146,7 +144,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 parent: grund,
                 component: createTextSymbol(spec.text),
                 padding: getTextPadding(grund.padding),
-                factory,
+                svg,
               })
             )
         );
@@ -154,7 +152,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     }
   } else if (symbol) {
     viewBox[1] = symbol.size;
-    svg.push(symbol.render(factory));
+    svg.push(symbol.render(svg));
   } else {
     throw new Error(
       'Entweder "grundzeichen" oder "symbol" müssen angegeben werden.'
@@ -163,7 +161,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
   svg.attr("viewBox", viewBox.flatMap((p) => p).join(" "));
 
-  return new ImageImpl(svg.render(), [
+  return new ImageImpl(svg, [
     viewBox[1][0] - viewBox[0][0],
     viewBox[1][1] - viewBox[0][1],
   ]);

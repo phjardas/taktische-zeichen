@@ -3,12 +3,12 @@ import { type FachaufgabeId } from "./fachaufgaben";
 import { type FunktionId } from "./funktionen";
 import { type GrundzeichenId } from "./grundzeichen";
 import { type OrganisationId } from "./organisationen";
-import { SVGElementFactory, type Element } from "./svg";
+import { SVG, type Element } from "./svg";
 import { type SymbolId } from "./symbole";
 
 export type Renderable<Props = unknown> = {
   size: Point;
-  render: (factory: SVGElementFactory, props?: Props) => Element;
+  render: (svg: SVG, props?: Props) => Element;
 };
 
 export type Point = [number, number];
@@ -29,7 +29,8 @@ export type TaktischesZeichen = {
 };
 
 export type Image = {
-  readonly svg: string;
+  readonly svg: SVG;
   readonly dataUrl: string;
   readonly size: Point;
+  toString(): string;
 };

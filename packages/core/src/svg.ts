@@ -1,12 +1,103 @@
 import { createFontStyle } from "./font";
 import type { Point } from "./types";
 
-export class SVGElementFactory {
+export abstract class Element {
+  readonly attributes: Record<string, string> = {};
+  readonly styles: Record<string, string> = {};
+
+  constructor(readonly name: string) {}
+
+  attr(key: string, value: string | number | undefined): this {
+    if (value !== undefined) this.attributes[key] = value.toString();
+    return this;
+  }
+
+  style(key: string, value: string | number | undefined): this {
+    if (value !== undefined) this.styles[key] = value.toString();
+    return this;
+  }
+
+  abstract render(): string;
+
+  protected renderTag(autoClose: boolean): string {
+    let tag = `<${this.name}`;
+    const attributes = this.renderAttributes();
+    if (attributes) tag += ` ${attributes}`;
+
+    if (autoClose) tag += " /";
+    tag += ">";
+    return tag;
+  }
+
+  private renderAttributes() {
+    const attrs = this.attributes;
+
+    const style = Object.entries(this.styles)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([key, value]) => `${key}:"${value}"`)
+      .join(";");
+    if (style) attrs.style = style;
+
+    return Object.entries(attrs)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([key, value]) => `${key}="${value}"`)
+      .join(" ");
+  }
+}
+
+export class Leaf extends Element {
+  constructor(name: string) {
+    super(name);
+  }
+
+  render() {
+    return this.renderTag(true);
+  }
+}
+
+export class Container extends Element {
+  readonly children: Array<Element> = [];
+
+  constructor(name: string) {
+    super(name);
+  }
+
+  push(child: Element): this {
+    this.children.push(child);
+    return this;
+  }
+
+  render() {
+    if (!this.children.length) return this.renderTag(true);
+
+    return (
+      this.renderTag(false) +
+      this.children.map((c) => c.render()).join("") +
+      `</${this.name}>`
+    );
+  }
+}
+
+export class TextNode extends Element {
+  constructor(name: string, readonly text: string) {
+    super(name);
+  }
+
+  render() {
+    return (
+      this.renderTag(false) + "<![CDATA[" + this.text + `]]></${this.name}>`
+    );
+  }
+}
+
+export class SVG extends Container {
   private isTextRegistered = false;
   private defs = new Container("defs");
 
-  svg() {
-    return new SVG().push(this.defs);
+  constructor() {
+    super("svg");
+    this.attr("xmlns", "http://www.w3.org/2000/svg");
+    this.push(this.defs);
   }
 
   def(element: Element) {
@@ -60,81 +151,6 @@ export class SVGElementFactory {
 
   textNode(name: string, content: string) {
     return new TextNode(name, content);
-  }
-}
-
-export abstract class Element {
-  readonly attributes: Record<string, string> = {};
-
-  constructor(readonly name: string) {}
-
-  attr(key: string, value: string | number | undefined): this {
-    if (value !== undefined) this.attributes[key] = value.toString();
-    return this;
-  }
-
-  abstract render(): string;
-
-  protected renderTag(autoClose: boolean): string {
-    let tag = `<${this.name}`;
-    const attributes = Object.entries(this.attributes)
-      .sort((a, b) => a[0].localeCompare(b[0]))
-      .map(([key, value]) => `${key}="${value}"`)
-      .join(" ");
-    if (attributes.length) tag += ` ${attributes}`;
-    if (autoClose) tag += " /";
-    tag += ">";
-    return tag;
-  }
-}
-
-export class Leaf extends Element {
-  constructor(name: string) {
-    super(name);
-  }
-
-  render() {
-    return this.renderTag(true);
-  }
-}
-
-export class Container extends Element {
-  private children: Array<Element> = [];
-
-  constructor(name: string) {
-    super(name);
-  }
-
-  push(child: Element): this {
-    this.children.push(child);
-    return this;
-  }
-
-  render() {
-    if (!this.children.length) return this.renderTag(true);
-
-    return (
-      this.renderTag(false) +
-      this.children.map((c) => c.render()).join("") +
-      `</${this.name}>`
-    );
-  }
-}
-
-export class TextNode extends Element {
-  constructor(name: string, private readonly text: string) {
-    super(name);
-  }
-
-  render() {
-    return this.renderTag(false) + this.text + `</${this.name}>`;
-  }
-}
-
-export class SVG extends Container {
-  constructor() {
-    super("svg");
-    this.attr("xmlns", "http://www.w3.org/2000/svg");
   }
 
   render() {

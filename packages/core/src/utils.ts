@@ -1,5 +1,5 @@
-import { SVG, SVGElementFactory } from "./svg";
-import type { Padding, Point, Renderable, Image } from "./types";
+import { SVG } from "./svg";
+import type { Image, Padding, Point, Renderable } from "./types";
 
 export type Parent = {
   size: Point;
@@ -12,28 +12,29 @@ export type Component = Renderable<any> & {
 };
 
 export function render(renderable: Renderable): Image {
-  const factory = new SVGElementFactory();
-  const svg = factory
-    .svg()
+  const svg = new SVG()
     .attr("fill", "transparent")
     .attr("stroke", "black")
     .attr("stroke-width", 2)
-    .attr("viewBox", `0 0 ${renderable.size[0]} ${renderable.size[1]}`)
-    .push(renderable.render(factory))
-    .render();
+    .attr("viewBox", `0 0 ${renderable.size[0]} ${renderable.size[1]}`);
+  svg.push(renderable.render(svg));
 
   return new ImageImpl(svg, renderable.size);
 }
 
 export class ImageImpl implements Image {
-  constructor(public readonly svg: string, public readonly size: Point) {}
+  constructor(public readonly svg: SVG, public readonly size: Point) {}
 
   get dataUrl() {
     const data =
       typeof window !== "undefined"
-        ? btoa(this.svg)
-        : Buffer.from(this.svg).toString("base64");
+        ? btoa(this.toString())
+        : Buffer.from(this.toString()).toString("base64");
     return `data:image/svg+xml;base64,${data}`;
+  }
+
+  toString() {
+    return this.svg.render();
   }
 }
 
@@ -41,12 +42,12 @@ export function placeComponent({
   parent,
   component,
   padding = [0, 0],
-  factory,
+  svg,
 }: {
   parent: Parent;
   component: Component;
   padding?: Padding;
-  factory: SVGElementFactory;
+  svg: SVG;
 }) {
   const { offset, scale } = calculateComponentPosition({
     parent,
@@ -60,7 +61,7 @@ export function placeComponent({
   }
   if (scale !== 1) transformations.push(`scale(${scale})`);
 
-  const wrapper = factory.g().push(component.render(factory));
+  const wrapper = svg.g().push(component.render(svg));
 
   if (transformations.length) {
     wrapper.attr("transform", transformations.join(" "));

@@ -17,6 +17,7 @@ export {
   type Organisation,
   type OrganisationId,
 } from "./organisationen";
+export * from "./svg";
 export { symbole, type Symbol, type SymbolId } from "./symbole";
 export { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
 export type { Image, TaktischesZeichen } from "./types";

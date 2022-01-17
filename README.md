@@ -8,10 +8,10 @@ Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app
 
 Die Bibliothek enthält:
 
-- 22 Grundzeichen
+- 23 Grundzeichen
 - 6 Organisationen
 - 30 Fachaufgaben
-- 53 Symbole
+- 40 Symbole
 - 8 Einheiten
 
 ## Anwendung
