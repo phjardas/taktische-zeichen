@@ -10,12 +10,16 @@
     "test": "lerna run test",
     "format": "lerna run format",
     "start": "lerna run --stream start",
-    "publish": "lerna run publish"
+    "publish": "lerna run publish",
+    "dev": "npm run build && concurrently \"npm run start\" \"npm run watch\"",
+    "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"npm run build\""
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.2",
     "@changesets/cli": "^2.19.0",
-    "lerna": "^4.0.0"
+    "concurrently": "^7.0.0",
+    "lerna": "^4.0.0",
+    "nodemon": "^2.0.15"
   },
   "volta": {
     "node": "16.13.2",
