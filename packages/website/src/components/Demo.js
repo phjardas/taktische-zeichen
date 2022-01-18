@@ -36,7 +36,7 @@ const beispiele = [
       grundzeichen: "stelle",
       organisation: "hilfsorganisation",
       fachaufgabe: "rettungswesen",
-      symbol: "ablage",
+      symbol: "sichten",
     },
   },
   {

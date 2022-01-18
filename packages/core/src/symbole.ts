@@ -29,7 +29,7 @@ export type SymbolId =
   | "sirene"
   | "lautsprecher"
   | "zelt"
-  | "ablage"
+  | "sichten"
   | "veterinaerwesen"
   | "person"
   | "person-verletzt"
@@ -294,7 +294,7 @@ export const zelt: SymbolSpec = {
   render: (svg) => svg.path("M13,1 l15,28 h-26 l15,-28"),
 };
 
-export const ablage: SymbolSpec = {
+export const sichten: SymbolSpec = {
   size: [30, 30],
   render: (svg) =>
     svg
@@ -383,7 +383,7 @@ export const symbole: Array<Symbol> = [
   { ...sirene, id: "sirene", label: "Sirene" },
   { ...lautsprecher, id: "lautsprecher", label: "Lautsprecher" },
   { ...zelt, id: "zelt", label: "Zelt" },
-  { ...ablage, id: "ablage", label: "Ablage" },
+  { ...sichten, id: "sichten", label: "Sichten, ordnen, verteilen" },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
   { ...person, id: "person", label: "Person" },
   { ...personVerletzt, id: "person-verletzt", label: "Person verletzt" },
