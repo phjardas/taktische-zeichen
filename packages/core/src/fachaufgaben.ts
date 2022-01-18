@@ -307,6 +307,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: (svg) => svg.rect([0, 0], [75, 8]).attr("fill", "black"),
+    nameArea: (grund) => [
+      addPoints(grund[0], [0, 7]),
+      addPoints(grund[1], [0, 7]),
+    ],
   },
   {
     id: "iuk",
