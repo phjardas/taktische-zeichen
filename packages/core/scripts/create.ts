@@ -46,16 +46,10 @@ async function main() {
       type: "string",
       choices: symbole.map(({ id }) => id),
     })
-    .option("text", {
-      type: "string",
-    })
-    .option("name", {
-      type: "string",
-    })
-    .option("output", {
-      type: "string",
-      default: "custom.svg",
-    }).argv;
+    .option("text", { type: "string" })
+    .option("name", { type: "string" })
+    .option("organisation-name", { type: "string" })
+    .option("output", { type: "string", default: "custom.svg" }).argv;
 
   const tz = erzeugeTaktischesZeichen(spec as TaktischesZeichen);
   await fs.mkdir(basedir, { recursive: true });

@@ -9,6 +9,7 @@ import {
   SymbolSpec,
 } from "./symbole";
 import type { Padding, Point, Rect, Renderable } from "./types";
+import { subtractPoints } from "./utils";
 
 export type GrundzeichenId =
   | "ohne"
@@ -54,6 +55,7 @@ export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   clipPath?(svg: SVG): Element;
   paintableArea?: Rect;
   nameArea?: Rect;
+  organisationNameArea?: Rect;
   padding?: Padding;
   textPadding?: Padding;
   einheitAnchor?: Point;
@@ -102,6 +104,7 @@ const fahrzeugGrundzeichen: Pick<
   | "size"
   | "paintableArea"
   | "nameArea"
+  | "organisationNameArea"
   | "einheitAnchor"
   | "accepts"
   | "padding"
@@ -114,6 +117,10 @@ const fahrzeugGrundzeichen: Pick<
   nameArea: [
     [3, 7],
     [35, 7 + nameHeight],
+  ],
+  organisationNameArea: [
+    [40, 42 - nameHeight],
+    [72, 42],
   ],
   einheitAnchor: [37.5, 4.5],
   accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
@@ -139,6 +146,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 3],
       [35, 3 + nameHeight],
     ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     textPadding: [10, 10],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
   },
@@ -155,6 +166,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     nameArea: [
       [3, 3],
       [35, 3 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
     ],
     padding: [10, 20],
     textPadding: [10, 10],
@@ -222,6 +237,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 12],
       [35, 12 + nameHeight],
     ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     accepts: ["fachaufgabe", "symbol", "organisation", "name"],
     padding: [10, 20],
     textPadding: [10, 10],
@@ -276,6 +295,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 7],
       [35, 7 + nameHeight],
     ],
+    organisationNameArea: [
+      [40, 39 - nameHeight],
+      [72, 39],
+    ],
     einheitAnchor: [39.5, 4.5],
     accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [15, 10, 10],
@@ -298,6 +321,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [9, 7],
       [39, 7 + nameHeight],
     ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
@@ -316,6 +343,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     nameArea: [
       [9, 7],
       [39, 7 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
     ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
@@ -365,6 +396,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     nameArea: [
       [3, 2.5],
       [20, 7],
+    ],
+    organisationNameArea: [
+      [21.75, 11.75],
+      [21.75 + 13, 11.75 + 3],
     ],
     accepts: [
       "einheit",

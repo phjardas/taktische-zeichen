@@ -56,6 +56,7 @@ export type Fachaufgabe = Renderable & {
   label: string;
   cover?: boolean;
   nameArea?: (grundNameArea: Rect) => Rect;
+  organisationNameArea?: (grundNameArea: Rect) => Rect;
 };
 
 const brandbekaempfung = (svg: SVG) =>
@@ -78,6 +79,10 @@ function logistikFachaufgabe({
     ...props,
     cover: true,
     size: logistik.size,
+    organisationNameArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
     render: (svg) =>
       svg
         .g()
@@ -121,6 +126,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: brandbekaempfung,
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-8, 0])],
   },
   {
     id: "hoehenrettung",
@@ -141,6 +147,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
             "M27,19 v-5 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 v5"
           )
         ),
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-8, 0])],
   },
   {
     id: "technische-hilfeleistung",
@@ -253,6 +260,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: (svg) => svg.path("M0,45 L37.5,1 L75,45"),
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-5, 0])],
   },
   {
     id: "seelsorge",
@@ -318,9 +326,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     nameArea: (grund) => [
-      addPoints(grund[0], [15, 0]),
-      addPoints(grund[1], [15, 0]),
+      addPoints(grund[0], [17, 0]),
+      addPoints(grund[1], [17, 0]),
     ],
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-10, 0])],
     render: (svg) => svg.path("M0,0 l37.5,28 v-11 L75,45"),
   },
   {

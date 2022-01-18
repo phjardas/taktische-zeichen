@@ -35,6 +35,7 @@ export type TaktischesZeichen = {
   symbol?: SymbolId;
   text?: string;
   name?: string;
+  organisationName?: string;
 };
 
 export type Image = {

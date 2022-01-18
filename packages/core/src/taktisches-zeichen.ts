@@ -207,7 +207,35 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
               component: createTextSymbol(spec.name, {
                 fill: org?.textColor ?? "black",
               }),
-              align: ["start", "center"],
+              align: ["start", "start"],
+              svg,
+            }).element
+          )
+      );
+    }
+
+    if (spec.organisationName && accepts(grund, "name")) {
+      const grundNameArea = grund.organisationNameArea ??
+        grund.paintableArea ?? [[0, 0], grund.size];
+      const fachaufgabeNameArea =
+        fachaufgabe?.organisationNameArea &&
+        transformRect(fachaufgabe?.organisationNameArea?.(grundNameArea), {
+          offset: mainPosition,
+          scale: mainScale,
+        });
+      const paintableArea = fachaufgabeNameArea ?? grundNameArea;
+
+      svg.push(
+        svg
+          .g()
+          .attr("clip-path", "url(#gz-mask)")
+          .push(
+            placeComponent({
+              parent: { ...grund, paintableArea },
+              component: createTextSymbol(spec.organisationName, {
+                fill: org?.textColor ?? "black",
+              }),
+              align: ["end", "end"],
               svg,
             }).element
           )

@@ -278,6 +278,20 @@ export function Demo() {
             />
           </div>
         )}
+        {enabled("name") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Name der Organisation
+            </label>
+            <input
+              id="organisationName"
+              type="text"
+              value={taktischesZeichen.organisationName ?? ""}
+              onChange={onChange("organisationName")}
+              className="form-control"
+            />
+          </div>
+        )}
       </form>
       <p>
         Beispiele:
