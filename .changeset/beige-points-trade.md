@@ -1,6 +1,6 @@
 ---
-"taktische-zeichen-core": minor
-"taktische-zeichen-react": minor
+"taktische-zeichen-core": patch
+"taktische-zeichen-react": patch
 ---
 
 Symbol "Bagger" korrigiert.
