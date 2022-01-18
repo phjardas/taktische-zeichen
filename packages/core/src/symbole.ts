@@ -46,7 +46,9 @@ export type SymbolId =
   | "teilzerstoert"
   | "zerstoert"
   | "teilblockiert"
-  | "blockiert";
+  | "blockiert"
+  | "abc"
+  | "dekontamination";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -387,6 +389,29 @@ export const personTransportiert: SymbolSpec = {
     ),
 };
 
+export const abc: SymbolSpec = {
+  size: [30, 30],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.circle([4, 4], 3).attr("fill", "black"))
+      .push(svg.circle([26, 4], 3).attr("fill", "black"))
+      .push(svg.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
+};
+
+export const dekontamination: SymbolSpec = {
+  size: abc.size,
+  render: (svg) =>
+    svg
+      .g()
+      .push(abc.render(svg))
+      .push(
+        svg.path(
+          "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
+        )
+      ),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -449,4 +474,6 @@ export const symbole: Array<Symbol> = [
   { ...zerstoert, id: "zerstoert", label: "zerstört" },
   { ...teilblockiert, id: "teilblockiert", label: "teilblockiert" },
   { ...blockiert, id: "blockiert", label: "blockiert" },
+  { ...abc, id: "abc", label: "Gefährliche Stoffen oder Güter, ABC" },
+  { ...dekontamination, id: "dekontamination", label: "Dekontamination" },
 ];

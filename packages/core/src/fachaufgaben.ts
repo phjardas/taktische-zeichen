@@ -1,8 +1,10 @@
 import { SVG } from "./svg";
 import {
+  abc,
   beleuchtung,
   bett,
   brauchwasser,
+  dekontamination,
   drehleiter,
   elektrizitaet,
   geraete,
@@ -36,6 +38,8 @@ export type FachaufgabeId =
   | "abc"
   | "messen"
   | "dekontamination"
+  | "dekontamination-personen"
+  | "dekontamination-geraete"
   | "rettungswesen"
   | "aerztliche-versorgung"
   | "krankenhaus"
@@ -103,16 +107,6 @@ function logistikFachaufgabe({
 }
 
 const erkunden = (svg: SVG) => svg.path("M0,45 L75,0");
-
-const abc: Component = {
-  size: [30, 30],
-  render: (svg: SVG) =>
-    svg
-      .g()
-      .push(svg.circle([4, 4], 3).attr("fill", "black"))
-      .push(svg.circle([26, 4], 3).attr("fill", "black"))
-      .push(svg.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
-};
 
 function symbolFachaufgabe(
   symbol: SymbolSpec
@@ -202,7 +196,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "abc",
     label: "Gefahrenabwehr bei Gefährlichen Stoffen und Gütern, ABC-Schutz",
-    ...abc,
+    ...symbolFachaufgabe(abc),
   },
   {
     id: "messen",
@@ -225,16 +219,27 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "dekontamination",
     label: "Dekontamination",
-    ...abc,
+    ...symbolFachaufgabe(dekontamination),
+  },
+  {
+    id: "dekontamination-personen",
+    label: "Dekontamination Personen",
+    size: dekontamination.size,
     render: (svg) =>
       svg
         .g()
-        .push(abc.render(svg))
-        .push(
-          svg.path(
-            "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
-          )
-        ),
+        .push(dekontamination.render(svg))
+        .push(svg.path("M13.5,30 v-9 h2 a2 2 0 0 1 0 4.5 h-2")),
+  },
+  {
+    id: "dekontamination-geraete",
+    label: "Dekontamination Geräte",
+    size: dekontamination.size,
+    render: (svg) =>
+      svg
+        .g()
+        .push(dekontamination.render(svg))
+        .push(svg.path("M18.5,23 a4 4 0 1 0 0 4 m-3,-1 h3 v4")),
   },
   {
     id: "rettungswesen",
