@@ -32,6 +32,8 @@ export type SymbolId =
   | "sichten"
   | "veterinaerwesen"
   | "schlachten"
+  | "tier-verletzt"
+  | "tier-tot"
   | "person"
   | "person-verletzt"
   | "person-tot"
@@ -313,6 +315,16 @@ export const schlachten: SymbolSpec = {
   render: (svg) => svg.path("M0,1 h45 m-39,0 l-4,10 h15 l-4,-10"),
 };
 
+export const tierVerletzt: SymbolSpec = {
+  size: [30, 35],
+  render: (svg) => svg.path("M0,6 h5 l10,26 l10,-26 h5 M15,0 v20"),
+};
+
+export const tierTot: SymbolSpec = {
+  size: [30, 35],
+  render: (svg) => svg.path("M0,6 h5 l10,26 l10,-26 h5 M15,0 v20 m-5,-14 h10"),
+};
+
 export const person: SymbolSpec = {
   size: [45, 45],
   render: (svg) => svg.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z"),
@@ -392,6 +404,8 @@ export const symbole: Array<Symbol> = [
   { ...sichten, id: "sichten", label: "Sichten, ordnen, verteilen" },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
   { ...schlachten, id: "schlachten", label: "Schlachten" },
+  { ...tierVerletzt, id: "tier-verletzt", label: "Tier verletzt" },
+  { ...tierTot, id: "tier-tot", label: "Tier tot" },
   { ...person, id: "person", label: "Person" },
   { ...personVerletzt, id: "person-verletzt", label: "Person verletzt" },
   { ...personTot, id: "person-tot", label: "Person tot" },
