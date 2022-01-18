@@ -55,8 +55,4 @@ Wenn alles gut gelaufen ist, erhälst du automatisch einen Kommentar in deinem P
 
 ## Statistiken
 
-Wenn du ein neues Element hinzufügst oder eines entfernst, passe bitte die Statistiken in den folgenden Dateien an:
-
-- [`README.md`](README.md)
-- [`packages/core/README.md`](packages/core/README.md)
-- [`packages/react/README.md`](packages/react/README.md)
+Wenn du ein neues Element hinzufügst oder eines entfernst, passe bitte die Statistiken in den READMEs an: `npx lerna statistics`.

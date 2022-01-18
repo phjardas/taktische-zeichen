@@ -29,7 +29,8 @@
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "format": "prettier --write src",
-    "create": "ts-node -P tsconfig-scripts.json scripts/create.ts"
+    "create": "ts-node -P tsconfig-scripts.json scripts/create.ts",
+    "statistics": "ts-node -P tsconfig-scripts.json scripts/statistics.ts"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

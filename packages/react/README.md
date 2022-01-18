@@ -8,12 +8,16 @@ Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app
 
 Die Bibliothek enthält:
 
+<!-- STATISTICS:START -->
+
 - 25 Grundzeichen
+- 34 Fachaufgaben
 - 7 Organisationen
-- 32 Fachaufgaben
-- 45 Symbole
 - 8 Einheiten
 - 6 Verwaltungsstufen
+- 47 Symbole
+
+<!-- STATISTICS:END -->
 
 ## Anwendung
 
