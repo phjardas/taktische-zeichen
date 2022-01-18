@@ -8,6 +8,7 @@ import {
   geraete,
   hebegeraet,
   raeumgeraet,
+  schlachten,
   sprengmittel,
   sprengung,
   SymbolSpec,
@@ -15,6 +16,7 @@ import {
   trinkwasser,
   verbrauchsgueter,
   verpflegung,
+  veterinaerwesen,
 } from "./symbole";
 import type { Rect, Renderable } from "./types";
 import { addPoints, Component, Parent, placeComponent } from "./utils";
@@ -49,7 +51,9 @@ export type FachaufgabeId =
   | "instandhaltung"
   | "fuehrung"
   | "iuk"
-  | "erkundung";
+  | "erkundung"
+  | "veterinaerwesen"
+  | "schlachten";
 
 export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
@@ -338,5 +342,15 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: erkunden,
+  },
+  {
+    id: "veterinaerwesen",
+    label: "Veterinärwesen",
+    ...symbolFachaufgabe(veterinaerwesen),
+  },
+  {
+    id: "schlachten",
+    label: "Schlachten",
+    ...symbolFachaufgabe(schlachten),
   },
 ];

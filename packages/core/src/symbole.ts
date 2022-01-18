@@ -31,6 +31,7 @@ export type SymbolId =
   | "zelt"
   | "sichten"
   | "veterinaerwesen"
+  | "schlachten"
   | "person"
   | "person-verletzt"
   | "person-tot"
@@ -307,6 +308,11 @@ export const veterinaerwesen: SymbolSpec = {
   render: (svg) => svg.path("M0,1 h5 l10,26 l10,-26 h5"),
 };
 
+export const schlachten: SymbolSpec = {
+  size: [45, 12],
+  render: (svg) => svg.path("M0,1 h45 m-39,0 l-4,10 h15 l-4,-10"),
+};
+
 export const person: SymbolSpec = {
   size: [45, 45],
   render: (svg) => svg.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z"),
@@ -385,6 +391,7 @@ export const symbole: Array<Symbol> = [
   { ...zelt, id: "zelt", label: "Zelt" },
   { ...sichten, id: "sichten", label: "Sichten, ordnen, verteilen" },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
+  { ...schlachten, id: "schlachten", label: "Schlachten" },
   { ...person, id: "person", label: "Person" },
   { ...personVerletzt, id: "person-verletzt", label: "Person verletzt" },
   { ...personTot, id: "person-tot", label: "Person tot" },
