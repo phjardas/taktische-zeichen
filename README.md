@@ -1,6 +1,6 @@
 # Taktische Zeichen
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript.
@@ -93,6 +93,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://jardas.de/"><img src="https://avatars.githubusercontent.com/u/1437300?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Philipp Jardas</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Code">💻</a> <a href="#content-phjardas" title="Content">🖋</a> <a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Documentation">📖</a> <a href="#projectManagement-phjardas" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/PatrickReichel"><img src="https://avatars.githubusercontent.com/u/59778648?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PatrickReichel</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/pulls?q=is%3Apr+reviewed-by%3APatrickReichel" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/einsatzverwaltung"><img src="https://avatars.githubusercontent.com/u/59615464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>einsatzverwaltung</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=einsatzverwaltung" title="Code">💻</a> <a href="#userTesting-einsatzverwaltung" title="User Testing">📓</a></td>
   </tr>
 </table>
 
