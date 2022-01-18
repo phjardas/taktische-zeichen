@@ -1,7 +1,7 @@
 {
   "name": "taktische-zeichen-website",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "clean": "shx rm -rf public",
     "start": "gatsby develop",
@@ -16,8 +16,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-syntax-highlighter": "^15.4.5",
-    "taktische-zeichen-core": "^0.3.0",
-    "taktische-zeichen-react": "^0.3.0"
+    "taktische-zeichen-core": "^0.4.0",
+    "taktische-zeichen-react": "^0.4.0"
   },
   "devDependencies": {
     "prettier": "^2.5.1",
