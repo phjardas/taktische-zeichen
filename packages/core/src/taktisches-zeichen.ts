@@ -68,6 +68,18 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
     }
 
+    if (grund.paintableArea) {
+      svg.push(
+        svg
+          .rect(
+            grund.paintableArea[0],
+            subtractPoints(grund.paintableArea[1], grund.paintableArea[0])
+          )
+          .attr("stroke", "none")
+          .attr("fill", "blue")
+          .attr("opacity", 0.5)
+      );
+    }
     let mainPosition: Point = [0, 0];
     let mainScale = 1;
 

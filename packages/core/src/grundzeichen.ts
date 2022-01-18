@@ -8,6 +8,7 @@ import {
   person,
   SymbolSpec,
 } from "./symbole";
+import { createTextSymbol, renderText } from "./text";
 import type { Padding, Point, Rect, Renderable } from "./types";
 import { subtractPoints } from "./utils";
 
@@ -34,7 +35,9 @@ export type GrundzeichenId =
   | "hubschrauber"
   | "massnahme"
   | "anlass"
-  | "gefahr";
+  | "gefahr"
+  | "gefahr-vermutet"
+  | "gefahr-akut";
 
 export type GrundzeichenRenderProps = {
   fill?: string;
@@ -450,5 +453,52 @@ export const grundzeichen: Array<Grundzeichen> = [
       svg.path("M22.5,34 L43.2,1 H1.8 Z").attr("fill", "white")
     ),
     padding: [5, 15, 15],
+  },
+  {
+    id: "gefahr-vermutet",
+    label: "Gefahr (vermutet)",
+    size: [51.5, 36],
+    accepts: ["symbol"],
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          svg
+            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .attr("fill", "white")
+            .attr("stroke", "red")
+        )
+        .push(renderText(svg, "?").attr("y", 35).attr("fill", "red")),
+    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+    paintableArea: [
+      [18, 3],
+      [38, 18],
+    ],
+  },
+  {
+    id: "gefahr-akut",
+    label: "Gefahr (akut)",
+    size: [51.5, 36],
+    accepts: ["symbol"],
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          svg
+            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .attr("fill", "white")
+            .attr("stroke", "red")
+        )
+        .push(
+          svg
+            .path("M5,13 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
+            .attr("fill", "red")
+            .attr("stroke", "none")
+        ),
+    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+    paintableArea: [
+      [18, 3],
+      [38, 18],
+    ],
   },
 ];
