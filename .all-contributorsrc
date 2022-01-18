@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "phjardas",
+      "name": "Philipp Jardas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1437300?v=4",
+      "profile": "https://jardas.de/",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "taktische-zeichen",
+  "projectOwner": "phjardas",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
