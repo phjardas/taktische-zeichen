@@ -43,6 +43,7 @@ export type FachaufgabeId =
   | "rettungswesen"
   | "aerztliche-versorgung"
   | "krankenhaus"
+  | "einsatzeinheit"
   | "betreuung"
   | "seelsorge"
   | "unterbringung"
@@ -262,6 +263,13 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     cover: true,
     render: (svg) =>
       svg.path("M0,22.5 H75 M37.5,0 V45 M20,14.5 v16 M55,14.5 v16"),
+  },
+  {
+    id: "einsatzeinheit",
+    label: "Einsatzeinheit",
+    size: [75, 45],
+    cover: true,
+    render: (svg) => svg.path("M0,22.5 H75 M37.5,0 V45 M0,45 L37.5,1 L75,45"),
   },
   {
     id: "betreuung",
