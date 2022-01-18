@@ -58,11 +58,11 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
   if (grund) {
     viewBox[1] = grund.size;
 
-    svg.push(
-      grund.render(svg, {
-        fill: accepts(grund, "organisation") ? org?.background : undefined,
-      })
-    );
+    const fill = accepts(grund, "organisation") ? org?.background : undefined;
+    const textColor =
+      (accepts(grund, "organisation") ? org?.textColor : undefined) ?? "black";
+
+    svg.push(grund.render(svg, { fill }));
 
     if (grund.clipPath) {
       svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
@@ -105,7 +105,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       svg.push(
         einheit
-          .render(svg)
+          .render(svg, { textColor })
           .attr("transform", `translate(${position[0]},${position[1]})`)
       );
     }
@@ -176,7 +176,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
               placeComponent({
                 parent: grund,
                 component: createTextSymbol(spec.text, {
-                  fill: org?.textColor ?? "black",
+                  fill: textColor,
                 }),
                 padding: grund.textPadding ?? grund.padding,
                 svg,
@@ -205,7 +205,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
             placeComponent({
               parent: { ...grund, paintableArea },
               component: createTextSymbol(spec.name, {
-                fill: org?.textColor ?? "black",
+                fill: textColor,
               }),
               align: ["start", "start"],
               svg,
@@ -233,7 +233,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
             placeComponent({
               parent: { ...grund, paintableArea },
               component: createTextSymbol(spec.organisationName, {
-                fill: org?.textColor ?? "black",
+                fill: textColor,
               }),
               align: ["end", "end"],
               svg,
