@@ -12,7 +12,13 @@ import { SVG } from "./svg";
 import { symbole } from "./symbole";
 import { createTextSymbol } from "./text";
 import { type Image, type Point, type TaktischesZeichen } from "./types";
-import { addPoints, ImageImpl, placeComponent, subtractPoints } from "./utils";
+import {
+  addPoints,
+  ImageImpl,
+  placeComponent,
+  subtractPoints,
+  transformRect,
+} from "./utils";
 
 function get<T extends { id: string }>(
   id: string | undefined,
@@ -62,14 +68,19 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
     }
 
+    let mainPosition: Point = [0, 0];
+    let mainScale = 1;
+
     if (fachaufgabe && accepts(grund, "fachaufgabe")) {
-      const { element } = placeComponent({
+      const placed = placeComponent({
         parent: grund,
         component: fachaufgabe,
         padding: fachaufgabe.cover ? undefined : grund.padding,
         svg,
       });
-      svg.push(svg.g().push(element).attr("clip-path", "url(#gz-mask)"));
+      svg.push(svg.g().push(placed.element).attr("clip-path", "url(#gz-mask)"));
+      mainPosition = placed.offset;
+      mainScale = placed.scale;
     }
 
     let topAnchor = grund.einheitAnchor ?? [
@@ -176,10 +187,15 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     }
 
     if (spec.name && accepts(grund, "name")) {
-      // TODO Wenn das Zeichen der Fachaufgabe skaliert oder verschoben wurde,
-      // muss die Position für den Namen auch transformiert werden.
-      const paintableArea =
-        fachaufgabe?.nameArea ?? grund.nameArea ?? grund.paintableArea;
+      const grundNameArea = grund.nameArea ??
+        grund.paintableArea ?? [[0, 0], grund.size];
+      const fachaufgabeNameArea =
+        fachaufgabe?.nameArea &&
+        transformRect(fachaufgabe?.nameArea?.(grundNameArea), {
+          offset: mainPosition,
+          scale: mainScale,
+        });
+      const paintableArea = fachaufgabeNameArea ?? grundNameArea;
 
       svg.push(
         svg
@@ -191,6 +207,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
               component: createTextSymbol(spec.name, {
                 fill: org?.textColor ?? "black",
               }),
+              align: ["start", "center"],
               svg,
             }).element
           )

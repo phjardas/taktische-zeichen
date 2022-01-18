@@ -17,7 +17,7 @@ import {
   verpflegung,
 } from "./symbole";
 import type { Rect, Renderable } from "./types";
-import { Component, Parent, placeComponent } from "./utils";
+import { addPoints, Component, Parent, placeComponent } from "./utils";
 
 export type FachaufgabeId =
   | "brandbekaempfung"
@@ -55,7 +55,7 @@ export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
   label: string;
   cover?: boolean;
-  nameArea?: Rect;
+  nameArea?: (grundNameArea: Rect) => Rect;
 };
 
 const brandbekaempfung = (svg: SVG) =>
@@ -131,10 +131,6 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "wasserversorgung",
     label: "Wasserversorgung und -förderung",
     size: [75, 45],
-    nameArea: [
-      [3, 6],
-      [25, 18],
-    ],
     cover: true,
     render: (svg) =>
       svg
@@ -317,6 +313,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Information und Kommunikation",
     size: [75, 45],
     cover: true,
+    nameArea: (grund) => [
+      addPoints(grund[0], [15, 0]),
+      addPoints(grund[1], [15, 0]),
+    ],
     render: (svg) => svg.path("M0,0 l37.5,28 v-11 L75,45"),
   },
   {

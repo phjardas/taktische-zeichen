@@ -1,4 +1,8 @@
-import { calculateComponentPosition, resolvePadding } from "./utils";
+import {
+  calculateComponentPosition,
+  resolvePadding,
+  transformRect,
+} from "./utils";
 
 describe("utils", () => {
   describe("resolvePadding", () => {
@@ -48,6 +52,53 @@ describe("utils", () => {
         padding: [10, 20],
       });
       expect(position).toEqual({ offset: [0, 10], scale: 2 });
+    });
+  });
+
+  describe("transformRect", () => {
+    it("should apply the offset", () => {
+      expect(
+        transformRect(
+          [
+            [1, 2],
+            [3, 4],
+          ],
+          { offset: [10, 20], scale: 1 }
+        )
+      ).toEqual([
+        [11, 22],
+        [13, 24],
+      ]);
+    });
+
+    it("should apply the scale, keeping the position", () => {
+      expect(
+        transformRect(
+          [
+            [1, 2],
+            [3, 4],
+          ],
+          { offset: [0, 0], scale: 2 }
+        )
+      ).toEqual([
+        [1, 2],
+        [5, 6],
+      ]);
+    });
+
+    it("should apply scale and then offset", () => {
+      expect(
+        transformRect(
+          [
+            [1, 2],
+            [3, 4],
+          ],
+          { offset: [10, 20], scale: 2 }
+        )
+      ).toEqual([
+        [11, 22],
+        [15, 26],
+      ]);
     });
   });
 });

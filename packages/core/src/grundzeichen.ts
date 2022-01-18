@@ -86,6 +86,8 @@ function symbolShape(
   };
 }
 
+const nameHeight = 6;
+
 const fahrzeugAccepts: Array<ComponentType> = [
   "fachaufgabe",
   "symbol",
@@ -110,8 +112,8 @@ const fahrzeugGrundzeichen: Pick<
   clipPath: fahrzeug.render,
   paintableArea: [[0, 0], fahrzeug.size],
   nameArea: [
-    [4, 10],
-    [32, 18],
+    [3, 7],
+    [35, 7 + nameHeight],
   ],
   einheitAnchor: [37.5, 4.5],
   accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
@@ -134,8 +136,8 @@ export const grundzeichen: Array<Grundzeichen> = [
     accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [10, 20],
     nameArea: [
-      [4, 6],
-      [32, 18],
+      [3, 3],
+      [35, 3 + nameHeight],
     ],
     textPadding: [10, 10],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
@@ -151,8 +153,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     nameArea: [
-      [4, 6],
-      [32, 18],
+      [3, 3],
+      [35, 3 + nameHeight],
     ],
     padding: [10, 20],
     textPadding: [10, 10],
@@ -217,8 +219,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     nameArea: [
-      [4, 13],
-      [32, 24],
+      [3, 12],
+      [35, 12 + nameHeight],
     ],
     accepts: ["fachaufgabe", "symbol", "organisation", "name"],
     padding: [10, 20],
@@ -271,8 +273,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     nameArea: [
-      [7, 10],
-      [32, 17],
+      [6, 7],
+      [35, 7 + nameHeight],
     ],
     einheitAnchor: [39.5, 4.5],
     accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
@@ -293,8 +295,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     nameArea: [
-      [10, 10],
-      [38, 17],
+      [9, 7],
+      [39, 7 + nameHeight],
     ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
@@ -312,8 +314,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     nameArea: [
-      [10, 10],
-      [38, 17],
+      [9, 7],
+      [39, 7 + nameHeight],
     ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
@@ -361,8 +363,8 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Wasserfahrzeug",
     size: [42, 22],
     nameArea: [
-      [4, 2.5],
-      [20, 10],
+      [3, 2.5],
+      [20, 7],
     ],
     accepts: [
       "einheit",
