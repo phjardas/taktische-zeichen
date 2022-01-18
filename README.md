@@ -14,10 +14,10 @@ Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app
 
 Die Bibliothek enthält:
 
-- 23 Grundzeichen
+- 25 Grundzeichen
 - 7 Organisationen
-- 30 Fachaufgaben
-- 40 Symbole
+- 32 Fachaufgaben
+- 45 Symbole
 - 8 Einheiten
 - 6 Verwaltungsstufen
 

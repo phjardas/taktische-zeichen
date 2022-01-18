@@ -295,6 +295,12 @@ export function Demo() {
       </form>
       <p>
         Beispiele:
+        <button
+          className="btn btn-link"
+          onClick={() => setTaktischesZeichen({})}
+        >
+          zurücksetzen
+        </button>
         {beispiele.map((beispiel, i) => (
           <button
             key={i}

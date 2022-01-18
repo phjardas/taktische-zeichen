@@ -40,6 +40,8 @@ export type SymbolId =
   | "person-vermisst"
   | "person-verschuettet"
   | "person-gerettet"
+  | "person-zu-transportieren"
+  | "person-transportiert"
   | "beschaedigt"
   | "teilzerstoert"
   | "zerstoert"
@@ -369,6 +371,22 @@ export const personGerettet: SymbolSpec = {
     svg.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h45"),
 };
 
+export const personZuTransportieren: SymbolSpec = {
+  size: [45, 48],
+  render: (svg) =>
+    svg.path(
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z"
+    ),
+};
+
+export const personTransportiert: SymbolSpec = {
+  size: [45, 48],
+  render: (svg) =>
+    svg.path(
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z m4,-2 v8"
+    ),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -416,6 +434,16 @@ export const symbole: Array<Symbol> = [
     label: "Person verschuettet",
   },
   { ...personGerettet, id: "person-gerettet", label: "Person gerettet" },
+  {
+    ...personZuTransportieren,
+    id: "person-zu-transportieren",
+    label: "Person zu transportieren",
+  },
+  {
+    ...personTransportiert,
+    id: "person-transportiert",
+    label: "Person transportiert",
+  },
   { ...beschaedigt, id: "beschaedigt", label: "beschädigt" },
   { ...teilzerstoert, id: "teilzerstoert", label: "teilzerstört" },
   { ...zerstoert, id: "zerstoert", label: "zerstört" },
