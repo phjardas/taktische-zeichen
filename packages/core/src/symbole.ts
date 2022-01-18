@@ -69,12 +69,8 @@ export const hebegeraet: SymbolSpec = {
 };
 
 export const bagger: SymbolSpec = {
-  size: [35, 23],
-  render: (svg) =>
-    hebegeraet
-      .render(svg)
-      .attr("transform", "translate(0,-8) rotate(45)")
-      .attr("transform-origin", "1 30"),
+  size: [35.5, 23],
+  render: (svg) => svg.path("M1,22 l20.5,-20.5 l5,5 a5 5 0 0 0 8 8"),
 };
 
 export const bruecke: SymbolSpec = {
