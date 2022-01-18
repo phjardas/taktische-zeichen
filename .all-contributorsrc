@@ -16,6 +16,15 @@
         "doc",
         "projectManagement"
       ]
+    },
+    {
+      "login": "PatrickReichel",
+      "name": "PatrickReichel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59778648?v=4",
+      "profile": "https://github.com/PatrickReichel",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
