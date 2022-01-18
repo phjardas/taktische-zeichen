@@ -25,6 +25,16 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "einsatzverwaltung",
+      "name": "einsatzverwaltung",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59615464?v=4",
+      "profile": "https://github.com/einsatzverwaltung",
+      "contributions": [
+        "code",
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
