@@ -16,7 +16,7 @@ import {
   verbrauchsgueter,
   verpflegung,
 } from "./symbole";
-import type { Renderable } from "./types";
+import type { Rect, Renderable } from "./types";
 import { Component, Parent, placeComponent } from "./utils";
 
 export type FachaufgabeId =
@@ -55,6 +55,7 @@ export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
   label: string;
   cover?: boolean;
+  nameArea?: Rect;
 };
 
 const brandbekaempfung = (svg: SVG) =>
@@ -87,7 +88,7 @@ function logistikFachaufgabe({
             component: symbol,
             padding: [13, 20, 8],
             svg,
-          })
+          }).element
         ),
   };
 }
@@ -130,6 +131,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "wasserversorgung",
     label: "Wasserversorgung und -förderung",
     size: [75, 45],
+    nameArea: [
+      [3, 6],
+      [25, 18],
+    ],
     cover: true,
     render: (svg) =>
       svg
@@ -137,7 +142,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(brandbekaempfung(svg))
         .push(
           svg.path(
-            "M10,19 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V19"
+            "M27,19 v-5 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 v5"
           )
         ),
   },
@@ -207,7 +212,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
             component: abc,
             padding: [10, 20],
             svg,
-          })
+          }).element
         ),
   },
   {

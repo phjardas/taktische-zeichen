@@ -49,6 +49,9 @@ async function main() {
     .option("text", {
       type: "string",
     })
+    .option("name", {
+      type: "string",
+    })
     .option("output", {
       type: "string",
       default: "custom.svg",

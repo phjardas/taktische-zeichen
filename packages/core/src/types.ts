@@ -14,6 +14,12 @@ export type Renderable<Props = unknown> = {
 
 export type Point = [number, number];
 
+/**
+ * - top-left coordinates
+ * - bottom-right coordinates
+ */
+export type Rect = [Point, Point];
+
 export type Padding =
   | [number, number]
   | [number, number, number]
@@ -28,6 +34,7 @@ export type TaktischesZeichen = {
   funktion?: FunktionId;
   symbol?: SymbolId;
   text?: string;
+  name?: string;
 };
 
 export type Image = {

@@ -11,19 +11,8 @@ import { organisationen } from "./organisationen";
 import { SVG } from "./svg";
 import { symbole } from "./symbole";
 import { createTextSymbol } from "./text";
-import {
-  type Image,
-  type Point,
-  type TaktischesZeichen,
-  type Padding,
-} from "./types";
-import {
-  addPoints,
-  ImageImpl,
-  placeComponent,
-  resolvePadding,
-  subtractPoints,
-} from "./utils";
+import { type Image, type Point, type TaktischesZeichen } from "./types";
+import { addPoints, ImageImpl, placeComponent, subtractPoints } from "./utils";
 
 function get<T extends { id: string }>(
   id: string | undefined,
@@ -74,13 +63,13 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     }
 
     if (fachaufgabe && accepts(grund, "fachaufgabe")) {
-      const icon = placeComponent({
+      const { element } = placeComponent({
         parent: grund,
         component: fachaufgabe,
         padding: fachaufgabe.cover ? undefined : grund.padding,
         svg,
       });
-      svg.push(svg.g().push(icon).attr("clip-path", "url(#gz-mask)"));
+      svg.push(svg.g().push(element).attr("clip-path", "url(#gz-mask)"));
     }
 
     let topAnchor = grund.einheitAnchor ?? [
@@ -162,7 +151,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 component: symbol,
                 padding: grund.padding,
                 svg,
-              })
+              }).element
             )
         );
       }
@@ -180,10 +169,32 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 }),
                 padding: grund.textPadding ?? grund.padding,
                 svg,
-              })
+              }).element
             )
         );
       }
+    }
+
+    if (spec.name && accepts(grund, "name")) {
+      // TODO Wenn das Zeichen der Fachaufgabe skaliert oder verschoben wurde,
+      // muss die Position für den Namen auch transformiert werden.
+      const paintableArea =
+        fachaufgabe?.nameArea ?? grund.nameArea ?? grund.paintableArea;
+
+      svg.push(
+        svg
+          .g()
+          .attr("clip-path", "url(#gz-mask)")
+          .push(
+            placeComponent({
+              parent: { ...grund, paintableArea },
+              component: createTextSymbol(spec.name, {
+                fill: org?.textColor ?? "black",
+              }),
+              svg,
+            }).element
+          )
+      );
     }
   } else if (symbol) {
     viewBox[1] = symbol.size;

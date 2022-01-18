@@ -8,7 +8,7 @@ import {
   person,
   SymbolSpec,
 } from "./symbole";
-import type { Padding, Point, Renderable } from "./types";
+import type { Padding, Point, Rect, Renderable } from "./types";
 
 export type GrundzeichenId =
   | "ohne"
@@ -45,13 +45,15 @@ export type ComponentType =
   | "funktion"
   | "fachaufgabe"
   | "symbol"
-  | "organisation";
+  | "organisation"
+  | "name";
 
 export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   id: GrundzeichenId;
   label: string;
   clipPath?(svg: SVG): Element;
-  paintableArea?: [Point, Point];
+  paintableArea?: Rect;
+  nameArea?: Rect;
   padding?: Padding;
   textPadding?: Padding;
   einheitAnchor?: Point;
@@ -84,12 +86,20 @@ function symbolShape(
   };
 }
 
+const fahrzeugAccepts: Array<ComponentType> = [
+  "fachaufgabe",
+  "symbol",
+  "organisation",
+  "name",
+];
+
 const fahrzeugGrundzeichen: Pick<
   Grundzeichen,
   | "render"
   | "clipPath"
   | "size"
   | "paintableArea"
+  | "nameArea"
   | "einheitAnchor"
   | "accepts"
   | "padding"
@@ -99,14 +109,12 @@ const fahrzeugGrundzeichen: Pick<
   render: (svg, props) => fahrzeug.render(svg, props),
   clipPath: fahrzeug.render,
   paintableArea: [[0, 0], fahrzeug.size],
-  einheitAnchor: [37.5, 4.5],
-  accepts: [
-    "einheit",
-    "verwaltungsstufe",
-    "fachaufgabe",
-    "symbol",
-    "organisation",
+  nameArea: [
+    [4, 10],
+    [32, 18],
   ],
+  einheitAnchor: [37.5, 4.5],
+  accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
   padding: [15, 20, 10],
   textPadding: [15, 10, 10],
 };
@@ -123,14 +131,12 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
-    ],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [10, 20],
+    nameArea: [
+      [4, 6],
+      [32, 18],
+    ],
     textPadding: [10, 10],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
   },
@@ -144,15 +150,13 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 0],
       [75, 45],
     ],
+    nameArea: [
+      [4, 6],
+      [32, 18],
+    ],
     padding: [10, 20],
     textPadding: [10, 10],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
-    ],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
   },
   {
     id: "stelle",
@@ -212,7 +216,11 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 10],
       [75, 45],
     ],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    nameArea: [
+      [4, 13],
+      [32, 24],
+    ],
+    accepts: ["fachaufgabe", "symbol", "organisation", "name"],
     padding: [10, 20],
     textPadding: [10, 10],
   },
@@ -262,14 +270,12 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 0],
       [75, 42],
     ],
-    einheitAnchor: [39.5, 4.5],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
+    nameArea: [
+      [7, 10],
+      [32, 17],
     ],
+    einheitAnchor: [39.5, 4.5],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [15, 10, 10],
   },
   {
@@ -286,8 +292,12 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 0],
       [75, 45],
     ],
+    nameArea: [
+      [10, 10],
+      [38, 17],
+    ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
   },
   {
@@ -301,8 +311,12 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 0],
       [75, 45],
     ],
+    nameArea: [
+      [10, 10],
+      [38, 17],
+    ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
   },
   {
@@ -346,7 +360,17 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "wasserfahrzeug",
     label: "Wasserfahrzeug",
     size: [42, 22],
-    accepts: ["einheit", "verwaltungsstufe", "organisation", "fachaufgabe"],
+    nameArea: [
+      [4, 2.5],
+      [20, 10],
+    ],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "organisation",
+      "fachaufgabe",
+      "name",
+    ],
     ...singleShape((svg) => svg.path("M1,1 a20 20 0 0 0 40 0 Z")),
   },
   {

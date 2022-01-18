@@ -1,9 +1,9 @@
 import { SVG } from "./svg";
-import type { Image, Padding, Point, Renderable } from "./types";
+import type { Image, Padding, Point, Rect, Renderable } from "./types";
 
 export type Parent = {
   size: Point;
-  paintableArea?: [Point, Point];
+  paintableArea?: Rect;
 };
 
 export type Component = Renderable<any> & {
@@ -67,7 +67,12 @@ export function placeComponent({
     wrapper.attr("transform", transformations.join(" "));
   }
 
-  return wrapper;
+  return {
+    element: wrapper,
+    offset,
+    scale,
+    size: [component.size[0] * scale, component.size[1] * scale],
+  };
 }
 
 // exported for tests

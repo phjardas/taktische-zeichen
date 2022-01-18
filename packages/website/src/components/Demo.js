@@ -24,10 +24,11 @@ const beispiele = [
   {
     label: "Löschfahrzeug",
     tz: {
-      grundzeichen: "kraftfahrzeug-gelaendegaengig",
+      grundzeichen: "kraftfahrzeug-landgebunden",
       organisation: "feuerwehr",
       fachaufgabe: "brandbekaempfung",
       einheit: "gruppe",
+      name: "LF20",
     },
   },
   {
@@ -259,6 +260,20 @@ export function Demo() {
               type="text"
               value={taktischesZeichen.text ?? ""}
               onChange={onChange("text")}
+              className="form-control"
+            />
+          </div>
+        )}
+        {enabled("name") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={taktischesZeichen.name ?? ""}
+              onChange={onChange("name")}
               className="form-control"
             />
           </div>
