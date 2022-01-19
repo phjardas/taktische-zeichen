@@ -58,7 +58,8 @@ export type FachaufgabeId =
   | "iuk"
   | "erkundung"
   | "veterinaerwesen"
-  | "schlachten";
+  | "schlachten"
+  | "wasserrettung";
 
 export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
@@ -365,5 +366,25 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     id: "schlachten",
     label: "Schlachten",
     ...symbolFachaufgabe(schlachten),
+  },
+  {
+    id: "wasserrettung",
+    label: "Wasserrettung",
+    size: [75, 45],
+    cover: true,
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          svg.path(
+            "M15,10 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0"
+          )
+        )
+        .push(
+          svg.path(
+            "M15,16 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0"
+          )
+        )
+        .push(svg.path("M37.5,23 l8,8 -8,8 -8,-8 Z")),
   },
 ];

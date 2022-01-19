@@ -55,4 +55,4 @@ Wenn alles gut gelaufen ist, erhälst du automatisch einen Kommentar in deinem P
 
 ## Statistiken
 
-Wenn du ein neues Element hinzufügst oder eines entfernst, passe bitte die Statistiken in den READMEs an: `npx lerna statistics`.
+Wenn du ein neues Element hinzufügst oder eines entfernst, passe bitte die Statistiken in den READMEs an: `npx lerna run statistics`.
