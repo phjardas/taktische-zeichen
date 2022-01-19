@@ -56,7 +56,9 @@ export type SymbolId =
   | "ausfall-100"
   | "abc"
   | "dekontamination"
-  | "wasser";
+  | "wasser"
+  | "wasserfahrzeug"
+  | "pumpe";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -548,6 +550,36 @@ export const wasser: SymbolSpec = {
     ),
 };
 
+export const wasserfahrzeug: SymbolSpec = {
+  size: [42, 22],
+  render: (svg) => svg.path("M1,1 a20 20 0 0 0 40 0 Z"),
+};
+
+export const hund: SymbolSpec = {
+  size: [33, 19],
+  render: (svg) =>
+    svg.path(
+      "M2,10 h10 l-5,-8 Z m10,0 h15 l5,-8 m-10,16 l5,-8 5,8 m-15,0 l-5,-8 -5,8"
+    ),
+};
+
+export const pumpe: SymbolSpec = {
+  size: [42, 42],
+  render: (svg) => {
+    const g = svg.g();
+    g.push(svg.circle([22, 22], 10));
+    for (let i = 0; i < 5; i++) {
+      g.push(
+        svg
+          .path("M22,12 a8 8 0 0 1 5 -10")
+          .attr("transform-origin", "22 22")
+          .attr("transform", `rotate(${i * 72 + 50})`)
+      );
+    }
+    return g;
+  },
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -624,4 +656,6 @@ export const symbole: Array<Symbol> = [
   { ...abc, id: "abc", label: "Gefährliche Stoffen oder Güter, ABC" },
   { ...dekontamination, id: "dekontamination", label: "Dekontamination" },
   { ...wasser, id: "wasser", label: "Wasser" },
+  { ...wasserfahrzeug, id: "wasserfahrzeug", label: "Wasserfahrzeug" },
+  { ...pumpe, id: "pumpe", label: "Pumpe" },
 ];

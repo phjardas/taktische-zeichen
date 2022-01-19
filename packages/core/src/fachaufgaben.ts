@@ -9,6 +9,8 @@ import {
   elektrizitaet,
   geraete,
   hebegeraet,
+  hund,
+  pumpe,
   raeumgeraet,
   schlachten,
   sprengmittel,
@@ -20,6 +22,7 @@ import {
   verpflegung,
   veterinaerwesen,
   wasser,
+  wasserfahrzeug,
 } from "./symbole";
 import type { Rect, Renderable } from "./types";
 import { addPoints, Component, Parent, placeComponent } from "./utils";
@@ -61,7 +64,11 @@ export type FachaufgabeId =
   | "erkundung"
   | "veterinaerwesen"
   | "schlachten"
-  | "wasserrettung";
+  | "wasserrettung"
+  | "wasserfahrzeuge"
+  | "rettungshunde"
+  | "pumpen"
+  | "abwehr-wassergefahren";
 
 export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
@@ -405,5 +412,46 @@ export const fachaufgaben: Array<Fachaufgabe> = [
           )
         )
         .push(svg.path("M37.5,23 l8,8 -8,8 -8,-8 Z")),
+  },
+  {
+    id: "wasserfahrzeuge",
+    label: "Einsatz von Wasserfahrzeugen, Fahren auf dem Wasser",
+    size: [75, 45],
+    cover: true,
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          wasserfahrzeug
+            .render(svg)
+            .attr("transform", "scale(.5) translate(54,30)")
+        )
+        .push(wasser.render(svg).attr("transform", "scale(.7) translate(5,25)"))
+        .push(
+          wasser.render(svg).attr("transform", "scale(.7) translate(70,25)")
+        ),
+  },
+  {
+    id: "rettungshunde",
+    label: "Suchen und Orten mit Rettungshunden",
+    ...symbolFachaufgabe(hund),
+  },
+  {
+    id: "pumpen",
+    label: "Pumpen, Lenzen, Beseitigen von Wasserschäden",
+    ...symbolFachaufgabe(pumpe),
+  },
+  {
+    id: "abwehr-wassergefahren",
+    label: "",
+    size: [75, 45],
+    cover: true,
+    render: (svg) =>
+      svg
+        .g()
+        .push(svg.path("M20,35 h10 l10,-25 h10 l5,15 h10"))
+        .push(
+          wasser.render(svg).attr("transform", "scale(.8) translate(10,15)")
+        ),
   },
 ];

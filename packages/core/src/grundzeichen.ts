@@ -7,6 +7,7 @@ import {
   kraftrad,
   person,
   SymbolSpec,
+  wasserfahrzeug,
 } from "./symbole";
 import { createTextSymbol, renderText } from "./text";
 import type { Padding, Point, Rect, Renderable } from "./types";
@@ -395,7 +396,7 @@ export const grundzeichen: Array<Grundzeichen> = [
   {
     id: "wasserfahrzeug",
     label: "Wasserfahrzeug",
-    size: [42, 22],
+    size: wasserfahrzeug.size,
     nameArea: [
       [3, 2.5],
       [20, 7],
@@ -411,7 +412,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       "fachaufgabe",
       "name",
     ],
-    ...singleShape((svg) => svg.path("M1,1 a20 20 0 0 0 40 0 Z")),
+    ...singleShape(wasserfahrzeug.render),
   },
   {
     id: "flugzeug",
