@@ -71,7 +71,10 @@ export type SymbolId =
   | "fernschreiben"
   | "fernschreiben-funk"
   | "festbilduebertragung"
-  | "festbilduebertragung-funk";
+  | "festbilduebertragung-funk"
+  | "relaisfunkbetrieb"
+  | "richtbetrieb"
+  | "kabelbau";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -666,6 +669,31 @@ const festbilduebertragung: SymbolSpec = {
 };
 const festbilduebertragungFunk = mitFunk(festbilduebertragung);
 
+const relaisfunkbetrieb: SymbolSpec = {
+  size: [45, 11.5],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.path("M0,1 h45"))
+      .push(
+        svg
+          .path(
+            "M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10 M-3,1.5 a7 7 0 0 1 0 11 M65,1.5 a7 7 0 0 0 0 11"
+          )
+          .attr("transform", "scale(0.65) translate(3.7 4)")
+      ),
+};
+
+const richtbetrieb: SymbolSpec = {
+  size: [22, 36],
+  render: (svg) => svg.path("M0,1 h12 m-6,0 v20 l15,-10 v25"),
+};
+
+const kabelbau: SymbolSpec = {
+  size: [22, 35],
+  render: (svg) => svg.path("M1,0 a10 10 0 0 0 20 0 m-10,10 v25"),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -789,4 +817,11 @@ export const symbole: Array<Symbol> = [
     id: "festbilduebertragung-funk",
     label: "Festbildübertragung (Funk)",
   },
+  {
+    ...relaisfunkbetrieb,
+    id: "relaisfunkbetrieb",
+    label: "Relaisfunkbetrieb",
+  },
+  { ...richtbetrieb, id: "richtbetrieb", label: "Richtbetrieb" },
+  { ...kabelbau, id: "kabelbau", label: "Kabelbau" },
 ];
