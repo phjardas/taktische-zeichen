@@ -4,10 +4,11 @@ const Context = createContext();
 
 export function TaktischesZeichenProvider({ children }) {
   const [taktischesZeichen, setTaktischesZeichen] = useState({
-    grundzeichen: "kraftfahrzeug-gelaendegaengig",
+    grundzeichen: "kraftfahrzeug-landgebunden",
     organisation: "feuerwehr",
     fachaufgabe: "brandbekaempfung",
     einheit: "gruppe",
+    name: "LF20",
   });
   const context = useMemo(
     () => ({ taktischesZeichen, setTaktischesZeichen }),

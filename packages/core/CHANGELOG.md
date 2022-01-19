@@ -1,5 +1,35 @@
 # taktische-zeichen
 
+## 0.4.0
+
+### Minor Changes
+
+- [`65e84fe`](https://github.com/phjardas/taktische-zeichen/commit/65e84fe96943b59f78ba930e5f8efa94c3a3e028) Thanks [@phjardas](https://github.com/phjardas)! - Symbole und Fachaufgabe für "Veterinärwesen" und "Schlachten"
+
+* [`73a569a`](https://github.com/phjardas/taktische-zeichen/commit/73a569aecdb0266d93a188fd087be731ea2ec852) Thanks [@phjardas](https://github.com/phjardas)! - Neue Symbole "Dekon P" und "Dekon G"
+
+- [`8513270`](https://github.com/phjardas/taktische-zeichen/commit/851327069a07995a09661e2c75125476e1bf46e4) Thanks [@phjardas](https://github.com/phjardas)! - Neues Element: Name der Organisation
+
+* [`823b01b`](https://github.com/phjardas/taktische-zeichen/commit/823b01b7892292a3ef66fdc20831c39a35555fdc) Thanks [@phjardas](https://github.com/phjardas)! - Untere drei Punkte des Zugtrupps bei Organisationen mit dunklem Hintergrund in weiß zeichnen
+
+- [`d6c1f99`](https://github.com/phjardas/taktische-zeichen/commit/d6c1f995ac05502b1611c3de35c2f72639bcc303) Thanks [@phjardas](https://github.com/phjardas)! - Symbole für "Tier verletzt" und "Tier tot"
+
+* [`42e0b9f`](https://github.com/phjardas/taktische-zeichen/commit/42e0b9f0132d1cf029268d9796f445a8d5c370fc) Thanks [@phjardas](https://github.com/phjardas)! - Neues Element: Name
+
+- [`589f61c`](https://github.com/phjardas/taktische-zeichen/commit/589f61c8f9d11652035f6f15da738a141a87e663) Thanks [@phjardas](https://github.com/phjardas)! - Neue Grundzeichen: Vermutete und akute Gefahr
+
+* [`4cf4191`](https://github.com/phjardas/taktische-zeichen/commit/4cf41917223937750e200de1e528dd6bc916008d) Thanks [@phjardas](https://github.com/phjardas)! - Symbole für zu transportierende und transportierte Person
+
+- [`c725a45`](https://github.com/phjardas/taktische-zeichen/commit/c725a4507517a224dd4486e83b13a171b1c48d44) Thanks [@phjardas](https://github.com/phjardas)! - Neue Fachaufgabe "Einsatzeinheit"
+
+### Patch Changes
+
+- [`eee3ebe`](https://github.com/phjardas/taktische-zeichen/commit/eee3ebe3c565ef71fd13600a66357a9dbd892b79) Thanks [@phjardas](https://github.com/phjardas)! - Symbol "Bagger" korrigiert.
+
+  resolves #26
+
+* [#31](https://github.com/phjardas/taktische-zeichen/pull/31) [`c773b50`](https://github.com/phjardas/taktische-zeichen/commit/c773b50789c69d2bab96ffd03dbc4f7bed3d441e) Thanks [@phjardas](https://github.com/phjardas)! - Symbol "Ablage" umbenannt zu "Sichten, ordnen, verteilen"
+
 ## 0.3.0
 
 ### Minor Changes

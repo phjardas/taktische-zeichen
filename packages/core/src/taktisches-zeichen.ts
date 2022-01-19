@@ -11,18 +11,13 @@ import { organisationen } from "./organisationen";
 import { SVG } from "./svg";
 import { symbole } from "./symbole";
 import { createTextSymbol } from "./text";
-import {
-  type Image,
-  type Point,
-  type TaktischesZeichen,
-  type Padding,
-} from "./types";
+import { type Image, type Point, type TaktischesZeichen } from "./types";
 import {
   addPoints,
   ImageImpl,
   placeComponent,
-  resolvePadding,
   subtractPoints,
+  transformRect,
 } from "./utils";
 
 function get<T extends { id: string }>(
@@ -63,24 +58,29 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
   if (grund) {
     viewBox[1] = grund.size;
 
-    svg.push(
-      grund.render(svg, {
-        fill: accepts(grund, "organisation") ? org?.background : undefined,
-      })
-    );
+    const fill = accepts(grund, "organisation") ? org?.background : undefined;
+    const textColor =
+      (accepts(grund, "organisation") ? org?.textColor : undefined) ?? "black";
+
+    svg.push(grund.render(svg, { fill }));
 
     if (grund.clipPath) {
       svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
     }
 
+    let mainPosition: Point = [0, 0];
+    let mainScale = 1;
+
     if (fachaufgabe && accepts(grund, "fachaufgabe")) {
-      const icon = placeComponent({
+      const placed = placeComponent({
         parent: grund,
         component: fachaufgabe,
         padding: fachaufgabe.cover ? undefined : grund.padding,
         svg,
       });
-      svg.push(svg.g().push(icon).attr("clip-path", "url(#gz-mask)"));
+      svg.push(svg.g().push(placed.element).attr("clip-path", "url(#gz-mask)"));
+      mainPosition = placed.offset;
+      mainScale = placed.scale;
     }
 
     let topAnchor = grund.einheitAnchor ?? [
@@ -105,7 +105,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
 
       svg.push(
         einheit
-          .render(svg)
+          .render(svg, { textColor })
           .attr("transform", `translate(${position[0]},${position[1]})`)
       );
     }
@@ -162,7 +162,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
                 component: symbol,
                 padding: grund.padding,
                 svg,
-              })
+              }).element
             )
         );
       }
@@ -176,14 +176,70 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
               placeComponent({
                 parent: grund,
                 component: createTextSymbol(spec.text, {
-                  fill: org?.textColor ?? "black",
+                  fill: textColor,
                 }),
                 padding: grund.textPadding ?? grund.padding,
                 svg,
-              })
+              }).element
             )
         );
       }
+    }
+
+    if (spec.name && accepts(grund, "name")) {
+      const grundNameArea = grund.nameArea ??
+        grund.paintableArea ?? [[0, 0], grund.size];
+      const fachaufgabeNameArea =
+        fachaufgabe?.nameArea &&
+        transformRect(fachaufgabe?.nameArea?.(grundNameArea), {
+          offset: mainPosition,
+          scale: mainScale,
+        });
+      const paintableArea = fachaufgabeNameArea ?? grundNameArea;
+
+      svg.push(
+        svg
+          .g()
+          .attr("clip-path", "url(#gz-mask)")
+          .push(
+            placeComponent({
+              parent: { ...grund, paintableArea },
+              component: createTextSymbol(spec.name, {
+                fill: textColor,
+              }),
+              align: ["start", "start"],
+              svg,
+            }).element
+          )
+      );
+    }
+
+    if (spec.organisationName && accepts(grund, "name")) {
+      const grundNameArea = grund.organisationNameArea ??
+        grund.paintableArea ?? [[0, 0], grund.size];
+      const fachaufgabeNameArea =
+        fachaufgabe?.organisationNameArea &&
+        transformRect(fachaufgabe?.organisationNameArea?.(grundNameArea), {
+          offset: mainPosition,
+          scale: mainScale,
+        });
+      const paintableArea = fachaufgabeNameArea ?? grundNameArea;
+
+      svg.push(
+        svg
+          .g()
+          .attr("clip-path", "url(#gz-mask)")
+          .push(
+            placeComponent({
+              parent: { ...grund, paintableArea },
+              component: createTextSymbol(spec.organisationName, {
+                fill: textColor,
+              }),
+              align: ["end", "end"],
+              svg,
+            }).element
+          )
+      );
     }
   } else if (symbol) {
     viewBox[1] = symbol.size;

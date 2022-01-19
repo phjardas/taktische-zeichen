@@ -18,6 +18,8 @@ export default function TaktischesZeichen({
   funktion,
   symbol,
   text,
+  name,
+  organisationName,
   ...props
 }: Props) {
   const { svg } = erzeugeTaktischesZeichen({
@@ -29,6 +31,8 @@ export default function TaktischesZeichen({
     funktion,
     symbol,
     text,
+    name,
+    organisationName,
   });
 
   return render(svg, props);

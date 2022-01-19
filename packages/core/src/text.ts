@@ -1,5 +1,13 @@
 import { applyFontStyles, calculateTextWidth } from "./font";
+import { Element, SVG } from "./svg";
 import { Component } from "./utils";
+
+export function renderText(svg: SVG, text: string): Element {
+  return applyFontStyles(svg.registerText().textNode("text", text)).attr(
+    "stroke",
+    "none"
+  );
+}
 
 export function createTextSymbol(
   text: string,
@@ -10,11 +18,7 @@ export function createTextSymbol(
   return {
     size: [width, getTextHeight(text)],
     render: (svg) =>
-      applyFontStyles(svg.registerText().textNode("text", text))
-        .attr("x", "0")
-        .attr("y", "21.5")
-        .attr("stroke", "none")
-        .attr("fill", fill),
+      renderText(svg, text).attr("x", "0").attr("y", "21.5").attr("fill", fill),
     cover: false,
   };
 }

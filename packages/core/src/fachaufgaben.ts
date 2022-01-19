@@ -1,13 +1,16 @@
 import { SVG } from "./svg";
 import {
+  abc,
   beleuchtung,
   bett,
   brauchwasser,
+  dekontamination,
   drehleiter,
   elektrizitaet,
   geraete,
   hebegeraet,
   raeumgeraet,
+  schlachten,
   sprengmittel,
   sprengung,
   SymbolSpec,
@@ -15,9 +18,10 @@ import {
   trinkwasser,
   verbrauchsgueter,
   verpflegung,
+  veterinaerwesen,
 } from "./symbole";
-import type { Renderable } from "./types";
-import { Component, Parent, placeComponent } from "./utils";
+import type { Rect, Renderable } from "./types";
+import { addPoints, Component, Parent, placeComponent } from "./utils";
 
 export type FachaufgabeId =
   | "brandbekaempfung"
@@ -34,9 +38,12 @@ export type FachaufgabeId =
   | "abc"
   | "messen"
   | "dekontamination"
+  | "dekontamination-personen"
+  | "dekontamination-geraete"
   | "rettungswesen"
   | "aerztliche-versorgung"
   | "krankenhaus"
+  | "einsatzeinheit"
   | "betreuung"
   | "seelsorge"
   | "unterbringung"
@@ -49,12 +56,16 @@ export type FachaufgabeId =
   | "instandhaltung"
   | "fuehrung"
   | "iuk"
-  | "erkundung";
+  | "erkundung"
+  | "veterinaerwesen"
+  | "schlachten";
 
 export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
   label: string;
   cover?: boolean;
+  nameArea?: (grundNameArea: Rect) => Rect;
+  organisationNameArea?: (grundNameArea: Rect) => Rect;
 };
 
 const brandbekaempfung = (svg: SVG) =>
@@ -77,6 +88,10 @@ function logistikFachaufgabe({
     ...props,
     cover: true,
     size: logistik.size,
+    organisationNameArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
     render: (svg) =>
       svg
         .g()
@@ -87,22 +102,12 @@ function logistikFachaufgabe({
             component: symbol,
             padding: [13, 20, 8],
             svg,
-          })
+          }).element
         ),
   };
 }
 
 const erkunden = (svg: SVG) => svg.path("M0,45 L75,0");
-
-const abc: Component = {
-  size: [30, 30],
-  render: (svg: SVG) =>
-    svg
-      .g()
-      .push(svg.circle([4, 4], 3).attr("fill", "black"))
-      .push(svg.circle([26, 4], 3).attr("fill", "black"))
-      .push(svg.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
-};
 
 function symbolFachaufgabe(
   symbol: SymbolSpec
@@ -120,6 +125,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: brandbekaempfung,
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-8, 0])],
   },
   {
     id: "hoehenrettung",
@@ -137,9 +143,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(brandbekaempfung(svg))
         .push(
           svg.path(
-            "M10,19 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V14 c0,6 4,6 4,0 V14 c0,-6 4,-6 4,0 V19"
+            "M27,19 v-5 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 v5"
           )
         ),
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-8, 0])],
   },
   {
     id: "technische-hilfeleistung",
@@ -190,7 +197,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "abc",
     label: "Gefahrenabwehr bei Gefährlichen Stoffen und Gütern, ABC-Schutz",
-    ...abc,
+    ...symbolFachaufgabe(abc),
   },
   {
     id: "messen",
@@ -207,22 +214,33 @@ export const fachaufgaben: Array<Fachaufgabe> = [
             component: abc,
             padding: [10, 20],
             svg,
-          })
+          }).element
         ),
   },
   {
     id: "dekontamination",
     label: "Dekontamination",
-    ...abc,
+    ...symbolFachaufgabe(dekontamination),
+  },
+  {
+    id: "dekontamination-personen",
+    label: "Dekontamination Personen",
+    size: dekontamination.size,
     render: (svg) =>
       svg
         .g()
-        .push(abc.render(svg))
-        .push(
-          svg.path(
-            "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
-          )
-        ),
+        .push(dekontamination.render(svg))
+        .push(svg.path("M13.5,30 v-9 h2 a2 2 0 0 1 0 4.5 h-2")),
+  },
+  {
+    id: "dekontamination-geraete",
+    label: "Dekontamination Geräte",
+    size: dekontamination.size,
+    render: (svg) =>
+      svg
+        .g()
+        .push(dekontamination.render(svg))
+        .push(svg.path("M18.5,23 a4 4 0 1 0 0 4 m-3,-1 h3 v4")),
   },
   {
     id: "rettungswesen",
@@ -247,11 +265,19 @@ export const fachaufgaben: Array<Fachaufgabe> = [
       svg.path("M0,22.5 H75 M37.5,0 V45 M20,14.5 v16 M55,14.5 v16"),
   },
   {
+    id: "einsatzeinheit",
+    label: "Einsatzeinheit",
+    size: [75, 45],
+    cover: true,
+    render: (svg) => svg.path("M0,22.5 H75 M37.5,0 V45 M0,45 L37.5,1 L75,45"),
+  },
+  {
     id: "betreuung",
     label: "Betreuung",
     size: [75, 45],
     cover: true,
     render: (svg) => svg.path("M0,45 L37.5,1 L75,45"),
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-5, 0])],
   },
   {
     id: "seelsorge",
@@ -306,12 +332,21 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: (svg) => svg.rect([0, 0], [75, 8]).attr("fill", "black"),
+    nameArea: (grund) => [
+      addPoints(grund[0], [0, 7]),
+      addPoints(grund[1], [0, 7]),
+    ],
   },
   {
     id: "iuk",
     label: "Information und Kommunikation",
     size: [75, 45],
     cover: true,
+    nameArea: (grund) => [
+      addPoints(grund[0], [17, 0]),
+      addPoints(grund[1], [17, 0]),
+    ],
+    organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-10, 0])],
     render: (svg) => svg.path("M0,0 l37.5,28 v-11 L75,45"),
   },
   {
@@ -320,5 +355,15 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     size: [75, 45],
     cover: true,
     render: erkunden,
+  },
+  {
+    id: "veterinaerwesen",
+    label: "Veterinärwesen",
+    ...symbolFachaufgabe(veterinaerwesen),
+  },
+  {
+    id: "schlachten",
+    label: "Schlachten",
+    ...symbolFachaufgabe(schlachten),
   },
 ];

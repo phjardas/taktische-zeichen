@@ -29,14 +29,19 @@ export type SymbolId =
   | "sirene"
   | "lautsprecher"
   | "zelt"
-  | "ablage"
+  | "sichten"
   | "veterinaerwesen"
+  | "schlachten"
+  | "tier-verletzt"
+  | "tier-tot"
   | "person"
   | "person-verletzt"
   | "person-tot"
   | "person-vermisst"
   | "person-verschuettet"
   | "person-gerettet"
+  | "person-zu-transportieren"
+  | "person-transportiert"
   | "beschaedigt"
   | "teilzerstoert"
   | "zerstoert"
@@ -49,6 +54,8 @@ export type SymbolId =
   | "ausfall-50"
   | "ausfall-75"
   | "ausfall-100";
+  | "abc"
+  | "dekontamination";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -76,12 +83,8 @@ export const hebegeraet: SymbolSpec = {
 };
 
 export const bagger: SymbolSpec = {
-  size: [35, 23],
-  render: (svg) =>
-    hebegeraet
-      .render(svg)
-      .attr("transform", "translate(0,-8) rotate(45)")
-      .attr("transform-origin", "1 30"),
+  size: [35.5, 23],
+  render: (svg) => svg.path("M1,22 l20.5,-20.5 l5,5 a5 5 0 0 0 8 8"),
 };
 
 export const bruecke: SymbolSpec = {
@@ -398,7 +401,7 @@ export const zelt: SymbolSpec = {
   render: (svg) => svg.path("M13,1 l15,28 h-26 l15,-28"),
 };
 
-export const ablage: SymbolSpec = {
+export const sichten: SymbolSpec = {
   size: [30, 30],
   render: (svg) =>
     svg
@@ -409,6 +412,21 @@ export const ablage: SymbolSpec = {
 export const veterinaerwesen: SymbolSpec = {
   size: [30, 30],
   render: (svg) => svg.path("M0,1 h5 l10,26 l10,-26 h5"),
+};
+
+export const schlachten: SymbolSpec = {
+  size: [45, 12],
+  render: (svg) => svg.path("M0,1 h45 m-39,0 l-4,10 h15 l-4,-10"),
+};
+
+export const tierVerletzt: SymbolSpec = {
+  size: [30, 35],
+  render: (svg) => svg.path("M0,6 h5 l10,26 l10,-26 h5 M15,0 v20"),
+};
+
+export const tierTot: SymbolSpec = {
+  size: [30, 35],
+  render: (svg) => svg.path("M0,6 h5 l10,26 l10,-26 h5 M15,0 v20 m-5,-14 h10"),
 };
 
 export const person: SymbolSpec = {
@@ -455,6 +473,45 @@ export const personGerettet: SymbolSpec = {
     svg.path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h45"),
 };
 
+export const personZuTransportieren: SymbolSpec = {
+  size: [45, 48],
+  render: (svg) =>
+    svg.path(
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z"
+    ),
+};
+
+export const personTransportiert: SymbolSpec = {
+  size: [45, 48],
+  render: (svg) =>
+    svg.path(
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z m4,-2 v8"
+    ),
+};
+
+export const abc: SymbolSpec = {
+  size: [30, 30],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.circle([4, 4], 3).attr("fill", "black"))
+      .push(svg.circle([26, 4], 3).attr("fill", "black"))
+      .push(svg.path("M5.7,1.5 L29,29 M24.3,1.5 L1,29")),
+};
+
+export const dekontamination: SymbolSpec = {
+  size: abc.size,
+  render: (svg) =>
+    svg
+      .g()
+      .push(abc.render(svg))
+      .push(
+        svg.path(
+          "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
+        )
+      ),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -487,8 +544,11 @@ export const symbole: Array<Symbol> = [
   { ...sirene, id: "sirene", label: "Sirene" },
   { ...lautsprecher, id: "lautsprecher", label: "Lautsprecher" },
   { ...zelt, id: "zelt", label: "Zelt" },
-  { ...ablage, id: "ablage", label: "Ablage" },
+  { ...sichten, id: "sichten", label: "Sichten, ordnen, verteilen" },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
+  { ...schlachten, id: "schlachten", label: "Schlachten" },
+  { ...tierVerletzt, id: "tier-verletzt", label: "Tier verletzt" },
+  { ...tierTot, id: "tier-tot", label: "Tier tot" },
   { ...person, id: "person", label: "Person" },
   { ...personVerletzt, id: "person-verletzt", label: "Person verletzt" },
   { ...personTot, id: "person-tot", label: "Person tot" },
@@ -499,6 +559,16 @@ export const symbole: Array<Symbol> = [
     label: "Person verschuettet",
   },
   { ...personGerettet, id: "person-gerettet", label: "Person gerettet" },
+  {
+    ...personZuTransportieren,
+    id: "person-zu-transportieren",
+    label: "Person zu transportieren",
+  },
+  {
+    ...personTransportiert,
+    id: "person-transportiert",
+    label: "Person transportiert",
+  },
   { ...beschaedigt, id: "beschaedigt", label: "beschädigt" },
   { ...teilzerstoert, id: "teilzerstoert", label: "teilzerstört" },
   { ...zerstoert, id: "zerstoert", label: "zerstört" },
@@ -511,4 +581,6 @@ export const symbole: Array<Symbol> = [
   { ...ausfall50, id: "ausfall-50", label: "Ausfall 50%" },
   { ...ausfall75, id: "ausfall-75", label: "Ausfall 75%" },
   { ...ausfall100, id: "ausfall-100", label: "Totalausfall" },
+  { ...abc, id: "abc", label: "Gefährliche Stoffen oder Güter, ABC" },
+  { ...dekontamination, id: "dekontamination", label: "Dekontamination" },
 ];

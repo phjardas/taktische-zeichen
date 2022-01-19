@@ -1,0 +1,46 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "phjardas",
+      "name": "Philipp Jardas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1437300?v=4",
+      "profile": "https://jardas.de/",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "PatrickReichel",
+      "name": "PatrickReichel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59778648?v=4",
+      "profile": "https://github.com/PatrickReichel",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "einsatzverwaltung",
+      "name": "einsatzverwaltung",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59615464?v=4",
+      "profile": "https://github.com/einsatzverwaltung",
+      "contributions": [
+        "code",
+        "userTesting"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "taktische-zeichen",
+  "projectOwner": "phjardas",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

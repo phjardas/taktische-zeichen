@@ -24,10 +24,11 @@ const beispiele = [
   {
     label: "Löschfahrzeug",
     tz: {
-      grundzeichen: "kraftfahrzeug-gelaendegaengig",
+      grundzeichen: "kraftfahrzeug-landgebunden",
       organisation: "feuerwehr",
       fachaufgabe: "brandbekaempfung",
       einheit: "gruppe",
+      name: "LF20",
     },
   },
   {
@@ -36,7 +37,7 @@ const beispiele = [
       grundzeichen: "stelle",
       organisation: "hilfsorganisation",
       fachaufgabe: "rettungswesen",
-      symbol: "ablage",
+      symbol: "sichten",
     },
   },
   {
@@ -263,9 +264,43 @@ export function Demo() {
             />
           </div>
         )}
+        {enabled("name") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={taktischesZeichen.name ?? ""}
+              onChange={onChange("name")}
+              className="form-control"
+            />
+          </div>
+        )}
+        {enabled("name") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Name der Organisation
+            </label>
+            <input
+              id="organisationName"
+              type="text"
+              value={taktischesZeichen.organisationName ?? ""}
+              onChange={onChange("organisationName")}
+              className="form-control"
+            />
+          </div>
+        )}
       </form>
       <p>
         Beispiele:
+        <button
+          className="btn btn-link"
+          onClick={() => setTaktischesZeichen({})}
+        >
+          zurücksetzen
+        </button>
         {beispiele.map((beispiel, i) => (
           <button
             key={i}

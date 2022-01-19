@@ -1,9 +1,9 @@
-import { SVG } from "./svg";
-import type { Image, Padding, Point, Renderable } from "./types";
+import { SVG, Element } from "./svg";
+import type { Image, Padding, Point, Rect, Renderable } from "./types";
 
 export type Parent = {
   size: Point;
-  paintableArea?: [Point, Point];
+  paintableArea?: Rect;
 };
 
 export type Component = Renderable<any> & {
@@ -38,21 +38,32 @@ export class ImageImpl implements Image {
   }
 }
 
+export type Alignment = "center" | "start" | "end";
+
+export type PlacedComponent = {
+  element: Element;
+  offset: Point;
+  scale: number;
+};
+
 export function placeComponent({
   parent,
   component,
   padding = [0, 0],
+  align,
   svg,
 }: {
   parent: Parent;
   component: Component;
   padding?: Padding;
+  align?: [Alignment, Alignment];
   svg: SVG;
-}) {
+}): PlacedComponent {
   const { offset, scale } = calculateComponentPosition({
     parent,
     component,
     padding,
+    align,
   });
 
   const transformations: Array<string> = [];
@@ -67,7 +78,11 @@ export function placeComponent({
     wrapper.attr("transform", transformations.join(" "));
   }
 
-  return wrapper;
+  return {
+    element: wrapper,
+    offset,
+    scale,
+  };
 }
 
 // exported for tests
@@ -78,11 +93,13 @@ export function calculateComponentPosition({
     cover = false,
   },
   padding = [0, 0, 0, 0],
+  align = ["center", "center"],
 }: {
   parent: Parent;
   component: Pick<Component, "size" | "cover">;
   padding?: Padding;
-}) {
+  align?: [Alignment, Alignment];
+}): { offset: Point; scale: number } {
   const [paddingTop, paddingRight, paddingBottom, paddingLeft] =
     resolvePadding(padding);
   const paintableArea = parent.paintableArea ?? [[0, 0], parent.size];
@@ -96,11 +113,42 @@ export function calculateComponentPosition({
   const actualIconWidth = iconWidth * scale;
   const actualIconHeight = iconHeight * scale;
   const offsetX =
-    paintableArea[0][0] + paddingLeft + (paintableWidth - actualIconWidth) / 2;
+    paintableArea[0][0] +
+    paddingLeft +
+    applyAlign({
+      size: actualIconWidth,
+      total: paintableWidth,
+      align: align[0],
+    });
   const offsetY =
-    paintableArea[0][1] + paddingTop + (paintableHeight - actualIconHeight) / 2;
+    paintableArea[0][1] +
+    paddingTop +
+    applyAlign({
+      size: actualIconHeight,
+      total: paintableHeight,
+      align: align[1],
+    });
 
   return { offset: [offsetX, offsetY], scale };
+}
+
+function applyAlign({
+  size,
+  total,
+  align,
+}: {
+  size: number;
+  total: number;
+  align: Alignment;
+}): number {
+  switch (align) {
+    case "start":
+      return 0;
+    case "end":
+      return total - size;
+    case "center":
+      return (total - size) / 2;
+  }
 }
 
 // exported for tests
@@ -113,10 +161,31 @@ export function resolvePadding(
   return [padding[0], padding[1], padding[0], padding[1]];
 }
 
-export function addPoints(a: Point, b: Point): Point {
-  return [a[0] + b[0], a[1] + b[1]];
+export function addPoints(...points: Array<Point>): Point {
+  return [
+    points.reduce((a, b) => a + b[0], 0),
+    points.reduce((a, b) => a + b[1], 0),
+  ];
 }
 
 export function subtractPoints(a: Point, b: Point): Point {
   return [a[0] - b[0], a[1] - b[1]];
+}
+
+export function scalePoint(a: Point, scale: number): Point {
+  return [a[0] * scale, a[1] * scale];
+}
+
+export function transformRect(
+  rect: Rect,
+  { offset, scale }: { offset: Point; scale: number }
+): Rect {
+  const originalOffset: Point = rect[0];
+  const size: Point = [rect[1][0] - rect[0][0], rect[1][1] - rect[0][1]];
+  const scaledSize = scalePoint(size, scale);
+
+  return [
+    addPoints(originalOffset, offset),
+    addPoints(originalOffset, offset, scaledSize),
+  ];
 }

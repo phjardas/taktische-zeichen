@@ -8,7 +8,9 @@ import {
   person,
   SymbolSpec,
 } from "./symbole";
-import type { Padding, Point, Renderable } from "./types";
+import { createTextSymbol, renderText } from "./text";
+import type { Padding, Point, Rect, Renderable } from "./types";
+import { subtractPoints } from "./utils";
 
 export type GrundzeichenId =
   | "ohne"
@@ -33,7 +35,9 @@ export type GrundzeichenId =
   | "hubschrauber"
   | "massnahme"
   | "anlass"
-  | "gefahr";
+  | "gefahr"
+  | "gefahr-vermutet"
+  | "gefahr-akut";
 
 export type GrundzeichenRenderProps = {
   fill?: string;
@@ -45,13 +49,16 @@ export type ComponentType =
   | "funktion"
   | "fachaufgabe"
   | "symbol"
-  | "organisation";
+  | "organisation"
+  | "name";
 
 export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   id: GrundzeichenId;
   label: string;
   clipPath?(svg: SVG): Element;
-  paintableArea?: [Point, Point];
+  paintableArea?: Rect;
+  nameArea?: Rect;
+  organisationNameArea?: Rect;
   padding?: Padding;
   textPadding?: Padding;
   einheitAnchor?: Point;
@@ -84,12 +91,23 @@ function symbolShape(
   };
 }
 
+const nameHeight = 6;
+
+const fahrzeugAccepts: Array<ComponentType> = [
+  "fachaufgabe",
+  "symbol",
+  "organisation",
+  "name",
+];
+
 const fahrzeugGrundzeichen: Pick<
   Grundzeichen,
   | "render"
   | "clipPath"
   | "size"
   | "paintableArea"
+  | "nameArea"
+  | "organisationNameArea"
   | "einheitAnchor"
   | "accepts"
   | "padding"
@@ -99,14 +117,16 @@ const fahrzeugGrundzeichen: Pick<
   render: (svg, props) => fahrzeug.render(svg, props),
   clipPath: fahrzeug.render,
   paintableArea: [[0, 0], fahrzeug.size],
-  einheitAnchor: [37.5, 4.5],
-  accepts: [
-    "einheit",
-    "verwaltungsstufe",
-    "fachaufgabe",
-    "symbol",
-    "organisation",
+  nameArea: [
+    [3, 7],
+    [35, 7 + nameHeight],
   ],
+  organisationNameArea: [
+    [40, 42 - nameHeight],
+    [72, 42],
+  ],
+  einheitAnchor: [37.5, 4.5],
+  accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
   padding: [15, 20, 10],
   textPadding: [15, 10, 10],
 };
@@ -123,14 +143,16 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "taktische-formation",
     label: "Taktische Formation",
     size: [75, 45],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
-    ],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [10, 20],
+    nameArea: [
+      [3, 3],
+      [35, 3 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     textPadding: [10, 10],
     ...singleShape((svg) => svg.path("M1,1 H74 V44 H1 Z")),
   },
@@ -144,15 +166,17 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 0],
       [75, 45],
     ],
+    nameArea: [
+      [3, 3],
+      [35, 3 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     padding: [10, 20],
     textPadding: [10, 10],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
-    ],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
   },
   {
     id: "stelle",
@@ -212,7 +236,15 @@ export const grundzeichen: Array<Grundzeichen> = [
       [0, 10],
       [75, 45],
     ],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    nameArea: [
+      [3, 12],
+      [35, 12 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
+    accepts: ["fachaufgabe", "symbol", "organisation", "name"],
     padding: [10, 20],
     textPadding: [10, 10],
   },
@@ -262,14 +294,16 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 0],
       [75, 42],
     ],
-    einheitAnchor: [39.5, 4.5],
-    accepts: [
-      "einheit",
-      "verwaltungsstufe",
-      "fachaufgabe",
-      "symbol",
-      "organisation",
+    nameArea: [
+      [6, 7],
+      [35, 7 + nameHeight],
     ],
+    organisationNameArea: [
+      [40, 39 - nameHeight],
+      [72, 39],
+    ],
+    einheitAnchor: [39.5, 4.5],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
     padding: [15, 10, 10],
   },
   {
@@ -286,8 +320,16 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 0],
       [75, 45],
     ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
   },
   {
@@ -301,8 +343,16 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 0],
       [75, 45],
     ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
     einheitAnchor: [40, 4.5],
-    accepts: ["fachaufgabe", "symbol", "organisation"],
+    accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
   },
   {
@@ -346,7 +396,21 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "wasserfahrzeug",
     label: "Wasserfahrzeug",
     size: [42, 22],
-    accepts: ["einheit", "verwaltungsstufe", "organisation", "fachaufgabe"],
+    nameArea: [
+      [3, 2.5],
+      [20, 7],
+    ],
+    organisationNameArea: [
+      [21.75, 11.75],
+      [21.75 + 13, 11.75 + 3],
+    ],
+    accepts: [
+      "einheit",
+      "verwaltungsstufe",
+      "organisation",
+      "fachaufgabe",
+      "name",
+    ],
     ...singleShape((svg) => svg.path("M1,1 a20 20 0 0 0 40 0 Z")),
   },
   {
@@ -389,5 +453,52 @@ export const grundzeichen: Array<Grundzeichen> = [
       svg.path("M22.5,34 L43.2,1 H1.8 Z").attr("fill", "white")
     ),
     padding: [5, 15, 15],
+  },
+  {
+    id: "gefahr-vermutet",
+    label: "Gefahr (vermutet)",
+    size: [51.5, 36],
+    accepts: ["symbol"],
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          svg
+            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .attr("fill", "white")
+            .attr("stroke", "red")
+        )
+        .push(renderText(svg, "?").attr("y", 35).attr("fill", "red")),
+    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+    paintableArea: [
+      [18, 3],
+      [38, 18],
+    ],
+  },
+  {
+    id: "gefahr-akut",
+    label: "Gefahr (akut)",
+    size: [51.5, 36],
+    accepts: ["symbol"],
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          svg
+            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .attr("fill", "white")
+            .attr("stroke", "red")
+        )
+        .push(
+          svg
+            .path("M5,13 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
+            .attr("fill", "red")
+            .attr("stroke", "none")
+        ),
+    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+    paintableArea: [
+      [18, 3],
+      [38, 18],
+    ],
   },
 ];
