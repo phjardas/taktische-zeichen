@@ -9,7 +9,7 @@ export default function Symbole({
   preview = {},
 }) {
   return (
-    <div className="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+    <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2 g-sm-3 g-md-4">
       {(keepOrder ? symbole : [...symbole].sort(sort)).map((gz) => (
         <div key={gz.id} className="col">
           <div className="card h-100">
