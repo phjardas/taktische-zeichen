@@ -55,7 +55,8 @@ export type SymbolId =
   | "ausfall-75"
   | "ausfall-100"
   | "abc"
-  | "dekontamination";
+  | "dekontamination"
+  | "wasser";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -539,6 +540,14 @@ export const dekontamination: SymbolSpec = {
       ),
 };
 
+export const wasser: SymbolSpec = {
+  size: [32, 12.5],
+  render: (svg) =>
+    svg.path(
+      "M1,3.5 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0 M1,9 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0"
+    ),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -614,4 +623,5 @@ export const symbole: Array<Symbol> = [
   { ...ausfall100, id: "ausfall-100", label: "Totalausfall" },
   { ...abc, id: "abc", label: "Gefährliche Stoffen oder Güter, ABC" },
   { ...dekontamination, id: "dekontamination", label: "Dekontamination" },
+  { ...wasser, id: "wasser", label: "Wasser" },
 ];
