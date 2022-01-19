@@ -53,7 +53,7 @@ export type SymbolId =
   | "ausfall-25"
   | "ausfall-50"
   | "ausfall-75"
-  | "ausfall-100";
+  | "ausfall-100"
   | "abc"
   | "dekontamination";
 
@@ -111,63 +111,75 @@ export const ausfall25: SymbolSpec = {
   size: [45, 45],
   render: (svg) =>
     svg
-      .g()    
-      .push(svg.rect([1, 1], [43, 43]).attr("fill","green"))
-      .push(svg.rect([22, 1], [22, 22]).attr("fill","red"))
-      .push(svg.circle([22, 22], 10).attr("fill","white"))
-      .push(svg.registerText().textNode("text", "1")
-        .attr("x", "18")
-        .attr("y", "27")
-        .attr("stroke", "none")
-        .attr("fill", "black"))
-      ,
+      .g()
+      .push(svg.rect([1, 1], [43, 43]).attr("fill", "green"))
+      .push(svg.rect([22, 1], [22, 22]).attr("fill", "red"))
+      .push(svg.circle([22, 22], 10).attr("fill", "white"))
+      .push(
+        svg
+          .registerText()
+          .textNode("text", "1")
+          .attr("x", "18")
+          .attr("y", "27")
+          .attr("stroke", "none")
+          .attr("fill", "black")
+      ),
 };
 
 export const ausfall50: SymbolSpec = {
   size: [45, 45],
   render: (svg) =>
     svg
-      .g()    
-      .push(svg.rect([1, 1], [43, 43]).attr("fill","green"))
-      .push(svg.rect([22, 1], [22, 43]).attr("fill","red"))
-      .push(svg.circle([22, 22], 10).attr("fill","white"))
-      .push(svg.registerText().textNode("text", "2")
-        .attr("x", "18")
-        .attr("y", "27")
-        .attr("stroke", "none")
-        .attr("fill", "black"))
-      ,
+      .g()
+      .push(svg.rect([1, 1], [43, 43]).attr("fill", "green"))
+      .push(svg.rect([22, 1], [22, 43]).attr("fill", "red"))
+      .push(svg.circle([22, 22], 10).attr("fill", "white"))
+      .push(
+        svg
+          .registerText()
+          .textNode("text", "2")
+          .attr("x", "18")
+          .attr("y", "27")
+          .attr("stroke", "none")
+          .attr("fill", "black")
+      ),
 };
 
 export const ausfall75: SymbolSpec = {
   size: [45, 45],
   render: (svg) =>
     svg
-      .g()    
-      .push(svg.rect([1, 1], [43, 43]).attr("fill","red"))
-      .push(svg.rect([1, 1], [21, 21]).attr("fill","green"))
-      .push(svg.circle([22, 22], 10).attr("fill","white"))
-      .push(svg.registerText().textNode("text", "3")
-        .attr("x", "18")
-        .attr("y", "27")
-        .attr("stroke", "none")
-        .attr("fill", "black"))
-      ,
+      .g()
+      .push(svg.rect([1, 1], [43, 43]).attr("fill", "red"))
+      .push(svg.rect([1, 1], [21, 21]).attr("fill", "green"))
+      .push(svg.circle([22, 22], 10).attr("fill", "white"))
+      .push(
+        svg
+          .registerText()
+          .textNode("text", "3")
+          .attr("x", "18")
+          .attr("y", "27")
+          .attr("stroke", "none")
+          .attr("fill", "black")
+      ),
 };
 
 export const ausfall100: SymbolSpec = {
   size: [45, 45],
   render: (svg) =>
     svg
-      .g()    
-      .push(svg.rect([1, 1], [43, 43]).attr("fill","red"))
-      .push(svg.circle([22, 22], 10).attr("fill","white"))
-      .push(svg.registerText().textNode("text", "4")
-        .attr("x", "18")
-        .attr("y", "27")
-        .attr("stroke", "none")
-        .attr("fill", "black"))
-      ,
+      .g()
+      .push(svg.rect([1, 1], [43, 43]).attr("fill", "red"))
+      .push(svg.circle([22, 22], 10).attr("fill", "white"))
+      .push(
+        svg
+          .registerText()
+          .textNode("text", "4")
+          .attr("x", "18")
+          .attr("y", "27")
+          .attr("stroke", "none")
+          .attr("fill", "black")
+      ),
 };
 
 export const tendenzSteigend: SymbolSpec = {
@@ -176,7 +188,12 @@ export const tendenzSteigend: SymbolSpec = {
     svg
       .g()
       .push(svg.path("M5,40 L38,7"))
-      .push(svg.path("M40,5 l-8,3 l5,5 l3,-8").attr("fill", "black").attr("stroke-width", 0))      
+      .push(
+        svg
+          .path("M40,5 l-8,3 l5,5 l3,-8")
+          .attr("fill", "black")
+          .attr("stroke-width", 0)
+      )
       .push(svg.rect([1, 1], [43, 43])),
 };
 
@@ -186,7 +203,12 @@ export const tendenzFallend: SymbolSpec = {
     svg
       .g()
       .push(svg.path("M5,5 L38,38"))
-      .push(svg.path("M40,40 l-8,-3 l5,-5 l3,8").attr("fill", "black").attr("stroke-width", 0))      
+      .push(
+        svg
+          .path("M40,40 l-8,-3 l5,-5 l3,8")
+          .attr("fill", "black")
+          .attr("stroke-width", 0)
+      )
       .push(svg.rect([1, 1], [43, 43])),
 };
 
@@ -196,7 +218,12 @@ export const tendenzUnveraendert: SymbolSpec = {
     svg
       .g()
       .push(svg.path("M5,23 L38,23"))
-      .push(svg.path("M40,23 l-8,4 l0,-8 l8,4").attr("fill", "black").attr("stroke-width", 0))      
+      .push(
+        svg
+          .path("M40,23 l-8,4 l0,-8 l8,4")
+          .attr("fill", "black")
+          .attr("stroke-width", 0)
+      )
       .push(svg.rect([1, 1], [43, 43])),
 };
 
@@ -576,7 +603,11 @@ export const symbole: Array<Symbol> = [
   { ...blockiert, id: "blockiert", label: "blockiert" },
   { ...tendenzSteigend, id: "tendenz-steigend", label: "Tendenz steigend" },
   { ...tendenzFallend, id: "tendenz-fallend", label: "Tendenz fallend" },
-  { ...tendenzUnveraendert, id: "tendenz-unveraendert", label: "Tendenz unverändert" },
+  {
+    ...tendenzUnveraendert,
+    id: "tendenz-unveraendert",
+    label: "Tendenz unverändert",
+  },
   { ...ausfall25, id: "ausfall-25", label: "Ausfall 25%" },
   { ...ausfall50, id: "ausfall-50", label: "Ausfall 50%" },
   { ...ausfall75, id: "ausfall-75", label: "Ausfall 75%" },
