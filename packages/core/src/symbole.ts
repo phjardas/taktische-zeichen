@@ -1,5 +1,6 @@
 import { Element } from "./svg";
-import { type Renderable } from "./types";
+import { renderText } from "./text";
+import { type Point, type Renderable } from "./types";
 
 export type SymbolId =
   | "drehleiter"
@@ -58,7 +59,22 @@ export type SymbolId =
   | "dekontamination"
   | "wasser"
   | "wasserfahrzeug"
-  | "pumpe";
+  | "pumpe"
+  | "bilduebertragung"
+  | "bilduebertragung-funk"
+  | "datenuebertragung"
+  | "datenuebertragung-funk"
+  | "fax"
+  | "fax-funk"
+  | "fernsprechen"
+  | "fernsprechen-funk"
+  | "fernschreiben"
+  | "fernschreiben-funk"
+  | "festbilduebertragung"
+  | "festbilduebertragung-funk"
+  | "relaisfunkbetrieb"
+  | "richtbetrieb"
+  | "kabelbau";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -579,6 +595,105 @@ export const pumpe: SymbolSpec = {
   },
 };
 
+const funk: SymbolSpec = {
+  size: [62, 12.5],
+  render: (svg) => svg.path("M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10"),
+};
+
+function mitFunk(symbol: SymbolSpec): SymbolSpec {
+  const margin = 1;
+  const scale = Math.min(symbol.size[0] / funk.size[0], 1);
+  const newSize: Point = [
+    symbol.size[0],
+    symbol.size[1] + margin + funk.size[1] * scale,
+  ];
+
+  return {
+    size: newSize,
+    render: (svg) =>
+      svg
+        .g()
+        .push(symbol.render(svg))
+        .push(
+          funk
+            .render(svg)
+            .attr(
+              "transform",
+              `scale(${scale}) translate(0 ${
+                (symbol.size[1] + margin) / scale
+              })`
+            )
+        ),
+  };
+}
+
+const bilduebertragung: SymbolSpec = {
+  size: [42, 27],
+  render: (svg) =>
+    svg.path(
+      "M1,6 a5 5 0 0 1 5 -5 h30 a5 5 0 0 1 5 5 v15 a5 5 0 0 1 -5 5 h-30 a5 5 0 0 1 -5 -5 Z"
+    ),
+};
+const bilduebertragungFunk = mitFunk(bilduebertragung);
+
+const datenuebertragung: SymbolSpec = {
+  size: [45, 17],
+  render: (svg) => svg.path("M0,1 h15 v15 h15 v-15 h15"),
+};
+const datenuebertragungFunk = mitFunk(datenuebertragung);
+
+const fax: SymbolSpec = {
+  size: [50, 22],
+  render: (svg) => renderText(svg, "Fax").attr("y", 21.5).attr("fill", "black"),
+};
+const faxFunk = mitFunk(fax);
+
+const fernsprechen: SymbolSpec = {
+  size: [45, 2],
+  render: (svg) => svg.path("M0,1 h45"),
+};
+const fernsprechenFunk = mitFunk(fernsprechen);
+
+const fernschreiben: SymbolSpec = {
+  size: [45, 6],
+  render: (svg) => svg.path("M0,1 h45 M0,5 h45"),
+};
+const fernschreibenFunk = mitFunk(fernschreiben);
+
+const festbilduebertragung: SymbolSpec = {
+  size: [40, 40],
+  render: (svg) =>
+    svg.path(
+      "M0,8 h40 m-40,8 h40 m-40,8 h40 m-40,8 h40 M8,0 v40 m8,-40 v40 m8,-40 v40 m8,-40 v40"
+    ),
+};
+const festbilduebertragungFunk = mitFunk(festbilduebertragung);
+
+const relaisfunkbetrieb: SymbolSpec = {
+  size: [45, 11.5],
+  render: (svg) =>
+    svg
+      .g()
+      .push(svg.path("M0,1 h45"))
+      .push(
+        svg
+          .path(
+            "M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10 M-3,1.5 a7 7 0 0 1 0 11 M65,1.5 a7 7 0 0 0 0 11"
+          )
+          .attr("transform", "scale(0.65) translate(3.7 4)")
+      ),
+};
+
+const richtbetrieb: SymbolSpec = {
+  size: [22, 36],
+  render: (svg) => svg.path("M0,1 h12 m-6,0 v20 l15,-10 v25"),
+};
+
+const kabelbau: SymbolSpec = {
+  size: [22, 35],
+  render: (svg) => svg.path("M1,0 a10 10 0 0 0 20 0 m-10,10 v25"),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -657,4 +772,56 @@ export const symbole: Array<Symbol> = [
   { ...wasser, id: "wasser", label: "Wasser" },
   { ...wasserfahrzeug, id: "wasserfahrzeug", label: "Wasserfahrzeug" },
   { ...pumpe, id: "pumpe", label: "Pumpe" },
+
+  {
+    ...bilduebertragung,
+    id: "bilduebertragung",
+    label: "Bildübertragung (Draht)",
+  },
+  {
+    ...bilduebertragungFunk,
+    id: "bilduebertragung-funk",
+    label: "Bildübertragung (Funk)",
+  },
+  {
+    ...datenuebertragung,
+    id: "datenuebertragung",
+    label: "Datenübertragung (Draht)",
+  },
+  {
+    ...datenuebertragungFunk,
+    id: "datenuebertragung-funk",
+    label: "Datenübertragung (Funk)",
+  },
+  { ...fax, id: "fax", label: "Fax (Draht)" },
+  { ...faxFunk, id: "fax-funk", label: "Fax (Funk)" },
+  { ...fernsprechen, id: "fernsprechen", label: "Fernsprechen (Draht)" },
+  {
+    ...fernsprechenFunk,
+    id: "fernsprechen-funk",
+    label: "Fernsprechen (Funk)",
+  },
+  { ...fernschreiben, id: "fernschreiben", label: "Fernschreiben (Draht)" },
+  {
+    ...fernschreibenFunk,
+    id: "fernschreiben-funk",
+    label: "Fernschreiben (Funk)",
+  },
+  {
+    ...festbilduebertragung,
+    id: "festbilduebertragung",
+    label: "Festbildübertragung (Draht)",
+  },
+  {
+    ...festbilduebertragungFunk,
+    id: "festbilduebertragung-funk",
+    label: "Festbildübertragung (Funk)",
+  },
+  {
+    ...relaisfunkbetrieb,
+    id: "relaisfunkbetrieb",
+    label: "Relaisfunkbetrieb",
+  },
+  { ...richtbetrieb, id: "richtbetrieb", label: "Richtbetrieb" },
+  { ...kabelbau, id: "kabelbau", label: "Kabelbau" },
 ];

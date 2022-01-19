@@ -15,7 +15,7 @@ Die Bibliothek enthält:
 - 7 Organisationen
 - 8 Einheiten
 - 6 Verwaltungsstufen
-- 57 Symbole
+- 72 Symbole
 
 <!-- STATISTICS:END -->
 
