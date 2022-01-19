@@ -566,13 +566,12 @@ export const hund: SymbolSpec = {
 export const pumpe: SymbolSpec = {
   size: [42, 42],
   render: (svg) => {
-    const g = svg.g();
-    g.push(svg.circle([22, 22], 10));
+    const g = svg.g().attr("transform", "translate(22 22)");
+    g.push(svg.circle([0, 0], 10));
     for (let i = 0; i < 5; i++) {
       g.push(
         svg
-          .path("M22,12 a8 8 0 0 1 5 -10")
-          .attr("transform-origin", "22 22")
+          .path("M0,-10 a8 8 0 0 1 5 -10")
           .attr("transform", `rotate(${i * 72 + 50})`)
       );
     }
