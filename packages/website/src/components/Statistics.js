@@ -2,15 +2,13 @@ import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 export default function Statistics() {
-  const { allStatisticsJson: statistics } = useStaticQuery(graphql`
+  const { statistics } = useStaticQuery(graphql`
     query {
-      allStatisticsJson {
-        edges {
-          node {
-            id
-            label
-            count
-          }
+      statistics: allStatisticsJson {
+        nodes {
+          id
+          label
+          count
         }
       }
     }
@@ -20,7 +18,7 @@ export default function Statistics() {
     <>
       <p>Die Bibliothek enthält:</p>
       <ul>
-        {statistics.edges.map(({ node }) => (
+        {statistics.nodes.map((node) => (
           <li key={node.id}>
             {node.count} {node.label}
           </li>
