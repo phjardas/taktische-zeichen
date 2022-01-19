@@ -443,7 +443,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   },
   {
     id: "abwehr-wassergefahren",
-    label: "",
+    label: "Abwehr von Wassergefahren, Deichverteidigung",
     size: [75, 45],
     cover: true,
     render: (svg) =>
