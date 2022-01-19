@@ -90,11 +90,15 @@ export class TextNode extends Element {
   }
 }
 
+export type SVGOptions = {
+  skipFontRegistration?: boolean;
+};
+
 export class SVG extends Container {
   private isTextRegistered = false;
   private defs = new Container("defs");
 
-  constructor() {
+  constructor(private readonly options?: SVGOptions) {
     super("svg");
     this.attr("xmlns", "http://www.w3.org/2000/svg");
     this.push(this.defs);
@@ -106,7 +110,7 @@ export class SVG extends Container {
   }
 
   registerText() {
-    if (!this.isTextRegistered) {
+    if (!this.isTextRegistered && !this.options?.skipFontRegistration) {
       this.def(createFontStyle(this));
       this.isTextRegistered = true;
     }

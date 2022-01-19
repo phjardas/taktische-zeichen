@@ -36,6 +36,7 @@ export type TaktischesZeichen = {
   text?: string;
   name?: string;
   organisationName?: string;
+  skipFontRegistration?: boolean;
 };
 
 export type Image = {

@@ -8,6 +8,7 @@ import TaktischesZeichenComp, {
   symbole,
   verwaltungsstufen,
 } from "taktische-zeichen-react";
+import Beispiele from "./Beispiele";
 import { useTaktischesZeichen } from "./tz";
 
 const optionen = {
@@ -19,73 +20,6 @@ const optionen = {
   funktionen: funktionen.sort((a, b) => a.label.localeCompare(b.label)),
   symbole: symbole.sort((a, b) => a.label.localeCompare(b.label)),
 };
-
-const beispiele = [
-  {
-    label: "Löschfahrzeug",
-    tz: {
-      grundzeichen: "kraftfahrzeug-landgebunden",
-      organisation: "feuerwehr",
-      fachaufgabe: "brandbekaempfung",
-      einheit: "gruppe",
-      name: "LF20",
-    },
-  },
-  {
-    label: "Verletztenablageplatz",
-    tz: {
-      grundzeichen: "stelle",
-      organisation: "hilfsorganisation",
-      fachaufgabe: "rettungswesen",
-      symbol: "sichten",
-    },
-  },
-  {
-    label: "Katastrophenschutzleitung",
-    tz: {
-      grundzeichen: "befehlsstelle",
-      organisation: "fuehrung",
-      text: "KatSL",
-    },
-  },
-  {
-    label: "Organisatorischer Leiter Rettungsdienst",
-    tz: {
-      grundzeichen: "person",
-      organisation: "hilfsorganisation",
-      funktion: "fuehrungskraft",
-      text: "OrgL",
-    },
-  },
-  {
-    label: "THW: Technischer Zug mit FGr Räumen",
-    tz: {
-      grundzeichen: "taktische-formation",
-      organisation: "thw",
-      fachaufgabe: "logistik",
-      einheit: "zug",
-      text: "TZ-R",
-    },
-  },
-  {
-    label: "Hubschrauberlandeplatz",
-    tz: {
-      grundzeichen: "stelle",
-      organisation: "gefahrenabwehr",
-      symbol: "hubschrauber",
-    },
-  },
-  {
-    label: "Kreisbrandinspektor",
-    tz: {
-      grundzeichen: "person",
-      organisation: "feuerwehr",
-      funktion: "fuehrungskraft",
-      verwaltungsstufe: "kreis",
-      text: "KBI",
-    },
-  },
-];
 
 export function Demo() {
   const { taktischesZeichen, setTaktischesZeichen } = useTaktischesZeichen();
@@ -293,24 +227,7 @@ export function Demo() {
           </div>
         )}
       </form>
-      <p>
-        Beispiele:
-        <button
-          className="btn btn-link"
-          onClick={() => setTaktischesZeichen({})}
-        >
-          zurücksetzen
-        </button>
-        {beispiele.map((beispiel, i) => (
-          <button
-            key={i}
-            className="btn btn-link"
-            onClick={() => setTaktischesZeichen(beispiel.tz)}
-          >
-            {beispiel.label}
-          </button>
-        ))}
-      </p>
+      <Beispiele />
       {taktischesZeichen.grundzeichen || taktischesZeichen.symbol ? (
         <TaktischesZeichenComp
           {...taktischesZeichen}

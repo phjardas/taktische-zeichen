@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import { Demo } from "../components/Demo";
 import Layout from "../components/Layout";
@@ -6,12 +7,21 @@ import { TaktischesZeichenProvider } from "../components/tz";
 import Usage from "../components/Usage";
 
 export default function App() {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            description
+          }
+        }
+      }
+    `
+  );
+
   return (
     <Layout>
-      <p className="lead">
-        Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in
-        JavaScript.
-      </p>
+      <p className="lead">{site.siteMetadata.description}</p>
       <Statistics />
 
       <TaktischesZeichenProvider>

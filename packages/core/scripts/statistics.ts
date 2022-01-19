@@ -28,7 +28,9 @@ const statistics = [
   { label: "Einheiten", count: einheiten.length },
   { label: "Verwaltungsstufen", count: verwaltungsstufen.length },
   { label: "Symbole", count: symbole.length },
-]
+];
+
+const statisticsMarkdown = statistics
   .map(({ label, count }) => `- ${count} ${label}`)
   .join("\n");
 
@@ -46,7 +48,7 @@ async function replaceStatistics(file: string) {
     contents.substring(0, startIndex) +
     startTag +
     "\n\n" +
-    statistics +
+    statisticsMarkdown +
     "\n\n" +
     contents.substring(endIndex);
 
@@ -54,8 +56,17 @@ async function replaceStatistics(file: string) {
   console.log("Updated: %s", filename);
 }
 
+async function writeWebsiteStatistics() {
+  const filename = path.resolve(root, "packages/website/data/statistics.json");
+  await fs.writeFile(filename, JSON.stringify(statistics, null, 2), "utf-8");
+  console.log("Updated: %s", filename);
+}
+
 async function main() {
-  await Promise.all(files.map(replaceStatistics));
+  await Promise.all([
+    ...files.map(replaceStatistics),
+    writeWebsiteStatistics(),
+  ]);
 }
 
 main().catch((error) => {

@@ -30,7 +30,13 @@ function get<T extends { id: string }>(
   return item;
 }
 
-export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
+export function erzeugeTaktischesZeichen({
+  text,
+  name,
+  organisationName,
+  skipFontRegistration,
+  ...spec
+}: TaktischesZeichen): Image {
   const grund = get(spec.grundzeichen, grundzeichen);
   const org = get(spec.organisation, organisationen);
   const fachaufgabe = get(spec.fachaufgabe, fachaufgaben);
@@ -45,7 +51,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
     );
   }
 
-  const svg = new SVG()
+  const svg = new SVG({ skipFontRegistration })
     .attr("fill", "transparent")
     .attr("stroke", "black")
     .attr("stroke-width", 2);
@@ -167,7 +173,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
         );
       }
 
-      if (spec.text) {
+      if (text) {
         svg.push(
           svg
             .g()
@@ -175,7 +181,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
             .push(
               placeComponent({
                 parent: grund,
-                component: createTextSymbol(spec.text, {
+                component: createTextSymbol(text, {
                   fill: textColor,
                 }),
                 padding: grund.textPadding ?? grund.padding,
@@ -186,7 +192,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       }
     }
 
-    if (spec.name && accepts(grund, "name")) {
+    if (name && accepts(grund, "name")) {
       const grundNameArea = grund.nameArea ??
         grund.paintableArea ?? [[0, 0], grund.size];
       const fachaufgabeNameArea =
@@ -204,7 +210,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },
-              component: createTextSymbol(spec.name, {
+              component: createTextSymbol(name, {
                 fill: textColor,
               }),
               align: ["start", "start"],
@@ -214,7 +220,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
       );
     }
 
-    if (spec.organisationName && accepts(grund, "name")) {
+    if (organisationName && accepts(grund, "name")) {
       const grundNameArea = grund.organisationNameArea ??
         grund.paintableArea ?? [[0, 0], grund.size];
       const fachaufgabeNameArea =
@@ -232,7 +238,7 @@ export function erzeugeTaktischesZeichen(spec: TaktischesZeichen): Image {
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },
-              component: createTextSymbol(spec.organisationName, {
+              component: createTextSymbol(organisationName, {
                 fill: textColor,
               }),
               align: ["end", "end"],

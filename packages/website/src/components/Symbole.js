@@ -18,6 +18,7 @@ export default function Symbole({
                 <TaktischesZeichen
                   {...{ ...base, [prop]: gz.id }}
                   alt={gz.label}
+                  skipFontRegistration
                   {...preview}
                 />
               </p>

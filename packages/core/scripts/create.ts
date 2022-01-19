@@ -49,7 +49,8 @@ async function main() {
     .option("text", { type: "string" })
     .option("name", { type: "string" })
     .option("organisation-name", { type: "string" })
-    .option("output", { type: "string", default: "custom.svg" }).argv;
+    .option("output", { type: "string", default: "custom.svg" })
+    .options("skip-font-registration", { type: "boolean" }).argv;
 
   const tz = erzeugeTaktischesZeichen(spec as TaktischesZeichen);
   await fs.mkdir(basedir, { recursive: true });
