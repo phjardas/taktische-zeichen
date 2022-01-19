@@ -19,6 +19,7 @@ import {
   verbrauchsgueter,
   verpflegung,
   veterinaerwesen,
+  wasser,
 } from "./symbole";
 import type { Rect, Renderable } from "./types";
 import { addPoints, Component, Parent, placeComponent } from "./utils";
@@ -40,6 +41,7 @@ export type FachaufgabeId =
   | "dekontamination"
   | "dekontamination-personen"
   | "dekontamination-geraete"
+  | "umweltschaeden-gewaesser"
   | "rettungswesen"
   | "aerztliche-versorgung"
   | "krankenhaus"
@@ -242,6 +244,23 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .g()
         .push(dekontamination.render(svg))
         .push(svg.path("M18.5,23 a4 4 0 1 0 0 4 m-3,-1 h3 v4")),
+  },
+  {
+    id: "umweltschaeden-gewaesser",
+    label: "Beseitigung von Umweltschäden auf Gewässern, Ölschadenbekämpfung",
+    size: [75, 45],
+    cover: true,
+    render: (svg) =>
+      svg
+        .g()
+        .push(
+          dekontamination
+            .render(svg)
+            .attr("transform", "scale(.6) translate(47.5,14)")
+        )
+        .push(
+          wasser.render(svg).attr("transform", "scale(.8) translate(31,35)")
+        ),
   },
   {
     id: "rettungswesen",
