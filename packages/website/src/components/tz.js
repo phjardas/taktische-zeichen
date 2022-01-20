@@ -10,6 +10,7 @@ export function TaktischesZeichenProvider({ children }) {
     einheit: "gruppe",
     name: "LF20",
   });
+
   const context = useMemo(
     () => ({ taktischesZeichen, setTaktischesZeichen }),
     [taktischesZeichen]

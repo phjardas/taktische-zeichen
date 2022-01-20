@@ -1,9 +1,9 @@
-import { useLocation } from "@reach/router";
 import { Link } from "gatsby";
 import React from "react";
 
 const routes = [
   { path: "/", label: "Startseite" },
+  { path: "/demo", label: "Demo" },
   { path: "/grundzeichen", label: "Grundzeichen" },
   { path: "/fachaufgaben", label: "Fachaufgaben" },
   { path: "/organisationen", label: "Organisationen" },
@@ -14,17 +14,11 @@ const routes = [
 ];
 
 export default function Nav() {
-  const { pathname: current } = useLocation();
-
   return (
     <nav className="nav nav-pills mb-5">
       {routes.map((route) => (
         <li key={route.path} className="nav-item">
-          <Link
-            className={route.path === current ? "nav-link active" : "nav-link"}
-            aria-current={route.path === current ? "page" : undefined}
-            to={route.path}
-          >
+          <Link className="nav-link" activeClassName="active" to={route.path}>
             {route.label}
           </Link>
         </li>

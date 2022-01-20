@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import { Demo } from "../components/Demo";
 import Layout from "../components/Layout";
 import Statistics from "../components/Statistics";
 import { TaktischesZeichenProvider } from "../components/tz";
@@ -25,19 +24,7 @@ export default function App() {
       <Statistics />
 
       <TaktischesZeichenProvider>
-        <div className="row">
-          <div className="col-12 col-lg-6 col-xl-5 order-lg-last">
-            <div className="card mb-5">
-              <div className="card-body">
-                <h2 className="card-title">Demonstration</h2>
-                <Demo />
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-lg-6 col-xl-7">
-            <Usage />
-          </div>
-        </div>
+        <Usage />
       </TaktischesZeichenProvider>
 
       <h2>Informationen</h2>

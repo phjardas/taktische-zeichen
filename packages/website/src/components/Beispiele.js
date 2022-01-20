@@ -29,20 +29,20 @@ export default function Beispiele() {
   const { setTaktischesZeichen } = useTaktischesZeichen();
 
   return (
-    <p>
-      Beispiele:
-      <button className="btn btn-link" onClick={() => setTaktischesZeichen({})}>
-        zurücksetzen
-      </button>
-      {beispiele.nodes.map((beispiel) => (
-        <button
-          key={beispiel.id}
-          className="btn btn-link"
-          onClick={() => setTaktischesZeichen(beispiel.tz)}
-        >
-          {beispiel.label}
-        </button>
-      ))}
-    </p>
+    <>
+      <h2>Beispiele</h2>
+      <ul>
+        {beispiele.nodes.map((beispiel) => (
+          <li key={beispiel.id}>
+            <button
+              className="btn btn-link"
+              onClick={() => setTaktischesZeichen(beispiel.tz)}
+            >
+              {beispiel.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
