@@ -19,6 +19,14 @@ npm bootstrap
 npm run build
 ```
 
+## Lokaler Test
+
+```bash
+./taktisches-zeichen.sh --grundzeichen fahrzeug --organisation feuerwehr
+```
+
+Schreibt das taktische Zeichen in `tz.svg`.
+
 ## Website lokal testen
 
 ```bash
