@@ -1,32 +1,29 @@
 # taktische-zeichen-cli
 
+## 0.5.1
+
+### Patch Changes
+
+- [`041ddf3`](https://github.com/phjardas/taktische-zeichen/commit/041ddf30004a91167682a428b3c165fb5ea69a1d) Thanks [@phjardas](https://github.com/phjardas)! - IDs in den SVGs sind jetzt eindeutiger
+
+- Updated dependencies [[`041ddf3`](https://github.com/phjardas/taktische-zeichen/commit/041ddf30004a91167682a428b3c165fb5ea69a1d)]:
+  - taktische-zeichen-core@0.5.1
+
 ## 0.5.0
+
 ### Minor Changes
-
-
 
 - [`7eb5581`](https://github.com/phjardas/taktische-zeichen/commit/7eb55818bffcbec9aee79826d6ca86653f757102) Thanks [@phjardas](https://github.com/phjardas)! - Neuer Parameter: Farbe für Gefahren
 
-
-
-- [`2ddbe55`](https://github.com/phjardas/taktische-zeichen/commit/2ddbe55251ecc0e78a89750bdd96a0b93dace31c) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: "Sammeln"
-
-
+* [`2ddbe55`](https://github.com/phjardas/taktische-zeichen/commit/2ddbe55251ecc0e78a89750bdd96a0b93dace31c) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: "Sammeln"
 
 - [`a71b620`](https://github.com/phjardas/taktische-zeichen/commit/a71b6205f5def94f12b76db50ec454b3acfdd078) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: "Sammelplatz für Betroffene"
 
-
-
-- [`79d4598`](https://github.com/phjardas/taktische-zeichen/commit/79d45980cde9d24abd214e52452e4250174787ba) Thanks [@phjardas](https://github.com/phjardas)! - Symbol und Fachaufgabe "Warnen"
-
-
+* [`79d4598`](https://github.com/phjardas/taktische-zeichen/commit/79d45980cde9d24abd214e52452e4250174787ba) Thanks [@phjardas](https://github.com/phjardas)! - Symbol und Fachaufgabe "Warnen"
 
 - [`e92c2d9`](https://github.com/phjardas/taktische-zeichen/commit/e92c2d99e431c2594e1443229b505e1dcdfa7d21) Thanks [@phjardas](https://github.com/phjardas)! - Symbole "Vermutung" und "akute Situation"
 
-
-
-- [`ee92d46`](https://github.com/phjardas/taktische-zeichen/commit/ee92d46d23eafa9d406e5b3cf6d6bfcd3ad33302) Thanks [@phjardas](https://github.com/phjardas)! - Neues npm-Modul: taktische-zeichen-cli
-
+* [`ee92d46`](https://github.com/phjardas/taktische-zeichen/commit/ee92d46d23eafa9d406e5b3cf6d6bfcd3ad33302) Thanks [@phjardas](https://github.com/phjardas)! - Neues npm-Modul: taktische-zeichen-cli
 
 ### Patch Changes
 

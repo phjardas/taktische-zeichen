@@ -1,5 +1,14 @@
 # taktische-zeichen-react
 
+## 0.5.1
+
+### Patch Changes
+
+- [`041ddf3`](https://github.com/phjardas/taktische-zeichen/commit/041ddf30004a91167682a428b3c165fb5ea69a1d) Thanks [@phjardas](https://github.com/phjardas)! - IDs in den SVGs sind jetzt eindeutiger
+
+- Updated dependencies [[`041ddf3`](https://github.com/phjardas/taktische-zeichen/commit/041ddf30004a91167682a428b3c165fb5ea69a1d)]:
+  - taktische-zeichen-core@0.5.1
+
 ## 0.5.0
 
 ### Minor Changes
