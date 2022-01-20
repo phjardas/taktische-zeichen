@@ -10,11 +10,7 @@ export type EinheitId =
   | "abteilung"
   | "grossverband";
 
-export type EinheitRenderProps = {
-  textColor?: string;
-};
-
-export type Einheit = Renderable<EinheitRenderProps> & {
+export type Einheit = Renderable & {
   id: EinheitId;
   label: string;
 };
@@ -64,28 +60,19 @@ export const einheiten: Array<Einheit> = [
     id: "zugtrupp",
     label: "Zugtrupp",
     size: [16, 7],
-    render: (svg, props) =>
+    render: (svg) =>
       svg
         .g()
         .attr("fill", "black")
         .push(svg.circle([8, 3], 2))
         .push(
           svg
-            .circle([2, 12], 1.5)
-            .attr("stroke", props?.textColor)
-            .attr("fill", props?.textColor)
-        )
-        .push(
-          svg
-            .circle([8, 12], 1.5)
-            .attr("stroke", props?.textColor)
-            .attr("fill", props?.textColor)
-        )
-        .push(
-          svg
-            .circle([14, 12], 1.5)
-            .attr("stroke", props?.textColor)
-            .attr("fill", props?.textColor)
+            .g()
+            .attr("stroke", "currentColor")
+            .attr("fill", "currentColor")
+            .push(svg.circle([2, 12], 1.5))
+            .push(svg.circle([8, 12], 1.5))
+            .push(svg.circle([14, 12], 1.5))
         ),
   },
   {

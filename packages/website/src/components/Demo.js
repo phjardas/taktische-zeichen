@@ -226,6 +226,20 @@ export function Demo() {
             />
           </div>
         )}
+        {enabled("farbe") && (
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">
+              Symbol-Farbe
+            </label>
+            <input
+              id="farbe"
+              type="color"
+              value={taktischesZeichen.farbe ?? ""}
+              onChange={onChange("farbe")}
+              className="form-control"
+            />
+          </div>
+        )}
       </form>
       <Beispiele />
       {taktischesZeichen.grundzeichen || taktischesZeichen.symbol ? (

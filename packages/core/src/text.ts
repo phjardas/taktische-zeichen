@@ -9,16 +9,16 @@ export function renderText(svg: SVG, text: string): Element {
   );
 }
 
-export function createTextSymbol(
-  text: string,
-  { fill }: { fill: string }
-): Component {
+export function createTextSymbol(text: string): Component {
   const width = calculateTextWidth(text);
 
   return {
     size: [width, getTextHeight(text)],
     render: (svg) =>
-      renderText(svg, text).attr("x", "0").attr("y", "21.5").attr("fill", fill),
+      renderText(svg, text)
+        .attr("x", "0")
+        .attr("y", "21.5")
+        .attr("fill", "currentColor"),
     cover: false,
   };
 }

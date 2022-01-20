@@ -124,7 +124,7 @@ export const sprengmittel: SymbolSpec = {
   render: (svg) =>
     svg
       .g()
-      .push(svg.circle([8, 9], 1).attr("fill", "black"))
+      .push(svg.circle([8, 9], 1).attr("fill", "currentColor"))
       .push(svg.circle([8, 9], 7))
       .push(svg.path("M4,2.5 l-1,-2 M11.5,2.5 l1,-2")),
 };
@@ -608,7 +608,8 @@ export const pumpe: SymbolSpec = {
 
 const vermutung: SymbolSpec = {
   size: [15, 22],
-  render: (svg) => renderText(svg, "?").attr("y", 21.5).attr("fill", "black"),
+  render: (svg) =>
+    renderText(svg, "?").attr("y", 21.5).attr("fill", "currentColor"),
 };
 
 const akut: SymbolSpec = {
@@ -616,7 +617,7 @@ const akut: SymbolSpec = {
   render: (svg) =>
     svg
       .path("M1,1 v10 l1,15 h1 l1,-15 v-10 Z m0,28 h3 v3 h-3 Z")
-      .attr("fill", "black"),
+      .attr("fill", "currentColor"),
 };
 
 const funk: SymbolSpec = {

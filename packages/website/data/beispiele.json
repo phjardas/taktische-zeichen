@@ -62,5 +62,13 @@
       "verwaltungsstufe": "kreis",
       "text": "KBI"
     }
+  },
+  {
+    "label": "Akute Explosionsgefahr",
+    "tz": {
+      "grundzeichen": "gefahr-akut",
+      "text": "Ex",
+      "farbe": "#ff0000"
+    }
   }
 ]

@@ -20,6 +20,7 @@ export default function TaktischesZeichen({
   text,
   name,
   organisationName,
+  farbe,
   skipFontRegistration,
   ...props
 }: Props) {
@@ -34,6 +35,7 @@ export default function TaktischesZeichen({
     text,
     name,
     organisationName,
+    farbe,
     skipFontRegistration,
   });
 

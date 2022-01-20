@@ -34,6 +34,7 @@ export function erzeugeTaktischesZeichen({
   text,
   name,
   organisationName,
+  farbe,
   skipFontRegistration,
   ...spec
 }: TaktischesZeichen): Image {
@@ -52,6 +53,7 @@ export function erzeugeTaktischesZeichen({
   }
 
   const svg = new SVG({ skipFontRegistration })
+    .attr("color", "black")
     .attr("fill", "transparent")
     .attr("stroke", "black")
     .attr("stroke-width", 2);
@@ -65,8 +67,12 @@ export function erzeugeTaktischesZeichen({
     viewBox[1] = grund.size;
 
     const fill = accepts(grund, "organisation") ? org?.background : undefined;
-    const textColor =
-      (accepts(grund, "organisation") ? org?.textColor : undefined) ?? "black";
+    svg.attr(
+      "color",
+      (accepts(grund, "farbe") ? farbe : undefined) ??
+        (accepts(grund, "organisation") ? org?.textColor : undefined) ??
+        "black"
+    );
 
     svg.push(grund.render(svg, { fill }));
 
@@ -111,7 +117,7 @@ export function erzeugeTaktischesZeichen({
 
       svg.push(
         einheit
-          .render(svg, { textColor })
+          .render(svg)
           .attr("transform", `translate(${position[0]},${position[1]})`)
       );
     }
@@ -161,6 +167,7 @@ export function erzeugeTaktischesZeichen({
         svg.push(
           svg
             .g()
+            .attr("color", farbe)
             .attr("clip-path", "url(#gz-mask)")
             .push(
               placeComponent({
@@ -177,13 +184,12 @@ export function erzeugeTaktischesZeichen({
         svg.push(
           svg
             .g()
+            .attr("color", farbe)
             .attr("clip-path", "url(#gz-mask)")
             .push(
               placeComponent({
                 parent: grund,
-                component: createTextSymbol(text, {
-                  fill: textColor,
-                }),
+                component: createTextSymbol(text),
                 padding: grund.textPadding ?? grund.padding,
                 svg,
               }).element
@@ -210,9 +216,7 @@ export function erzeugeTaktischesZeichen({
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },
-              component: createTextSymbol(name, {
-                fill: textColor,
-              }),
+              component: createTextSymbol(name),
               align: ["start", "start"],
               svg,
             }).element
@@ -238,9 +242,7 @@ export function erzeugeTaktischesZeichen({
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },
-              component: createTextSymbol(organisationName, {
-                fill: textColor,
-              }),
+              component: createTextSymbol(organisationName),
               align: ["end", "end"],
               svg,
             }).element
@@ -249,6 +251,8 @@ export function erzeugeTaktischesZeichen({
     }
   } else if (symbol) {
     viewBox[1] = symbol.size;
+    svg.attr("color", farbe ?? "black");
+    svg.attr("stroke", "currentColor");
     svg.push(symbol.render(svg));
   } else {
     throw new Error(

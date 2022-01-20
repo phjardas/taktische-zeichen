@@ -9,9 +9,8 @@ import {
   SymbolSpec,
   wasserfahrzeug,
 } from "./symbole";
-import { createTextSymbol, renderText } from "./text";
+import { renderText } from "./text";
 import type { Padding, Point, Rect, Renderable } from "./types";
-import { subtractPoints } from "./utils";
 
 export type GrundzeichenId =
   | "ohne"
@@ -51,7 +50,8 @@ export type ComponentType =
   | "fachaufgabe"
   | "symbol"
   | "organisation"
-  | "name";
+  | "name"
+  | "farbe";
 
 export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   id: GrundzeichenId;
@@ -449,7 +449,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "gefahr",
     label: "Gefahr",
     size: [45, 36],
-    accepts: ["symbol"],
+    accepts: ["symbol", "farbe"],
     ...singleShape((svg) =>
       svg.path("M22.5,34 L43.2,1 H1.8 Z").attr("fill", "white")
     ),
@@ -459,7 +459,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "gefahr-vermutet",
     label: "Gefahr (vermutet)",
     size: [51.5, 36],
-    accepts: ["symbol"],
+    accepts: ["symbol", "farbe"],
     render: (svg) =>
       svg
         .g()
@@ -467,9 +467,9 @@ export const grundzeichen: Array<Grundzeichen> = [
           svg
             .path("M28,34 l20.7,-33 h-41.4 Z")
             .attr("fill", "white")
-            .attr("stroke", "red")
+            .attr("stroke", "currentColor")
         )
-        .push(renderText(svg, "?").attr("y", 35).attr("fill", "red")),
+        .push(renderText(svg, "?").attr("y", 35).attr("fill", "currentColor")),
     clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
     paintableArea: [
       [18, 3],
@@ -480,7 +480,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "gefahr-akut",
     label: "Gefahr (akut)",
     size: [51.5, 36],
-    accepts: ["symbol"],
+    accepts: ["symbol", "farbe"],
     render: (svg) =>
       svg
         .g()
@@ -488,12 +488,12 @@ export const grundzeichen: Array<Grundzeichen> = [
           svg
             .path("M28,34 l20.7,-33 h-41.4 Z")
             .attr("fill", "white")
-            .attr("stroke", "red")
+            .attr("stroke", "currentColor")
         )
         .push(
           svg
             .path("M5,13 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
-            .attr("fill", "red")
+            .attr("fill", "currentColor")
             .attr("stroke", "none")
         ),
     clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),

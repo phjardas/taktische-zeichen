@@ -48,6 +48,7 @@ const spec = yargs(process.argv.slice(2))
   .option("text", { type: "string" })
   .option("name", { type: "string" })
   .option("organisation-name", { type: "string" })
+  .option("farbe", { type: "string" })
   .options("skip-font-registration", { type: "boolean" }).argv;
 
 const tz = erzeugeTaktischesZeichen(spec);
