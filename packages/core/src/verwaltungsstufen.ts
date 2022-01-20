@@ -20,7 +20,7 @@ function stern(svg: SVG) {
 
 function defineStern(svg: SVG) {
   return svg.def(
-    stern(svg).attr("transform", "scale(0.8)").attr("id", "stern")
+    stern(svg).attr("transform", "scale(0.8)").attr("id", "tz_stern")
   );
 }
 
@@ -30,7 +30,7 @@ function sterne(count: number): Pick<Verwaltungsstufe, "size" | "render"> {
     render: (svg: SVG) => {
       const g = defineStern(svg).g();
       for (let i = 0; i < count; i++) {
-        g.push(svg.use("#stern").attr("x", 9 * i));
+        g.push(svg.use("#tz_stern").attr("x", 9 * i));
       }
       return g;
     },
@@ -71,12 +71,12 @@ export const verwaltungsstufen: Array<Verwaltungsstufe> = [
     render: (svg: SVG) => {
       const g = defineStern(svg).g();
       return g
-        .push(svg.use("#stern").attr("x", 8))
-        .push(svg.use("#stern").attr("y", 5))
-        .push(svg.use("#stern").attr("x", 17))
-        .push(svg.use("#stern").attr("x", 8).attr("y", 10))
-        .push(svg.use("#stern").attr("x", 17).attr("y", 10))
-        .push(svg.use("#stern").attr("x", 25).attr("y", 5));
+        .push(svg.use("#tz_stern").attr("x", 8))
+        .push(svg.use("#tz_stern").attr("y", 5))
+        .push(svg.use("#tz_stern").attr("x", 17))
+        .push(svg.use("#tz_stern").attr("x", 8).attr("y", 10))
+        .push(svg.use("#tz_stern").attr("x", 17).attr("y", 10))
+        .push(svg.use("#tz_stern").attr("x", 25).attr("y", 5));
     },
   },
 ];

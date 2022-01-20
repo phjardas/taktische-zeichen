@@ -408,11 +408,11 @@ export const entstehungsbrand: SymbolSpec = {
   render: (svg) =>
     svg
       .g()
-      .push(svg.clipPath("brand-clip").push(svg.path("M13,0 v34 h-12.5 Z")))
+      .push(svg.clipPath("tz_brand-clip").push(svg.path("M13,0 v34 h-12.5 Z")))
       .push(
         svg
           .path("M12,5 v28 h-10 l12,-33")
-          .attr("clip-path", "url(#brand-clip)")
+          .attr("clip-path", "url(#tz_brand-clip)")
           .attr("stroke", "#cc0000")
       ),
 };
@@ -422,8 +422,8 @@ export const fortentwickelterBrand: SymbolSpec = {
   render: (svg) =>
     svg
       .g()
-      .push(entstehungsbrand.render(svg).attr("id", "brand"))
-      .push(svg.use("#brand").attr("x", 10)),
+      .push(entstehungsbrand.render(svg).attr("id", "tz_brand"))
+      .push(svg.use("#tz_brand").attr("x", 10)),
 };
 
 export const vollbrand: SymbolSpec = {
@@ -431,9 +431,9 @@ export const vollbrand: SymbolSpec = {
   render: (svg) =>
     svg
       .g()
-      .push(entstehungsbrand.render(svg).attr("id", "brand"))
-      .push(svg.use("#brand").attr("x", 10))
-      .push(svg.use("#brand").attr("x", 20)),
+      .push(entstehungsbrand.render(svg).attr("id", "tz_brand"))
+      .push(svg.use("#tz_brand").attr("x", 10))
+      .push(svg.use("#tz_brand").attr("x", 20)),
 };
 
 export const sirene: SymbolSpec = {

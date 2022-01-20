@@ -67,6 +67,7 @@ export function erzeugeTaktischesZeichen({
     viewBox[1] = grund.size;
 
     const fill = accepts(grund, "organisation") ? org?.background : undefined;
+
     svg.attr(
       "color",
       (accepts(grund, "farbe") ? farbe : undefined) ??
@@ -76,8 +77,10 @@ export function erzeugeTaktischesZeichen({
 
     svg.push(grund.render(svg, { fill }));
 
+    const clipPathId = `tz_${grund.id}`;
+
     if (grund.clipPath) {
-      svg.def(svg.clipPath("gz-mask").push(grund.clipPath(svg)));
+      svg.def(svg.clipPath(clipPathId).push(grund.clipPath(svg)));
     }
 
     let mainPosition: Point = [0, 0];
@@ -90,7 +93,9 @@ export function erzeugeTaktischesZeichen({
         padding: fachaufgabe.cover ? undefined : grund.padding,
         svg,
       });
-      svg.push(svg.g().push(placed.element).attr("clip-path", "url(#gz-mask)"));
+      svg.push(
+        svg.g().push(placed.element).attr("clip-path", `url(#${clipPathId})`)
+      );
       mainPosition = placed.offset;
       mainScale = placed.scale;
     }
@@ -155,7 +160,7 @@ export function erzeugeTaktischesZeichen({
       svg.push(
         svg
           .g()
-          .attr("clip-path", "url(#gz-mask)")
+          .attr("clip-path", `url(#${clipPathId})`)
           .push(
             funktion.render(svg).attr("transform", `translate(${offset},0)`)
           )
@@ -168,7 +173,7 @@ export function erzeugeTaktischesZeichen({
           svg
             .g()
             .attr("color", farbe)
-            .attr("clip-path", "url(#gz-mask)")
+            .attr("clip-path", `url(#${clipPathId})`)
             .push(
               placeComponent({
                 parent: grund,
@@ -185,7 +190,7 @@ export function erzeugeTaktischesZeichen({
           svg
             .g()
             .attr("color", farbe)
-            .attr("clip-path", "url(#gz-mask)")
+            .attr("clip-path", `url(#${clipPathId})`)
             .push(
               placeComponent({
                 parent: grund,
@@ -212,7 +217,7 @@ export function erzeugeTaktischesZeichen({
       svg.push(
         svg
           .g()
-          .attr("clip-path", "url(#gz-mask)")
+          .attr("clip-path", `url(#${clipPathId})`)
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },
@@ -238,7 +243,7 @@ export function erzeugeTaktischesZeichen({
       svg.push(
         svg
           .g()
-          .attr("clip-path", "url(#gz-mask)")
+          .attr("clip-path", `url(#${clipPathId})`)
           .push(
             placeComponent({
               parent: { ...grund, paintableArea },

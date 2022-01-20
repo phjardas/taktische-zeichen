@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" stroke="black" stroke-width="2" viewBox="0 0 45 45">
   <defs xmlns="http://www.w3.org/2000/svg">
-    <clipPath id="gz-mask">
+    <clipPath id="tz_person">
       <path d="M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z"/>
     </clipPath>
   </defs>
   <path d="M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z" fill="#cc0000"/>
-  <g clip-path="url(#gz-mask)">
+  <g clip-path="url(#tz_person)">
     <path d="M0,0 h30 v8 h-30 Z" fill="black" transform="translate(7.5,0)"/>
   </g>
 </svg>
