@@ -29,7 +29,6 @@
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "format": "prettier --write src",
-    "create": "ts-node -P tsconfig-scripts.json scripts/create.ts",
     "statistics": "ts-node -P tsconfig-scripts.json scripts/statistics.ts"
   },
   "devDependencies": {
@@ -37,12 +36,10 @@
     "@types/node": "^17.0.8",
     "jest": "^27.4.7",
     "prettier": "^2.5.1",
-    "prettify-xml": "^1.2.0",
     "shx": "^0.3.4",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4",
-    "yargs": "^17.3.1"
+    "typescript": "^4.5.4"
   },
   "volta": {
     "node": "16.13.2",

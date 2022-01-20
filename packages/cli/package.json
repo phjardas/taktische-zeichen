@@ -1,0 +1,39 @@
+{
+  "name": "taktische-zeichen-cli",
+  "version": "0.4.0",
+  "description": "Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phjardas/taktische-zeichen.git"
+  },
+  "keywords": [
+    "svg",
+    "dv102",
+    "feuerwehr",
+    "katastrophenschutz"
+  ],
+  "author": "Philipp Jardas <philipp@jardas.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phjardas/taktische-zeichen/issues"
+  },
+  "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
+  "bin": {
+    "taktisches-zeichen": "bin/taktisches-zeichen.js"
+  },
+  "scripts": {
+    "format": "prettier --write bin"
+  },
+  "dependencies": {
+    "prettify-xml": "^1.2.0",
+    "taktische-zeichen-core": "^0.4.0",
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  },
+  "volta": {
+    "node": "16.13.2",
+    "npm": "8.3.0"
+  }
+}

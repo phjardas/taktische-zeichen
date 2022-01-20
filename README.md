@@ -29,7 +29,7 @@ Die Bibliothek enthält:
 
 Beide Bibliotheken beinhalten TypeScript-Definitionen.
 
-In NodeJS oder im Browser:
+### NodeJS oder im Browser
 
 ```javascript
 import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
@@ -51,7 +51,7 @@ console.log(tz.dataUrl);
 console.log(tz.size);
 ```
 
-In React:
+### React
 
 ```jsx
 import { TaktischesZeichen } from "taktische-zeichen-react";
@@ -69,7 +69,23 @@ function App() {
   );
 }
 
-// Rendert <img src="data:image/svg+xml;base64,..." />
+// Rendert <svg>...</svg>
+```
+
+### Kommandozeile
+
+```bash
+npm i -g taktische-zeichen-cli
+
+taktisches-zeichen \
+  --grundzeichen kraftfahrzeug-gelaendegaengig \
+  --organisation feuerwehr \
+  --fachaufgabe brandbekaempfung \
+  --einheit grupp
+
+# Ausgabe:
+# <?xml version="1.0" encoding="UTF-8"?>
+# <svg>...</svg>
 ```
 
 ## Lizenz
