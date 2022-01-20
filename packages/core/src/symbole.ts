@@ -75,7 +75,9 @@ export type SymbolId =
   | "festbilduebertragung-funk"
   | "relaisfunkbetrieb"
   | "richtbetrieb"
-  | "kabelbau";
+  | "kabelbau"
+  | "vermutung"
+  | "akut";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -604,6 +606,19 @@ export const pumpe: SymbolSpec = {
   },
 };
 
+const vermutung: SymbolSpec = {
+  size: [15, 22],
+  render: (svg) => renderText(svg, "?").attr("y", 21.5).attr("fill", "black"),
+};
+
+const akut: SymbolSpec = {
+  size: [5, 33],
+  render: (svg) =>
+    svg
+      .path("M1,1 v10 l1,15 h1 l1,-15 v-10 Z m0,28 h3 v3 h-3 Z")
+      .attr("fill", "black"),
+};
+
 const funk: SymbolSpec = {
   size: [62, 12.5],
   render: (svg) => svg.path("M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10"),
@@ -834,4 +849,6 @@ export const symbole: Array<Symbol> = [
   },
   { ...richtbetrieb, id: "richtbetrieb", label: "Richtbetrieb" },
   { ...kabelbau, id: "kabelbau", label: "Kabelbau" },
+  { ...vermutung, id: "vermutung", label: "Vermutung" },
+  { ...akut, id: "akut", label: "Akute Situation" },
 ];
