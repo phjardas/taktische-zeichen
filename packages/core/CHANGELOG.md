@@ -1,5 +1,31 @@
 # taktische-zeichen
 
+## 0.5.0
+
+### Minor Changes
+
+- [`7eb5581`](https://github.com/phjardas/taktische-zeichen/commit/7eb55818bffcbec9aee79826d6ca86653f757102) Thanks [@phjardas](https://github.com/phjardas)! - Neuer Parameter: Farbe für Gefahren
+
+* [`2ddbe55`](https://github.com/phjardas/taktische-zeichen/commit/2ddbe55251ecc0e78a89750bdd96a0b93dace31c) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: "Sammeln"
+
+- [#38](https://github.com/phjardas/taktische-zeichen/pull/38) [`722e734`](https://github.com/phjardas/taktische-zeichen/commit/722e73473c047ae6798a77ef3ad52173e2646dd7) Thanks [@phjardas](https://github.com/phjardas)! - Symbole für Informations- und Kommunikationsmittel
+
+* [`bb308d9`](https://github.com/phjardas/taktische-zeichen/commit/bb308d9ecfaa7d48cd58016db927015315298aad) Thanks [@phjardas](https://github.com/phjardas)! - Neue Fachaufgabe "Wasserrettung"
+
+- [#27](https://github.com/phjardas/taktische-zeichen/pull/27) [`3d30b97`](https://github.com/phjardas/taktische-zeichen/commit/3d30b97db2e2b87bd2cc20654fde24a44058352b) Thanks [@einsatzverwaltung](https://github.com/einsatzverwaltung)! - Symbole für Tendenzen und Aktivitäten hinzugefügt
+
+* [`5f00a08`](https://github.com/phjardas/taktische-zeichen/commit/5f00a085c56ad43e63a0d941ff50f6d88ad33d7a) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: Wasser
+
+- [`aac4c93`](https://github.com/phjardas/taktische-zeichen/commit/aac4c93cb84f104026fc1d62aeeea699a87737ec) Thanks [@phjardas](https://github.com/phjardas)! - Neue Fachaufgabe "Beseitigen von Umweltschäden auf Gewässern"
+
+* [`a71b620`](https://github.com/phjardas/taktische-zeichen/commit/a71b6205f5def94f12b76db50ec454b3acfdd078) Thanks [@phjardas](https://github.com/phjardas)! - Neues Symbol: "Sammelplatz für Betroffene"
+
+- [`79d4598`](https://github.com/phjardas/taktische-zeichen/commit/79d45980cde9d24abd214e52452e4250174787ba) Thanks [@phjardas](https://github.com/phjardas)! - Symbol und Fachaufgabe "Warnen"
+
+* [`e92c2d9`](https://github.com/phjardas/taktische-zeichen/commit/e92c2d99e431c2594e1443229b505e1dcdfa7d21) Thanks [@phjardas](https://github.com/phjardas)! - Symbole "Vermutung" und "akute Situation"
+
+- [`7d76846`](https://github.com/phjardas/taktische-zeichen/commit/7d768469b3f6f7bf40b9a9a6af99fe615613568a) Thanks [@phjardas](https://github.com/phjardas)! - Neue Fachaufgaben: Wasserfahrzeuge, Rettungshunde, Pumpen und Abwehr von Wassergefahren
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # taktische-zeichen-website
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`7eb5581`](https://github.com/phjardas/taktische-zeichen/commit/7eb55818bffcbec9aee79826d6ca86653f757102), [`2ddbe55`](https://github.com/phjardas/taktische-zeichen/commit/2ddbe55251ecc0e78a89750bdd96a0b93dace31c), [`722e734`](https://github.com/phjardas/taktische-zeichen/commit/722e73473c047ae6798a77ef3ad52173e2646dd7), [`bb308d9`](https://github.com/phjardas/taktische-zeichen/commit/bb308d9ecfaa7d48cd58016db927015315298aad), [`3d30b97`](https://github.com/phjardas/taktische-zeichen/commit/3d30b97db2e2b87bd2cc20654fde24a44058352b), [`5f00a08`](https://github.com/phjardas/taktische-zeichen/commit/5f00a085c56ad43e63a0d941ff50f6d88ad33d7a), [`aac4c93`](https://github.com/phjardas/taktische-zeichen/commit/aac4c93cb84f104026fc1d62aeeea699a87737ec), [`a71b620`](https://github.com/phjardas/taktische-zeichen/commit/a71b6205f5def94f12b76db50ec454b3acfdd078), [`79d4598`](https://github.com/phjardas/taktische-zeichen/commit/79d45980cde9d24abd214e52452e4250174787ba), [`e92c2d9`](https://github.com/phjardas/taktische-zeichen/commit/e92c2d99e431c2594e1443229b505e1dcdfa7d21), [`7d76846`](https://github.com/phjardas/taktische-zeichen/commit/7d768469b3f6f7bf40b9a9a6af99fe615613568a)]:
+  - taktische-zeichen-core@0.5.0
+  - taktische-zeichen-react@0.5.0
+
 ## 0.0.4
 
 ### Patch Changes
