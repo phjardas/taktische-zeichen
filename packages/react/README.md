@@ -11,11 +11,11 @@ Die Bibliothek enthält:
 <!-- STATISTICS:START -->
 
 - 25 Grundzeichen
-- 41 Fachaufgaben
+- 42 Fachaufgaben
 - 7 Organisationen
 - 8 Einheiten
 - 6 Verwaltungsstufen
-- 72 Symbole
+- 73 Symbole
 
 <!-- STATISTICS:END -->
 

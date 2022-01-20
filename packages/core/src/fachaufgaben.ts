@@ -21,6 +21,7 @@ import {
   verbrauchsgueter,
   verpflegung,
   veterinaerwesen,
+  warnung,
   wasser,
   wasserfahrzeug,
 } from "./symbole";
@@ -68,7 +69,8 @@ export type FachaufgabeId =
   | "wasserfahrzeuge"
   | "rettungshunde"
   | "pumpen"
-  | "abwehr-wassergefahren";
+  | "abwehr-wassergefahren"
+  | "warnen";
 
 export type Fachaufgabe = Renderable & {
   id: FachaufgabeId;
@@ -453,5 +455,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(
           wasser.render(svg).attr("transform", "scale(.8) translate(10,15)")
         ),
+  },
+  {
+    id: "warnen",
+    label: "Warnen",
+    ...symbolFachaufgabe(warnung),
   },
 ];
