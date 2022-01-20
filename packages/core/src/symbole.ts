@@ -33,6 +33,7 @@ export type SymbolId =
   | "zelt"
   | "sichten"
   | "sammeln"
+  | "sammelplatz-betroffene"
   | "veterinaerwesen"
   | "schlachten"
   | "tier-verletzt"
@@ -473,6 +474,19 @@ export const sammeln: SymbolSpec = {
     svg.path("M0,6 h30 m-5,-5 l5,5 -5,5 m6,-5.1 a5 5 0 1 1 0 .2 Z"),
 };
 
+export const sammelplatzBetroffene: SymbolSpec = {
+  size: [35, 46],
+  render: (svg) =>
+    svg
+      .g()
+      .push(
+        svg
+          .path("M5,10 l-3,2 l3,2 Z m0,2 h25 m0,-2 l3,2 l-3,2 Z")
+          .attr("fill", "currentColor")
+      )
+      .push(svg.path("M17.5,0 v30 l-15,15 m30,0 l-15,-15")),
+};
+
 export const veterinaerwesen: SymbolSpec = {
   size: [30, 30],
   render: (svg) => svg.path("M0,1 h5 l10,26 l10,-26 h5"),
@@ -761,6 +775,11 @@ export const symbole: Array<Symbol> = [
   { ...zelt, id: "zelt", label: "Zelt" },
   { ...sichten, id: "sichten", label: "Sichten, ordnen, verteilen" },
   { ...sammeln, id: "sammeln", label: "Sammeln" },
+  {
+    ...sammelplatzBetroffene,
+    id: "sammelplatz-betroffene",
+    label: "Sammelplatz für Betroffene",
+  },
   { ...veterinaerwesen, id: "veterinaerwesen", label: "Veterinärwesen" },
   { ...schlachten, id: "schlachten", label: "Schlachten" },
   { ...tierVerletzt, id: "tier-verletzt", label: "Tier verletzt" },
