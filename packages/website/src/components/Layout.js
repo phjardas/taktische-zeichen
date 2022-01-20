@@ -1,8 +1,9 @@
+import { graphql, useStaticQuery } from "gatsby";
+import { Helmet } from "react-helmet-async";
 import React from "react";
+import logo from "../assets/logo.svg";
 import Nav from "./Nav";
 import "./styles.css";
-import logo from "../assets/logo.svg";
-import { graphql, useStaticQuery } from "gatsby";
 
 export default function Layout({ children }) {
   const { site } = useStaticQuery(
@@ -11,6 +12,7 @@ export default function Layout({ children }) {
         site {
           siteMetadata {
             title
+            description
           }
         }
       }
@@ -19,7 +21,10 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <title>{site.siteMetadata.title}</title>
+      <Helmet htmlAttributes={{ lang: "de" }}>
+        <title>{site.siteMetadata.title}</title>
+        <meta name="description" content={site.siteMetadata.description} />
+      </Helmet>
       <div className="container py-3">
         <h1
           className="display-1 d-flex align-items-center"

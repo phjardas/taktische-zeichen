@@ -15,14 +15,16 @@ const routes = [
 
 export default function Nav() {
   return (
-    <nav className="nav nav-pills mb-5">
-      {routes.map((route) => (
-        <li key={route.path} className="nav-item">
-          <Link className="nav-link" activeClassName="active" to={route.path}>
-            {route.label}
-          </Link>
-        </li>
-      ))}
+    <nav className="mb-5" role="navigation">
+      <ul className="nav nav-pills mb-5">
+        {routes.map((route) => (
+          <li key={route.path} className="nav-item">
+            <Link className="nav-link" activeClassName="active" to={route.path}>
+              {route.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }

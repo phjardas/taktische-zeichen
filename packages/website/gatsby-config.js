@@ -6,8 +6,9 @@ module.exports = {
   siteMetadata: { title, description },
   plugins: [
     "gatsby-plugin-netlify",
+    "gatsby-plugin-react-helmet-async",
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: title,
         short_name: title,
@@ -18,17 +19,17 @@ module.exports = {
         icon: "src/assets/logo.svg",
       },
     },
-    `gatsby-transformer-json`,
+    "gatsby-transformer-json",
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        path: `./data/statistics.json`,
+        path: "./data/statistics.json",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        path: `./data/beispiele.json`,
+        path: "./data/beispiele.json",
       },
     },
   ],
