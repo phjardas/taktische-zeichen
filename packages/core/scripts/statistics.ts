@@ -20,6 +20,7 @@ const files = [
   "packages/core/README.md",
   "packages/react/README.md",
   "packages/cli/README.md",
+  "packages/web-component/README.md",
 ];
 
 const statistics = [

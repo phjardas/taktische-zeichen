@@ -45,7 +45,7 @@ Wenn du einen PR erstellst, füge bitte auch ein Changeset hinzu:
 npx changeset
 ```
 
-Wähle die beiden Repositories `taktische-zeichen-core` und `taktische-zeichen-react` aus, auch wenn du in letzterem keine Änderung gemacht hast. Wähle _nicht_ `taktische-zeichen-website` aus.
+Wähle alle Repositories _außer_ `taktische-zeichen-website` aus, auch wenn du in nicht in jedem Änderung gemacht hast.
 
 ![Changeset Schritt 1](docs/changeset1.png)
 

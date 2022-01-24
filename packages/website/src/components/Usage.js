@@ -39,6 +39,17 @@ ${Object.entries(tz)
 `.trim();
 }
 
+function webComponentDemo(tz) {
+  return `
+<taktisches-zeichen
+${Object.entries(tz)
+  .filter((e) => e[1])
+  .map(([key, value]) => `  ${key}=${JSON.stringify(value)}`)
+  .join("\n")}    
+/>
+  `.trim();
+}
+
 function consoleDemo(tz) {
   return `
 npm i -g taktische-zeichen-cli
@@ -72,6 +83,20 @@ export default function Usage() {
       <h3>React</h3>
       <SyntaxHighlighter language="typescript">
         {reactDemo(taktischesZeichen)}
+      </SyntaxHighlighter>
+
+      <h3>Web Component</h3>
+      <h4>JavaScript</h4>
+      <SyntaxHighlighter language="javascript">
+        {`
+import { TaktischesZeichen } from "taktisches-zeichen-web-component";
+
+window.customElements.define("taktisches-zeichen", TaktischesZeichen);
+`.trim()}
+      </SyntaxHighlighter>
+      <h4>HTML</h4>
+      <SyntaxHighlighter language="html">
+        {webComponentDemo(taktischesZeichen)}
       </SyntaxHighlighter>
 
       <h3>Kommandozeile</h3>

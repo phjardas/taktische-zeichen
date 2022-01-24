@@ -72,6 +72,27 @@ function App() {
 // Rendert <svg>...</svg>
 ```
 
+### Web Components
+
+JavaScript:
+
+```javascript
+import { TaktischesZeichen } from "taktische-zeichen-web-component";
+
+window.customElements.define("taktisches-zeichen", TaktischesZeichen);
+```
+
+HTML:
+
+```html
+<taktisches-zeichen
+  grundzeichen="kraftfahrzeug-gelaendegaengig"
+  organisation="feuerwehr"
+  fachaufgabe="brandbekaempfung"
+  einheit="gruppe"
+/>
+```
+
 ### Kommandozeile
 
 ```bash
