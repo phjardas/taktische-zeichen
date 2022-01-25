@@ -1,5 +1,13 @@
 # taktische-zeichen-website
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`c6a1adf`](https://github.com/phjardas/taktische-zeichen/commit/c6a1adf49b2dec63328b82b9ebeaff7c89f1ded2)]:
+  - taktische-zeichen-core@0.6.0
+  - taktische-zeichen-react@0.6.0
+
 ## 0.0.5
 
 ### Patch Changes
