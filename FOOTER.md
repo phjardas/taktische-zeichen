@@ -8,8 +8,8 @@ Die Quellen sind öffentlich auf [GitHub](https://github.com/phjardas/taktische-
 
 Du möchtest bei der Weiterentwicklung helfen? Prima! Du hast folgende Möglichkeiten:
 
-- Du hast einen Fehler gefunden oder vermisst ein Symbol? [Erstelle ein Issue](https://github.com/changesets/changesets/issues/new/choose), und wir werden uns darum kümmern!
-- Du möchtest aktiv bei der Entwicklung helfen? Dann schau dir bitte den [Contributors' Guide](CONTRIBUTING.md) an.
+- Du hast einen Fehler gefunden oder vermisst ein Symbol? [Erstelle ein Issue](https://github.com/phjardas/taktische-zeichen/issues/new), und wir werden uns darum kümmern!
+- Du möchtest aktiv bei der Entwicklung helfen? Dann schau dir bitte den [Contributors' Guide](https://github.com/phjardas/taktische-zeichen/blob/main/CONTRIBUTING.md) an.
 
 ## Contributors
 

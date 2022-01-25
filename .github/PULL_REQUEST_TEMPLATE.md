@@ -6,7 +6,7 @@ Bitte beschreibe hier kurz, was du gemacht hast.
 
 Bitte stelle sicher, dass du die folgenden Aufgaben für deinen PR erledeigt hast:
 
-- [ ] Changeset erstellt (siehe [Contributors' Guide](CONTRIBUTING.md)).
+- [ ] Changeset erstellt (siehe [Contributors' Guide](https://github.com/phjardas/taktische-zeichen/blob/main/CONTRIBUTING.md)).
 
   Verwende bitte die folgenden Versionsanpassungen:
 
