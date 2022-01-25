@@ -25,11 +25,21 @@ Die Bibliothek enthält:
 
 <!-- STATISTICS:END -->
 
-## Anwendung
+Es gibt vier Bibliotheken für die Erzeugung von taktischen Zeichen, je nach Anwendungsfall.
 
-Beide Bibliotheken beinhalten TypeScript-Definitionen.
+## Node.JS oder im Browser
 
-### NodeJS oder im Browser
+<!-- USAGE:core:START -->
+
+Diese Bibliothek hat keinerlei externe Abhängigkeiten.
+
+Installiere die Bibliothek:
+
+```bash
+npm install taktische-zeichen-core
+```
+
+Und so erzeugst du ein taktisches Zeichen, egal ob im Browser oder in Node.JS.
 
 ```javascript
 import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
@@ -51,7 +61,19 @@ console.log(tz.dataUrl);
 console.log(tz.size);
 ```
 
-### React
+<!-- USAGE:core:END -->
+
+## React
+
+<!-- USAGE:react:START -->
+
+Installiere die Bibliothek:
+
+```bash
+npm install taktische-zeichen-react
+```
+
+Verwende die Komponente in deiner Anwendung:
 
 ```jsx
 import { TaktischesZeichen } from "taktische-zeichen-react";
@@ -72,9 +94,19 @@ function App() {
 // Rendert <svg>...</svg>
 ```
 
-### Web Components
+<!-- USAGE:react:END -->
 
-JavaScript:
+## Web Components
+
+<!-- USAGE:web-component:START -->
+
+Installiere die Bibliothek:
+
+```bash
+npm install taktische-zeichen-web-components
+```
+
+Registriere die Komponente:
 
 ```javascript
 import { TaktischesZeichen } from "taktische-zeichen-web-component";
@@ -93,7 +125,19 @@ HTML:
 />
 ```
 
-### Kommandozeile
+<!-- USAGE:web-component:END -->
+
+## Kommandozeile
+
+<!-- USAGE:cli:START -->
+
+Installiere die Bibliothek:
+
+```bash
+npm install taktische-zeichen-cli
+```
+
+Erzeuge ein taktisches Zeichen:
 
 ```bash
 npm i -g taktische-zeichen-cli
@@ -104,10 +148,14 @@ taktisches-zeichen \
   --fachaufgabe brandbekaempfung \
   --einheit grupp
 
-# Ausgabe:
+# Ausgabe auf STDOUT:
 # <?xml version="1.0" encoding="UTF-8"?>
 # <svg>...</svg>
 ```
+
+<!-- USAGE:cli:END -->
+
+<!-- FOOTER:START -->
 
 ## Lizenz
 
@@ -122,9 +170,9 @@ Du möchtest bei der Weiterentwicklung helfen? Prima! Du hast folgende Möglichk
 - Du hast einen Fehler gefunden oder vermisst ein Symbol? [Erstelle ein Issue](https://github.com/changesets/changesets/issues/new/choose), und wir werden uns darum kümmern!
 - Du möchtest aktiv bei der Entwicklung helfen? Dann schau dir bitte den [Contributors' Guide](CONTRIBUTING.md) an.
 
-## Contributors ✨
+## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Die folgenden Personen haben an diesem Projekt mitgewirkt ([Schlüssel für die Emoji](https://allcontributors.org/docs/en/emoji-key)). Vielen Dank!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -142,4 +190,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+<!-- FOOTER:END -->

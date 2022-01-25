@@ -1,27 +1,13 @@
-import * as path from "path";
 import { promises as fs } from "fs";
+import * as path from "path";
 import {
-  grundzeichen,
-  fachaufgaben,
-  organisationen,
   einheiten,
-  verwaltungsstufen,
-  funktionen,
+  fachaufgaben,
+  grundzeichen,
+  organisationen,
   symbole,
+  verwaltungsstufen,
 } from "../src";
-
-const root = path.resolve(__dirname, "../../..");
-
-const startTag = "<!-- STATISTICS:START -->";
-const endTag = "<!-- STATISTICS:END -->";
-
-const files = [
-  "README.md",
-  "packages/core/README.md",
-  "packages/react/README.md",
-  "packages/cli/README.md",
-  "packages/web-component/README.md",
-];
 
 const statistics = [
   { label: "Grundzeichen", count: grundzeichen.length },
@@ -32,43 +18,9 @@ const statistics = [
   { label: "Symbole", count: symbole.length },
 ];
 
-const statisticsMarkdown = statistics
-  .map(({ label, count }) => `- ${count} ${label}`)
-  .join("\n");
-
-async function replaceStatistics(file: string) {
-  const filename = path.resolve(root, file);
-  const contents = await fs.readFile(filename, "utf8");
-  const startIndex = contents.indexOf(startTag);
-  const endIndex = contents.indexOf(endTag, startIndex);
-
-  if (startIndex < 0 || endIndex < 0) {
-    throw new Error(`Could not find ${startTag} or ${endTag} in ${filename}`);
-  }
-
-  const newContents =
-    contents.substring(0, startIndex) +
-    startTag +
-    "\n\n" +
-    statisticsMarkdown +
-    "\n\n" +
-    contents.substring(endIndex);
-
-  await fs.writeFile(filename, newContents, "utf-8");
-  console.log("Updated: %s", filename);
-}
-
-async function writeWebsiteStatistics() {
-  const filename = path.resolve(root, "packages/website/data/statistics.json");
-  await fs.writeFile(filename, JSON.stringify(statistics, null, 2), "utf-8");
-  console.log("Updated: %s", filename);
-}
-
 async function main() {
-  await Promise.all([
-    ...files.map(replaceStatistics),
-    writeWebsiteStatistics(),
-  ]);
+  const filename = path.resolve(__dirname, "../statistics.json");
+  await fs.writeFile(filename, JSON.stringify(statistics, null, 2), "utf-8");
 }
 
 main().catch((error) => {

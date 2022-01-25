@@ -12,7 +12,8 @@
     "start": "lerna run --stream start",
     "publish": "lerna run publish",
     "dev": "npm run build && concurrently \"npm run start\" \"npm run watch\"",
-    "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"npm run build\""
+    "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"npm run build\"",
+    "update-docs": "lerna run statistics && node scripts/update-docs.js"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.2",

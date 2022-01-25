@@ -61,6 +61,6 @@ Committe die neu erstellte Datei unter `.changeset` mit in deinen PR.
 
 Wenn alles gut gelaufen ist, erhälst du automatisch einen Kommentar in deinem PR, welche Packages durch deine Änderung eine neue Version erhalten werden.
 
-## Statistiken
+## Dokumentation
 
-Wenn du ein neues Element hinzufügst oder eines entfernst, passe bitte die Statistiken in den READMEs an: `npx lerna run statistics`.
+Wenn du ein neues Element hinzufügst oder eines entfernst, aktualisiere bitte die README mit: `npm run update-docs`.
