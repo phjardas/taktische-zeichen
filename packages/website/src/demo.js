@@ -1,5 +1,6 @@
-import React, { useCallback, useMemo } from "react";
-import TaktischesZeichenComp, {
+import React, { useCallback, useMemo, useState } from "react";
+import ReactDOM from "react-dom";
+import TaktischesZeichen, {
   einheiten,
   fachaufgaben,
   funktionen,
@@ -8,8 +9,81 @@ import TaktischesZeichenComp, {
   symbole,
   verwaltungsstufen,
 } from "taktische-zeichen-react";
-import Beispiele from "./Beispiele";
-import { useTaktischesZeichen } from "./tz";
+
+const beispiele = [
+  {
+    label: "Löschfahrzeug",
+    tz: {
+      grundzeichen: "kraftfahrzeug-landgebunden",
+      organisation: "feuerwehr",
+      fachaufgabe: "brandbekaempfung",
+      einheit: "gruppe",
+      name: "LF20",
+    },
+  },
+  {
+    label: "Verletztenablageplatz",
+    tz: {
+      grundzeichen: "stelle",
+      organisation: "hilfsorganisation",
+      fachaufgabe: "rettungswesen",
+      symbol: "sichten",
+    },
+  },
+  {
+    label: "Katastrophenschutzleitung",
+    tz: {
+      grundzeichen: "befehlsstelle",
+      organisation: "fuehrung",
+      text: "KatSL",
+    },
+  },
+  {
+    label: "Organisatorischer Leiter Rettungsdienst",
+    tz: {
+      grundzeichen: "person",
+      organisation: "hilfsorganisation",
+      funktion: "fuehrungskraft",
+      text: "OrgL",
+    },
+  },
+  {
+    label: "THW: Technischer Zug mit FGr Räumen",
+    tz: {
+      grundzeichen: "taktische-formation",
+      organisation: "thw",
+      fachaufgabe: "logistik",
+      einheit: "zug",
+      text: "TZ-R",
+    },
+  },
+  {
+    label: "Hubschrauberlandeplatz",
+    tz: {
+      grundzeichen: "stelle",
+      organisation: "gefahrenabwehr",
+      symbol: "hubschrauber",
+    },
+  },
+  {
+    label: "Kreisbrandinspektor",
+    tz: {
+      grundzeichen: "person",
+      organisation: "feuerwehr",
+      funktion: "fuehrungskraft",
+      verwaltungsstufe: "kreis",
+      text: "KBI",
+    },
+  },
+  {
+    label: "Akute Explosionsgefahr",
+    tz: {
+      grundzeichen: "gefahr-akut",
+      text: "Ex",
+      farbe: "#ff0000",
+    },
+  },
+];
 
 const optionen = {
   grundzeichen: grundzeichens.sort((a, b) => a.label.localeCompare(b.label)),
@@ -22,7 +96,7 @@ const optionen = {
 };
 
 export function Demo() {
-  const { taktischesZeichen, setTaktischesZeichen } = useTaktischesZeichen();
+  const [taktischesZeichen, setTaktischesZeichen] = useState(beispiele[0].tz);
   const onChange = useCallback(
     (key) => (e) =>
       setTaktischesZeichen((z) => ({
@@ -253,14 +327,23 @@ export function Demo() {
         {taktischesZeichen.grundzeichen || taktischesZeichen.symbol ? (
           <div className="card mb-3">
             <div className="card-body">
-              <TaktischesZeichenComp
+              <TaktischesZeichen
                 {...withoutEmptyValues(taktischesZeichen)}
                 alt="Taktisches Zeichen"
               />
             </div>
           </div>
         ) : null}
-        <Beispiele />
+        <h2>Beispiele</h2>
+        {beispiele.map((beispiel) => (
+          <button
+            key={beispiel.label}
+            className="btn btn-link"
+            onClick={() => setTaktischesZeichen(beispiel.tz)}
+          >
+            {beispiel.label}
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -273,3 +356,5 @@ function withoutEmptyValues(obj) {
     )
   );
 }
+
+ReactDOM.render(<Demo />, document.getElementById("demo"));

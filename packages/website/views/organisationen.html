@@ -1,0 +1,24 @@
+---
+title: Organisationen
+---
+
+<div
+  class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2 g-sm-3 g-md-4"
+>
+  {% for f in organisationen %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <p class="card-text">{{ f.src }}</p>
+        <p class="card-text">
+          <strong>{{ f.label }}</strong>
+          <br />
+          <small>
+            <code class="text-muted">{{ f.id }}</code>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

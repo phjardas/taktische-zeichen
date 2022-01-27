@@ -1,0 +1,11 @@
+<nav class="mb-5" role="navigation">
+  <ul class="nav nav-pills mb-5">
+    {% for p in pages %}
+      <li class="nav-item">
+        <a {% if page.url === p.path %}aria-current="page"{% endif %} class="nav-link {{ 'active' if page.url === p.path }}" href="{{ p.path }}">
+          {{ p.label }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

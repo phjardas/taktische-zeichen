@@ -18,6 +18,12 @@ async function readFile(file) {
   return (await fs.readFile(file, "utf8")).trim();
 }
 
+async function writeFile(file, content) {
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  await fs.writeFile(file, content, "utf8");
+  console.log("wrote: %s", file);
+}
+
 function replaceToken(content, key, value) {
   const startTag = `<!-- ${key}:START -->`;
   const endTag = `<!-- ${key}:END -->`;
@@ -37,13 +43,45 @@ function replaceToken(content, key, value) {
 }
 
 async function replaceTokens(file, values) {
-  console.log("Replacing tokens in %s", file);
   const contents = await fs.readFile(file, "utf8");
   const updated = Object.entries(values).reduce(
     (content, [key, value]) => replaceToken(content, key, value),
     contents
   );
-  await fs.writeFile(file, updated, "utf-8");
+  await writeFile(file, updated);
+}
+
+async function updateWebsiteData({ statistics, usages, footer }) {
+  const includesDir = path.resolve(
+    root,
+    "packages",
+    "website",
+    "views",
+    "_includes"
+  );
+
+  await Promise.all([
+    writeFile(path.resolve(includesDir, "footer.md"), footer),
+    writeFile(
+      path.resolve(includesDir, "statistics.md"),
+      createStatistics(statistics)
+    ),
+    ...Object.entries(usages).map(([pckg, usage]) =>
+      writeFile(path.resolve(includesDir, `usage_${pckg}.md`), usage)
+    )
+  ]);
+}
+
+async function updateReadmes({ statistics, usages, footer }) {
+  const values = {
+    STATISTICS: createStatistics(statistics),
+    FOOTER: footer,
+    ...Object.fromEntries(
+      Object.entries(usages).map(([pckg, value]) => [`USAGE:${pckg}`, value])
+    )
+  };
+
+  await Promise.all(readmeFiles.map(file => replaceTokens(file, values)));
 }
 
 async function main() {
@@ -51,26 +89,21 @@ async function main() {
     await readFile(path.resolve(root, "packages", "core", "statistics.json"))
   );
 
-  await fs.writeFile(
-    path.resolve(root, "packages", "website", "data", "statistics.json"),
-    JSON.stringify(statistics, null, 2),
-    "utf-8"
+  const usages = Object.fromEntries(
+    await Promise.all(
+      packageNames.map(async pckg => [
+        pckg,
+        await readFile(path.resolve(root, "packages", pckg, "USAGE.md"))
+      ])
+    )
   );
 
-  const values = {
-    STATISTICS: createStatistics(statistics),
-    FOOTER: await readFile(path.resolve(root, "FOOTER.md")),
-    ...Object.fromEntries(
-      await Promise.all(
-        packageNames.map(async pckg => [
-          `USAGE:${pckg}`,
-          await readFile(path.resolve(root, "packages", pckg, "USAGE.md"))
-        ])
-      )
-    )
-  };
+  const footer = await readFile(path.resolve(root, "FOOTER.md"));
 
-  await Promise.all(readmeFiles.map(file => replaceTokens(file, values)));
+  await Promise.all([
+    updateWebsiteData({ statistics, usages, footer }),
+    updateReadmes({ statistics, usages, footer })
+  ]);
 }
 
 main().catch(error => {

@@ -14,8 +14,7 @@ export class TaktischesZeichen extends HTMLElement {
     this.render();
   }
 
-  attributeChangedCallback(name: string, oldValue: any, newValue: any) {
-    console.log("attribute %s changed:", name, { oldValue, newValue });
+  attributeChangedCallback() {
     this.render();
   }
 
@@ -27,8 +26,16 @@ export class TaktischesZeichen extends HTMLElement {
     const spec = this.spec;
     if (!spec) return;
 
-    const { svg } = erzeugeTaktischesZeichen(spec);
-    root.append(render(svg));
+    try {
+      const { svg } = erzeugeTaktischesZeichen(spec);
+      root.append(render(svg));
+    } catch (error) {
+      console.error(
+        "Fehler bei der erzeugung des Taktischen Zeichens: " +
+          JSON.stringify(spec),
+        error
+      );
+    }
   }
 
   private get spec(): TaktischesZeichenSpec | undefined {
@@ -36,11 +43,17 @@ export class TaktischesZeichen extends HTMLElement {
     const symbol = this.getAttribute("symbol");
     if (!grundzeichen && !symbol) return undefined;
 
-    const fachaufgabe = this.getAttribute("fachaufgabe");
-    const organisation = this.getAttribute("organisation");
-    const einheit = this.getAttribute("einheit");
-    const verwaltungsstufe = this.getAttribute("verwaltungsstufe");
-    const funktion = this.getAttribute("funktion");
+    const fachaufgabe = this.getAttribute("fachaufgabe") || undefined;
+    const organisation = this.getAttribute("organisation") || undefined;
+    const einheit = this.getAttribute("einheit") || undefined;
+    const verwaltungsstufe = this.getAttribute("verwaltungsstufe") || undefined;
+    const funktion = this.getAttribute("funktion") || undefined;
+    const text = this.getAttribute("text") || undefined;
+    const name = this.getAttribute("name") || undefined;
+    const organisationName = this.getAttribute("organisationName") || undefined;
+    const farbe = this.getAttribute("farbe") || undefined;
+    const skipFontRegistration =
+      this.getAttribute("skipFontRegistration") === "true";
 
     return {
       grundzeichen,
@@ -50,11 +63,29 @@ export class TaktischesZeichen extends HTMLElement {
       verwaltungsstufe,
       funktion,
       symbol,
+      text,
+      name,
+      organisationName,
+      farbe,
+      skipFontRegistration,
     } as TaktischesZeichenSpec;
   }
 
   static get observedAttributes() {
-    return ["grundzeichen", "fachaufgabe", "symbol"];
+    return [
+      "grundzeichen",
+      "fachaufgabe",
+      "organisation",
+      "einheit",
+      "verwaltungsstufe",
+      "funktion",
+      "symbol",
+      "text",
+      "name",
+      "organisationName",
+      "farbe",
+      "skipFontRegistration",
+    ];
   }
 }
 
@@ -67,6 +98,11 @@ function render(element: Element) {
   Object.entries(element.attributes).forEach(([name, value]) =>
     el.setAttribute(name, value)
   );
+
+  const style = Object.entries(element.styles)
+    .map(([name, value]) => `${name}: ${value}`)
+    .join(";");
+  if (style) el.setAttribute("style", style);
 
   if (element instanceof Container) {
     element.children.forEach((child) => el.appendChild(render(child)));

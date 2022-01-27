@@ -1,3 +1,7 @@
-/.cache
+/compiled
+/previews
+/dist
 /node_modules
-/public
+/static/tz.js
+/views/views.11tydata.json
+*.log

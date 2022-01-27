@@ -1,4 +1,4 @@
-import { verwaltungsstufen } from ".";
+import { verwaltungsstufen } from "./verwaltungsstufen";
 import { einheiten } from "./einheiten";
 import { fachaufgaben } from "./fachaufgaben";
 import { funktionen } from "./funktionen";
