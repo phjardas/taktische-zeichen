@@ -4,17 +4,26 @@
   "version": "0.6.0",
   "scripts": {
     "clean": "shx rm -rf dist",
-    "build": "eleventy",
-    "start": "eleventy --serve",
-    "format": "prettier --write views *.js"
+    "compile": "webpack",
+    "generate": "node scripts/generate.js",
+    "build": "npm run generate && npm run compile && eleventy",
+    "start": "npm run generate && npm run compile && eleventy --serve",
+    "format": "prettier --write views src scripts *.js"
   },
   "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "taktische-zeichen-core": "^0.6.0",
-    "taktische-zeichen-web-component": "^0.6.0"
+    "taktische-zeichen-react": "^0.6.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
     "prettier": "^2.5.1",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
   }
 }
