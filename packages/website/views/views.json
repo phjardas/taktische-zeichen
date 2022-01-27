@@ -1,0 +1,14 @@
+{
+  "layout": "base",
+  "pages": [
+    { "path": "/", "label": "Startseite" },
+    { "path": "/demo/", "label": "Demo" },
+    { "path": "/grundzeichen/", "label": "Grundzeichen" },
+    { "path": "/fachaufgaben/", "label": "Fachaufgaben" },
+    { "path": "/organisationen/", "label": "Organisationen" },
+    { "path": "/einheiten/", "label": "Einheiten" },
+    { "path": "/verwaltungsstufen/", "label": "Verwaltungsstufen" },
+    { "path": "/funktionen/", "label": "Funktionen" },
+    { "path": "/symbole/", "label": "Symbole" }
+  ]
+}

@@ -1,29 +1,19 @@
 {
   "name": "taktische-zeichen-website",
   "private": true,
-  "version": "0.0.6",
+  "version": "0.6.0",
   "scripts": {
-    "clean": "shx rm -rf public",
-    "start": "gatsby develop",
-    "build:website": "gatsby build",
-    "format": "prettier --write src"
+    "clean": "shx rm -rf dist",
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "format": "prettier --write views *.js"
   },
   "dependencies": {
-    "bootstrap": "^5.1.3",
-    "gatsby": "^4.5.2",
-    "gatsby-plugin-manifest": "^4.5.1",
-    "gatsby-plugin-netlify": "^4.0.0-next.0",
-    "gatsby-plugin-react-helmet-async": "^1.2.1",
-    "gatsby-source-filesystem": "^4.5.2",
-    "gatsby-transformer-json": "^4.5.0",
-    "param-case": "^3.0.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-syntax-highlighter": "^15.4.5",
     "taktische-zeichen-core": "^0.6.0",
-    "taktische-zeichen-react": "^0.6.0"
+    "taktische-zeichen-web-component": "^0.6.0"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
     "prettier": "^2.5.1",
     "shx": "^0.3.4"
   }

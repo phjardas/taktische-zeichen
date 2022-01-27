@@ -13,7 +13,7 @@ Du möchtest bei der Weiterentwicklung helfen? Prima! Du hast folgende Möglichk
 
 ## Contributors
 
-Die folgenden Personen haben an diesem Projekt mitgewirkt ([Schlüssel für die Emoji](https://allcontributors.org/docs/en/emoji-key)). Vielen Dank!
+Die folgenden Personen haben an diesem Projekt mitgewirkt ([Schlüssel für die Emoji](https://allcontributors.org/docs/de/emoji-key)). Vielen Dank!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
