@@ -8,7 +8,7 @@
 
 Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript.
 
-Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.netlify.app/
+Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.dev/
 
 ## Inhalt
 
