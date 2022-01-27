@@ -117,8 +117,9 @@ function erzeugeSymbole() {
         symbol: f.id,
         skipFontRegistration: true,
       }).toString(),
-    })),
-  ];
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label)),
+];
 }
 
 async function main() {

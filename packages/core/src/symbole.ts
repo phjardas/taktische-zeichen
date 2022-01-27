@@ -18,6 +18,7 @@ export type SymbolId =
   | "elektrizitaet"
   | "geraete"
   | "sprengung"
+  | "bergung"
   | "transport"
   | "fahrzeug"
   | "fahrrad"
@@ -60,6 +61,8 @@ export type SymbolId =
   | "ausfall-100"
   | "abc"
   | "dekontamination"
+  | "dekontamination-personen"
+  | "dekontamination-geraete"
   | "wasser"
   | "wasserfahrzeug"
   | "pumpe"
@@ -79,7 +82,9 @@ export type SymbolId =
   | "richtbetrieb"
   | "kabelbau"
   | "vermutung"
-  | "akut";
+  | "akut"
+  | "technische-hilfeleistung"
+  | "seelsorge";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -129,6 +134,24 @@ export const sprengmittel: SymbolSpec = {
       .push(svg.circle([8, 9], 1).attr("fill", "currentColor"))
       .push(svg.circle([8, 9], 7))
       .push(svg.path("M4,2.5 l-1,-2 M11.5,2.5 l1,-2")),
+};
+
+export const technischeHilfeleistung: SymbolSpec = {
+  size: [38, 10],
+  render: (svg) =>
+    svg.path(
+      "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0"
+    ),
+};
+
+export const seelsorge: SymbolSpec = {
+  size: [20, 27],
+  render: (svg) => svg.path("M8,0 V27 m4,0 V0 M0,8 H20 m0,4 H0"),
+};
+
+export const bergung: SymbolSpec = {
+  size: [75, 45],
+  render: (svg) => svg.path("M0,15 H15 A22.5 20 180 1 0 60 15 H75"),
 };
 
 export const ausfall25: SymbolSpec = {
@@ -590,6 +613,24 @@ export const dekontamination: SymbolSpec = {
       ),
 };
 
+export const dekontaminationPersonen: SymbolSpec = {
+  size: abc.size,
+  render: (svg) =>
+    svg
+      .g()
+      .push(dekontamination.render(svg))
+      .push(svg.path("M13.5,30 v-9 h2 a2 2 0 0 1 0 4.5 h-2")),
+};
+
+export const dekontaminationGeraete: SymbolSpec = {
+  size: abc.size,
+  render: (svg) =>
+    svg
+      .g()
+      .push(dekontamination.render(svg))
+      .push(svg.path("M18.5,23 a4 4 0 1 0 0 4 m-3,-1 h3 v4")),
+};
+
 export const wasser: SymbolSpec = {
   size: [32, 12.5],
   render: (svg) =>
@@ -822,6 +863,16 @@ export const symbole: Array<Symbol> = [
   { ...ausfall100, id: "ausfall-100", label: "Totalausfall" },
   { ...abc, id: "abc", label: "Gefährliche Stoffen oder Güter, ABC" },
   { ...dekontamination, id: "dekontamination", label: "Dekontamination" },
+  {
+    ...dekontaminationPersonen,
+    id: "dekontamination-personen",
+    label: "Dekontamination (Personen)",
+  },
+  {
+    ...dekontaminationGeraete,
+    id: "dekontamination-geraete",
+    label: "Dekontamination (Geräte)",
+  },
   { ...wasser, id: "wasser", label: "Wasser" },
   { ...wasserfahrzeug, id: "wasserfahrzeug", label: "Wasserfahrzeug" },
   { ...pumpe, id: "pumpe", label: "Pumpe" },
@@ -879,4 +930,11 @@ export const symbole: Array<Symbol> = [
   { ...kabelbau, id: "kabelbau", label: "Kabelbau" },
   { ...vermutung, id: "vermutung", label: "Vermutung" },
   { ...akut, id: "akut", label: "Akute Situation" },
+  {
+    ...technischeHilfeleistung,
+    id: "technische-hilfeleistung",
+    label: "Technische Hilfeleistung",
+  },
+  { ...bergung, id: "bergung", label: "Bergung" },
+  { ...seelsorge, id: "seelsorge", label: "Seelsorge" },
 ];

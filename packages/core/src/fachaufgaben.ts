@@ -2,9 +2,12 @@ import { SVG } from "./svg";
 import {
   abc,
   beleuchtung,
+  bergung,
   bett,
   brauchwasser,
   dekontamination,
+  dekontaminationGeraete,
+  dekontaminationPersonen,
   drehleiter,
   elektrizitaet,
   geraete,
@@ -13,9 +16,11 @@ import {
   pumpe,
   raeumgeraet,
   schlachten,
+  seelsorge,
   sprengmittel,
   sprengung,
   SymbolSpec,
+  technischeHilfeleistung,
   transport,
   trinkwasser,
   verbrauchsgueter,
@@ -163,11 +168,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "technische-hilfeleistung",
     label: "Technische Hilfeleistung",
-    size: [38, 10],
-    render: (svg) =>
-      svg.path(
-        "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0"
-      ),
+    ...symbolFachaufgabe(technischeHilfeleistung),
   },
   {
     id: "heben",
@@ -177,9 +178,8 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "bergung",
     label: "Bergung",
-    size: [75, 45],
+    ...symbolFachaufgabe(bergung),
     cover: true,
-    render: (svg) => svg.path("M0,15 H15 A22.5 20 180 1 0 60 15 H75"),
   },
   {
     id: "raeumen",
@@ -237,22 +237,12 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "dekontamination-personen",
     label: "Dekontamination Personen",
-    size: dekontamination.size,
-    render: (svg) =>
-      svg
-        .g()
-        .push(dekontamination.render(svg))
-        .push(svg.path("M13.5,30 v-9 h2 a2 2 0 0 1 0 4.5 h-2")),
+    ...symbolFachaufgabe(dekontaminationPersonen),
   },
   {
     id: "dekontamination-geraete",
     label: "Dekontamination Geräte",
-    size: dekontamination.size,
-    render: (svg) =>
-      svg
-        .g()
-        .push(dekontamination.render(svg))
-        .push(svg.path("M18.5,23 a4 4 0 1 0 0 4 m-3,-1 h3 v4")),
+    ...symbolFachaufgabe(dekontaminationGeraete),
   },
   {
     id: "umweltschaeden-gewaesser",
@@ -311,8 +301,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
   {
     id: "seelsorge",
     label: "Seelsorge",
-    size: [20, 27],
-    render: (svg) => svg.path("M8,0 V27 m4,0 V0 M0,8 H20 m0,4 H0"),
+    ...symbolFachaufgabe(seelsorge),
   },
   {
     id: "unterbringung",

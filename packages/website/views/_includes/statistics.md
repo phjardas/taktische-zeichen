@@ -3,4 +3,4 @@
 - 7 Organisationen
 - 8 Einheiten
 - 6 Verwaltungsstufen
-- 77 Symbole
+- 82 Symbole
