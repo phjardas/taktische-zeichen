@@ -1,28 +1,22 @@
-export { einheiten, type Einheit, type EinheitId } from "./einheiten";
-export {
-  fachaufgaben,
-  type Fachaufgabe,
-  type FachaufgabeId,
-} from "./fachaufgaben";
-export { funktionen, type Funktion, type FunktionId } from "./funktionen";
-export {
-  grundzeichen,
-  type ComponentType,
-  type Grundzeichen,
-  type GrundzeichenId,
+export { einheiten } from "./einheiten";
+export type { Einheit, EinheitId } from "./einheiten";
+export { fachaufgaben } from "./fachaufgaben";
+export type { Fachaufgabe, FachaufgabeId } from "./fachaufgaben";
+export { funktionen } from "./funktionen";
+export type { Funktion, FunktionId } from "./funktionen";
+export { grundzeichen } from "./grundzeichen";
+export type {
+  ComponentType,
+  Grundzeichen,
+  GrundzeichenId,
 } from "./grundzeichen";
-export {
-  organisationen,
-  type Organisation,
-  type OrganisationId,
-} from "./organisationen";
+export { organisationen } from "./organisationen";
+export type { Organisation, OrganisationId } from "./organisationen";
 export * from "./svg";
-export { symbole, type Symbol, type SymbolId } from "./symbole";
+export { symbole } from "./symbole";
+export type { Symbol, SymbolId } from "./symbole";
 export { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
 export type { Image, TaktischesZeichen } from "./types";
 export { render } from "./utils";
-export {
-  Verwaltungsstufe,
-  verwaltungsstufen,
-  type VerwaltungsstufeId,
-} from "./verwaltungsstufen";
+export { verwaltungsstufen } from "./verwaltungsstufen";
+export type { Verwaltungsstufe, VerwaltungsstufeId } from "./verwaltungsstufen";

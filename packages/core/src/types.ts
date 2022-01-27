@@ -1,11 +1,12 @@
-import { type EinheitId } from "./einheiten";
-import { type FachaufgabeId } from "./fachaufgaben";
-import { type FunktionId } from "./funktionen";
-import { type GrundzeichenId } from "./grundzeichen";
-import { type OrganisationId } from "./organisationen";
-import { SVG, type Element } from "./svg";
-import { type SymbolId } from "./symbole";
-import { type VerwaltungsstufeId } from "./verwaltungsstufen";
+import type { EinheitId } from "./einheiten";
+import type { FachaufgabeId } from "./fachaufgaben";
+import type { FunktionId } from "./funktionen";
+import type { GrundzeichenId } from "./grundzeichen";
+import type { OrganisationId } from "./organisationen";
+import type { Element } from "./svg";
+import { SVG } from "./svg";
+import type { SymbolId } from "./symbole";
+import type { VerwaltungsstufeId } from "./verwaltungsstufen";
 
 export type Renderable<Props = unknown> = {
   size: Point;

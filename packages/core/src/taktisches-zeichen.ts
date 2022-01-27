@@ -11,7 +11,7 @@ import { organisationen } from "./organisationen";
 import { SVG } from "./svg";
 import { symbole } from "./symbole";
 import { createTextSymbol } from "./text";
-import { type Image, type Point, type TaktischesZeichen } from "./types";
+import type { Image, Point, TaktischesZeichen } from "./types";
 import {
   addPoints,
   ImageImpl,
