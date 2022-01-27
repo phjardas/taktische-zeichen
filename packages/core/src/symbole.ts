@@ -84,7 +84,8 @@ export type SymbolId =
   | "vermutung"
   | "akut"
   | "technische-hilfeleistung"
-  | "seelsorge";
+  | "seelsorge"
+  | "drohne";
 
 export type SymbolRenderProps = {
   fill?: string;
@@ -781,6 +782,15 @@ const kabelbau: SymbolSpec = {
   render: (svg) => svg.path("M1,0 a10 10 0 0 0 20 0 m-10,10 v25"),
 };
 
+const drohne: SymbolSpec = {
+  size: [40, 13],
+  render: (svg) =>
+    svg
+      .path("M0,0 l20,5 20,-5 v3 l-20,10 -20,-10 z")
+      .attr("stroke", "none")
+      .attr("fill", "currentColor"),
+};
+
 export const symbole: Array<Symbol> = [
   { ...drehleiter, id: "drehleiter", label: "Drehleiter" },
   { ...hebegeraet, id: "hebegeraet", label: "Hebegerät" },
@@ -937,4 +947,5 @@ export const symbole: Array<Symbol> = [
   },
   { ...bergung, id: "bergung", label: "Bergung" },
   { ...seelsorge, id: "seelsorge", label: "Seelsorge" },
+  { ...drohne, id: "drohne", label: "Drohne" },
 ];
