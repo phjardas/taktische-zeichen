@@ -19,9 +19,6 @@ module.exports = () => {
       path: path.resolve(__dirname, "compiled"),
       publicPath: "dist/",
       filename: "[name].js",
-      library: {
-        type: "commonjs",
-      },
     },
     module: {
       rules: [
