@@ -6,7 +6,7 @@
     "clean": "shx rm -rf dist",
     "compile": "webpack",
     "generate": "node scripts/generate.js",
-    "build": "npm run generate && npm run compile && eleventy",
+    "build": "npm run generate && NODE_ENV=production npm run compile && eleventy",
     "start": "npm run generate && npm run compile && eleventy --serve",
     "format": "prettier --write views src scripts *.js"
   },

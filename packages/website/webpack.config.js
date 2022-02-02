@@ -13,7 +13,7 @@ module.exports = () => {
   );
 
   return {
-    mode: "development",
+    mode: process.env.NODE_ENV === 'production' ? 'production' : "development",
     entry,
     output: {
       path: path.resolve(__dirname, "compiled"),
