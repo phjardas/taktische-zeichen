@@ -1,3 +1,8 @@
 [build]
   publish = "packages/website/dist"
   command = "npm run bootstrap && npm run build"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://avatars.githubusercontent.com; script-src 'self'"
