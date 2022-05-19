@@ -1,6 +1,6 @@
 {
   "name": "taktische-zeichen-web-component",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "format": "prettier --write src"
   },
   "dependencies": {
-    "taktische-zeichen-core": "^0.7.0"
+    "taktische-zeichen-core": "^0.7.1"
   },
   "devDependencies": {
     "parcel": "^2.2.1",

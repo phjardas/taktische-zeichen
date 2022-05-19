@@ -1,5 +1,14 @@
 # taktische-zeichen-cli
 
+## 0.7.1
+
+### Patch Changes
+
+- [`62e0004`](https://github.com/phjardas/taktische-zeichen/commit/62e00046f0f468200f425197cc57d59c890ce8d6) Thanks [@phjardas](https://github.com/phjardas)! - Rückwärtskompatibilität der TypeScript-Typen verbessert
+
+- Updated dependencies [[`62e0004`](https://github.com/phjardas/taktische-zeichen/commit/62e00046f0f468200f425197cc57d59c890ce8d6)]:
+  - taktische-zeichen-core@0.7.1
+
 ## 0.7.0
 
 ### Minor Changes
