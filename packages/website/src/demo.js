@@ -52,7 +52,6 @@ const beispiele = [
     tz: {
       grundzeichen: "taktische-formation",
       organisation: "thw",
-      fachaufgabe: "logistik",
       einheit: "zug",
       text: "TZ-R",
     },
