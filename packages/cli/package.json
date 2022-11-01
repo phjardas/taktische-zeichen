@@ -30,7 +30,8 @@
     "yargs": "^17.3.1"
   },
   "devDependencies": {
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "shx": "^0.3.4"
   },
   "volta": {
     "node": "16.13.2",

@@ -24,7 +24,8 @@
   "sideEffects": false,
   "scripts": {
     "test": "jest",
-    "clean": "shx rm -rf dist test-icons",
+    "test:coverage": "jest --coverage",
+    "clean": "shx rm -rf coverage dist test-icons",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",

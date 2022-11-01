@@ -8,6 +8,7 @@
     "build": "lerna run build",
     "build:website": "lerna run build:website",
     "test": "lerna run test",
+    "test:coverage": "lerna run test:coverage",
     "format": "lerna run format",
     "start": "lerna run --stream start",
     "publish": "lerna run publish",
