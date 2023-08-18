@@ -451,7 +451,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     size: [45, 36],
     accepts: ["symbol", "farbe"],
     ...singleShape((svg) =>
-      svg.path("M22.5,34 L43.2,1 H1.8 Z").attr("fill", "white")
+      svg
+        .path("M22.5,34 L43.2,1 H1.8 Z")
+        .attr("fill", "white")
+        .attr("stroke", "currentColor")
     ),
     padding: [5, 15, 15],
   },
