@@ -144,7 +144,7 @@ taktisches-zeichen \
   --grundzeichen kraftfahrzeug-gelaendegaengig \
   --organisation feuerwehr \
   --fachaufgabe brandbekaempfung \
-  --einheit grupp
+  --einheit gruppe
 
 # Ausgabe auf STDOUT:
 # <?xml version="1.0" encoding="UTF-8"?>
