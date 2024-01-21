@@ -10,7 +10,7 @@ Du benötigst [Node 16](https://nodejs.org/en/download/). Fertig. Wir empfehlen 
 
 ```bash
 npm ci
-npm bootstrap
+npm run bootstrap
 ```
 
 ## Bauen
