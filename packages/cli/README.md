@@ -26,7 +26,7 @@ taktisches-zeichen \
   --grundzeichen kraftfahrzeug-gelaendegaengig \
   --organisation feuerwehr \
   --fachaufgabe brandbekaempfung \
-  --einheit grupp
+  --einheit gruppe
 
 # Ausgabe:
 # <?xml version="1.0" encoding="UTF-8"?>
