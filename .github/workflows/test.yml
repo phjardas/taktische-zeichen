@@ -8,27 +8,23 @@ on:
   pull_request:
     branches:
       - main
-    types: [assigned]
+    types:
+      - assigned
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          # keep in sync with package.json/volta
-          node-version: 16.13.2
+          node-version-file: package.json
           cache: npm
           cache-dependency-path: |
             package-lock.json
             packages/*/package-lock.json
-
-      - name: Install npm
-        # keep in sync with package.json/volta
-        run: npm i -g npm@8.3.0
 
       - run: npm ci
       - run: npm run bootstrap

@@ -4,13 +4,13 @@ Vielen Dank, dass du an der Entwicklung der Taktischen Zeichen mitarbeiten möch
 
 ## Voraussetzungen
 
-Du benötigst [Node 16](https://nodejs.org/en/download/). Fertig. Wir empfehlen [Volta](https://volta.sh/).
+Du benötigst [Node 21](https://nodejs.org/en/download/). Fertig. Wir empfehlen [Volta](https://volta.sh/).
 
 ## Installation
 
 ```bash
 npm ci
-npm bootstrap
+npm run bootstrap
 ```
 
 ## Bauen
