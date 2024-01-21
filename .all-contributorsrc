@@ -40,6 +40,15 @@
         "code",
         "userTesting"
       ]
+    },
+    {
+      "login": "Sascha007",
+      "name": "Sascha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4368123?v=4",
+      "profile": "https://github.com/Sascha007",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -47,5 +56,7 @@
   "projectOwner": "phjardas",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }

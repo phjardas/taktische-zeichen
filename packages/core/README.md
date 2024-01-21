@@ -78,11 +78,14 @@ Die folgenden Personen haben an diesem Projekt mitgewirkt ([Schlüssel für die 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://jardas.de/"><img src="https://avatars.githubusercontent.com/u/1437300?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Philipp Jardas</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Code">💻</a> <a href="#content-phjardas" title="Content">🖋</a> <a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Documentation">📖</a> <a href="#projectManagement-phjardas" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/PatrickReichel"><img src="https://avatars.githubusercontent.com/u/59778648?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PatrickReichel</b></sub></a><br /><a href="#userTesting-einsatzverwaltung" title="User Testing">📓</a></td>
-    <td align="center"><a href="https://github.com/einsatzverwaltung"><img src="https://avatars.githubusercontent.com/u/59615464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>einsatzverwaltung</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=einsatzverwaltung" title="Code">💻</a> <a href="#userTesting-einsatzverwaltung" title="User Testing">📓</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://jardas.de/"><img src="https://avatars.githubusercontent.com/u/1437300?v=4?s=100" width="100px;" alt="Philipp Jardas"/><br /><sub><b>Philipp Jardas</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Code">💻</a> <a href="#content-phjardas" title="Content">🖋</a> <a href="https://github.com/phjardas/taktische-zeichen/commits?author=phjardas" title="Documentation">📖</a> <a href="#projectManagement-phjardas" title="Project Management">📆</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/PatrickReichel"><img src="https://avatars.githubusercontent.com/u/59778648?v=4?s=100" width="100px;" alt="PatrickReichel"/><br /><sub><b>PatrickReichel</b></sub></a><br /><a href="#userTesting-PatrickReichel" title="User Testing">📓</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/einsatzverwaltung"><img src="https://avatars.githubusercontent.com/u/59615464?v=4?s=100" width="100px;" alt="einsatzverwaltung"/><br /><sub><b>einsatzverwaltung</b></sub></a><br /><a href="https://github.com/phjardas/taktische-zeichen/commits?author=einsatzverwaltung" title="Code">💻</a> <a href="#userTesting-einsatzverwaltung" title="User Testing">📓</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Sascha007"><img src="https://avatars.githubusercontent.com/u/4368123?v=4?s=100" width="100px;" alt="Sascha"/><br /><sub><b>Sascha</b></sub></a><br /><a href="#example-Sascha007" title="Examples">💡</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
