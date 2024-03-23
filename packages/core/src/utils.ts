@@ -1,4 +1,5 @@
-import { SVG, Element } from "./svg";
+import { fromByteArray } from "base64-js";
+import { Element, SVG } from "./svg";
 import type { Image, Padding, Point, Rect, Renderable } from "./types";
 
 export type Parent = {
@@ -26,16 +27,22 @@ export class ImageImpl implements Image {
   constructor(public readonly svg: SVG, public readonly size: Point) {}
 
   get dataUrl() {
-    const data =
-      typeof window !== "undefined"
-        ? btoa(this.toString())
-        : Buffer.from(this.toString()).toString("base64");
-    return `data:image/svg+xml;base64,${data}`;
+    return `data:image/svg+xml;base64,${toBase64(this.toString())}`;
   }
 
   toString() {
     return this.svg.render();
   }
+}
+
+function toBase64(string: string): string {
+  if (typeof Buffer !== "undefined") {
+    console.log("using Buffer to encode base64:", string);
+    return Buffer.from(string).toString("base64");
+  }
+
+  console.log("using Array to encode base64:", string);
+  return fromByteArray(new TextEncoder().encode(string));
 }
 
 export type Alignment = "center" | "start" | "end";

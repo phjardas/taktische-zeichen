@@ -32,6 +32,9 @@
     "format": "prettier --write src",
     "statistics": "ts-node -P tsconfig-scripts.json scripts/statistics.ts"
   },
+  "dependencies": {
+    "base64-js": "^1.5.1"
+  },
   "devDependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^20.11.5",
