@@ -1,0 +1,190 @@
+{
+  "ci_service": {
+    "branch": "main",
+    "build_identifier": "",
+    "build_url": "",
+    "commit_sha": "fa28291413b0c818c6b2cb5ecf416b8409b174c2",
+    "committed_at": 1711176851,
+    "name": "true"
+  },
+  "environment": {
+    "gem_version": "3.3.5",
+    "package_version": "",
+    "pwd": "/home/runner/work/taktische-zeichen/taktische-zeichen",
+    "prefix": "/home/runner/work/taktische-zeichen/taktische-zeichen",
+    "rails_root": "",
+    "reporter_version": "0.11.1",
+    "simplecov_root": ""
+  },
+  "git": {
+    "branch": "main",
+    "head": "fa28291413b0c818c6b2cb5ecf416b8409b174c2",
+    "committed_at": 1711176851
+  },
+  "covered_percent": 58.97435897435898,
+  "covered_strength": 0,
+  "line_counts": {
+    "missed": 208,
+    "covered": 299,
+    "total": 507
+  },
+  "source_files": [
+    {
+      "blob_id": "5b4157d4f032723738ba4566d0cc6ed71e84aebd",
+      "coverage": "[1,null,null,null,1,4,null,null,null,null,null,1,4,null,4,null,null,4,null,null,null,null,null,null,null,null,20]",
+      "covered_percent": 100,
+      "covered_strength": 4.875,
+      "line_counts": {
+        "missed": 0,
+        "covered": 8,
+        "total": 8
+      },
+      "name": "packages/core/src/text.ts"
+    },
+    {
+      "blob_id": "278c60f18b0abf9ad4531b7cb5250941535420f6",
+      "coverage": "[null,null,null,null,null,null,null,null,null,1,null,null,null,null,0,null,null,null,null,null,0]",
+      "covered_percent": 33.33333333333333,
+      "covered_strength": 0.3333333333333333,
+      "line_counts": {
+        "missed": 2,
+        "covered": 1,
+        "total": 3
+      },
+      "name": "packages/core/src/funktionen.ts"
+    },
+    {
+      "blob_id": "3c3109205b0bb2debb86ad55d79e72f22cfb940f",
+      "coverage": "[2,null,null,2,42,42,null,42,null,null,90,90,null,null,null,16,16,null,null,null,null,null,42,42,42,null,42,42,42,null,null,null,42,null,42,24,16,null,42,null,42,100,88,null,null,null,null,2,null,12,null,null,null,12,null,null,null,2,26,null,null,26,null,null,null,36,36,null,null,null,26,null,26,null,36,null,null,null,null,null,2,4,4,null,null,null,4,null,null,null,null,null,null,null,null,null,2,6,6,null,6,6,6,6,null,null,null,6,6,null,null,null,4,0,0,null,null,4,null,null,null,8,null,null,null,12,null,null,null,0,null,null,null,null,null,null,0,null,null,null,null,null,null,null,0,null,null,null,6,null,null,null,0,null,null,null,4,null,null,null,6]",
+      "covered_percent": 90,
+      "covered_strength": 22.3,
+      "line_counts": {
+        "missed": 6,
+        "covered": 54,
+        "total": 60
+      },
+      "name": "packages/core/src/svg.ts"
+    },
+    {
+      "blob_id": "d91910606449cb46585cf52bc6c1e7ff485494df",
+      "coverage": "[null,1,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6,null,null,null,7,null,null,null,null,null,5,null,null,null,null,null,null,null,null,4,null,0,null,null,null,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,12,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,0,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "covered_percent": 27.500000000000004,
+      "covered_strength": 1,
+      "line_counts": {
+        "missed": 29,
+        "covered": 11,
+        "total": 40
+      },
+      "name": "packages/core/src/grundzeichen.ts"
+    },
+    {
+      "blob_id": "dc392f579e296ed59dbfac1ed94b4b751aa78ee5",
+      "coverage": "[1,1,1,1,1,null,null,null,null,1,1,1,1,null,1,null,null,null,null,null,null,null,null,null,null,null,42,18,12,12,null,null,1,null,null,null,null,6,6,null,6,6,6,6,6,6,6,null,6,0,null,null,null,null,6,null,null,null,null,null,6,null,null,null,null,6,6,null,6,null,6,null,null,null,null,null,null,6,null,6,null,6,6,null,null,6,6,null,6,0,null,null,null,null,null,0,null,null,0,0,null,null,6,null,null,null,null,6,0,null,null,null,null,0,null,null,0,0,0,0,null,null,0,null,null,null,null,null,null,6,0,null,null,null,null,0,null,null,0,0,0,0,null,null,0,0,0,0,null,null,0,null,null,null,null,null,null,6,0,0,null,null,null,null,null,null,null,null,null,6,6,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6,4,null,null,4,null,null,null,null,4,null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6,0,null,null,0,null,null,null,null,0,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,0,0,0,0,0,null,0,null,null,null,null,12,null,6,null,null,null,null,null,null,28,28]",
+      "covered_percent": 59.78260869565217,
+      "covered_strength": 4.0978260869565215,
+      "line_counts": {
+        "missed": 37,
+        "covered": 55,
+        "total": 92
+      },
+      "name": "packages/core/src/taktisches-zeichen.ts"
+    },
+    {
+      "blob_id": "d30295322735efa6fab2c873456977d741d89989",
+      "coverage": "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,0,null,null,null,null,null,4,null,null,0,0,0,null,0,null,null,null,null,1,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,0]",
+      "covered_percent": 18.181818181818183,
+      "covered_strength": 0.45454545454545453,
+      "line_counts": {
+        "missed": 9,
+        "covered": 2,
+        "total": 11
+      },
+      "name": "packages/core/src/verwaltungsstufen.ts"
+    },
+    {
+      "blob_id": "9b20ded1201790d5eda411ac4d03d33b4a94f23f",
+      "coverage": "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,0,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,0,null,null,null,null,null,null,0]",
+      "covered_percent": 11.11111111111111,
+      "covered_strength": 0.1111111111111111,
+      "line_counts": {
+        "missed": 8,
+        "covered": 1,
+        "total": 9
+      },
+      "name": "packages/core/src/einheiten.ts"
+    },
+    {
+      "blob_id": "0de8bced079e905e286296bbd066358467981349",
+      "coverage": "[2,null,null,2,0,null,null,null,null,null,null,null,null,null,null,null,null,2,4,16,null,null,null,null,2,null,2,4,null,16,16,null,4]",
+      "covered_percent": 91.66666666666666,
+      "covered_strength": 5.833333333333333,
+      "line_counts": {
+        "missed": 1,
+        "covered": 11,
+        "total": 12
+      },
+      "name": "packages/core/src/font.ts"
+    },
+    {
+      "blob_id": "6076c392b2b387eb0ebcdd2b2c3ad4b0d7f05514",
+      "coverage": "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1]",
+      "covered_percent": 100,
+      "covered_strength": 1,
+      "line_counts": {
+        "missed": 0,
+        "covered": 1,
+        "total": 1
+      },
+      "name": "packages/core/src/organisationen.ts"
+    },
+    {
+      "blob_id": "3d38ba474e32004aa0900ddb62bbac84824dd475",
+      "coverage": "[null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,0,null,1,null,null,null,null,null,0,null,null,null,6,6,null,6,null,null,null,0,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,20,null,0,null,null,null,1,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,0,null,null,null,null,null,null,null,0,null,null,null,null,null,null,0,null,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,null,0,null,null,null,0,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "covered_percent": 29.411764705882355,
+      "covered_strength": 1.2941176470588236,
+      "line_counts": {
+        "missed": 24,
+        "covered": 10,
+        "total": 34
+      },
+      "name": "packages/core/src/fachaufgaben.ts"
+    },
+    {
+      "blob_id": "08eaba4c9429902c5abbbdc50a357f64832f16e9",
+      "coverage": "[null,null,2,null,2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2]",
+      "covered_percent": 100,
+      "covered_strength": 2,
+      "line_counts": {
+        "missed": 0,
+        "covered": 3,
+        "total": 3
+      },
+      "name": "packages/core/src/font-widths.ts"
+    },
+    {
+      "blob_id": "f11933812b7bcf54b61a39d0225b6cabf002cafd",
+      "coverage": "[null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,null,null,1,null,null,0,null,null,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,1,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,1,null,null,0,null,null,null,null,1,null,null,0,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,null,null,null,1,null,null,0,null,null,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,1,null,null,0,0,0,0,null,null,null,null,null,0,null,null,null,1,null,null,0,null,null,1,null,null,0,null,null,null,null,1,null,0,null,null,null,6,6,6,null,null,null,null,6,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,0,null,null,null,1,null,1,null,0,null,1,null,1,null,0,null,1,null,1,null,0,null,1,null,1,null,0,null,1,null,1,null,null,0,null,null,null,1,null,1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,1,null,0,null,null,1,null,0,null,null,1,null,null,0,null,null,null,null,null,1]",
+      "covered_percent": 51.70454545454546,
+      "covered_strength": 0.6306818181818182,
+      "line_counts": {
+        "missed": 85,
+        "covered": 91,
+        "total": 176
+      },
+      "name": "packages/core/src/symbole.ts"
+    },
+    {
+      "blob_id": "bc3029d099f17d30792ecdfb9e02ae52bd19e031",
+      "coverage": "[2,2,null,null,null,null,null,null,null,null,null,null,null,null,2,0,null,null,null,null,0,null,0,null,null,2,6,null,null,3,null,null,null,6,null,null,null,null,3,3,3,null,null,0,0,null,null,null,null,null,null,null,null,null,null,2,null,null,null,null,null,null,null,null,null,null,null,null,4,null,null,null,null,null,null,4,4,4,null,4,null,4,null,4,4,null,null,4,null,null,null,null,null,null,null,2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8,8,null,8,null,8,8,null,null,8,8,null,8,null,null,null,null,null,null,null,8,null,null,null,null,null,null,null,8,null,null,null,null,null,null,null,null,null,null,null,16,null,8,null,0,null,8,null,null,null,null,2,null,null,11,8,1,7,null,null,2,6,15,15,null,null,null,2,0,null,null,2,3,null,null,2,null,null,null,3,3,3,null,3]",
+      "covered_percent": 87.93103448275862,
+      "covered_strength": 4.689655172413793,
+      "line_counts": {
+        "missed": 7,
+        "covered": 51,
+        "total": 58
+      },
+      "name": "packages/core/src/utils.ts"
+    }
+  ],
+  "repo_token": "c7d52ac19fe2a35588d2f41c0776e3565e05fd0e5819e40a5d4b41a2cdf4edcd"
+}
