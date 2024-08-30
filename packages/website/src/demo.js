@@ -54,6 +54,7 @@ const beispiele = [
       organisation: "thw",
       einheit: "zug",
       text: "TZ-R",
+      typ: "A",
     },
   },
   {
@@ -296,6 +297,20 @@ export function Demo() {
                 type="text"
                 value={taktischesZeichen.organisationName ?? ""}
                 onChange={onChange("organisationName")}
+                className="form-control"
+              />
+            </div>
+          )}
+          {enabled("typ") && (
+            <div className="mb-3">
+              <label htmlFor="text" className="form-label">
+                Typ
+              </label>
+              <input
+                id="typ"
+                type="text"
+                value={taktischesZeichen.typ ?? ""}
+                onChange={onChange("typ")}
                 className="form-control"
               />
             </div>

@@ -50,6 +50,7 @@ export class TaktischesZeichen extends HTMLElement {
     const funktion = this.getAttribute("funktion") || undefined;
     const text = this.getAttribute("text") || undefined;
     const name = this.getAttribute("name") || undefined;
+    const typ = this.getAttribute("typ") || undefined;
     const organisationName = this.getAttribute("organisationName") || undefined;
     const farbe = this.getAttribute("farbe") || undefined;
     const skipFontRegistration =
@@ -65,6 +66,7 @@ export class TaktischesZeichen extends HTMLElement {
       symbol,
       text,
       name,
+      typ,
       organisationName,
       farbe,
       skipFontRegistration,
@@ -82,6 +84,7 @@ export class TaktischesZeichen extends HTMLElement {
       "symbol",
       "text",
       "name",
+      "typ",
       "organisationName",
       "farbe",
       "skipFontRegistration",

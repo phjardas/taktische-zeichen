@@ -13,7 +13,7 @@ const {
   verwaltungsstufen,
 } = require("taktische-zeichen-core");
 const yargs = require("yargs");
-const {version}=require('../package.json')
+const { version } = require("../package.json");
 
 const spec = yargs(process.argv.slice(2))
   .version(version)
@@ -47,6 +47,7 @@ const spec = yargs(process.argv.slice(2))
   })
   .option("text", { type: "string" })
   .option("name", { type: "string" })
+  .option("typ", { type: "string" })
   .option("organisation-name", { type: "string" })
   .option("farbe", { type: "string" })
   .options("skip-font-registration", { type: "boolean" }).argv;

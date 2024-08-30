@@ -82,6 +82,7 @@ export type Fachaufgabe = Renderable & {
   label: string;
   cover?: boolean;
   nameArea?: (grundNameArea: Rect) => Rect;
+  typArea?: (grundTypArea: Rect) => Rect;
   organisationNameArea?: (grundNameArea: Rect) => Rect;
 };
 

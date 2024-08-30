@@ -51,6 +51,7 @@ export type ComponentType =
   | "symbol"
   | "organisation"
   | "name"
+  | "typ"
   | "farbe";
 
 export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
@@ -59,6 +60,7 @@ export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   clipPath?(svg: SVG): Element;
   paintableArea?: Rect;
   nameArea?: Rect;
+  typArea?: Rect;
   organisationNameArea?: Rect;
   padding?: Padding;
   textPadding?: Padding;
@@ -99,6 +101,7 @@ const fahrzeugAccepts: Array<ComponentType> = [
   "symbol",
   "organisation",
   "name",
+  "typ",
 ];
 
 const fahrzeugGrundzeichen: Pick<
@@ -108,6 +111,7 @@ const fahrzeugGrundzeichen: Pick<
   | "size"
   | "paintableArea"
   | "nameArea"
+  | "typArea"
   | "organisationNameArea"
   | "einheitAnchor"
   | "accepts"
@@ -121,6 +125,10 @@ const fahrzeugGrundzeichen: Pick<
   nameArea: [
     [3, 7],
     [35, 7 + nameHeight],
+  ],
+  typArea: [
+    [3, 42 - nameHeight],
+    [35, 42],
   ],
   organisationNameArea: [
     [40, 42 - nameHeight],
@@ -150,6 +158,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 3],
       [35, 3 + nameHeight],
     ],
+    typArea: [
+      [3, 42 - nameHeight],
+      [35, 42],
+    ],
     organisationNameArea: [
       [40, 42 - nameHeight],
       [72, 42],
@@ -170,6 +182,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     nameArea: [
       [3, 3],
       [35, 3 + nameHeight],
+    ],
+    typArea: [
+      [3, 42 - nameHeight],
+      [35, 42],
     ],
     organisationNameArea: [
       [40, 42 - nameHeight],
@@ -241,11 +257,15 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 12],
       [35, 12 + nameHeight],
     ],
+    typArea: [
+      [3, 42 - nameHeight],
+      [35, 42],
+    ],
     organisationNameArea: [
       [40, 42 - nameHeight],
       [72, 42],
     ],
-    accepts: ["fachaufgabe", "symbol", "organisation", "name"],
+    accepts: ["fachaufgabe", "symbol", "organisation", "name", "typ"],
     padding: [10, 20],
     textPadding: [10, 10],
   },
@@ -299,6 +319,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [6, 7],
       [35, 7 + nameHeight],
     ],
+    typArea: [
+      [6, 39 - nameHeight],
+      [35, 39],
+    ],
     organisationNameArea: [
       [40, 39 - nameHeight],
       [72, 39],
@@ -325,6 +349,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [9, 7],
       [39, 7 + nameHeight],
     ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
+    ],
     organisationNameArea: [
       [40, 42 - nameHeight],
       [72, 42],
@@ -347,6 +375,10 @@ export const grundzeichen: Array<Grundzeichen> = [
     nameArea: [
       [9, 7],
       [39, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
     ],
     organisationNameArea: [
       [40, 42 - nameHeight],
@@ -401,6 +433,10 @@ export const grundzeichen: Array<Grundzeichen> = [
       [3, 2.5],
       [20, 7],
     ],
+    typArea: [
+      [3, 11.75 - nameHeight],
+      [35, 11.75],
+    ],
     organisationNameArea: [
       [21.75, 11.75],
       [21.75 + 13, 11.75 + 3],
@@ -411,6 +447,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       "organisation",
       "fachaufgabe",
       "name",
+      "typ",
     ],
     ...singleShape(wasserfahrzeug.render),
   },
