@@ -1,4 +1,3 @@
-import { verwaltungsstufen } from "./verwaltungsstufen";
 import { einheiten } from "./einheiten";
 import { fachaufgaben } from "./fachaufgaben";
 import { funktionen } from "./funktionen";
@@ -19,6 +18,7 @@ import {
   subtractPoints,
   transformRect,
 } from "./utils";
+import { verwaltungsstufen } from "./verwaltungsstufen";
 
 function get<T extends { id: string }>(
   id: string | undefined,
@@ -32,6 +32,7 @@ function get<T extends { id: string }>(
 
 export function erzeugeTaktischesZeichen({
   text,
+  typ,
   name,
   organisationName,
   farbe,
@@ -249,6 +250,32 @@ export function erzeugeTaktischesZeichen({
               parent: { ...grund, paintableArea },
               component: createTextSymbol(organisationName),
               align: ["end", "end"],
+              svg,
+            }).element
+          )
+      );
+    }
+
+    if (typ && accepts(grund, "typ")) {
+      const grundTypArea = grund.typArea ??
+        grund.paintableArea ?? [[0, 0], grund.size];
+      const fachaufgabeTypArea =
+        fachaufgabe?.typArea &&
+        transformRect(fachaufgabe?.typArea?.(grundTypArea), {
+          offset: mainPosition,
+          scale: mainScale,
+        });
+      const paintableArea = fachaufgabeTypArea ?? grundTypArea;
+
+      svg.push(
+        svg
+          .g()
+          .attr("clip-path", `url(#${clipPathId})`)
+          .push(
+            placeComponent({
+              parent: { ...grund, paintableArea },
+              component: createTextSymbol(typ),
+              align: ["start", "end"],
               svg,
             }).element
           )

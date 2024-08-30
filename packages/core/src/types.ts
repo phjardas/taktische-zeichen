@@ -35,6 +35,7 @@ export type TaktischesZeichen = {
   funktion?: FunktionId;
   symbol?: SymbolId;
   text?: string;
+  typ?: string;
   name?: string;
   organisationName?: string;
   farbe?: string;

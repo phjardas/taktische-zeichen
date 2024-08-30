@@ -1,9 +1,9 @@
 import { SVGProps } from "react";
 import {
   Container,
-  TextNode,
   Element,
   erzeugeTaktischesZeichen,
+  TextNode,
   type TaktischesZeichen,
 } from "taktische-zeichen-core";
 
@@ -19,6 +19,7 @@ export default function TaktischesZeichen({
   symbol,
   text,
   name,
+  typ,
   organisationName,
   farbe,
   skipFontRegistration,
@@ -34,6 +35,7 @@ export default function TaktischesZeichen({
     symbol,
     text,
     name,
+    typ,
     organisationName,
     farbe,
     skipFontRegistration,

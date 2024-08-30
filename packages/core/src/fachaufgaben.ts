@@ -82,6 +82,7 @@ export type Fachaufgabe = Renderable & {
   label: string;
   cover?: boolean;
   nameArea?: (grundNameArea: Rect) => Rect;
+  typArea?: (grundTypArea: Rect) => Rect;
   organisationNameArea?: (grundNameArea: Rect) => Rect;
 };
 
@@ -106,6 +107,10 @@ function logistikFachaufgabe({
     cover: true,
     size: logistik.size,
     organisationNameArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
+    typArea: (grund) => [
       addPoints(grund[0], [0, -7]),
       addPoints(grund[1], [0, -7]),
     ],
@@ -313,6 +318,14 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Versorgung, Logistik",
     cover: true,
     ...logistik,
+    organisationNameArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
+    typArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
   },
   logistikFachaufgabe({
     id: "verpflegung",
