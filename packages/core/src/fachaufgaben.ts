@@ -110,6 +110,10 @@ function logistikFachaufgabe({
       addPoints(grund[0], [0, -7]),
       addPoints(grund[1], [0, -7]),
     ],
+    typArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
     render: (svg) =>
       svg
         .g()
@@ -314,6 +318,14 @@ export const fachaufgaben: Array<Fachaufgabe> = [
     label: "Versorgung, Logistik",
     cover: true,
     ...logistik,
+    organisationNameArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
+    typArea: (grund) => [
+      addPoints(grund[0], [0, -7]),
+      addPoints(grund[1], [0, -7]),
+    ],
   },
   logistikFachaufgabe({
     id: "verpflegung",
