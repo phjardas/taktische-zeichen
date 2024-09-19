@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import ReactDOM from "react-dom";
+import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
 import TaktischesZeichen, {
   einheiten,
   fachaufgaben,
@@ -116,6 +117,14 @@ export function Demo() {
       return accepts.includes(type);
     };
   }, [taktischesZeichen]);
+
+  const download = useCallback((tz) => {
+    const a = document.body.appendChild(document.createElement("a"));
+    a.download = "taktisches-zeichen.svg";
+    a.href = erzeugeTaktischesZeichen(tz).dataUrl;
+    a.type = "image/svg+xml";
+    a.click();
+  }, []);
 
   return (
     <div className="row row-cols-1 row-cols-md-2">
@@ -345,6 +354,12 @@ export function Demo() {
                 {...withoutEmptyValues(taktischesZeichen)}
                 alt="Taktisches Zeichen"
               />
+              <button
+                className="btn btn-outline-secondary mt-3"
+                onClick={() => download(taktischesZeichen)}
+              >
+                SVG herunterladen
+              </button>
             </div>
           </div>
         ) : null}
