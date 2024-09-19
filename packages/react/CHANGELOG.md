@@ -1,5 +1,16 @@
 # taktische-zeichen-react
 
+## 0.9.0
+
+### Minor Changes
+
+- [#58](https://github.com/phjardas/taktische-zeichen/pull/58) [`75d8048`](https://github.com/phjardas/taktische-zeichen/commit/75d8048f51f162e114f603c8328c9cb775e83121) Thanks [@phjardas](https://github.com/phjardas)! - Neues Attribut "Typ" für Text unten-links
+
+### Patch Changes
+
+- Updated dependencies [[`75d8048`](https://github.com/phjardas/taktische-zeichen/commit/75d8048f51f162e114f603c8328c9cb775e83121)]:
+  - taktische-zeichen-core@0.9.0
+
 ## 0.8.0
 
 ### Minor Changes
