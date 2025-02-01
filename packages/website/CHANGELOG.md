@@ -1,5 +1,15 @@
 # taktische-zeichen-website
 
+## 0.8.1
+
+### Patch Changes
+
+- [`e7b401a`](https://github.com/phjardas/taktische-zeichen/commit/e7b401af0235ac0a9c5e9b026010f68decee66de) Thanks [@phjardas](https://github.com/phjardas)! - THW: Farbe angepasst
+
+- Updated dependencies [[`e7b401a`](https://github.com/phjardas/taktische-zeichen/commit/e7b401af0235ac0a9c5e9b026010f68decee66de)]:
+  - taktische-zeichen-core@0.9.1
+  - taktische-zeichen-react@0.9.1
+
 ## 0.8.0
 
 ### Minor Changes
