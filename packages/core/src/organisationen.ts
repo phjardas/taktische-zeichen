@@ -24,7 +24,7 @@ export const organisationen: Array<Organisation> = [
   {
     id: "thw",
     label: "THW",
-    background: "#0000ff",
+    background: "#003399",
     textColor: "#ffffff",
   },
   {
