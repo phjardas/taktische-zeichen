@@ -170,7 +170,7 @@ Du möchtest bei der Weiterentwicklung helfen? Prima! Du hast folgende Möglichk
 
 ## Links
 
-Es gibt auch eine Bibliothek von @KrausMatthias für die Anzeige von [Takstischen Zeichen in Leaflet](https://codeberg.org/OpenGeoMesh/Leaflet.TacticalMarkers).
+Es gibt auch eine Bibliothek von @KrausMatthias für die Anzeige von [Taktischen Zeichen in Leaflet](https://codeberg.org/OpenGeoMesh/Leaflet.TacticalMarkers).
 
 ## Contributors
 
