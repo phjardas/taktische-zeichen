@@ -335,13 +335,16 @@ export const grundzeichen: Array<Grundzeichen> = [
   },
   {
     id: "wechsellader",
-    label: "Wechsellader",
+    label: "Kraftfahrzeug straßenfähig, Typ Wechsellader",
     size: [75, 55],
     render: (svg, props) =>
       svg
         .g()
-        .push(svg.path("M1,1 v43 h73"))
-        .push(applyProps(svg.path("M4,1 Q36.5,10 74,1 v40 h-70 Z"), props))
+        .push(svg.path("M1,0 v44 h73"))
+        .push(
+          applyProps(svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 Z"), props)
+        )
+        .push(svg.circle([7, 8], 3))
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M4,1 Q36.5,10 73,1 v40 h-69 Z"),
