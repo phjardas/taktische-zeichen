@@ -71,7 +71,7 @@ export function erzeugeTaktischesZeichen({
 
     svg.attr(
       "color",
-      (accepts(grund, "farbe") ? farbe : undefined) ??
+      (accepts(grund, "farbe") && farbe ? farbe : grund.defaultColor) ??
         (accepts(grund, "organisation") ? org?.textColor : undefined) ??
         "black"
     );

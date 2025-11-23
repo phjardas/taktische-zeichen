@@ -65,6 +65,7 @@ export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   padding?: Padding;
   textPadding?: Padding;
   einheitAnchor?: Point;
+  defaultColor?: string;
   accepts?: Array<ComponentType>;
 };
 
@@ -467,9 +468,13 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "massnahme",
     label: "Maßnahme",
     size: [45, 36],
-    accepts: ["symbol"],
+    accepts: ["symbol", "farbe"],
+    defaultColor: "#3264fa",
     ...singleShape((svg) =>
-      svg.path("M22.5,1.8 L43.2,35 H1.8 Z").attr("fill", "white")
+      svg
+        .path("M22.5,1.8 L43.2,35 H1.8 Z")
+        .attr("fill", "white")
+        .attr("stroke", "currentColor")
     ),
     padding: [15, 15, 5],
   },
@@ -487,6 +492,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Gefahr",
     size: [45, 36],
     accepts: ["symbol", "farbe"],
+    defaultColor: "#fa321e",
     ...singleShape((svg) =>
       svg
         .path("M22.5,34 L43.2,1 H1.8 Z")
@@ -500,6 +506,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Gefahr (vermutet)",
     size: [51.5, 36],
     accepts: ["symbol", "farbe"],
+    defaultColor: "#fa321e",
     render: (svg) =>
       svg
         .g()
@@ -521,6 +528,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     label: "Gefahr (akut)",
     size: [51.5, 36],
     accepts: ["symbol", "farbe"],
+    defaultColor: "#fa321e",
     render: (svg) =>
       svg
         .g()
