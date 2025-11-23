@@ -5,7 +5,8 @@ export type OrganisationId =
   | "polizei"
   | "gefahrenabwehr"
   | "hilfsorganisation"
-  | "bundeswehr";
+  | "bundeswehr"
+  | "zivil";
 
 export type Organisation = {
   id: OrganisationId;
@@ -18,7 +19,7 @@ export const organisationen: Array<Organisation> = [
   {
     id: "feuerwehr",
     label: "Feuerwehr",
-    background: "#cc0000",
+    background: "#fa321e",
     textColor: "#ffffff",
   },
   {
@@ -30,17 +31,17 @@ export const organisationen: Array<Organisation> = [
   {
     id: "fuehrung",
     label: "Führung",
-    background: "#dddd00",
+    background: "#fafa00",
   },
   {
     id: "polizei",
     label: "Polizei",
-    background: "#009900",
+    background: "#64dc32",
   },
   {
     id: "gefahrenabwehr",
     label: "Gefahrenabwehr",
-    background: "#ff9900",
+    background: "#fa8c00",
   },
   {
     id: "hilfsorganisation",
@@ -50,7 +51,13 @@ export const organisationen: Array<Organisation> = [
   {
     id: "bundeswehr",
     label: "Bundeswehr",
-    background: "#764a2f",
+    background: "#b4783c",
+    textColor: "#ffffff",
+  },
+  {
+    id: "zivil",
+    label: "Zivile Einheiten",
+    background: "#bebebe",
     textColor: "#ffffff",
   },
 ];
