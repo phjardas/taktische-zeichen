@@ -546,7 +546,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     defaultColor: "#3264fa",
     ...singleShape((svg) =>
       svg
-        .path("M22.5,1.8 L43.2,35 H1.8 Z")
+        .path("M22.5,34 L43.2,1 H1.8 Z")
         .attr("fill", "white")
         .attr("stroke", "currentColor")
     ),
@@ -569,7 +569,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     defaultColor: "#fa321e",
     ...singleShape((svg) =>
       svg
-        .path("M22.5,34 L43.2,1 H1.8 Z")
+        .path("M22.5,1.8 L43.2,35 H1.8 Z")
         .attr("fill", "white")
         .attr("stroke", "currentColor")
     ),
@@ -586,12 +586,12 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(
           svg
-            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .path("M28,2 l20.7,33 h-41.4 Z")
             .attr("fill", "white")
             .attr("stroke", "currentColor")
         )
-        .push(renderText(svg, "?").attr("y", 35).attr("fill", "currentColor")),
-    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+        .push(renderText(svg, "?").attr("y", 25).attr("fill", "currentColor")),
+    clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
     paintableArea: [
       [18, 3],
       [38, 18],
@@ -608,17 +608,17 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(
           svg
-            .path("M28,34 l20.7,-33 h-41.4 Z")
+            .path("M28,2 l20.7,33 h-41.4 Z")
             .attr("fill", "white")
             .attr("stroke", "currentColor")
         )
         .push(
           svg
-            .path("M5,13 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
+            .path("M5,3 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
             .attr("fill", "currentColor")
             .attr("stroke", "none")
         ),
-    clipPath: (svg) => svg.path("M28,34 l20.7,-33 h-41.4 Z"),
+    clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
     paintableArea: [
       [18, 3],
       [38, 18],
