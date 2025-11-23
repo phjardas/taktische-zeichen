@@ -30,12 +30,6 @@ jobs:
       - name: Test
         run: npm run test:coverage
 
-      - uses: paambaati/codeclimate-action@v3.2.0
-        with:
-          coverageLocations: ${{github.workspace}}/packages/*/coverage/lcov.info:lcov
-        env:
-          CC_TEST_REPORTER_ID: c7d52ac19fe2a35588d2f41c0776e3565e05fd0e5819e40a5d4b41a2cdf4edcd
-
       - name: Build
         run: npm run build
 
