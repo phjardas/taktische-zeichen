@@ -29,6 +29,10 @@ export type GrundzeichenId =
   | "wechselbehaelter"
   | "abrollbehaelter"
   | "anhaenger"
+  | "anhaenger-abrollbehaelter"
+  | "anhaenger-wechselbehaelter"
+  | "anhaenger-pkw"
+  | "anhaenger-lkw"
   | "schienenfahrzeug"
   | "kettenfahrzeug"
   | "fahrrad"
@@ -408,7 +412,7 @@ export const grundzeichen: Array<Grundzeichen> = [
   },
   {
     id: "abrollbehaelter",
-    label: "Abrollbehälter, Container",
+    label: "Abrollbehälter",
     size: [75, 45],
     render: (svg, props) =>
       svg
@@ -438,13 +442,167 @@ export const grundzeichen: Array<Grundzeichen> = [
   },
   {
     id: "anhaenger",
-    label: "Anhänger",
-    size: [75, 45],
+    label: "Anhänger allgemein",
+    size: [75, 55],
     render: (svg, props) =>
-      applyProps(svg.path("M7,44 V1 Q35,10 74,1 V44 Z M7,10 h-7"), props),
-    clipPath: (svg) => svg.path("M7,44 V1 Q35,10 74,1 V44 Z"),
+      svg
+        .g()
+        .push(
+          applyProps(
+            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
+            props
+          )
+        )
+        .push(svg.circle([16, 49], 5))
+        .push(svg.circle([65, 49], 5)),
+    clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
     paintableArea: [
-      [6, 0],
+      [7, 0],
+      [75, 45],
+    ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
+    einheitAnchor: [40, 4.5],
+    accepts: fahrzeugAccepts,
+    padding: [15, 10, 10],
+  },
+  {
+    id: "anhaenger-abrollbehaelter",
+    label: "Anhänger, Typ Abrollbehälter",
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(svg.path("M7,0 v44 h68 M7,16 h-6 v3 h7"))
+        .push(
+          applyProps(svg.path("M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z"), props)
+        )
+        .push(svg.circle([13, 8], 3))
+        .push(svg.circle([16, 49], 5))
+        .push(svg.circle([65, 49], 5)),
+    clipPath: (svg) => svg.path("M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z"),
+    paintableArea: [
+      [10, 0],
+      [75, 42],
+    ],
+    nameArea: [
+      [6, 7],
+      [35, 7 + nameHeight],
+    ],
+    typArea: [
+      [6, 39 - nameHeight],
+      [35, 39],
+    ],
+    organisationNameArea: [
+      [40, 39 - nameHeight],
+      [72, 39],
+    ],
+    einheitAnchor: [39.5, 4.5],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
+    padding: [15, 10, 10],
+  },
+  {
+    id: "anhaenger-wechselbehaelter",
+    label: "Anhänger, Typ Wechselbehälter/Container",
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(svg.path("M7,0 v44 h68 M7,16 h-6 v3 h7"))
+        .push(
+          applyProps(
+            svg.path(
+              "M10,5 H74 v36 H10z a4 4 180 0 1 8 0m48 0a4 4 180 0 1 8 0"
+            ),
+            props
+          )
+        )
+        .push(svg.circle([16, 49], 5))
+        .push(svg.circle([65, 49], 5)),
+    clipPath: (svg) => svg.path("M10,5 H74 v36 H10z"),
+    paintableArea: [
+      [10, 5],
+      [74, 41],
+    ],
+    nameArea: [
+      [6, 7],
+      [35, 7 + nameHeight],
+    ],
+    typArea: [
+      [6, 39 - nameHeight],
+      [35, 39],
+    ],
+    organisationNameArea: [
+      [40, 39 - nameHeight],
+      [72, 39],
+    ],
+    einheitAnchor: [39.5, 4.5],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
+    padding: [15, 10, 10],
+  },
+  {
+    id: "anhaenger-pkw",
+    label: "Anhänger von Pkw gezogen",
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(
+          applyProps(
+            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
+            props
+          )
+        )
+        .push(svg.circle([42, 49], 5)),
+    clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
+    paintableArea: [
+      [7, 0],
+      [75, 45],
+    ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
+    einheitAnchor: [40, 4.5],
+    accepts: fahrzeugAccepts,
+    padding: [15, 10, 10],
+  },
+  {
+    id: "anhaenger-lkw",
+    label: "Anhänger von Lkw gezogen",
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(
+          applyProps(
+            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
+            props
+          )
+        )
+        .push(svg.circle([35, 49], 5))
+        .push(svg.circle([49, 49], 5)),
+    clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
+    paintableArea: [
+      [7, 0],
       [75, 45],
     ],
     nameArea: [
