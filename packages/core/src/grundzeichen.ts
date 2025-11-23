@@ -26,8 +26,10 @@ export type GrundzeichenId =
   | "kraftfahrzeug-gelaendegaengig-kategorie3"
   | "amphibienfahrzeug"
   | "wechsellader"
-  | "wechselbehaelter"
+  | "wechsellader-wechselbehaelter"
   | "abrollbehaelter"
+  | "wechselbehaelter"
+  | "wechselbruecke"
   | "anhaenger"
   | "anhaenger-abrollbehaelter"
   | "anhaenger-wechselbehaelter"
@@ -374,7 +376,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     padding: [15, 10, 10],
   },
   {
-    id: "wechselbehaelter",
+    id: "wechsellader-wechselbehaelter",
     label: "Kraftfahrzeug straßenfähig, Typ Wechselbehälter/Container",
     size: [75, 55],
     render: (svg, props) =>
@@ -423,6 +425,63 @@ export const grundzeichen: Array<Grundzeichen> = [
     paintableArea: [
       [6, 0],
       [75, 45],
+    ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
+    einheitAnchor: [40, 4.5],
+    accepts: fahrzeugAccepts,
+    padding: [15, 10, 10],
+  },
+  {
+    id: "wechselbehaelter",
+    label: "Wechselbehälter/Container",
+    size: [75, 45],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(applyProps(svg.path("M1,5 H74 V44H1z"), props))
+        .push(svg.path("M1,5 a4 4 180 0 1 8 0M66 5a4 4 180 0 1 8 0")),
+    clipPath: (svg) => svg.path("M1,5 H74 V44H1z"),
+    paintableArea: [
+      [0, 5],
+      [75, 45],
+    ],
+    nameArea: [
+      [9, 7],
+      [39, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [39, 42],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [72, 42],
+    ],
+    einheitAnchor: [40, 4.5],
+    accepts: fahrzeugAccepts,
+    padding: [15, 10, 10],
+  },
+  {
+    id: "wechselbruecke",
+    label: "Wechselbrücke",
+    size: [75, 45],
+    render: (svg, props) =>
+      applyProps(svg.path("M1,1 H74 V39H1zM10 39V45M65 39V45"), props),
+    clipPath: (svg) => svg.path("M1,1 H74 V39H1z"),
+    paintableArea: [
+      [0, 0],
+      [75, 39],
     ],
     nameArea: [
       [9, 7],
