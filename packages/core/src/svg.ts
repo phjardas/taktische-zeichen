@@ -79,7 +79,10 @@ export class Container extends Element {
 }
 
 export class TextNode extends Element {
-  constructor(name: string, readonly text: string) {
+  constructor(
+    name: string,
+    readonly text: string
+  ) {
     super(name);
   }
 
@@ -139,6 +142,14 @@ export class SVG extends Container {
       .attr("y", pos[1])
       .attr("width", size[0])
       .attr("height", size[1]);
+  }
+
+  line(start: Point, end: Point) {
+    return new Leaf("line")
+      .attr("x1", start[0])
+      .attr("y1", start[1])
+      .attr("x2", end[0])
+      .attr("y2", end[1]);
   }
 
   mask(id: string) {

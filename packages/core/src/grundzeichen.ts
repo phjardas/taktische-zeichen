@@ -23,6 +23,7 @@ export type GrundzeichenId =
   | "fahrzeug"
   | "kraftfahrzeug-landgebunden"
   | "kraftfahrzeug-gelaendegaengig"
+  | "kraftfahrzeug-gelaendegaengig-kategorie3"
   | "wechsellader"
   | "abrollbehaelter"
   | "anhaenger"
@@ -299,6 +300,22 @@ export const grundzeichen: Array<Grundzeichen> = [
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([37.5, 49], 5))
         .push(svg.circle([65, 49], 5)),
+  },
+  {
+    id: "kraftfahrzeug-gelaendegaengig-kategorie3",
+    label:
+      "Kraftfahrzeug geländegängig zum Befahren aller Wege und für Geländefahrten (Kategorie 3)",
+    ...fahrzeugGrundzeichen,
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(applyProps(fahrzeug.render(svg), props))
+        .push(svg.circle([10, 49], 5))
+        .push(svg.circle([37.5, 49], 5))
+        .push(svg.circle([65, 49], 5))
+        .push(svg.line([15, 49], [32.5, 49]))
+        .push(svg.line([42.5, 49], [60, 49])),
   },
   {
     id: "wechsellader",
