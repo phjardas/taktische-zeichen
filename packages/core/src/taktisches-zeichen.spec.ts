@@ -9,8 +9,8 @@ describe("taktisches-zeichen", () => {
     });
 
     expect(tz.toString()).toMatchInlineSnapshot(`
-      "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
-      <svg color=\\"#ffffff\\" fill=\\"transparent\\" stroke=\\"black\\" stroke-width=\\"2\\" viewBox=\\"0 0 75 45\\" xmlns=\\"http://www.w3.org/2000/svg\\"><defs><clipPath id=\\"tz_taktische-formation\\"><path d=\\"M1,1 H74 V44 H1 Z\\" /></clipPath></defs><path d=\\"M1,1 H74 V44 H1 Z\\" fill=\\"#cc0000\\" /></svg>"
+      "<?xml version="1.0" encoding="UTF-8"?>
+      <svg color="#ffffff" fill="transparent" stroke="black" stroke-width="2" viewBox="0 0 75 45" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="tz_taktische-formation"><path d="M1,1 H74 V44 H1 Z" /></clipPath></defs><path d="M1,1 H74 V44 H1 Z" fill="#cc0000" /></svg>"
     `);
   });
 
@@ -35,8 +35,8 @@ describe("taktisches-zeichen", () => {
     });
 
     expect(tz.toString()).toMatchInlineSnapshot(`
-      "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
-      <svg color=\\"#ffffff\\" fill=\\"transparent\\" stroke=\\"black\\" stroke-width=\\"2\\" viewBox=\\"0 0 75 45\\" xmlns=\\"http://www.w3.org/2000/svg\\"><defs><clipPath id=\\"tz_taktische-formation\\"><path d=\\"M1,1 H74 V44 H1 Z\\" /></clipPath></defs><path d=\\"M1,1 H74 V44 H1 Z\\" fill=\\"#cc0000\\" /><g clip-path=\\"url(#tz_taktische-formation)\\"><g transform=\\"translate(3,3) scale(0.27906976744186046)\\"><text fill=\\"currentColor\\" stroke=\\"none\\" style=\\"font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px\\" x=\\"0\\" y=\\"21.5\\"><![CDATA[Test]]></text></g></g></svg>"
+      "<?xml version="1.0" encoding="UTF-8"?>
+      <svg color="#ffffff" fill="transparent" stroke="black" stroke-width="2" viewBox="0 0 75 45" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="tz_taktische-formation"><path d="M1,1 H74 V44 H1 Z" /></clipPath></defs><path d="M1,1 H74 V44 H1 Z" fill="#cc0000" /><g clip-path="url(#tz_taktische-formation)"><g transform="translate(3,3) scale(0.27906976744186046)"><text fill="currentColor" stroke="none" style="font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px" x="0" y="21.5"><![CDATA[Test]]></text></g></g></svg>"
     `);
   });
 
@@ -62,8 +62,8 @@ describe("taktisches-zeichen", () => {
     });
 
     expect(tz.toString()).toMatchInlineSnapshot(`
-      "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
-      <svg color=\\"#ffffff\\" fill=\\"transparent\\" stroke=\\"black\\" stroke-width=\\"2\\" viewBox=\\"0 0 75 45\\" xmlns=\\"http://www.w3.org/2000/svg\\"><defs><clipPath id=\\"tz_taktische-formation\\"><path d=\\"M1,1 H74 V44 H1 Z\\" /></clipPath></defs><path d=\\"M1,1 H74 V44 H1 Z\\" fill=\\"#cc0000\\" /><g clip-path=\\"url(#tz_taktische-formation)\\"><g transform=\\"translate(3,3) scale(0.27906976744186046)\\"><text fill=\\"currentColor\\" stroke=\\"none\\" style=\\"font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px\\" x=\\"0\\" y=\\"21.5\\"><![CDATA[Täst]]></text></g></g></svg>"
+      "<?xml version="1.0" encoding="UTF-8"?>
+      <svg color="#ffffff" fill="transparent" stroke="black" stroke-width="2" viewBox="0 0 75 45" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="tz_taktische-formation"><path d="M1,1 H74 V44 H1 Z" /></clipPath></defs><path d="M1,1 H74 V44 H1 Z" fill="#cc0000" /><g clip-path="url(#tz_taktische-formation)"><g transform="translate(3,3) scale(0.27906976744186046)"><text fill="currentColor" stroke="none" style="font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px" x="0" y="21.5"><![CDATA[Täst]]></text></g></g></svg>"
     `);
   });
 
@@ -93,8 +93,8 @@ describe("taktisches-zeichen", () => {
     console.log(tz.toString());
 
     expect(tz.toString()).toMatchInlineSnapshot(`
-      "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
-      <svg color=\\"#ffffff\\" fill=\\"transparent\\" stroke=\\"black\\" stroke-width=\\"2\\" viewBox=\\"0 0 75 45\\" xmlns=\\"http://www.w3.org/2000/svg\\"><defs><clipPath id=\\"tz_taktische-formation\\"><path d=\\"M1,1 H74 V44 H1 Z\\" /></clipPath></defs><path d=\\"M1,1 H74 V44 H1 Z\\" fill=\\"#cc0000\\" /><g clip-path=\\"url(#tz_taktische-formation)\\"><g transform=\\"translate(10,13.115079365079366) scale(0.873015873015873)\\"><text fill=\\"currentColor\\" stroke=\\"none\\" style=\\"font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px\\" x=\\"0\\" y=\\"21.5\\"><![CDATA[Text]]></text></g></g><g clip-path=\\"url(#tz_taktische-formation)\\"><g transform=\\"translate(3,3) scale(0.27906976744186046)\\"><text fill=\\"currentColor\\" stroke=\\"none\\" style=\\"font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px\\" x=\\"0\\" y=\\"21.5\\"><![CDATA[Name]]></text></g></g><g clip-path=\\"url(#tz_taktische-formation)\\"><g transform=\\"translate(3,36) scale(0.21428571428571427)\\"><text fill=\\"currentColor\\" stroke=\\"none\\" style=\\"font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px\\" x=\\"0\\" y=\\"21.5\\"><![CDATA[Typ]]></text></g></g></svg>"
+      "<?xml version="1.0" encoding="UTF-8"?>
+      <svg color="#ffffff" fill="transparent" stroke="black" stroke-width="2" viewBox="0 0 75 45" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="tz_taktische-formation"><path d="M1,1 H74 V44 H1 Z" /></clipPath></defs><path d="M1,1 H74 V44 H1 Z" fill="#cc0000" /><g clip-path="url(#tz_taktische-formation)"><g transform="translate(10,13.115079365079366) scale(0.873015873015873)"><text fill="currentColor" stroke="none" style="font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px" x="0" y="21.5"><![CDATA[Text]]></text></g></g><g clip-path="url(#tz_taktische-formation)"><g transform="translate(3,3) scale(0.27906976744186046)"><text fill="currentColor" stroke="none" style="font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px" x="0" y="21.5"><![CDATA[Name]]></text></g></g><g clip-path="url(#tz_taktische-formation)"><g transform="translate(3,36) scale(0.21428571428571427)"><text fill="currentColor" stroke="none" style="font-family:Roboto Slab;font-size:30px;font-weight:bold;letter-spacing:-1px" x="0" y="21.5"><![CDATA[Typ]]></text></g></g></svg>"
     `);
   });
 });
