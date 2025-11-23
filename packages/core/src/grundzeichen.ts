@@ -26,6 +26,7 @@ export type GrundzeichenId =
   | "kraftfahrzeug-gelaendegaengig-kategorie3"
   | "amphibienfahrzeug"
   | "wechsellader"
+  | "wechselbehaelter"
   | "abrollbehaelter"
   | "anhaenger"
   | "schienenfahrzeug"
@@ -342,14 +343,51 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(svg.path("M1,0 v44 h73"))
         .push(
-          applyProps(svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 Z"), props)
+          applyProps(svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 z"), props)
         )
         .push(svg.circle([7, 8], 3))
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([65, 49], 5)),
-    clipPath: (svg) => svg.path("M4,1 Q36.5,10 73,1 v40 h-69 Z"),
+    clipPath: (svg) => svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 z"),
     paintableArea: [
-      [3, 0],
+      [10, 0],
+      [75, 42],
+    ],
+    nameArea: [
+      [6, 7],
+      [35, 7 + nameHeight],
+    ],
+    typArea: [
+      [6, 39 - nameHeight],
+      [35, 39],
+    ],
+    organisationNameArea: [
+      [40, 39 - nameHeight],
+      [72, 39],
+    ],
+    einheitAnchor: [39.5, 4.5],
+    accepts: [...fahrzeugAccepts, "einheit", "verwaltungsstufe"],
+    padding: [15, 10, 10],
+  },
+  {
+    id: "wechselbehaelter",
+    label: "Kraftfahrzeug straßenfähig, Typ Wechselbehälter/Container",
+    size: [75, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(svg.path("M1,0 v44 h73"))
+        .push(
+          applyProps(
+            svg.path("M4,5 h69 v36 h-69za4 4 180 0 1 8 0m53 0a4 4 180 0 1 8 0"),
+            props
+          )
+        )
+        .push(svg.circle([10, 49], 5))
+        .push(svg.circle([65, 49], 5)),
+    clipPath: (svg) => svg.path("M4,5 h69 v36 h-69z"),
+    paintableArea: [
+      [10, 0],
       [75, 42],
     ],
     nameArea: [
