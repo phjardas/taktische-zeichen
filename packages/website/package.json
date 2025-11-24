@@ -1,7 +1,7 @@
 {
   "name": "taktische-zeichen-website",
   "private": true,
-  "version": "0.8.0",
+  "version": "0.9.0",
   "scripts": {
     "clean": "shx rm -rf dist",
     "compile": "webpack",
@@ -13,8 +13,8 @@
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "taktische-zeichen-core": "^0.9.0",
-    "taktische-zeichen-react": "^0.9.0"
+    "taktische-zeichen-core": "^0.10.0",
+    "taktische-zeichen-react": "^0.10.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
