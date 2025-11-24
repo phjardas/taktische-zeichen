@@ -361,11 +361,11 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 42],
     ],
     nameArea: [
-      [6, 7],
+      [12, 7],
       [35, 7 + nameHeight],
     ],
     typArea: [
-      [6, 39 - nameHeight],
+      [12, 39 - nameHeight],
       [35, 39],
     ],
     organisationNameArea: [
@@ -383,19 +383,14 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
-        .push(svg.path("M1,0 v44 h73"))
-        .push(
-          applyProps(
-            svg.path("M4,5 h69 v36 h-69za4 4 180 0 1 8 0m53 0a4 4 180 0 1 8 0"),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M4,5 h69 v36 h-69z"), props))
+        .push(svg.path("M4,5 a4 4 180 0 1 8 0m53 0a4 4 180 0 1 8 0"))
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M4,5 h69 v36 h-69z"),
     paintableArea: [
-      [10, 0],
-      [75, 42],
+      [4, 5],
+      [75, 41],
     ],
     nameArea: [
       [6, 7],
@@ -458,16 +453,16 @@ export const grundzeichen: Array<Grundzeichen> = [
       [75, 45],
     ],
     nameArea: [
-      [9, 7],
+      [3, 7],
       [39, 7 + nameHeight],
     ],
     typArea: [
-      [9, 42 - nameHeight],
+      [3, 42 - nameHeight],
       [39, 42],
     ],
     organisationNameArea: [
-      [40, 42 - nameHeight],
-      [72, 42],
+      [40, 40 - nameHeight],
+      [74, 40],
     ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
@@ -481,20 +476,20 @@ export const grundzeichen: Array<Grundzeichen> = [
       applyProps(svg.path("M1,1 H74 V39H1zM10 39V45M65 39V45"), props),
     clipPath: (svg) => svg.path("M1,1 H74 V39H1z"),
     paintableArea: [
-      [0, 0],
-      [75, 39],
+      [0, 1],
+      [75, 40],
     ],
     nameArea: [
-      [9, 7],
+      [3, 3],
       [39, 7 + nameHeight],
     ],
     typArea: [
-      [9, 42 - nameHeight],
-      [39, 42],
+      [3, 39 - nameHeight],
+      [39, 39],
     ],
     organisationNameArea: [
-      [40, 42 - nameHeight],
-      [72, 42],
+      [40, 39 - nameHeight],
+      [72, 39],
     ],
     einheitAnchor: [40, 4.5],
     accepts: fahrzeugAccepts,
@@ -507,14 +502,8 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
-        .push(
-          applyProps(
-            svg.path(
-              "M1,1.5 Q14.5,10 30,1.5 V44 H1 z M30,1.5 a4 4 180 0 1 0 8"
-            ),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M1,1.5 Q14.5,10 30,1.5 V44 H1 z"), props))
+        .push(svg.path("M30,1.5 a4 4 180 0 1 0 8"))
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([21, 49], 5)),
     clipPath: (svg) => svg.path("M1,1.5 Q14.5,10 30,1.5 V44 H1 z"),
@@ -523,16 +512,16 @@ export const grundzeichen: Array<Grundzeichen> = [
       [35, 55],
     ],
     nameArea: [
-      [9, 7],
+      [3, 7],
       [34, 7 + nameHeight],
     ],
     typArea: [
-      [9, 42 - nameHeight],
+      [3, 42 - nameHeight],
       [34, 42],
     ],
     organisationNameArea: [
-      [40, 42 - nameHeight],
-      [34, 42],
+      [40, 39 - nameHeight],
+      [34, 39],
     ],
     einheitAnchor: [16, 4.5],
     accepts: fahrzeugAccepts,
@@ -545,18 +534,14 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
-        .push(
-          applyProps(
-            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"), props))
+        .push(svg.path("M7,16 h-6 v3 h7"))
         .push(svg.circle([16, 49], 5))
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
     paintableArea: [
-      [7, 0],
-      [75, 45],
+      [7, 1],
+      [75, 44],
     ],
     nameArea: [
       [9, 7],
@@ -590,15 +575,15 @@ export const grundzeichen: Array<Grundzeichen> = [
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z"),
     paintableArea: [
-      [10, 0],
-      [75, 42],
+      [16, 1],
+      [75, 41],
     ],
     nameArea: [
-      [6, 7],
+      [18, 7],
       [35, 7 + nameHeight],
     ],
     typArea: [
-      [6, 39 - nameHeight],
+      [18, 39 - nameHeight],
       [35, 39],
     ],
     organisationNameArea: [
@@ -617,14 +602,8 @@ export const grundzeichen: Array<Grundzeichen> = [
       svg
         .g()
         .push(svg.path("M7,0 v44 h68 M7,16 h-6 v3 h7"))
-        .push(
-          applyProps(
-            svg.path(
-              "M10,5 H74 v36 H10z a4 4 180 0 1 8 0m48 0a4 4 180 0 1 8 0"
-            ),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M10,5 H74 v36 H10z"), props))
+        .push(svg.path("M7,0 a4 4 180 0 1 8 0m48 0a4 4 180 0 1 8 0"))
         .push(svg.circle([16, 49], 5))
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M10,5 H74 v36 H10z"),
@@ -633,11 +612,11 @@ export const grundzeichen: Array<Grundzeichen> = [
       [74, 41],
     ],
     nameArea: [
-      [6, 7],
+      [12, 7],
       [35, 7 + nameHeight],
     ],
     typArea: [
-      [6, 39 - nameHeight],
+      [12, 39 - nameHeight],
       [35, 39],
     ],
     organisationNameArea: [
@@ -655,12 +634,8 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
-        .push(
-          applyProps(
-            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"), props))
+        .push(svg.path("M7,16 h-6 v3 h7"))
         .push(svg.circle([42, 49], 5)),
     clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
     paintableArea: [
@@ -690,12 +665,8 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
-        .push(
-          applyProps(
-            svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z M7,16 h-6 v3 h7"),
-            props
-          )
-        )
+        .push(applyProps(svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"), props))
+        .push(svg.path("M7,16 h-6 v3 h7"))
         .push(svg.circle([35, 49], 5))
         .push(svg.circle([49, 49], 5)),
     clipPath: (svg) => svg.path("M7,44 V1.5 Q35,10 74,1.5 V44 Z"),
