@@ -607,7 +607,7 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(svg.path("M7,0 v44 h68 M7,16 h-6 v3 h7"))
         .push(applyProps(svg.path("M10,5 H74 v36 H10z"), props))
-        .push(svg.path("M7,0 a4 4 180 0 1 8 0m48 0a4 4 180 0 1 8 0"))
+        .push(svg.path("M10,5 a4 4 180 0 1 8 0m48 0a4 4 180 0 1 8 0"))
         .push(svg.circle([16, 49], 5))
         .push(svg.circle([65, 49], 5)),
     clipPath: (svg) => svg.path("M10,5 H74 v36 H10z"),
