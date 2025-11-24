@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
 import TaktischesZeichen, {
   einheiten,
@@ -10,6 +10,8 @@ import TaktischesZeichen, {
   symbole,
   verwaltungsstufen,
 } from "taktische-zeichen-react";
+
+const x = React;
 
 const beispiele = [
   {
@@ -386,4 +388,5 @@ function withoutEmptyValues(obj) {
   );
 }
 
-ReactDOM.render(<Demo />, document.getElementById("demo"));
+const root = ReactDOM.createRoot(document.getElementById("demo"));
+root.render(<Demo />);
