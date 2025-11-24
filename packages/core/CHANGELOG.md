@@ -1,5 +1,39 @@
 # taktische-zeichen
 
+## 0.10.0
+
+### Minor Changes
+
+- [`e098075`](https://github.com/phjardas/taktische-zeichen/commit/e098075b2225753298a9126a4516601d16e6a97d) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: Zweirad (ersetzt Fahrrad und Kraftrad) #70
+
+- [`52fb57c`](https://github.com/phjardas/taktische-zeichen/commit/52fb57ceced8d7a506d3f4c88d5c60b71687fa85) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: Kraftfahrzeug straßenfähig, Typ Wechselbehälter/Container #73
+
+- [`d57ed38`](https://github.com/phjardas/taktische-zeichen/commit/d57ed38cefcface612f992df84ae194528f6a620) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: Amphibienfahrzeug #74
+
+- [`00ce53b`](https://github.com/phjardas/taktische-zeichen/commit/00ce53bdac1bd18355492c5c84c514fddd234db3) Thanks [@phjardas](https://github.com/phjardas)! - Grundzeichen aktualisiert: Kraftfahrzeug straßenfähig, Typ Wechsellader #73
+
+- [`acea91e`](https://github.com/phjardas/taktische-zeichen/commit/acea91e275df6569f83efa5785092ad036b2552e) Thanks [@phjardas](https://github.com/phjardas)! - Farbgebung für Maßnahmen und Gefahren #71
+
+- [`83fb8a4`](https://github.com/phjardas/taktische-zeichen/commit/83fb8a4294c41f074d2610aed76fb4ced827035f) Thanks [@phjardas](https://github.com/phjardas)! - Bump dependencies
+
+- [`5fccc51`](https://github.com/phjardas/taktische-zeichen/commit/5fccc51c9ae6e78fff24fc91ece7c214914aeda3) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: Kraftfahrzeug geländegängig zum Befahren aller Wege und für Geländefahrten (Kategorie 3) #74
+
+- [`83fb8a4`](https://github.com/phjardas/taktische-zeichen/commit/83fb8a4294c41f074d2610aed76fb4ced827035f) Thanks [@phjardas](https://github.com/phjardas)! - Update build system to use npm workspaces
+
+- [`fd8c502`](https://github.com/phjardas/taktische-zeichen/commit/fd8c5024015ff62490f4cbca3689f62b27d098e0) Thanks [@phjardas](https://github.com/phjardas)! - Neues Grundzeichen: Rollcontainer
+
+- [`cd6f76a`](https://github.com/phjardas/taktische-zeichen/commit/cd6f76ac105062426c9de397bfd7daa783a4370b) Thanks [@phjardas](https://github.com/phjardas)! - Neue Grundzeichen: Wechselbehälter, Wechselbrücke
+
+- [`54943d0`](https://github.com/phjardas/taktische-zeichen/commit/54943d0bf798a59bfce4d9e038add8fdb29c7500) Thanks [@phjardas](https://github.com/phjardas)! - Neue Anhänger: allgemein, Abrollbehälter, Wechselbehälter, Pkw, Lkw #72
+
+- [`66d29e3`](https://github.com/phjardas/taktische-zeichen/commit/66d29e3a91e567df28fc340d70987bad683fa810) Thanks [@phjardas](https://github.com/phjardas)! - Grundzeichen für Gefahr und Maßnahme: Richtung des Dreiecks ist jetzt umgekehrt #71
+
+- [`c8a2ddd`](https://github.com/phjardas/taktische-zeichen/commit/c8a2ddda8bf6b54263eb90776c282d5f8c353349) Thanks [@phjardas](https://github.com/phjardas)! - Neue Organisation: zivil, Farben der Organisationen angepasst
+
+### Patch Changes
+
+- [`e7b401a`](https://github.com/phjardas/taktische-zeichen/commit/e7b401af0235ac0a9c5e9b026010f68decee66de) Thanks [@phjardas](https://github.com/phjardas)! - THW: Farbe angepasst
+
 ## 0.9.0
 
 ### Minor Changes
