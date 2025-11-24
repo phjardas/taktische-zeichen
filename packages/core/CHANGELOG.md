@@ -1,5 +1,11 @@
 # taktische-zeichen
 
+## 0.10.1
+
+### Patch Changes
+
+- [`4aa1b0b`](https://github.com/phjardas/taktische-zeichen/commit/4aa1b0b01ccbba0ee330f5790bf7af45eaf3fead) Thanks [@phjardas](https://github.com/phjardas)! - Anhänger, Typ Wechselbehälter/Container: Osen korrigiert
+
 ## 0.10.0
 
 ### Minor Changes
