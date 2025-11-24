@@ -30,6 +30,7 @@ export type GrundzeichenId =
   | "abrollbehaelter"
   | "wechselbehaelter"
   | "wechselbruecke"
+  | "rollcontainer"
   | "anhaenger"
   | "anhaenger-abrollbehaelter"
   | "anhaenger-wechselbehaelter"
@@ -496,6 +497,44 @@ export const grundzeichen: Array<Grundzeichen> = [
       [72, 42],
     ],
     einheitAnchor: [40, 4.5],
+    accepts: fahrzeugAccepts,
+    padding: [15, 10, 10],
+  },
+  {
+    id: "rollcontainer",
+    label: "Rollcontainer",
+    size: [35, 55],
+    render: (svg, props) =>
+      svg
+        .g()
+        .push(
+          applyProps(
+            svg.path(
+              "M1,1.5 Q14.5,10 30,1.5 V44 H1 z M30,1.5 a4 4 180 0 1 0 8"
+            ),
+            props
+          )
+        )
+        .push(svg.circle([10, 49], 5))
+        .push(svg.circle([21, 49], 5)),
+    clipPath: (svg) => svg.path("M1,1.5 Q14.5,10 30,1.5 V44 H1 z"),
+    paintableArea: [
+      [0, 0],
+      [35, 55],
+    ],
+    nameArea: [
+      [9, 7],
+      [34, 7 + nameHeight],
+    ],
+    typArea: [
+      [9, 42 - nameHeight],
+      [34, 42],
+    ],
+    organisationNameArea: [
+      [40, 42 - nameHeight],
+      [34, 42],
+    ],
+    einheitAnchor: [16, 4.5],
     accepts: fahrzeugAccepts,
     padding: [15, 10, 10],
   },
