@@ -1,6 +1,6 @@
 [build]
   publish = "packages/website/dist"
-  command = "npm run bootstrap && npm run build"
+  command = "npm ci && npm run build"
 
 [[headers]]
   for = "/*"
