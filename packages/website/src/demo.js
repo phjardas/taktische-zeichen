@@ -83,7 +83,7 @@ const beispiele = [
     tz: {
       grundzeichen: "gefahr-akut",
       text: "Ex",
-      farbe: "#ff0000",
+      farbe: "#fa321e",
     },
   },
 ];

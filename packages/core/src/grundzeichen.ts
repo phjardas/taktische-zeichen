@@ -8,6 +8,7 @@ import {
   person,
   SymbolSpec,
   wasserfahrzeug,
+  zweirad,
 } from "./symbole";
 import { renderText } from "./text";
 import type { Padding, Point, Rect, Renderable } from "./types";
@@ -40,6 +41,7 @@ export type GrundzeichenId =
   | "kettenfahrzeug"
   | "fahrrad"
   | "kraftrad"
+  | "zweirad"
   | "wasserfahrzeug"
   | "flugzeug"
   | "hubschrauber"
@@ -76,6 +78,7 @@ export type Grundzeichen = Renderable<GrundzeichenRenderProps> & {
   textPadding?: Padding;
   einheitAnchor?: Point;
   defaultColor?: string;
+  deprecated?: boolean | string;
   accepts?: Array<ComponentType>;
 };
 
@@ -383,6 +386,7 @@ export const grundzeichen: Array<Grundzeichen> = [
     render: (svg, props) =>
       svg
         .g()
+        .push(svg.path("M1,0 v44 h73"))
         .push(applyProps(svg.path("M4,5 h69 v36 h-69z"), props))
         .push(svg.path("M4,5 a4 4 180 0 1 8 0m53 0a4 4 180 0 1 8 0"))
         .push(svg.circle([10, 49], 5))
@@ -719,13 +723,21 @@ export const grundzeichen: Array<Grundzeichen> = [
     id: "fahrrad",
     label: "Fahrrad",
     accepts: [],
+    deprecated: "Ersetzt durch 'zweirad'",
     ...symbolShape(fahrrad),
   },
   {
     id: "kraftrad",
     label: "Kraftrad",
     accepts: [],
+    deprecated: "Ersetzt durch 'zweirad'",
     ...symbolShape(kraftrad),
+  },
+  {
+    id: "zweirad",
+    label: "Zweirad, Kraftrad",
+    accepts: [],
+    ...symbolShape(zweirad),
   },
   {
     id: "wasserfahrzeug",
@@ -800,7 +812,7 @@ export const grundzeichen: Array<Grundzeichen> = [
         .attr("fill", "white")
         .attr("stroke", "currentColor")
     ),
-    padding: [5, 15, 15],
+    padding: [15, 15, 5],
   },
   {
     id: "gefahr-vermutet",
@@ -820,8 +832,8 @@ export const grundzeichen: Array<Grundzeichen> = [
         .push(renderText(svg, "?").attr("y", 25).attr("fill", "currentColor")),
     clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
     paintableArea: [
-      [18, 3],
-      [38, 18],
+      [18, 16],
+      [38, 31],
     ],
   },
   {
@@ -847,8 +859,8 @@ export const grundzeichen: Array<Grundzeichen> = [
         ),
     clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
     paintableArea: [
-      [18, 3],
-      [38, 18],
+      [18, 16],
+      [38, 31],
     ],
   },
 ];

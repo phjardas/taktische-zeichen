@@ -23,6 +23,7 @@ export type SymbolId =
   | "fahrzeug"
   | "fahrrad"
   | "kraftrad"
+  | "zweirad"
   | "flugzeug"
   | "hubschrauber"
   | "entstehungsbrand"
@@ -94,9 +95,10 @@ export type SymbolRenderProps = {
 export type Symbol = Renderable<SymbolRenderProps> & {
   id: SymbolId;
   label: string;
+  deprecated?: boolean | string;
 };
 
-export type SymbolSpec = Pick<Symbol, "size" | "render">;
+export type SymbolSpec = Pick<Symbol, "size" | "render" | "deprecated">;
 
 function applyProps(element: Element, props?: SymbolRenderProps) {
   return element.attr("fill", props?.fill);
@@ -351,12 +353,19 @@ export const fahrzeug: SymbolSpec = {
 export const fahrrad: SymbolSpec = {
   size: [42, 45],
   render: (svg) => svg.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45"),
+  deprecated: "Ersetzt durch 'zweirad'",
 };
 
 export const kraftrad: SymbolSpec = {
   size: [42, 45],
   render: (svg) =>
     svg.path("M1,21 a20 20 0 0 1 40 0 m-20,-20 v45 m-10,-20 h20"),
+  deprecated: "Ersetzt durch 'zweirad'",
+};
+
+export const zweirad: SymbolSpec = {
+  size: [42, 45],
+  render: (svg) => svg.path("M1,21 a20 20 0 0 1 40 0 m-22,-20 v45 m4,0 v-45"),
 };
 
 export const flugzeug: SymbolSpec = {
@@ -811,6 +820,7 @@ export const symbole: Array<Symbol> = [
   { ...fahrzeug, id: "fahrzeug", label: "Fahrzeug" },
   { ...fahrrad, id: "fahrrad", label: "Fahrrad" },
   { ...kraftrad, id: "kraftrad", label: "Kraftrad" },
+  { ...zweirad, id: "zweirad", label: "Zweirad, Kraftrad" },
   { ...flugzeug, id: "flugzeug", label: "Flugzeug" },
   { ...hubschrauber, id: "hubschrauber", label: "Hubschrauber" },
   { ...entstehungsbrand, id: "entstehungsbrand", label: "Entstehungsbrand" },

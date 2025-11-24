@@ -9,6 +9,7 @@ const {
   symbole,
 } = require("taktische-zeichen-core");
 const path = require("path");
+const { deprecate } = require("util");
 const fs = require("fs").promises;
 
 function erzeugeGrundzeichen() {
@@ -18,6 +19,7 @@ function erzeugeGrundzeichen() {
       .map((f) => ({
         id: f.id,
         label: f.label,
+        deprecated: f.deprecated,
         src: erzeugeTaktischesZeichen({
           grundzeichen: f.id,
           skipFontRegistration: true,
@@ -109,17 +111,19 @@ function erzeugeFunktionen() {
 function erzeugeSymbole() {
   return [
     "symbole",
-    symbole.map((f) => ({
-      id: f.id,
-      label: f.label,
-      src: erzeugeTaktischesZeichen({
-        grundzeichen: "ohne",
-        symbol: f.id,
-        skipFontRegistration: true,
-      }).toString(),
-    }))
-    .sort((a, b) => a.label.localeCompare(b.label)),
-];
+    symbole
+      .map((f) => ({
+        id: f.id,
+        label: f.label,
+        deprecated: f.deprecated,
+        src: erzeugeTaktischesZeichen({
+          grundzeichen: "ohne",
+          symbol: f.id,
+          skipFontRegistration: true,
+        }).toString(),
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+  ];
 }
 
 async function main() {

@@ -16,6 +16,7 @@ title: Grundzeichen
           <small>
             <code class="text-muted">{{ f.id }}</code>
           </small>
+          {% if f.deprecated %}<span class="badge bg-warning text-dark">{{f.deprecated}}</span>{% endif %}
         </p>
       </div>
     </div>
