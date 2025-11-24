@@ -2,4 +2,5 @@
 /dist
 /icons
 /node_modules
+/out
 *.log
