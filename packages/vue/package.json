@@ -1,0 +1,49 @@
+{
+  "name": "taktische-zeichen-vue",
+  "version": "0.10.0",
+  "description": "Vue 3 Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phjardas/taktische-zeichen.git"
+  },
+  "keywords": [
+    "svg",
+    "dv102",
+    "feuerwehr",
+    "katastrophenschutz",
+    "vue",
+    "vue3"
+  ],
+  "author": "Philipp Jardas <philipp@jardas.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phjardas/taktische-zeichen/issues"
+  },
+  "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "shx rm -rf dist icon*.svg",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "format": "prettier --write src"
+  },
+  "dependencies": {
+    "taktische-zeichen-core": "^0.10.0"
+  },
+  "peerDependencies": {
+    "vue": ">= 3.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "shx": "^0.4.0",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.25"
+  },
+  "volta": {
+    "node": "21.6.0"
+  }
+}
