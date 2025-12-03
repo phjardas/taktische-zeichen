@@ -1,7 +1,7 @@
 [
   {
     "label": "Grundzeichen",
-    "count": 25
+    "count": 36
   },
   {
     "label": "Fachaufgaben",
@@ -9,7 +9,7 @@
   },
   {
     "label": "Organisationen",
-    "count": 7
+    "count": 8
   },
   {
     "label": "Einheiten",
@@ -21,6 +21,6 @@
   },
   {
     "label": "Symbole",
-    "count": 83
+    "count": 84
   }
 ]

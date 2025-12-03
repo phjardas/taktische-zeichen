@@ -1,6 +1,6 @@
-- 25 Grundzeichen
+- 36 Grundzeichen
 - 42 Fachaufgaben
-- 7 Organisationen
+- 8 Organisationen
 - 8 Einheiten
 - 6 Verwaltungsstufen
-- 83 Symbole
+- 84 Symbole

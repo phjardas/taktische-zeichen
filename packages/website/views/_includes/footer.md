@@ -11,6 +11,10 @@ Du möchtest bei der Weiterentwicklung helfen? Prima! Du hast folgende Möglichk
 - Du hast einen Fehler gefunden oder vermisst ein Symbol? [Erstelle ein Issue](https://github.com/phjardas/taktische-zeichen/issues/new), und wir werden uns darum kümmern!
 - Du möchtest aktiv bei der Entwicklung helfen? Dann schau dir bitte den [Contributors' Guide](https://github.com/phjardas/taktische-zeichen/blob/main/CONTRIBUTING.md) an.
 
+## Links
+
+Es gibt auch eine Bibliothek von @KrausMatthias für die Anzeige von [Taktischen Zeichen in Leaflet](https://codeberg.org/OpenGeoMesh/Leaflet.TacticalMarkers).
+
 ## Contributors
 
 Die folgenden Personen haben an diesem Projekt mitgewirkt ([Schlüssel für die Emoji](https://allcontributors.org/docs/de/emoji-key)). Vielen Dank!
