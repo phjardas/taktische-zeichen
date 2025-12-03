@@ -1,5 +1,14 @@
 # taktische-zeichen-web-component
 
+## 0.10.1
+
+### Patch Changes
+
+- [`e101b90`](https://github.com/phjardas/taktische-zeichen/commit/e101b90c5ae9e827efdc6c9035ff45a1efe46157) Thanks [@phjardas](https://github.com/phjardas)! - Update documentation
+
+- Updated dependencies [[`e101b90`](https://github.com/phjardas/taktische-zeichen/commit/e101b90c5ae9e827efdc6c9035ff45a1efe46157), [`4aa1b0b`](https://github.com/phjardas/taktische-zeichen/commit/4aa1b0b01ccbba0ee330f5790bf7af45eaf3fead)]:
+  - taktische-zeichen-core@0.10.1
+
 ## 0.10.0
 
 ### Minor Changes
