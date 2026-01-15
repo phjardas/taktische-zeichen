@@ -37,11 +37,9 @@ export class ImageImpl implements Image {
 
 function toBase64(string: string): string {
   if (typeof Buffer !== "undefined") {
-    console.log("using Buffer to encode base64:", string);
     return Buffer.from(string).toString("base64");
   }
 
-  console.log("using Array to encode base64:", string);
   return fromByteArray(new TextEncoder().encode(string));
 }
 
