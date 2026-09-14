@@ -33,7 +33,7 @@ export class TaktischesZeichen extends HTMLElement {
       console.error(
         "Fehler bei der erzeugung des Taktischen Zeichens: " +
           JSON.stringify(spec),
-        error
+        error,
       );
     }
   }
@@ -95,11 +95,11 @@ export class TaktischesZeichen extends HTMLElement {
 function render(element: Element) {
   const el = document.createElementNS(
     "http://www.w3.org/2000/svg",
-    element.name
+    element.name,
   );
 
   Object.entries(element.attributes).forEach(([name, value]) =>
-    el.setAttribute(name, value)
+    el.setAttribute(name, value),
   );
 
   const style = Object.entries(element.styles)
