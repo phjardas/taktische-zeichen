@@ -274,10 +274,10 @@ export const cases: Case[] = [
 
 - [ ] **Step 3: Verify the case list**
 
-Run from `packages/core`:
+Every bash block below is self-contained (includes its own `cd`) — don't rely on the working directory from a previous step.
 
 ```bash
-ts-node -P tsconfig-scripts.json -e "
+cd packages/core && ts-node -P tsconfig-scripts.json -e "
 import { cases } from './e2e/cases';
 const ids = new Set<string>();
 for (const c of cases) {
@@ -294,7 +294,7 @@ Expected: no thrown error, `total cases` and `unique ids` equal, and `total case
 - [ ] **Step 4: Verify every case actually renders without throwing**
 
 ```bash
-ts-node -P tsconfig-scripts.json -e "
+cd packages/core && ts-node -P tsconfig-scripts.json -e "
 import { erzeugeTaktischesZeichen } from './src';
 import { cases } from './e2e/cases';
 let failed = 0;
@@ -313,6 +313,8 @@ console.log(failed === 0 ? 'all cases rendered' : failed + ' cases failed to ren
 Expected: `all cases rendered`. If any case throws, fix `cases.ts` (most likely cause: a `requireGrundzeichenAccepting` pairing that's technically accepted but combines with another option in a way the render logic doesn't expect — adjust that specific hand-written case) before moving on.
 
 - [ ] **Step 5: Commit**
+
+Run from the repo root (paths below are repo-root-relative):
 
 ```bash
 git add packages/core/e2e/cases.ts packages/core/tsconfig-scripts.json
@@ -429,10 +431,10 @@ function escapeHtml(input: string): string {
 
 - [ ] **Step 2: Verify it produces valid, sensible HTML**
 
-Run from `packages/core`:
+Self-contained (includes its own `cd`) — don't rely on the working directory from a previous step:
 
 ```bash
-ts-node -P tsconfig-scripts.json -e "
+cd packages/core && ts-node -P tsconfig-scripts.json -e "
 import { buildReport } from './e2e/report';
 const html = buildReport([
   {
@@ -456,6 +458,8 @@ Expected: `report HTML looks correct, length: <some number>` with no thrown erro
 
 - [ ] **Step 3: Commit**
 
+Run from the repo root (paths below are repo-root-relative):
+
 ```bash
 git add packages/core/e2e/report.ts
 git commit -m "Add HTML report renderer for e2e failures"
@@ -476,7 +480,7 @@ git commit -m "Add HTML report renderer for e2e failures"
 
 - [ ] **Step 1: Add the gitignore entry for the report directory**
 
-Edit `.gitignore`, add at the end:
+Edit the repo root `.gitignore` (`/.gitignore`, not any per-package one), add at the end:
 
 ```
 /packages/core/e2e/.report/
@@ -568,10 +572,10 @@ main().catch((error) => {
 
 - [ ] **Step 3: Run in update mode to create all fixtures**
 
-From `packages/core`:
+Every bash block below is self-contained (includes its own `cd`) — don't rely on the working directory from a previous step.
 
 ```bash
-ts-node -P tsconfig-scripts.json e2e/run.ts --update
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts --update
 ```
 
 Expected: `Updated <n> golden fixtures in .../e2e/fixtures`, and `ls packages/core/e2e/fixtures | wc -l` matches the case count from Task 1 Step 3.
@@ -579,7 +583,7 @@ Expected: `Updated <n> golden fixtures in .../e2e/fixtures`, and `ls packages/co
 - [ ] **Step 4: Run in compare mode and confirm a clean pass**
 
 ```bash
-ts-node -P tsconfig-scripts.json e2e/run.ts
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
 ```
 
 Expected: `<n> e2e cases passed.`, exit code 0 (check with `echo $?`).
@@ -589,20 +593,22 @@ Expected: `<n> e2e cases passed.`, exit code 0 (check with `echo $?`).
 Temporarily edit `packages/core/src/grundzeichen.ts`: find the `"taktische-formation"` entry's `padding: [10, 20]` (around line 172) and change it to `padding: [10, 21]`. Re-run:
 
 ```bash
-ts-node -P tsconfig-scripts.json e2e/run.ts
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
 ```
 
 Expected: failure output listing `grundzeichen-taktische-formation: output mismatch` (and only that case, or that case plus any other case that happens to reuse the same padding constant — confirm the failing cases are limited to ones actually affected). Exit code 1.
 
-Revert the edit:
+Revert the edit (run from the repo root; the path is repo-root-relative):
 
 ```bash
 git checkout -- packages/core/src/grundzeichen.ts
 ```
 
-Re-run once more and confirm it's back to a clean pass.
+Re-run Step 4's command once more and confirm it's back to a clean pass.
 
 - [ ] **Step 6: Commit**
+
+Run from the repo root (paths below are repo-root-relative):
 
 ```bash
 git add packages/core/e2e/run.ts packages/core/e2e/fixtures .gitignore
@@ -768,10 +774,10 @@ main().catch((error) => {
 
 - [ ] **Step 3: Verify the clean-pass path still works**
 
-From `packages/core`:
+Every bash block below is self-contained (includes its own `cd`) — don't rely on the working directory from a previous step.
 
 ```bash
-ts-node -P tsconfig-scripts.json e2e/run.ts
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
 ```
 
 Expected: `<n> e2e cases passed.`, exit 0, no `.report` directory created (or if one exists from a previous manual run, it's simply not touched).
@@ -782,7 +788,7 @@ Repeat the same break used in Task 3 Step 5: edit `packages/core/src/grundzeiche
 
 ```bash
 rm -rf packages/core/e2e/.report
-ts-node -P tsconfig-scripts.json e2e/run.ts
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
 echo "exit code: $?"
 ```
 
@@ -793,16 +799,21 @@ Expected:
 
 Open `packages/core/e2e/.report/report.html` (`open packages/core/e2e/.report/report.html` on macOS) and confirm by eye: the failing case section shows an "Expected" panel and an "Actual" panel that both actually render as visible SVG shapes (not raw text), the overlay panel shows both colored outlines, and the diff text block below is readable.
 
-Revert the break and confirm a clean pass again:
+Revert the break (repo-root-relative path — run from the repo root) and confirm a clean pass again:
 
 ```bash
 git checkout -- packages/core/src/grundzeichen.ts
-ts-node -P tsconfig-scripts.json e2e/run.ts
+```
+
+```bash
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
 ```
 
 Expected: `<n> e2e cases passed.`.
 
 - [ ] **Step 5: Commit**
+
+Run from the repo root (paths below are repo-root-relative):
 
 ```bash
 git add packages/core/e2e/run.ts packages/core/package.json package-lock.json
@@ -820,81 +831,69 @@ git commit -m "Wire jest-diff text output and HTML report into e2e runner"
 
 **Interfaces:** none — this is a mechanical formatting pass with no code behavior change (verified in Step 1 via the e2e suite this plan just built).
 
+Every bash block in this task is self-contained (includes its own `cd`, always from the repo root, never relative to a previous step) — don't rely on the working directory from a previous step.
+
 - [ ] **Step 1: Reformat `packages/core` and prove it's behavior-neutral**
 
 ```bash
-cd packages/core
-./node_modules/.bin/prettier --write src
-git status --short src
+cd packages/core && ./node_modules/.bin/prettier --write src && git status --short src
 ```
 
 Expected: only the 12 previously-flagged files show as modified (`einheiten.ts`, `fachaufgaben.ts`, `font.ts`, `grundzeichen.ts`, `svg.ts`, `symbole.ts`, `taktisches-zeichen.spec.ts`, `taktisches-zeichen.ts`, `text.ts`, `utils.spec.ts`, `utils.ts`, `verwaltungsstufen.ts`).
 
-Now prove the reformat changed style only, not behavior:
+Now prove the reformat changed style only, not behavior. The `test:e2e` npm script doesn't exist yet (Task 6 adds it) — invoke the runner directly, the same way Tasks 3 and 4 did:
 
 ```bash
-npm run test:e2e
-npm test
+cd packages/core && ts-node -P tsconfig-scripts.json e2e/run.ts
+```
+
+```bash
+cd packages/core && npm test
 ```
 
 Expected: both pass exactly as before (`<n> e2e cases passed.` and all Jest specs green). If either fails, the formatting change altered something semantic — investigate before proceeding; reformatting alone should never do this, so a failure here points at a real bug, not a fixture to update.
 
 ```bash
-git add src
-git commit -m "Reformat core/src with prettier 3.6.2"
+cd packages/core && git add src && git commit -m "Reformat core/src with prettier 3.6.2"
 ```
 
 - [ ] **Step 2: Reformat `packages/react`**
 
 ```bash
-cd ../react
-./node_modules/.bin/prettier --write src
-git status --short src
-npm run build
+cd packages/react && ./node_modules/.bin/prettier --write src && git status --short src && npm run build
 ```
 
 Expected: only `src/TaktischesZeichen.tsx` modified; `npm run build` exits 0.
 
 ```bash
-git add src
-git commit -m "Reformat react/src with prettier 3.6.2"
+cd packages/react && git add src && git commit -m "Reformat react/src with prettier 3.6.2"
 ```
 
 - [ ] **Step 3: Reformat `packages/web-component`**
 
 ```bash
-cd ../web-component
-./node_modules/.bin/prettier --write src
-git status --short src
-npm run build
+cd packages/web-component && ./node_modules/.bin/prettier --write src && git status --short src && npm run build
 ```
 
 Expected: only `src/TaktischesZeichen.ts` modified; `npm run build` exits 0.
 
 ```bash
-git add src
-git commit -m "Reformat web-component/src with prettier 3.6.2"
+cd packages/web-component && git add src && git commit -m "Reformat web-component/src with prettier 3.6.2"
 ```
 
 - [ ] **Step 4: Reformat `packages/website`**
 
 ```bash
-cd ../website
-./node_modules/.bin/prettier --write views src scripts *.js
-git status --short
-npm run build
+cd packages/website && ./node_modules/.bin/prettier --write views src scripts *.js && git status --short && npm run build
 ```
 
 Expected: the 10 previously-flagged files modified (`views/_includes/footer.md`, `views/_includes/statistics.md`, `views/_includes/usage_cli.md`, `views/_includes/usage_core.md`, `views/_includes/usage_react.md`, `views/_includes/usage_web-component.md`, `views/grundzeichen.html`, `src/demo.js`, `scripts/generate.js`, `webpack.config.js`); `npm run build` exits 0.
 
 ```bash
-git add views src scripts webpack.config.js
-git commit -m "Reformat website with prettier 3.6.2"
+cd packages/website && git add views src scripts webpack.config.js && git commit -m "Reformat website with prettier 3.6.2"
 ```
 
 - [ ] **Step 5: Confirm every package is clean now**
-
-From the repo root:
 
 ```bash
 (cd packages/core && ./node_modules/.bin/prettier --check src)
@@ -923,7 +922,7 @@ Expected: every one prints `All matched files use Prettier code style!`.
 
 - [ ] **Step 1: Add scripts to `packages/core/package.json`**
 
-Change the `scripts` block to:
+Edit only the `scripts` block (e.g. via a targeted find-and-replace, not a whole-file rewrite) — `devDependencies` already has `jest-diff` from Task 4 and must be left untouched. Change the `scripts` block to:
 
 ```json
   "scripts": {
@@ -1086,6 +1085,8 @@ of the above — don't try to resolve it as a side effect of other work.
 ```
 
 - [ ] **Step 6: Commit**
+
+Run from the repo root (paths below are repo-root-relative):
 
 ```bash
 git add package.json packages/core/package.json packages/react/package.json packages/cli/package.json packages/web-component/package.json packages/website/package.json AGENTS.md
