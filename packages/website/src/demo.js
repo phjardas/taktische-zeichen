@@ -106,7 +106,7 @@ export function Demo() {
         ...z,
         [key]: e.target.value || undefined,
       })),
-    [setTaktischesZeichen]
+    [setTaktischesZeichen],
   );
 
   const enabled = useMemo(() => {
@@ -383,8 +383,8 @@ export function Demo() {
 function withoutEmptyValues(obj) {
   return Object.fromEntries(
     Object.entries(obj).filter(
-      ([_, value]) => value !== undefined && value !== null
-    )
+      ([_, value]) => value !== undefined && value !== null,
+    ),
   );
 }
 

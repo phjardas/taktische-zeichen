@@ -139,7 +139,7 @@ async function main() {
   await fs.writeFile(
     path.join(__dirname, "../views/views.11tydata.json"),
     JSON.stringify(entries, null, 2),
-    "utf-8"
+    "utf-8",
   );
 }
 
