@@ -27,7 +27,8 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "format:check": "prettier --check src"
   },
   "dependencies": {
     "taktische-zeichen-core": "^0.10.0"

@@ -9,6 +9,8 @@
     "test": "lerna run test",
     "test:coverage": "lerna run test:coverage",
     "format": "lerna run format",
+    "format:check": "lerna run format:check",
+    "test:e2e": "lerna run test:e2e",
     "start": "lerna run --stream start",
     "publish": "lerna run publish",
     "dev": "npm run build && concurrently \"npm run start\" \"npm run watch\"",

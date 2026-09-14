@@ -25,11 +25,14 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "test:e2e": "ts-node -P tsconfig-scripts.json e2e/run.ts",
+    "test:e2e:update": "ts-node -P tsconfig-scripts.json e2e/run.ts --update",
     "clean": "shx rm -rf coverage dist test-icons",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "format": "prettier --write src",
+    "format:check": "prettier --check src",
     "statistics": "ts-node -P tsconfig-scripts.json scripts/statistics.ts"
   },
   "dependencies": {

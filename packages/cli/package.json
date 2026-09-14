@@ -22,7 +22,8 @@
     "taktisches-zeichen": "bin/taktisches-zeichen.js"
   },
   "scripts": {
-    "format": "prettier --write bin"
+    "format": "prettier --write bin",
+    "format:check": "prettier --check bin"
   },
   "dependencies": {
     "prettify-xml": "^1.2.0",
