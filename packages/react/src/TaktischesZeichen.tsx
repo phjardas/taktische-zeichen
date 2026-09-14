@@ -49,8 +49,8 @@ function render(element: Element, additionalProps?: any) {
     element instanceof Container
       ? element.children.map((child, key) => render(child, { key }))
       : element instanceof TextNode
-      ? element.text
-      : null;
+        ? element.text
+        : null;
 
   return (
     <element.name
