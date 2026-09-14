@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_kraftfahrzeug-gelaendegaengig-kategorie3">
+      <path d="M1,44 V1 Q37.5,10 74,1 V44 Z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M1,44 V1 Q37.5,10 74,1 V44 Z" fill="#fa321e" />
+    <circle cx="10" cy="49" r="5" />
+    <circle cx="37.5" cy="49" r="5" />
+    <circle cx="65" cy="49" r="5" />
+    <line x1="15" x2="32.5" y1="49" y2="49" />
+    <line x1="42.5" x2="60" y1="49" y2="49" />
+  </g>
+</svg>

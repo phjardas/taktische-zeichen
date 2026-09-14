@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="currentColor"
+  stroke-width="2"
+  viewBox="0 0 40 13"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs />
+  <path
+    d="M0,0 l20,5 20,-5 v3 l-20,10 -20,-10 z"
+    fill="currentColor"
+    stroke="none"
+  />
+</svg>

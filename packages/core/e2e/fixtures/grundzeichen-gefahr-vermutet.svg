@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#fa321e"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 51.5 36"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_gefahr-vermutet">
+      <path d="M28,2 l20.7,33 h-41.4 Z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M28,2 l20.7,33 h-41.4 Z" fill="white" stroke="currentColor" />
+    <text
+      fill="currentColor"
+      stroke="none"
+      style="
+        font-family: Roboto Slab;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: -1px;
+      "
+      y="25"
+    >
+      <![CDATA[?]]>
+    </text>
+  </g>
+</svg>

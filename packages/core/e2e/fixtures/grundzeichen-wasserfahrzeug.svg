@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 42 22"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_wasserfahrzeug">
+      <path d="M1,1 a20 20 0 0 0 40 0 Z" />
+    </clipPath>
+  </defs>
+  <path d="M1,1 a20 20 0 0 0 40 0 Z" fill="#fa321e" />
+</svg>

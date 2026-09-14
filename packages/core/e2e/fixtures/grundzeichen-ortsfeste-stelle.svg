@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 46 47.5"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_ortsfeste-stelle">
+      <circle cx="23" cy="25" r="21.5" />
+    </clipPath>
+  </defs>
+  <g>
+    <circle cx="23" cy="25" fill="#fa321e" r="21.5" />
+    <path d="M.5,8 L23,1 L45.5,8" />
+  </g>
+</svg>

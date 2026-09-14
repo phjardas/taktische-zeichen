@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="currentColor"
+  stroke-width="2"
+  viewBox="0 0 45 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs />
+  <g>
+    <path d="M5,5 L38,38" />
+    <path d="M40,40 l-8,-3 l5,-5 l3,8" fill="black" stroke-width="0" />
+    <rect height="43" width="43" x="1" y="1" />
+  </g>
+</svg>

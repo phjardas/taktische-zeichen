@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 45 36"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_anlass"><path d="M1,0.6 L22.5,34 L44,0.6 Z" /></clipPath>
+  </defs>
+  <path d="M1,0.6 L22.5,34 L44,0.6" fill="white" />
+</svg>

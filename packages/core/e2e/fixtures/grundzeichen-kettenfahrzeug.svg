@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_kettenfahrzeug">
+      <path d="M1,44 V1 Q37.5,10 74,1 V44 Z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M1,44 V1 Q37.5,10 74,1 V44 Z" fill="#fa321e" />
+    <path d="M8 45 a4.5 4.5 0 0 0 0 9 h59 a4.5 4.5 0 0 0 0 -9 Z" />
+  </g>
+</svg>

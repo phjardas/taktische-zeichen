@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_anhaenger-pkw">
+      <path d="M7,44 V1.5 Q35,10 74,1.5 V44 Z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M7,44 V1.5 Q35,10 74,1.5 V44 Z" fill="#fa321e" />
+    <path d="M7,16 h-6 v3 h7" />
+    <circle cx="42" cy="49" r="5" />
+  </g>
+</svg>

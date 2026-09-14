@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="currentColor"
+  stroke-width="2"
+  viewBox="0 0 23 34"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs />
+  <g>
+    <g id="tz_brand">
+      <clipPath id="tz_brand-clip"><path d="M13,0 v34 h-12.5 Z" /></clipPath>
+      <path
+        clip-path="url(#tz_brand-clip)"
+        d="M12,5 v28 h-10 l12,-33"
+        stroke="#cc0000"
+      />
+    </g>
+    <use href="#tz_brand" x="10" />
+  </g>
+</svg>

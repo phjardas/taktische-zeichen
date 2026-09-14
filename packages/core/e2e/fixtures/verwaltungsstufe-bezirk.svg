@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 -9 75 54"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_taktische-formation">
+      <path d="M1,1 H74 V44 H1 Z" />
+    </clipPath>
+    <path
+      d="M5,0 v10 M9.33,7.5 L0.67,2.5 M9.33,2.5 L0.67,7.5"
+      id="tz_stern"
+      transform="scale(0.8)"
+    />
+  </defs>
+  <path d="M1,1 H74 V44 H1 Z" />
+  <g transform="translate(24.5,-9)">
+    <use href="#tz_stern" x="0" />
+    <use href="#tz_stern" x="9" />
+    <use href="#tz_stern" x="18" />
+  </g>
+</svg>

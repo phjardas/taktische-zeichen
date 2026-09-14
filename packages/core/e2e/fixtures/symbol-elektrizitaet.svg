@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="currentColor"
+  stroke-width="2"
+  viewBox="0 0 17 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs />
+  <g>
+    <path d="M14.5,1 l-10,10 h10 l-10,10" />
+    <path d="M4.5,21 l5,2 l-8,0 l2,-7 Z" fill="black" />
+  </g>
+</svg>

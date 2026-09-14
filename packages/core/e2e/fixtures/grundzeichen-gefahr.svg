@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#fa321e"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 45 36"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_gefahr">
+      <path d="M22.5,1.8 L43.2,35 H1.8 Z" fill="white" stroke="currentColor" />
+    </clipPath>
+  </defs>
+  <path d="M22.5,1.8 L43.2,35 H1.8 Z" fill="white" stroke="currentColor" />
+</svg>

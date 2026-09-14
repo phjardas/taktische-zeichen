@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_wechsellader-wechselbehaelter">
+      <path d="M4,5 h69 v36 h-69z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M1,0 v44 h73" />
+    <path d="M4,5 h69 v36 h-69z" fill="#fa321e" />
+    <path d="M4,5 a4 4 180 0 1 8 0m53 0a4 4 180 0 1 8 0" />
+    <circle cx="10" cy="49" r="5" />
+    <circle cx="65" cy="49" r="5" />
+  </g>
+</svg>

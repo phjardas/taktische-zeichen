@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_gebaeude"><path d="M1,10 H74 V44 H1 Z" /></clipPath>
+  </defs>
+  <g>
+    <path d="M1,10 H74 V44 H1 Z" fill="#fa321e" />
+    <path d="M1,10 L37.5,1 L74,10" />
+  </g>
+</svg>

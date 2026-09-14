@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_taktische-formation">
+      <path d="M1,1 H74 V44 H1 Z" />
+    </clipPath>
+  </defs>
+  <path d="M1,1 H74 V44 H1 Z" />
+  <g clip-path="url(#tz_taktische-formation)">
+    <g transform="translate(0,-0.30405405405405617) scale(1.0135135135135136)">
+      <g>
+        <rect fill="black" height="8" width="75" x="0" y="37" />
+        <g
+          transform="translate(20,14.567567567567568) scale(0.918918918918919)"
+        >
+          <path d="M6,7 l25,0 m6,-6 a6 6 0 0 0 0 12 M0,1 a6 6 0 0 1 0 12" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

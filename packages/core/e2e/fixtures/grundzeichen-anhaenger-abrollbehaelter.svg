@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_anhaenger-abrollbehaelter">
+      <path d="M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M7,0 v44 h68 M7,16 h-6 v3 h7" />
+    <path d="M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z" fill="#fa321e" />
+    <circle cx="13" cy="8" r="3" />
+    <circle cx="16" cy="49" r="5" />
+    <circle cx="65" cy="49" r="5" />
+  </g>
+</svg>

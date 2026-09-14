@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="black"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_taktische-formation">
+      <path d="M1,1 H74 V44 H1 Z" />
+    </clipPath>
+  </defs>
+  <path d="M1,1 H74 V44 H1 Z" />
+  <g clip-path="url(#tz_taktische-formation)">
+    <g transform="translate(3,3) scale(0.05432937181663837)">
+      <text
+        fill="currentColor"
+        stroke="none"
+        style="
+          font-family: Roboto Slab;
+          font-size: 30px;
+          font-weight: bold;
+          letter-spacing: -1px;
+        "
+        x="0"
+        y="21.5"
+      >
+        <![CDATA[Ein sehr langer Name fuer dieses Zeichen]]>
+      </text>
+    </g>
+  </g>
+</svg>

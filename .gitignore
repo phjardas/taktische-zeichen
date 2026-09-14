@@ -3,3 +3,4 @@
 /node_modules
 *.log
 /*.svg
+/packages/core/e2e/.report/

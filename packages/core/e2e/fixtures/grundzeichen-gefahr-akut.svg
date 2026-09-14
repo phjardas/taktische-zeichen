@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#fa321e"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 51.5 36"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_gefahr-akut">
+      <path d="M28,2 l20.7,33 h-41.4 Z" />
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M28,2 l20.7,33 h-41.4 Z" fill="white" stroke="currentColor" />
+    <path
+      d="M5,3 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z"
+      fill="currentColor"
+      stroke="none"
+    />
+  </g>
+</svg>

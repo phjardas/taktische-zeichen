@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 55"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_befehlsstelle"><path d="M1,1 H74 V44 H1 Z" /></clipPath>
+  </defs>
+  <path d="M1,55 V1 H74 V44 H1" fill="#fa321e" />
+</svg>

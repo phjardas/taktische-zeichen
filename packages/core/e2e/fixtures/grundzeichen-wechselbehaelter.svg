@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_wechselbehaelter"><path d="M1,5 H74 V44H1z" /></clipPath>
+  </defs>
+  <g>
+    <path d="M1,5 H74 V44H1z" fill="#fa321e" />
+    <path d="M1,5 a4 4 180 0 1 8 0M66 5a4 4 180 0 1 8 0" />
+  </g>
+</svg>

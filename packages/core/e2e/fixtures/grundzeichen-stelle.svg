@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 45 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_stelle"><circle cx="22.5" cy="22.5" r="21.5" /></clipPath>
+  </defs>
+  <circle cx="22.5" cy="22.5" fill="#fa321e" r="21.5" />
+</svg>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 -16 75 61"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_taktische-formation">
+      <path d="M1,1 H74 V44 H1 Z" />
+    </clipPath>
+  </defs>
+  <path d="M1,1 H74 V44 H1 Z" fill="#fa321e" />
+  <g clip-path="url(#tz_taktische-formation)">
+    <g><path d="M0,22.5 H75 M75,0 L50,22.5 L75,45" /></g>
+  </g>
+  <circle cx="3" cy="3" fill="black" r="2" transform="translate(34.5,-7)" />
+  <g transform="translate(33.5,-16)">
+    <path
+      d="M5,0 v10 M9.33,7.5 L0.67,2.5 M9.33,2.5 L0.67,7.5"
+      transform="scale(0.8)"
+    />
+  </g>
+  <g clip-path="url(#tz_taktische-formation)">
+    <g transform="translate(25,10) scale(0.7142857142857143)">
+      <path d="M1,34 L24,11 H34 V1 H24 V11" />
+    </g>
+  </g>
+  <g clip-path="url(#tz_taktische-formation)">
+    <g transform="translate(3,3) scale(0.17486338797814208)">
+      <text
+        fill="currentColor"
+        stroke="none"
+        style="
+          font-family: Roboto Slab;
+          font-size: 30px;
+          font-weight: bold;
+          letter-spacing: -1px;
+        "
+        x="0"
+        y="21.5"
+      >
+        <![CDATA[Kitchen Sink]]>
+      </text>
+    </g>
+  </g>
+</svg>

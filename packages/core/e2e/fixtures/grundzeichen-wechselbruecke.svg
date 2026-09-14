@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  color="#ffffff"
+  fill="transparent"
+  stroke="black"
+  stroke-width="2"
+  viewBox="0 0 75 45"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <clipPath id="tz_wechselbruecke"><path d="M1,1 H74 V39H1z" /></clipPath>
+  </defs>
+  <path d="M1,1 H74 V39H1zM10 39V45M65 39V45" fill="#fa321e" />
+</svg>
