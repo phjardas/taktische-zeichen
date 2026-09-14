@@ -91,7 +91,7 @@ function withProps(render: (svg: SVG) => Element): Grundzeichen["render"] {
 }
 
 function singleShape(
-  render: (svg: SVG) => Element
+  render: (svg: SVG) => Element,
 ): Pick<Grundzeichen, "render" | "clipPath"> {
   return {
     render: withProps(render),
@@ -100,7 +100,7 @@ function singleShape(
 }
 
 function symbolShape(
-  symbol: SymbolSpec
+  symbol: SymbolSpec,
 ): Pick<Grundzeichen, "size" | "render"> {
   return {
     size: symbol.size,
@@ -341,7 +341,7 @@ export const grundzeichen: Array<Grundzeichen> = [
         .push(svg.circle([10, 49], 5))
         .push(svg.circle([65, 49], 5))
         .push(
-          svg.path("M22,50 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0")
+          svg.path("M22,50 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0"),
         ),
   },
   {
@@ -353,7 +353,7 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(svg.path("M1,0 v44 h73"))
         .push(
-          applyProps(svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 z"), props)
+          applyProps(svg.path("M10,1.5 Q36.5,10 73,1.5 v39.5 h-63 z"), props),
         )
         .push(svg.circle([7, 8], 3))
         .push(svg.circle([10, 49], 5))
@@ -572,7 +572,7 @@ export const grundzeichen: Array<Grundzeichen> = [
         .g()
         .push(svg.path("M7,0 v44 h68 M7,16 h-6 v3 h7"))
         .push(
-          applyProps(svg.path("M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z"), props)
+          applyProps(svg.path("M16,1.5 Q36.5,10 74,1.5 v39.5 H16 z"), props),
         )
         .push(svg.circle([13, 8], 3))
         .push(svg.circle([16, 49], 5))
@@ -787,7 +787,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       svg
         .path("M22.5,34 L43.2,1 H1.8 Z")
         .attr("fill", "white")
-        .attr("stroke", "currentColor")
+        .attr("stroke", "currentColor"),
     ),
     padding: [15, 15, 5],
   },
@@ -810,7 +810,7 @@ export const grundzeichen: Array<Grundzeichen> = [
       svg
         .path("M22.5,1.8 L43.2,35 H1.8 Z")
         .attr("fill", "white")
-        .attr("stroke", "currentColor")
+        .attr("stroke", "currentColor"),
     ),
     padding: [15, 15, 5],
   },
@@ -827,7 +827,7 @@ export const grundzeichen: Array<Grundzeichen> = [
           svg
             .path("M28,2 l20.7,33 h-41.4 Z")
             .attr("fill", "white")
-            .attr("stroke", "currentColor")
+            .attr("stroke", "currentColor"),
         )
         .push(renderText(svg, "?").attr("y", 25).attr("fill", "currentColor")),
     clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
@@ -849,13 +849,13 @@ export const grundzeichen: Array<Grundzeichen> = [
           svg
             .path("M28,2 l20.7,33 h-41.4 Z")
             .attr("fill", "white")
-            .attr("stroke", "currentColor")
+            .attr("stroke", "currentColor"),
         )
         .push(
           svg
             .path("M5,3 v15 h4.5 v-15 Z m0,17 v4 h4.5 v-4 Z")
             .attr("fill", "currentColor")
-            .attr("stroke", "none")
+            .attr("stroke", "none"),
         ),
     clipPath: (svg) => svg.path("M28,2 l20.7,33 h-41.4 Z"),
     paintableArea: [

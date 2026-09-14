@@ -20,7 +20,7 @@ function stern(svg: SVG) {
 
 function defineStern(svg: SVG) {
   return svg.def(
-    stern(svg).attr("transform", "scale(0.8)").attr("id", "tz_stern")
+    stern(svg).attr("transform", "scale(0.8)").attr("id", "tz_stern"),
   );
 }
 

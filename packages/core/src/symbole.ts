@@ -143,7 +143,7 @@ export const technischeHilfeleistung: SymbolSpec = {
   size: [38, 10],
   render: (svg) =>
     svg.path(
-      "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0"
+      "M1,1 l11,3 M1,9 l11,-3 M12,2 h15 v6 h-15 Z M27,4 c3,-3 7,-3 10,0 M27,7 c3,-3 7,-3 10,0",
     ),
 };
 
@@ -172,7 +172,7 @@ export const ausfall25: SymbolSpec = {
           .attr("x", "18")
           .attr("y", "27")
           .attr("stroke", "none")
-          .attr("fill", "black")
+          .attr("fill", "black"),
       ),
 };
 
@@ -191,7 +191,7 @@ export const ausfall50: SymbolSpec = {
           .attr("x", "18")
           .attr("y", "27")
           .attr("stroke", "none")
-          .attr("fill", "black")
+          .attr("fill", "black"),
       ),
 };
 
@@ -210,7 +210,7 @@ export const ausfall75: SymbolSpec = {
           .attr("x", "18")
           .attr("y", "27")
           .attr("stroke", "none")
-          .attr("fill", "black")
+          .attr("fill", "black"),
       ),
 };
 
@@ -228,7 +228,7 @@ export const ausfall100: SymbolSpec = {
           .attr("x", "18")
           .attr("y", "27")
           .attr("stroke", "none")
-          .attr("fill", "black")
+          .attr("fill", "black"),
       ),
 };
 
@@ -242,7 +242,7 @@ export const tendenzSteigend: SymbolSpec = {
         svg
           .path("M40,5 l-8,3 l5,5 l3,-8")
           .attr("fill", "black")
-          .attr("stroke-width", 0)
+          .attr("stroke-width", 0),
       )
       .push(svg.rect([1, 1], [43, 43])),
 };
@@ -257,7 +257,7 @@ export const tendenzFallend: SymbolSpec = {
         svg
           .path("M40,40 l-8,-3 l5,-5 l3,8")
           .attr("fill", "black")
-          .attr("stroke-width", 0)
+          .attr("stroke-width", 0),
       )
       .push(svg.rect([1, 1], [43, 43])),
 };
@@ -272,7 +272,7 @@ export const tendenzUnveraendert: SymbolSpec = {
         svg
           .path("M40,23 l-8,4 l0,-8 l8,4")
           .attr("fill", "black")
-          .attr("stroke-width", 0)
+          .attr("stroke-width", 0),
       )
       .push(svg.rect([1, 1], [43, 43])),
 };
@@ -377,14 +377,14 @@ export const flugzeug: SymbolSpec = {
       .push(
         applyProps(
           svg.path("M5,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-          props
-        )
+          props,
+        ),
       )
       .push(
         applyProps(
           svg.path("M23,3.5 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-          props
-        )
+          props,
+        ),
       ),
 };
 
@@ -397,14 +397,14 @@ export const hubschrauber: SymbolSpec = {
       .push(
         applyProps(
           svg.path("M5,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-          props
-        )
+          props,
+        ),
       )
       .push(
         applyProps(
           svg.path("M23,1 h10 a4 4 0 0 1 0 8 h-10 a4 4 0 0 1 0 -8 Z"),
-          props
-        )
+          props,
+        ),
       ),
 };
 
@@ -422,7 +422,7 @@ export const zerstoert: SymbolSpec = {
   size: [30, 30],
   render: (svg) =>
     svg.path(
-      "M9,1 L29,20 M1,20 L20,1 M1,9 L20,29 M9,29 L29,9 M5,5 L25,25 M5,25 L25,5"
+      "M9,1 L29,20 M1,20 L20,1 M1,9 L20,29 M9,29 L29,9 M5,5 L25,25 M5,25 L25,5",
     ),
 };
 
@@ -446,7 +446,7 @@ export const entstehungsbrand: SymbolSpec = {
         svg
           .path("M12,5 v28 h-10 l12,-33")
           .attr("clip-path", "url(#tz_brand-clip)")
-          .attr("stroke", "#cc0000")
+          .attr("stroke", "#cc0000"),
       ),
 };
 
@@ -484,7 +484,7 @@ export const warnung: SymbolSpec = {
   size: [38.5, 23],
   render: (svg) =>
     svg.path(
-      "M1,3.5 l5,3 v10 l-5,3 Z m5,3 l20,-5 v20 l-20,-5 Z M30,4 a25 25 0 0 1 0 16 m5,-18 a25 25 0 0 1 0 20"
+      "M1,3.5 l5,3 v10 l-5,3 Z m5,3 l20,-5 v20 l-20,-5 Z M30,4 a25 25 0 0 1 0 16 m5,-18 a25 25 0 0 1 0 20",
     ),
 };
 
@@ -515,7 +515,7 @@ export const sammelplatzBetroffene: SymbolSpec = {
       .push(
         svg
           .path("M5,10 l-3,2 l3,2 Z m0,2 h25 m0,-2 l3,2 l-3,2 Z")
-          .attr("fill", "currentColor")
+          .attr("fill", "currentColor"),
       )
       .push(svg.path("M17.5,0 v30 l-15,15 m30,0 l-15,-15")),
 };
@@ -555,7 +555,7 @@ export const personTot: SymbolSpec = {
   size: [45, 45],
   render: (svg) =>
     svg.path(
-      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42 M14,10 h17"
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M22.5,1.5 v42 M14,10 h17",
     ),
 };
 
@@ -567,7 +567,7 @@ export const personVermisst: SymbolSpec = {
       .push(
         svg
           .path("M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z")
-          .attr("transform", "translate(2,2)")
+          .attr("transform", "translate(2,2)"),
       )
       .push(svg.path("M1,23 L23,1 M26,48 L48,26")),
 };
@@ -588,7 +588,7 @@ export const personZuTransportieren: SymbolSpec = {
   size: [45, 48],
   render: (svg) =>
     svg.path(
-      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z"
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z",
     ),
 };
 
@@ -596,7 +596,7 @@ export const personTransportiert: SymbolSpec = {
   size: [45, 48],
   render: (svg) =>
     svg.path(
-      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z m4,-2 v8"
+      "M22.5,1.5 L43.5,22.5 L22.5,43.5 L1.5,22.5 Z M0,44 h43 m-3,-2 l3,2 l-3,2 Z m4,-2 v8",
     ),
 };
 
@@ -618,8 +618,8 @@ export const dekontamination: SymbolSpec = {
       .push(abc.render(svg))
       .push(
         svg.path(
-          "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7"
-        )
+          "M5.7,1.5 L29,29 M22.3,27.8 l6.7,1 -1,-6.7 M24.3,1.5 L1,29 M7.9,27.8 l-6.7,1 1,-6.7",
+        ),
       ),
 };
 
@@ -645,7 +645,7 @@ export const wasser: SymbolSpec = {
   size: [32, 12.5],
   render: (svg) =>
     svg.path(
-      "M1,3.5 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0 M1,9 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0"
+      "M1,3.5 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0 M1,9 a7 7 0 0 1 10 0 a7 7 0 0 0 10 0 a7 7 0 0 1 10 0",
     ),
 };
 
@@ -658,7 +658,7 @@ export const hund: SymbolSpec = {
   size: [33, 19],
   render: (svg) =>
     svg.path(
-      "M2,10 h10 l-5,-8 Z m10,0 h15 l5,-8 m-10,16 l5,-8 5,8 m-15,0 l-5,-8 -5,8"
+      "M2,10 h10 l-5,-8 Z m10,0 h15 l5,-8 m-10,16 l5,-8 5,8 m-15,0 l-5,-8 -5,8",
     ),
 };
 
@@ -671,7 +671,7 @@ export const pumpe: SymbolSpec = {
       g.push(
         svg
           .path("M0,-10 a8 8 0 0 1 5 -10")
-          .attr("transform", `rotate(${i * 72 + 50})`)
+          .attr("transform", `rotate(${i * 72 + 50})`),
       );
     }
     return g;
@@ -718,8 +718,8 @@ function mitFunk(symbol: SymbolSpec): SymbolSpec {
               "transform",
               `scale(${scale}) translate(0 ${
                 (symbol.size[1] + margin) / scale
-              })`
-            )
+              })`,
+            ),
         ),
   };
 }
@@ -728,7 +728,7 @@ const bilduebertragung: SymbolSpec = {
   size: [42, 27],
   render: (svg) =>
     svg.path(
-      "M1,6 a5 5 0 0 1 5 -5 h30 a5 5 0 0 1 5 5 v15 a5 5 0 0 1 -5 5 h-30 a5 5 0 0 1 -5 -5 Z"
+      "M1,6 a5 5 0 0 1 5 -5 h30 a5 5 0 0 1 5 5 v15 a5 5 0 0 1 -5 5 h-30 a5 5 0 0 1 -5 -5 Z",
     ),
 };
 const bilduebertragungFunk = mitFunk(bilduebertragung);
@@ -761,7 +761,7 @@ const festbilduebertragung: SymbolSpec = {
   size: [40, 40],
   render: (svg) =>
     svg.path(
-      "M0,8 h40 m-40,8 h40 m-40,8 h40 m-40,8 h40 M8,0 v40 m8,-40 v40 m8,-40 v40 m8,-40 v40"
+      "M0,8 h40 m-40,8 h40 m-40,8 h40 m-40,8 h40 M8,0 v40 m8,-40 v40 m8,-40 v40 m8,-40 v40",
     ),
 };
 const festbilduebertragungFunk = mitFunk(festbilduebertragung);
@@ -775,9 +775,9 @@ const relaisfunkbetrieb: SymbolSpec = {
       .push(
         svg
           .path(
-            "M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10 M-3,1.5 a7 7 0 0 1 0 11 M65,1.5 a7 7 0 0 0 0 11"
+            "M1,1.5 l10,10 10,-10 10,10 10,-10 10,10 10,-10 M-3,1.5 a7 7 0 0 1 0 11 M65,1.5 a7 7 0 0 0 0 11",
           )
-          .attr("transform", "scale(0.65) translate(3.7 4)")
+          .attr("transform", "scale(0.65) translate(3.7 4)"),
       ),
 };
 

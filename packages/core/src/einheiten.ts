@@ -72,7 +72,7 @@ export const einheiten: Array<Einheit> = [
             .attr("fill", "currentColor")
             .push(svg.circle([2, 12], 1.5))
             .push(svg.circle([8, 12], 1.5))
-            .push(svg.circle([14, 12], 1.5))
+            .push(svg.circle([14, 12], 1.5)),
         ),
   },
   {

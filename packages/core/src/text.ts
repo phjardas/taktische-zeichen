@@ -5,7 +5,7 @@ import { Component } from "./utils";
 export function renderText(svg: SVG, text: string): Element {
   return applyFontStyles(svg.registerText().textNode("text", text)).attr(
     "stroke",
-    "none"
+    "none",
   );
 }
 

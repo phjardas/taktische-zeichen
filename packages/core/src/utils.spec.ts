@@ -63,8 +63,8 @@ describe("utils", () => {
             [1, 2],
             [3, 4],
           ],
-          { offset: [10, 20], scale: 1 }
-        )
+          { offset: [10, 20], scale: 1 },
+        ),
       ).toEqual([
         [11, 22],
         [13, 24],
@@ -78,8 +78,8 @@ describe("utils", () => {
             [1, 2],
             [3, 4],
           ],
-          { offset: [0, 0], scale: 2 }
-        )
+          { offset: [0, 0], scale: 2 },
+        ),
       ).toEqual([
         [1, 2],
         [5, 6],
@@ -93,8 +93,8 @@ describe("utils", () => {
             [1, 2],
             [3, 4],
           ],
-          { offset: [10, 20], scale: 2 }
-        )
+          { offset: [10, 20], scale: 2 },
+        ),
       ).toEqual([
         [11, 22],
         [15, 26],

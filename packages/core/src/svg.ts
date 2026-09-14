@@ -81,7 +81,7 @@ export class Container extends Element {
 export class TextNode extends Element {
   constructor(
     name: string,
-    readonly text: string
+    readonly text: string,
   ) {
     super(name);
   }

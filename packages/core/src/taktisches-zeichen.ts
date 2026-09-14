@@ -22,7 +22,7 @@ import { verwaltungsstufen } from "./verwaltungsstufen";
 
 function get<T extends { id: string }>(
   id: string | undefined,
-  items: Array<T>
+  items: Array<T>,
 ): T | undefined {
   if (!id) return undefined;
   const item = items.find((i) => i.id === id);
@@ -49,7 +49,7 @@ export function erzeugeTaktischesZeichen({
 
   if (!grund && !symbol) {
     throw new Error(
-      'Entweder "grundzeichen" oder "symbol" müssen angegeben werden.'
+      'Entweder "grundzeichen" oder "symbol" müssen angegeben werden.',
     );
   }
 
@@ -73,7 +73,7 @@ export function erzeugeTaktischesZeichen({
       "color",
       (accepts(grund, "farbe") && farbe ? farbe : grund.defaultColor) ??
         (accepts(grund, "organisation") ? org?.textColor : undefined) ??
-        "black"
+        "black",
     );
 
     svg.push(grund.render(svg, { fill }));
@@ -95,7 +95,7 @@ export function erzeugeTaktischesZeichen({
         svg,
       });
       svg.push(
-        svg.g().push(placed.element).attr("clip-path", `url(#${clipPathId})`)
+        svg.g().push(placed.element).attr("clip-path", `url(#${clipPathId})`),
       );
       mainPosition = placed.offset;
       mainScale = placed.scale;
@@ -124,7 +124,7 @@ export function erzeugeTaktischesZeichen({
       svg.push(
         einheit
           .render(svg)
-          .attr("transform", `translate(${position[0]},${position[1]})`)
+          .attr("transform", `translate(${position[0]},${position[1]})`),
       );
     }
 
@@ -152,7 +152,7 @@ export function erzeugeTaktischesZeichen({
       svg.push(
         verwaltungsstufe
           .render(svg)
-          .attr("transform", `translate(${position[0]},${position[1]})`)
+          .attr("transform", `translate(${position[0]},${position[1]})`),
       );
     }
 
@@ -163,8 +163,8 @@ export function erzeugeTaktischesZeichen({
           .g()
           .attr("clip-path", `url(#${clipPathId})`)
           .push(
-            funktion.render(svg).attr("transform", `translate(${offset},0)`)
-          )
+            funktion.render(svg).attr("transform", `translate(${offset},0)`),
+          ),
       );
     }
 
@@ -181,8 +181,8 @@ export function erzeugeTaktischesZeichen({
                 component: symbol,
                 padding: grund.padding,
                 svg,
-              }).element
-            )
+              }).element,
+            ),
         );
       }
 
@@ -198,8 +198,8 @@ export function erzeugeTaktischesZeichen({
                 component: createTextSymbol(text),
                 padding: grund.textPadding ?? grund.padding,
                 svg,
-              }).element
-            )
+              }).element,
+            ),
         );
       }
     }
@@ -225,8 +225,8 @@ export function erzeugeTaktischesZeichen({
               component: createTextSymbol(name),
               align: ["start", "start"],
               svg,
-            }).element
-          )
+            }).element,
+          ),
       );
     }
 
@@ -251,8 +251,8 @@ export function erzeugeTaktischesZeichen({
               component: createTextSymbol(organisationName),
               align: ["end", "end"],
               svg,
-            }).element
-          )
+            }).element,
+          ),
       );
     }
 
@@ -277,8 +277,8 @@ export function erzeugeTaktischesZeichen({
               component: createTextSymbol(typ),
               align: ["start", "end"],
               svg,
-            }).element
-          )
+            }).element,
+          ),
       );
     }
   } else if (symbol) {
@@ -288,7 +288,7 @@ export function erzeugeTaktischesZeichen({
     svg.push(symbol.render(svg));
   } else {
     throw new Error(
-      'Entweder "grundzeichen" oder "symbol" müssen angegeben werden.'
+      'Entweder "grundzeichen" oder "symbol" müssen angegeben werden.',
     );
   }
 

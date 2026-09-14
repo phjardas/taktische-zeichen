@@ -124,7 +124,7 @@ function logistikFachaufgabe({
             component: symbol,
             padding: [13, 20, 8],
             svg,
-          }).element
+          }).element,
         ),
   };
 }
@@ -132,7 +132,7 @@ function logistikFachaufgabe({
 const erkunden = (svg: SVG) => svg.path("M0,45 L75,0");
 
 function symbolFachaufgabe(
-  symbol: SymbolSpec
+  symbol: SymbolSpec,
 ): Pick<Fachaufgabe, "size" | "render"> {
   return {
     size: symbol.size,
@@ -165,8 +165,8 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(brandbekaempfung(svg))
         .push(
           svg.path(
-            "M27,19 v-5 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 v5"
-          )
+            "M27,19 v-5 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 c0,6 4,6 4,0 c0,-6 4,-6 4,0 v5",
+          ),
         ),
     organisationNameArea: (grund) => [grund[0], addPoints(grund[1], [-8, 0])],
   },
@@ -231,7 +231,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
             component: abc,
             padding: [10, 20],
             svg,
-          }).element
+          }).element,
         ),
   },
   {
@@ -260,10 +260,10 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(
           dekontamination
             .render(svg)
-            .attr("transform", "scale(.6) translate(47.5,14)")
+            .attr("transform", "scale(.6) translate(47.5,14)"),
         )
         .push(
-          wasser.render(svg).attr("transform", "scale(.8) translate(31,35)")
+          wasser.render(svg).attr("transform", "scale(.8) translate(31,35)"),
         ),
   },
   {
@@ -407,13 +407,13 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .g()
         .push(
           svg.path(
-            "M15,10 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0"
-          )
+            "M15,10 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0",
+          ),
         )
         .push(
           svg.path(
-            "M15,16 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0"
-          )
+            "M15,16 a10 10 0 0 1 15 0 a10 10 0 0 0 15 0 a10 10 0 0 1 15 0",
+          ),
         )
         .push(svg.path("M37.5,23 l8,8 -8,8 -8,-8 Z")),
   },
@@ -428,11 +428,11 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .push(
           wasserfahrzeug
             .render(svg)
-            .attr("transform", "scale(.5) translate(54,30)")
+            .attr("transform", "scale(.5) translate(54,30)"),
         )
         .push(wasser.render(svg).attr("transform", "scale(.7) translate(5,25)"))
         .push(
-          wasser.render(svg).attr("transform", "scale(.7) translate(70,25)")
+          wasser.render(svg).attr("transform", "scale(.7) translate(70,25)"),
         ),
   },
   {
@@ -455,7 +455,7 @@ export const fachaufgaben: Array<Fachaufgabe> = [
         .g()
         .push(svg.path("M20,35 h10 l10,-25 h10 l5,15 h10"))
         .push(
-          wasser.render(svg).attr("transform", "scale(.8) translate(10,15)")
+          wasser.render(svg).attr("transform", "scale(.8) translate(10,15)"),
         ),
   },
   {

@@ -24,7 +24,10 @@ export function render(renderable: Renderable): Image {
 }
 
 export class ImageImpl implements Image {
-  constructor(public readonly svg: SVG, public readonly size: Point) {}
+  constructor(
+    public readonly svg: SVG,
+    public readonly size: Point,
+  ) {}
 
   get dataUrl() {
     return `data:image/svg+xml;base64,${toBase64(this.toString())}`;
@@ -158,7 +161,7 @@ function applyAlign({
 
 // exported for tests
 export function resolvePadding(
-  padding: Padding
+  padding: Padding,
 ): [number, number, number, number] {
   if (padding.length === 4) return padding;
   if (padding.length === 3)
@@ -183,7 +186,7 @@ export function scalePoint(a: Point, scale: number): Point {
 
 export function transformRect(
   rect: Rect,
-  { offset, scale }: { offset: Point; scale: number }
+  { offset, scale }: { offset: Point; scale: number },
 ): Rect {
   const originalOffset: Point = rect[0];
   const size: Point = [rect[1][0] - rect[0][0], rect[1][1] - rect[0][1]];
