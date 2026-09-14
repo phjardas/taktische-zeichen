@@ -1,25 +1,30 @@
 import * as fs from "fs";
 import * as path from "path";
+import { diff } from "jest-diff";
 import * as prettier from "prettier";
 import { erzeugeTaktischesZeichen } from "../src";
 import { cases } from "./cases";
+import { buildReport, type Failure } from "./report";
 
 const fixturesDir = path.resolve(__dirname, "fixtures");
+const reportDir = path.resolve(__dirname, ".report");
 const update = process.argv.includes("--update");
 
 async function formatSvg(svg: string): Promise<string> {
   return prettier.format(svg, { parser: "html" });
 }
 
-type PlainFailure = {
-  id: string;
-  message: string;
-};
+function diffText(expected: string, actual: string): string {
+  return (
+    diff(expected, actual, { expand: false }) ??
+    "(strings differ but jest-diff produced no output)"
+  );
+}
 
 async function main() {
   fs.mkdirSync(fixturesDir, { recursive: true });
 
-  const failures: PlainFailure[] = [];
+  const failures: Failure[] = [];
 
   for (const testCase of cases) {
     const image = erzeugeTaktischesZeichen(testCase.options);
@@ -33,7 +38,12 @@ async function main() {
     if (actualFromDataUrl !== actual) {
       failures.push({
         id: testCase.id,
-        message: "dataUrl output does not match toString() output",
+        description: testCase.description,
+        options: testCase.options,
+        expected: actual,
+        actual: actualFromDataUrl,
+        diffText: diffText(actual, actualFromDataUrl),
+        reason: "mismatch",
       });
       continue;
     }
@@ -46,13 +56,32 @@ async function main() {
     }
 
     if (!fs.existsSync(fixturePath)) {
-      failures.push({ id: testCase.id, message: "no golden fixture yet" });
+      failures.push({
+        id: testCase.id,
+        description: testCase.description,
+        options: testCase.options,
+        expected: "",
+        actual,
+        diffText: `No golden fixture at ${path.relative(
+          process.cwd(),
+          fixturePath
+        )}. Run "npm run test:e2e:update" to create it, then review the new file.`,
+        reason: "missing-golden",
+      });
       continue;
     }
 
     const expected = fs.readFileSync(fixturePath, "utf-8");
     if (expected !== actual) {
-      failures.push({ id: testCase.id, message: "output mismatch" });
+      failures.push({
+        id: testCase.id,
+        description: testCase.description,
+        options: testCase.options,
+        expected,
+        actual,
+        diffText: diffText(expected, actual),
+        reason: "mismatch",
+      });
     }
   }
 
@@ -66,10 +95,18 @@ async function main() {
     return;
   }
 
-  console.error(`${failures.length} of ${cases.length} e2e cases failed:`);
+  console.error(`${failures.length} of ${cases.length} e2e cases failed:\n`);
   for (const failure of failures) {
-    console.error(`  ${failure.id}: ${failure.message}`);
+    console.error(`--- ${failure.id} (${failure.description}) ---`);
+    console.error(failure.diffText);
+    console.error("");
   }
+
+  fs.mkdirSync(reportDir, { recursive: true });
+  const reportPath = path.join(reportDir, "report.html");
+  fs.writeFileSync(reportPath, buildReport(failures), "utf-8");
+  console.error(`Visual report written to ${reportPath}`);
+
   process.exitCode = 1;
 }
 
