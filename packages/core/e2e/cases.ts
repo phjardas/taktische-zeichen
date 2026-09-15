@@ -161,6 +161,15 @@ function modifierCases(): Case[] {
       },
     },
     {
+      id: "modifier-organisation-name",
+      description: "organisationName option",
+      options: {
+        grundzeichen: nameGrund.id,
+        organisationName: "Feuerwehr Musterstadt",
+        skipFontRegistration: true,
+      },
+    },
+    {
       id: "modifier-farbe",
       description: "farbe override",
       options: {
