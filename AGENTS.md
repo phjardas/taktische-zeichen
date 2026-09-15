@@ -1,6 +1,6 @@
 # Agent instructions
 
-This is a lerna/npm-workspaces monorepo that generates SVG "taktische
+This is a pnpm-workspaces monorepo that generates SVG "taktische
 Zeichen" (tactical symbols per the German DV 102 standard) from structured
 options.
 
@@ -22,8 +22,8 @@ options.
 ## Setup
 
 ```bash
-npm ci
-npm run build
+pnpm install
+pnpm run build
 ```
 
 `build` is required, not optional: `react`/`web-component`/`cli` resolve
@@ -37,7 +37,7 @@ SVG for ~36 Grundzeichen, ~84 Symbole, and ~42 Fachaufgaben, each with its
 own drawing logic, and shared code (`svg.ts`, `utils.ts`, `text.ts`,
 `placeComponent`) touches all of them at once.
 
-1. **`npm run test:e2e` in `packages/core` — the primary gate.** Renders
+1. **`pnpm run test:e2e` in `packages/core` — the primary gate.** Renders
    every Grundzeichen/Symbol/Fachaufgabe/modifier combination and compares
    formatted SVG output against committed golden files in
    `packages/core/e2e/fixtures/`. Any change to rendering output, intended
@@ -45,7 +45,7 @@ own drawing logic, and shared code (`svg.ts`, `utils.ts`, `text.ts`,
    - **If it fails and the new output is wrong:** fix the code, not the
      fixture.
    - **If it fails and the new output is correct** (an intentional
-     rendering change): run `npm run test:e2e:update` in `packages/core`
+     rendering change): run `pnpm run test:e2e:update` in `packages/core`
      to regenerate the fixtures, then review the resulting `.svg` diffs
      like any other code change before committing them — never run
      `test:e2e:update` just to make the suite pass without reading what
@@ -54,15 +54,15 @@ own drawing logic, and shared code (`svg.ts`, `utils.ts`, `text.ts`,
      and writes `packages/core/e2e/.report/report.html` (gitignored) with
      a visual side-by-side comparison. Open that file in a browser to see
      the actual rendered shapes, not just markup text.
-2. **`npm test` in `packages/core` — secondary.** Jest unit tests, mostly
+2. **`pnpm test` in `packages/core` — secondary.** Jest unit tests, mostly
    covering option validation and specific edge cases. Less important than
    `test:e2e` for catching rendering regressions, but still run it.
-3. **`npm run format:check`** in each package you touched (or `npm run
+3. **`pnpm run format:check`** in each package you touched (or `pnpm run
    format` to auto-fix, then re-stage). Run before committing.
 
-From the repo root, `npm run test:e2e` and `npm run format:check` run
-across every package via lerna (only `core` currently defines
-`test:e2e`).
+From the repo root, `pnpm run test:e2e` and `pnpm run format:check` run
+across every package via pnpm's recursive mode (only `core` currently
+defines `test:e2e`).
 
 ## Changesets
 
@@ -82,7 +82,7 @@ Adding or removing a Grundzeichen/Symbol/Fachaufgabe/etc. requires
 regenerating README statistics:
 
 ```bash
-npm run update-docs
+pnpm run update-docs
 ```
 
 ## Node version note

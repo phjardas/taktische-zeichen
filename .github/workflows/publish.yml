@@ -17,30 +17,31 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: package.json
-          cache: npm
-          cache-dependency-path: |
-            package-lock.json
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: npm run test:coverage
+        run: pnpm run test:coverage
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: e2e Tests
-        run: npm run test:e2e
+        run: pnpm run test:e2e
 
       - name: Create release pull request or publish to npm
         if: github.ref == 'refs/heads/main'
         uses: changesets/action@c2918239208f2162b9d27a87f491375c51592434
         with:
-          publish: npx changeset publish
+          publish: pnpm exec changeset publish
           title: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

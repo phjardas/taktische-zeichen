@@ -4,19 +4,18 @@ Vielen Dank, dass du an der Entwicklung der Taktischen Zeichen mitarbeiten möch
 
 ## Voraussetzungen
 
-Du benötigst [Node 21](https://nodejs.org/en/download/). Fertig. Wir empfehlen [Volta](https://volta.sh/).
+Du benötigst [Node 21](https://nodejs.org/en/download/) und [pnpm](https://pnpm.io/). Fertig. Wir empfehlen [Volta](https://volta.sh/).
 
 ## Installation
 
 ```bash
-npm ci
-npm run bootstrap
+pnpm install
 ```
 
 ## Bauen
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Lokaler Test
@@ -30,7 +29,7 @@ Schreibt das taktische Zeichen in `tz.svg`.
 ## Website lokal testen
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Öffne http://localhost:8000. Alle Änderungen an Source-Dateien werden automatisch in der Website aktualisisert, das dauert aber ein paar Sekunden.
@@ -63,4 +62,4 @@ Wenn alles gut gelaufen ist, erhälst du automatisch einen Kommentar in deinem P
 
 ## Dokumentation
 
-Wenn du ein neues Element hinzufügst oder eines entfernst, aktualisiere bitte die README mit: `npm run update-docs`.
+Wenn du ein neues Element hinzufügst oder eines entfernst, aktualisiere bitte die README mit: `pnpm run update-docs`.

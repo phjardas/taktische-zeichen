@@ -1,6 +1,6 @@
 [build]
   publish = "packages/website/dist"
-  command = "npm ci && npm run build"
+  command = "corepack enable && pnpm install --frozen-lockfile && pnpm run build"
 
 [[headers]]
   for = "/*"

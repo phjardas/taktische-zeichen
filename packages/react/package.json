@@ -24,7 +24,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "shx rm -rf dist icon*.svg",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "pnpm run build:esm && pnpm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "format": "prettier --write src",

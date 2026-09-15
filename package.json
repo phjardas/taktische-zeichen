@@ -3,30 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "clean": "lerna run clean",
-    "build": "lerna run build",
-    "build:website": "lerna run build:website",
-    "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage",
-    "format": "lerna run format",
-    "format:check": "lerna run format:check",
-    "test:e2e": "lerna run test:e2e",
-    "start": "lerna run --stream start",
-    "publish": "lerna run publish",
-    "dev": "npm run build && concurrently \"npm run start\" \"npm run watch\"",
-    "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"npm run build\"",
-    "update-docs": "lerna run statistics && node scripts/update-docs.js"
+    "clean": "pnpm -r run clean",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "test:coverage": "pnpm -r run test:coverage",
+    "format": "pnpm -r run format",
+    "format:check": "pnpm -r run format:check",
+    "test:e2e": "pnpm -r run test:e2e",
+    "start": "pnpm -r --stream run start",
+    "dev": "pnpm run build && concurrently \"pnpm run start\" \"pnpm run watch\"",
+    "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"pnpm run build\"",
+    "update-docs": "pnpm -r run statistics && node scripts/update-docs.js"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.7",
     "concurrently": "^9.2.1",
-    "lerna": "^9.0.1",
     "nodemon": "^3.1.11"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "packageManager": "pnpm@10.33.0",
   "volta": {
     "node": "24.11.1"
   }
