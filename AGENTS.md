@@ -54,7 +54,7 @@ own drawing logic, and shared code (`svg.ts`, `utils.ts`, `text.ts`,
      and writes `packages/core/e2e/.report/report.html` (gitignored) with
      a visual side-by-side comparison. Open that file in a browser to see
      the actual rendered shapes, not just markup text.
-2. **`pnpm test` in `packages/core` — secondary.** Jest unit tests, mostly
+2. **`pnpm test` in `packages/core` — secondary.** Vitest unit tests, mostly
    covering option validation and specific edge cases. Less important than
    `test:e2e` for catching rendering regressions, but still run it.
 3. **`pnpm run format:check`** in each package you touched (or `pnpm run

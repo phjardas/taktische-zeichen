@@ -32,8 +32,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:e2e": "tsx e2e/run.ts",
     "test:e2e:update": "tsx e2e/run.ts --update",
     "clean": "shx rm -rf coverage dist test-icons",
@@ -46,14 +46,13 @@
     "base64-js": "^1.5.1"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
     "@types/node": "^26.5.1",
-    "jest": "^30.5.1",
+    "@vitest/coverage-v8": "^5.0.0",
     "jest-diff": "^30.5.1",
     "prettier": "^3.9.6",
     "shx": "^0.4.0",
-    "ts-jest": "^29.4.12",
     "tsx": "^4.23.13",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
   }
 }
