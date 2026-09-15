@@ -52,7 +52,7 @@
     "prettier": "^3.9.6",
     "shx": "^0.4.0",
     "tsx": "^4.23.13",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vitest": "^5.0.0"
   }
 }
