@@ -114,6 +114,26 @@ async function main() {
   }
 
   if (update) {
+    if (failures.length > 0) {
+      console.error(
+        `${failures.length} of ${cases.length} e2e cases threw and were not updated:\n`
+      );
+      for (const failure of failures) {
+        console.error(`--- ${failure.id} (${failure.description}) ---`);
+        console.error(failure.diffText);
+        console.error("");
+      }
+      console.error(
+        `Updated ${cases.length - failures.length} of ${
+          cases.length
+        } golden fixtures in ${fixturesDir} — ${
+          failures.length
+        } case(s) threw and were not written.`
+      );
+      process.exitCode = 1;
+      return;
+    }
+
     console.log(`Updated ${cases.length} golden fixtures in ${fixturesDir}`);
     return;
   }
