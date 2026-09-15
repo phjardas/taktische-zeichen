@@ -21,6 +21,16 @@ function diffText(expected: string, actual: string): string {
   );
 }
 
+// jest-diff colors its output via chalk whenever stdout is a TTY, which is
+// exactly the case in normal interactive use. Those ANSI escape codes are
+// fine on the terminal but survive report.ts's escapeHtml verbatim and show
+// up as garbage text in the browser, so strip them before writing the HTML
+// report while leaving the terminal output colored.
+function stripAnsi(text: string): string {
+  // eslint-disable-next-line no-control-regex
+  return text.replace(/\x1b\[[0-9;]*m/g, "");
+}
+
 async function main() {
   fs.mkdirSync(fixturesDir, { recursive: true });
 
@@ -104,7 +114,11 @@ async function main() {
 
   fs.mkdirSync(reportDir, { recursive: true });
   const reportPath = path.join(reportDir, "report.html");
-  fs.writeFileSync(reportPath, buildReport(failures), "utf-8");
+  const reportFailures = failures.map((failure) => ({
+    ...failure,
+    diffText: stripAnsi(failure.diffText),
+  }));
+  fs.writeFileSync(reportPath, buildReport(reportFailures), "utf-8");
   console.error(`Visual report written to ${reportPath}`);
 
   process.exitCode = 1;
