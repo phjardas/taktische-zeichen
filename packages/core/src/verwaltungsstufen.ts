@@ -2,12 +2,7 @@ import { SVG } from "./svg.js";
 import type { Renderable } from "./types.js";
 
 export type VerwaltungsstufeId =
-  | "gemeinde"
-  | "kreis"
-  | "bezirk"
-  | "land"
-  | "brd"
-  | "eu";
+  "gemeinde" | "kreis" | "bezirk" | "land" | "brd" | "eu";
 
 export type Verwaltungsstufe = Renderable & {
   id: VerwaltungsstufeId;
