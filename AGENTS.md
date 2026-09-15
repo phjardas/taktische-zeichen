@@ -10,7 +10,7 @@ options.
   builds the SVG from data tables (`grundzeichen.ts`, `symbole.ts`,
   `fachaufgaben.ts`, `organisationen.ts`, `einheiten.ts`,
   `verwaltungsstufen.ts`, `funktionen.ts`) plus composition logic in
-  `taktisches-zeichen.ts`. If a change touches SVG *output*, it happens
+  `taktisches-zeichen.ts`. If a change touches SVG _output_, it happens
   here.
 - `packages/react`, `packages/web-component`, `packages/cli` — thin
   wrappers around `core`. They import `core`'s built output
@@ -58,7 +58,7 @@ own drawing logic, and shared code (`svg.ts`, `utils.ts`, `text.ts`,
    covering option validation and specific edge cases. Less important than
    `test:e2e` for catching rendering regressions, but still run it.
 3. **`pnpm run format:check`** in each package you touched (or `pnpm run
-   format` to auto-fix, then re-stage). Run before committing.
+format` to auto-fix, then re-stage). Run before committing.
 
 From the repo root, `pnpm run test:e2e` and `pnpm run format:check` run
 across every package via pnpm's recursive mode (only `core` currently
@@ -87,7 +87,6 @@ pnpm run update-docs
 
 ## Node version note
 
-Root `package.json` pins Node 24.11.1 via `volta`; `packages/core`,
-`packages/react`, `packages/cli` (`bin` scripts aside) pin 21.6.0 for
-themselves. This mismatch predates this document and is unrelated to any
-of the above — don't try to resolve it as a side effect of other work.
+`core`, `react`, `web-component`, and `cli` are pure ESM (`"type": "module"`,
+no CommonJS build) and declare `"engines": { "node": ">=22" }`. Root
+`package.json` pins Node 24.11.1 via `volta` for local dev.

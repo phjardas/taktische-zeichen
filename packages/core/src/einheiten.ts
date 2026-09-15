@@ -1,4 +1,4 @@
-import type { Renderable } from "./types";
+import type { Renderable } from "./types.js";
 
 export type EinheitId =
   | "trupp"

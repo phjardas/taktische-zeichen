@@ -1,4 +1,4 @@
-import { erzeugeTaktischesZeichen } from "./taktisches-zeichen";
+import { erzeugeTaktischesZeichen } from "./taktisches-zeichen.js";
 
 describe("taktisches-zeichen", () => {
   it("should render an SVG", () => {

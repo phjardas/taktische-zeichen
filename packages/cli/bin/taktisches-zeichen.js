@@ -1,22 +1,21 @@
 #!/usr/bin/env node
-"use strict";
 
-const prettifyXml = require("prettify-xml");
-const {
+import prettifyXml from "prettify-xml";
+import {
   einheiten,
   erzeugeTaktischesZeichen,
   fachaufgaben,
   funktionen,
-  grundzeichen: grundzeichens,
+  grundzeichen as grundzeichens,
   organisationen,
   symbole,
   verwaltungsstufen,
-} = require("taktische-zeichen-core");
-const yargs = require("yargs");
-const { version } = require("../package.json");
+} from "taktische-zeichen-core";
+import yargs from "yargs";
+import pkg from "../package.json" with { type: "json" };
 
 const spec = yargs(process.argv.slice(2))
-  .version(version)
+  .version(pkg.version)
   .option("grundzeichen", {
     type: "string",
     choices: grundzeichens.map(({ id }) => id),

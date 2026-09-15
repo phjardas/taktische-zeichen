@@ -2,7 +2,7 @@ import {
   calculateComponentPosition,
   resolvePadding,
   transformRect,
-} from "./utils";
+} from "./utils.js";
 
 describe("utils", () => {
   describe("resolvePadding", () => {

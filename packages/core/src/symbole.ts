@@ -1,6 +1,6 @@
-import { Element } from "./svg";
-import { renderText } from "./text";
-import type { Point, Renderable } from "./types";
+import { Element } from "./svg.js";
+import { renderText } from "./text.js";
+import type { Point, Renderable } from "./types.js";
 
 export type SymbolId =
   | "drehleiter"

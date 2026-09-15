@@ -18,8 +18,12 @@
     "url": "https://github.com/phjardas/taktische-zeichen/issues"
   },
   "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
+  "type": "module",
   "bin": {
     "taktisches-zeichen": "bin/taktisches-zeichen.js"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
     "format": "prettier --write bin",
@@ -33,8 +37,5 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "shx": "^0.4.0"
-  },
-  "volta": {
-    "node": "21.6.0"
   }
 }

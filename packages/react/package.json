@@ -18,15 +18,22 @@
     "url": "https://github.com/phjardas/taktische-zeichen/issues"
   },
   "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
-  "module": "dist/esm/index.js",
-  "main": "dist/cjs/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "clean": "shx rm -rf dist icon*.svg",
-    "build": "pnpm run build:esm && pnpm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build": "tsc",
     "format": "prettier --write src",
     "format:check": "prettier --check src"
   },
@@ -42,8 +49,5 @@
     "react": "^19.2.0",
     "shx": "^0.4.0",
     "typescript": "^5.9.3"
-  },
-  "volta": {
-    "node": "21.6.0"
   }
 }

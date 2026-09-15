@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "lib": ["DOM"],
+    "target": "esnext",
+    "lib": ["DOM", "ESNext"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": ["src"]
 }

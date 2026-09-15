@@ -1,5 +1,5 @@
-import { createFontStyle } from "./font";
-import type { Point } from "./types";
+import { createFontStyle } from "./font.js";
+import type { Point } from "./types.js";
 
 export abstract class Element {
   readonly attributes: Record<string, string> = {};

@@ -1,5 +1,5 @@
-import { SVG } from "./svg";
-import type { Renderable } from "./types";
+import { SVG } from "./svg.js";
+import type { Renderable } from "./types.js";
 
 export type VerwaltungsstufeId =
   | "gemeinde"

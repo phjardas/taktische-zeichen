@@ -27,6 +27,10 @@ Die Bibliothek enthält:
 
 Es gibt vier Bibliotheken für die Erzeugung von taktischen Zeichen, je nach Anwendungsfall.
 
+## Voraussetzungen
+
+Alle Pakete werden ausschließlich als natives ES Module ausgeliefert (kein CommonJS). Für die Verwendung in Node.js wird mindestens **Node 22** benötigt.
+
 ## Node.JS oder im Browser
 
 <!-- USAGE:core:START -->

@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import {
   einheiten,
   fachaufgaben,
@@ -7,7 +8,7 @@ import {
   organisationen,
   symbole,
   verwaltungsstufen,
-} from "../src";
+} from "../src/index.js";
 
 const statistics = [
   { label: "Grundzeichen", count: grundzeichen.length },
@@ -17,6 +18,8 @@ const statistics = [
   { label: "Verwaltungsstufen", count: verwaltungsstufen.length },
   { label: "Symbole", count: symbole.length },
 ];
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function main() {
   const filename = path.resolve(__dirname, "../statistics.json");

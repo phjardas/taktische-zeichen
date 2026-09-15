@@ -3,8 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": ["src", "scripts", "e2e"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src", "scripts", "e2e"]
 }

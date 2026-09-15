@@ -1,11 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import { diff } from "jest-diff";
 import * as prettier from "prettier";
-import { erzeugeTaktischesZeichen } from "../src";
-import { cases } from "./cases";
-import { buildReport, type Failure } from "./report";
+import { erzeugeTaktischesZeichen } from "../src/index.js";
+import { cases } from "./cases.js";
+import { buildReport, type Failure } from "./report.js";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fixturesDir = path.resolve(__dirname, "fixtures");
 const reportDir = path.resolve(__dirname, ".report");
 const update = process.argv.includes("--update");

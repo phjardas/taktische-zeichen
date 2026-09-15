@@ -1,1 +1,1 @@
-export * from "./TaktischesZeichen";
+export * from "./TaktischesZeichen.js";

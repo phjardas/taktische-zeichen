@@ -18,22 +18,29 @@
     "url": "https://github.com/phjardas/taktische-zeichen/issues"
   },
   "homepage": "https://github.com/phjardas/taktische-zeichen#readme",
-  "module": "dist/esm/index.js",
-  "main": "dist/cjs/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:e2e": "ts-node -P tsconfig-scripts.json e2e/run.ts",
-    "test:e2e:update": "ts-node -P tsconfig-scripts.json e2e/run.ts --update",
+    "test:e2e": "tsx e2e/run.ts",
+    "test:e2e:update": "tsx e2e/run.ts --update",
     "clean": "shx rm -rf coverage dist test-icons",
-    "build": "pnpm run build:esm && pnpm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build": "tsc",
     "format": "prettier --write src",
     "format:check": "prettier --check src",
-    "statistics": "ts-node -P tsconfig-scripts.json scripts/statistics.ts"
+    "statistics": "tsx scripts/statistics.ts"
   },
   "dependencies": {
     "base64-js": "^1.5.1"
@@ -46,10 +53,7 @@
     "prettier": "^3.6.2",
     "shx": "^0.4.0",
     "ts-jest": "^29.4.5",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^5.9.3"
-  },
-  "volta": {
-    "node": "21.6.0"
   }
 }

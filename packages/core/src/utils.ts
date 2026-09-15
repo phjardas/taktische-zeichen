@@ -1,6 +1,6 @@
 import { fromByteArray } from "base64-js";
-import { Element, SVG } from "./svg";
-import type { Image, Padding, Point, Rect, Renderable } from "./types";
+import { Element, SVG } from "./svg.js";
+import type { Image, Padding, Point, Rect, Renderable } from "./types.js";
 
 export type Parent = {
   size: Point;

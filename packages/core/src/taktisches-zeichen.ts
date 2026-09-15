@@ -1,24 +1,24 @@
-import { einheiten } from "./einheiten";
-import { fachaufgaben } from "./fachaufgaben";
-import { funktionen } from "./funktionen";
+import { einheiten } from "./einheiten.js";
+import { fachaufgaben } from "./fachaufgaben.js";
+import { funktionen } from "./funktionen.js";
 import {
   grundzeichen,
   type ComponentType,
   type Grundzeichen,
-} from "./grundzeichen";
-import { organisationen } from "./organisationen";
-import { SVG } from "./svg";
-import { symbole } from "./symbole";
-import { createTextSymbol } from "./text";
-import type { Image, Point, TaktischesZeichen } from "./types";
+} from "./grundzeichen.js";
+import { organisationen } from "./organisationen.js";
+import { SVG } from "./svg.js";
+import { symbole } from "./symbole.js";
+import { createTextSymbol } from "./text.js";
+import type { Image, Point, TaktischesZeichen } from "./types.js";
 import {
   addPoints,
   ImageImpl,
   placeComponent,
   subtractPoints,
   transformRect,
-} from "./utils";
-import { verwaltungsstufen } from "./verwaltungsstufen";
+} from "./utils.js";
+import { verwaltungsstufen } from "./verwaltungsstufen.js";
 
 function get<T extends { id: string }>(
   id: string | undefined,

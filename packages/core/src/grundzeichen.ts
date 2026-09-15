@@ -1,4 +1,4 @@
-import { Element, SVG } from "./svg";
+import { Element, SVG } from "./svg.js";
 import {
   fahrrad,
   fahrzeug,
@@ -9,9 +9,9 @@ import {
   SymbolSpec,
   wasserfahrzeug,
   zweirad,
-} from "./symbole";
-import { renderText } from "./text";
-import type { Padding, Point, Rect, Renderable } from "./types";
+} from "./symbole.js";
+import { renderText } from "./text.js";
+import type { Padding, Point, Rect, Renderable } from "./types.js";
 
 export type GrundzeichenId =
   | "ohne"

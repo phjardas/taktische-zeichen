@@ -1,6 +1,6 @@
-import { applyFontStyles, calculateTextWidth } from "./font";
-import { Element, SVG } from "./svg";
-import { Component } from "./utils";
+import { applyFontStyles, calculateTextWidth } from "./font.js";
+import { Element, SVG } from "./svg.js";
+import { Component } from "./utils.js";
 
 export function renderText(svg: SVG, text: string): Element {
   return applyFontStyles(svg.registerText().textNode("text", text)).attr(

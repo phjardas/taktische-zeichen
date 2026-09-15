@@ -1,12 +1,12 @@
-import type { EinheitId } from "./einheiten";
-import type { FachaufgabeId } from "./fachaufgaben";
-import type { FunktionId } from "./funktionen";
-import type { GrundzeichenId } from "./grundzeichen";
-import type { OrganisationId } from "./organisationen";
-import type { Element } from "./svg";
-import { SVG } from "./svg";
-import type { SymbolId } from "./symbole";
-import type { VerwaltungsstufeId } from "./verwaltungsstufen";
+import type { EinheitId } from "./einheiten.js";
+import type { FachaufgabeId } from "./fachaufgaben.js";
+import type { FunktionId } from "./funktionen.js";
+import type { GrundzeichenId } from "./grundzeichen.js";
+import type { OrganisationId } from "./organisationen.js";
+import type { Element } from "./svg.js";
+import { SVG } from "./svg.js";
+import type { SymbolId } from "./symbole.js";
+import type { VerwaltungsstufeId } from "./verwaltungsstufen.js";
 
 export type Renderable<Props = unknown> = {
   size: Point;

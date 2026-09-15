@@ -4,6 +4,9 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/*.spec.ts"],
   coverageReporters: [["lcov", { projectRoot: "../.." }]],
+  moduleNameMapper: {
+    "^(\\.{1,2}/.*)\\.js$": "$1",
+  },
   globals: {
     "ts-jest": {
       diagnostics: {

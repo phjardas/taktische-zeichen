@@ -1,4 +1,4 @@
-import { SVG } from "./svg";
+import { SVG } from "./svg.js";
 import {
   abc,
   beleuchtung,
@@ -29,9 +29,9 @@ import {
   warnung,
   wasser,
   wasserfahrzeug,
-} from "./symbole";
-import type { Rect, Renderable } from "./types";
-import { addPoints, Component, Parent, placeComponent } from "./utils";
+} from "./symbole.js";
+import type { Rect, Renderable } from "./types.js";
+import { addPoints, Component, Parent, placeComponent } from "./utils.js";
 
 export type FachaufgabeId =
   | "brandbekaempfung"

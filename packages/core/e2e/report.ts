@@ -1,4 +1,4 @@
-import type { TaktischesZeichen } from "../src";
+import type { TaktischesZeichen } from "../src/index.js";
 
 export type Failure = {
   id: string;

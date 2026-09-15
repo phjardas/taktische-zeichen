@@ -1,5 +1,5 @@
-import { letterSpacing, styles, widths } from "./font-widths";
-import { Element, SVG } from "./svg";
+import { letterSpacing, styles, widths } from "./font-widths.js";
+import { Element, SVG } from "./svg.js";
 
 export function createFontStyle(svg: SVG) {
   return svg

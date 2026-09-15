@@ -2,7 +2,7 @@ import type {
   ComponentType,
   Grundzeichen,
   TaktischesZeichen,
-} from "../src";
+} from "../src/index.js";
 import {
   einheiten,
   fachaufgaben,
@@ -11,7 +11,7 @@ import {
   organisationen,
   symbole,
   verwaltungsstufen,
-} from "../src";
+} from "../src/index.js";
 
 export type Case = {
   id: string;
