@@ -20,7 +20,8 @@ async function readFile(file) {
 
 async function writeFile(file, content) {
   await fs.mkdir(path.dirname(file), { recursive: true });
-  await fs.writeFile(file, content, "utf8");
+  const withTrailingNewline = content.endsWith("\n") ? content : content + "\n";
+  await fs.writeFile(file, withTrailingNewline, "utf8");
   console.log("wrote: %s", file);
 }
 
