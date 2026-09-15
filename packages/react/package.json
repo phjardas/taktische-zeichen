@@ -44,9 +44,9 @@
     "react": ">= 17.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.6",
-    "prettier": "^3.6.2",
-    "react": "^19.2.0",
+    "@types/react": "^19.3.0",
+    "prettier": "^3.9.6",
+    "react": "^19.3.0",
     "shx": "^0.4.0",
     "typescript": "^5.9.3"
   }
