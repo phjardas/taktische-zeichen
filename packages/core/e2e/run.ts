@@ -37,61 +37,79 @@ async function main() {
   const failures: Failure[] = [];
 
   for (const testCase of cases) {
-    const image = erzeugeTaktischesZeichen(testCase.options);
-    const actual = await formatSvg(image.toString());
+    try {
+      const image = erzeugeTaktischesZeichen(testCase.options);
+      const actual = await formatSvg(image.toString());
 
-    const decodedDataUrl = Buffer.from(
-      image.dataUrl.replace(/^data:image\/svg\+xml;base64,/, ""),
-      "base64"
-    ).toString("utf-8");
-    const actualFromDataUrl = await formatSvg(decodedDataUrl);
-    if (actualFromDataUrl !== actual) {
-      failures.push({
-        id: testCase.id,
-        description: testCase.description,
-        options: testCase.options,
-        expected: actual,
-        actual: actualFromDataUrl,
-        diffText: diffText(actual, actualFromDataUrl),
-        reason: "mismatch",
-      });
-      continue;
-    }
+      const decodedDataUrl = Buffer.from(
+        image.dataUrl.replace(/^data:image\/svg\+xml;base64,/, ""),
+        "base64"
+      ).toString("utf-8");
+      const actualFromDataUrl = await formatSvg(decodedDataUrl);
+      if (actualFromDataUrl !== actual) {
+        failures.push({
+          id: testCase.id,
+          description: testCase.description,
+          options: testCase.options,
+          expected: actual,
+          actual: actualFromDataUrl,
+          diffText: diffText(actual, actualFromDataUrl),
+          reason: "mismatch",
+        });
+        continue;
+      }
 
-    const fixturePath = path.join(fixturesDir, `${testCase.id}.svg`);
+      const fixturePath = path.join(fixturesDir, `${testCase.id}.svg`);
 
-    if (update) {
-      fs.writeFileSync(fixturePath, actual, "utf-8");
-      continue;
-    }
+      if (update) {
+        fs.writeFileSync(fixturePath, actual, "utf-8");
+        continue;
+      }
 
-    if (!fs.existsSync(fixturePath)) {
+      if (!fs.existsSync(fixturePath)) {
+        failures.push({
+          id: testCase.id,
+          description: testCase.description,
+          options: testCase.options,
+          expected: "",
+          actual,
+          diffText: `No golden fixture at ${path.relative(
+            process.cwd(),
+            fixturePath
+          )}. Run "npm run test:e2e:update" to create it, then review the new file.`,
+          reason: "missing-golden",
+        });
+        continue;
+      }
+
+      const expected = fs.readFileSync(fixturePath, "utf-8");
+      if (expected !== actual) {
+        failures.push({
+          id: testCase.id,
+          description: testCase.description,
+          options: testCase.options,
+          expected,
+          actual,
+          diffText: diffText(expected, actual),
+          reason: "mismatch",
+        });
+      }
+    } catch (error) {
+      // A single case throwing (e.g. an invalid option combination) must
+      // not abort the whole run. Record it as a failure with as much
+      // diagnostic detail as we have and move on to the remaining cases.
+      const details =
+        error instanceof Error ? error.stack ?? error.message : String(error);
       failures.push({
         id: testCase.id,
         description: testCase.description,
         options: testCase.options,
         expected: "",
-        actual,
-        diffText: `No golden fixture at ${path.relative(
-          process.cwd(),
-          fixturePath
-        )}. Run "npm run test:e2e:update" to create it, then review the new file.`,
-        reason: "missing-golden",
-      });
-      continue;
-    }
-
-    const expected = fs.readFileSync(fixturePath, "utf-8");
-    if (expected !== actual) {
-      failures.push({
-        id: testCase.id,
-        description: testCase.description,
-        options: testCase.options,
-        expected,
-        actual,
-        diffText: diffText(expected, actual),
+        actual: "",
+        diffText: `Case "${testCase.id}" threw an error instead of rendering:\n\n${details}`,
         reason: "mismatch",
       });
+      continue;
     }
   }
 
