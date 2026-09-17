@@ -38,6 +38,7 @@
   "scripts": {
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "test:types": "vitest run --typecheck",
     "test:e2e": "tsx e2e/run.ts",
     "test:e2e:update": "tsx e2e/run.ts --update",
     "clean": "shx rm -rf coverage dist test-icons",

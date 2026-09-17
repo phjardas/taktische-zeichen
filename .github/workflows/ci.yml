@@ -50,6 +50,12 @@ jobs:
       - name: Test
         run: pnpm run test:coverage
 
+      # Type-level regression tests for the core package's public API
+      # (packages/core/src/index.test-d.ts). These type-check against
+      # source, not dist/, so they don't depend on the build step above.
+      - name: Type tests
+        run: pnpm --filter taktische-zeichen-core run test:types
+
       - name: e2e Tests
         run: pnpm run test:e2e
 
