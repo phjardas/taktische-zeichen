@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "before 6am on monday"
+  ],
+  "packageRules": [
+    {
+      "description": "Group pnpm catalog devDependencies for minor and patch updates",
+      "matchPackageNames": [
+        "typescript",
+        "prettier",
+        "shx",
+        "@types/node"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "pnpm catalog devDependencies",
+      "groupSlug": "pnpm-catalog-devdeps"
+    },
+    {
+      "description": "Major updates for catalog dependencies are not grouped",
+      "matchPackageNames": [
+        "typescript",
+        "prettier",
+        "shx",
+        "@types/node"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": false
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 6am on sunday"
+    ]
+  }
+}
