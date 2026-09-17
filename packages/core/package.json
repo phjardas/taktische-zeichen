@@ -29,6 +29,9 @@
   },
   "sideEffects": false,
   "files": ["dist"],
+  "publishConfig": {
+    "provenance": true
+  },
   "engines": {
     "node": ">=22"
   },

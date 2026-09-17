@@ -12,12 +12,15 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:e2e": "pnpm -r run test:e2e",
+    "publint": "for p in core react web-component cli; do npx publint run packages/$p || exit 1; done",
+    "attw": "for p in core react web-component cli; do npx attw --pack packages/$p --profile esm-only || exit 1; done",
     "start": "pnpm -r --stream run start",
     "dev": "pnpm run build && concurrently \"pnpm run start\" \"pnpm run watch\"",
     "watch": "nodemon --watch packages/core/src --watch packages/react/src --ext ts --exec \"pnpm run build\"",
     "update-docs": "pnpm -r run statistics && node scripts/update-docs.js"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.2",
     "@eslint/js": "^9.39.5",
@@ -27,6 +30,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.12.0",
     "nodemon": "^3.1.14",
+    "publint": "^0.3.24",
     "typescript-eslint": "^8.70.0"
   },
   "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c",

@@ -23,6 +23,9 @@
     "taktisches-zeichen": "bin/taktisches-zeichen.js"
   },
   "files": ["bin"],
+  "publishConfig": {
+    "provenance": true
+  },
   "engines": {
     "node": ">=22"
   },

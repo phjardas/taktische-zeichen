@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    # Default types (opened/synchronize/reopened) cover real contributor PRs.
+    # `assigned` is added on top so the Changesets release PR - which is
+    # created by a GitHub Action and therefore does not fire a standard
+    # pull_request event - also gets full CI once it is assigned, the same
+    # workaround publish.yml uses for its release-gate job.
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - assigned
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Check formatting
+        run: pnpm run format:check
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test:coverage
+
+      - name: e2e Tests
+        run: pnpm run test:e2e
+
+      # Packaging validation needs the actual dist/ output and only needs to
+      # run once, so it is restricted to a single matrix leg rather than a
+      # separate job (that would mean a second checkout/install/build).
+      - name: Lint package output (publint)
+        if: matrix.node-version == 24
+        run: pnpm run publint
+
+      - name: Check published types (attw)
+        if: matrix.node-version == 24
+        run: pnpm run attw
