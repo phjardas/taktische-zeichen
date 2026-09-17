@@ -45,6 +45,21 @@ export default tseslint.config(
     },
   },
   {
+    files: [
+      "packages/react/e2e/**/*.tsx",
+      "packages/react/playwright/**/*.ts",
+      "packages/react/playwright-ct.config.ts",
+    ],
+    extends: [js.configs.recommended, tseslint.configs.strictTypeChecked],
+    languageOptions: {
+      parserOptions: {
+        project: ["packages/react/tsconfig-e2e.json"],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
+  {
     files: ["packages/web-component/src/**/*.ts"],
     extends: [js.configs.recommended, tseslint.configs.strictTypeChecked],
     languageOptions: {
@@ -99,7 +114,7 @@ export default tseslint.config(
 
   // React JSX rules for TypeScript components.
   {
-    files: ["packages/react/src/**/*.tsx"],
+    files: ["packages/react/src/**/*.tsx", "packages/react/e2e/**/*.tsx"],
     plugins: { react, "react-hooks": reactHooks },
     rules: {
       ...react.configs.flat.recommended.rules,

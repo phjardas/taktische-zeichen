@@ -61,6 +61,9 @@ jobs:
       - name: Type tests
         run: pnpm --filter taktische-zeichen-core run test:types
 
+      - name: Install Playwright browsers
+        run: pnpm --filter taktische-zeichen-react exec playwright install --with-deps chromium
+
       - name: e2e Tests
         run: pnpm run test:e2e
 

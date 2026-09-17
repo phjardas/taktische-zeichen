@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig-base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["src", "e2e", "playwright", "playwright-ct.config.ts"]
+}

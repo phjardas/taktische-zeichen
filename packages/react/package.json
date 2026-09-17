@@ -36,10 +36,11 @@
     "node": ">=22"
   },
   "scripts": {
-    "clean": "shx rm -rf dist icon*.svg",
+    "clean": "shx rm -rf dist icon*.svg playwright-report test-results",
     "build": "tsc",
     "format": "prettier --write src",
-    "format:check": "prettier --check src"
+    "format:check": "prettier --check src",
+    "test:e2e": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
     "taktische-zeichen-core": "workspace:^"
@@ -48,10 +49,14 @@
     "react": ">= 17.0.0"
   },
   "devDependencies": {
+    "@playwright/experimental-ct-react": "1.62.1",
+    "@playwright/test": "1.62.1",
     "@types/react": "^19.3.0",
     "prettier": "catalog:",
     "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "shx": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite": "^8.1.0"
   }
 }
