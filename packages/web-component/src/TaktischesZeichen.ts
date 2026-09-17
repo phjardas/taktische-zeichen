@@ -4,7 +4,7 @@ import {
   erzeugeTaktischesZeichen,
   TextNode,
   type TaktischesZeichen as TaktischesZeichenSpec,
-} from "taktische-zeichen-core";
+} from "@taktische-zeichen/core";
 
 export class TaktischesZeichen extends HTMLElement {
   constructor() {

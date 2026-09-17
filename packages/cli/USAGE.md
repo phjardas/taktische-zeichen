@@ -1,13 +1,13 @@
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-cli
+npm install @taktische-zeichen/cli
 ```
 
 Erzeuge ein taktisches Zeichen:
 
 ```bash
-npm i -g taktische-zeichen-cli
+npm i -g @taktische-zeichen/cli
 
 taktisches-zeichen \
   --grundzeichen kraftfahrzeug-gelaendegaengig \

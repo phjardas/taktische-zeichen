@@ -3,13 +3,13 @@ Diese Bibliothek hat keinerlei externe Abhängigkeiten.
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-core
+npm install @taktische-zeichen/core
 ```
 
 Und so erzeugst du ein taktisches Zeichen, egal ob im Browser oder in Node.JS.
 
 ```javascript
-import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
+import { erzeugeTaktischesZeichen } from "@taktische-zeichen/core";
 
 const tz = erzeugeTaktischesZeichen({
   grundzeichen: "kraftfahrzeug-gelaendegaengig",

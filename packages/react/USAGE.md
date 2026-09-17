@@ -1,13 +1,13 @@
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-react
+npm install @taktische-zeichen/react
 ```
 
 Verwende die Komponente in deiner Anwendung:
 
 ```jsx
-import { TaktischesZeichen } from "taktische-zeichen-react";
+import { TaktischesZeichen } from "@taktische-zeichen/react";
 
 function App() {
   return (

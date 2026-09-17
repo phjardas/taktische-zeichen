@@ -1,5 +1,5 @@
 {
-  "name": "taktische-zeichen-web-component",
+  "name": "@taktische-zeichen/web-component",
   "version": "0.11.0",
   "description": "Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
   "repository": {
@@ -30,6 +30,7 @@
   "sideEffects": false,
   "files": ["dist"],
   "publishConfig": {
+    "access": "public",
     "provenance": true
   },
   "targets": {
@@ -51,7 +52,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "taktische-zeichen-core": "workspace:^"
+    "@taktische-zeichen/core": "workspace:^"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",

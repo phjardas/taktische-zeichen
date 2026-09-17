@@ -24,7 +24,7 @@ Die Bibliothek enthält:
 JavaScript:
 
 ```javascript
-import { TaktischesZeichen } from "taktische-zeichen-web-component";
+import { TaktischesZeichen } from "@taktische-zeichen/web-component";
 
 window.customElements.define("taktisches-zeichen", TaktischesZeichen);
 ```

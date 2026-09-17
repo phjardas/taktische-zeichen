@@ -7,8 +7,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![CI](https://img.shields.io/github/actions/workflow/status/phjardas/taktische-zeichen/ci.yml?branch=main)](https://github.com/phjardas/taktische-zeichen/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/taktische-zeichen-core)](https://www.npmjs.com/package/taktische-zeichen-core)
-[![License: MIT](https://img.shields.io/npm/l/taktische-zeichen-core)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@taktische-zeichen/core)](https://www.npmjs.com/package/@taktische-zeichen/core)
+[![License: MIT](https://img.shields.io/npm/l/@taktische-zeichen/core)](LICENSE)
 
 Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript.
 
@@ -44,13 +44,13 @@ Diese Bibliothek hat keinerlei externe Abhängigkeiten.
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-core
+npm install @taktische-zeichen/core
 ```
 
 Und so erzeugst du ein taktisches Zeichen, egal ob im Browser oder in Node.JS.
 
 ```javascript
-import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
+import { erzeugeTaktischesZeichen } from "@taktische-zeichen/core";
 
 const tz = erzeugeTaktischesZeichen({
   grundzeichen: "kraftfahrzeug-gelaendegaengig",
@@ -78,13 +78,13 @@ console.log(tz.size);
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-react
+npm install @taktische-zeichen/react
 ```
 
 Verwende die Komponente in deiner Anwendung:
 
 ```jsx
-import { TaktischesZeichen } from "taktische-zeichen-react";
+import { TaktischesZeichen } from "@taktische-zeichen/react";
 
 function App() {
   return (
@@ -111,13 +111,13 @@ function App() {
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-web-component
+npm install @taktische-zeichen/web-component
 ```
 
 Registriere die Komponente:
 
 ```javascript
-import { TaktischesZeichen } from "taktische-zeichen-web-component";
+import { TaktischesZeichen } from "@taktische-zeichen/web-component";
 
 window.customElements.define("taktisches-zeichen", TaktischesZeichen);
 ```
@@ -142,13 +142,13 @@ HTML:
 Installiere die Bibliothek:
 
 ```bash
-npm install taktische-zeichen-cli
+npm install @taktische-zeichen/cli
 ```
 
 Erzeuge ein taktisches Zeichen:
 
 ```bash
-npm i -g taktische-zeichen-cli
+npm i -g @taktische-zeichen/cli
 
 taktisches-zeichen \
   --grundzeichen kraftfahrzeug-gelaendegaengig \

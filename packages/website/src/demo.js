@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
+import { erzeugeTaktischesZeichen } from "@taktische-zeichen/core";
 import TaktischesZeichen, {
   einheiten,
   fachaufgaben,
@@ -9,7 +9,7 @@ import TaktischesZeichen, {
   organisationen,
   symbole,
   verwaltungsstufen,
-} from "taktische-zeichen-react";
+} from "@taktische-zeichen/react";
 
 const beispiele = [
   {

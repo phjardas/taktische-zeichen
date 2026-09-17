@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest published version of each package (`taktische-zeichen-core`, `taktische-zeichen-react`, `taktische-zeichen-web-component`, `taktische-zeichen-cli`) receives security fixes. There is no support for older major versions.
+Only the latest published version of each package (`@taktische-zeichen/core`, `@taktische-zeichen/react`, `@taktische-zeichen/web-component`, `@taktische-zeichen/cli`) receives security fixes. There is no support for older major versions.
 
 ## Reporting a Vulnerability
 

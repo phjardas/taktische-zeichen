@@ -6,7 +6,7 @@ import {
   organisationen,
   symbole,
   verwaltungsstufen,
-} from "taktische-zeichen-core";
+} from "@taktische-zeichen/core";
 import { TaktischesZeichen } from "../src";
 
 window.customElements.define("taktisches-zeichen", TaktischesZeichen);

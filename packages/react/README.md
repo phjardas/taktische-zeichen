@@ -22,7 +22,7 @@ Die Bibliothek enthält:
 ## Anwendung
 
 ```jsx
-import { TaktischesZeichen } from "taktische-zeichen-react";
+import { TaktischesZeichen } from "@taktische-zeichen/react";
 
 function App() {
   return (

@@ -10,7 +10,7 @@ import {
   organisationen,
   symbole,
   verwaltungsstufen,
-} from "taktische-zeichen-core";
+} from "@taktische-zeichen/core";
 import yargs from "yargs";
 import pkg from "../package.json" with { type: "json" };
 

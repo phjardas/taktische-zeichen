@@ -7,10 +7,10 @@ body:
     attributes:
       label: Betroffenes Paket
       options:
-        - taktische-zeichen-core
-        - taktische-zeichen-react
-        - taktische-zeichen-web-component
-        - taktische-zeichen-cli
+        - @taktische-zeichen/core
+        - @taktische-zeichen/react
+        - @taktische-zeichen/web-component
+        - @taktische-zeichen/cli
         - Website (taktische-zeichen.dev)
         - Sonstiges
     validations:

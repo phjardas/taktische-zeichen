@@ -59,10 +59,10 @@ jobs:
       # (packages/core/src/index.test-d.ts). These type-check against
       # source, not dist/, so they don't depend on the build step above.
       - name: Type tests
-        run: pnpm --filter taktische-zeichen-core run test:types
+        run: pnpm --filter @taktische-zeichen/core run test:types
 
       - name: Install Playwright browsers
-        run: pnpm --filter taktische-zeichen-react exec playwright install --with-deps chromium
+        run: pnpm --filter @taktische-zeichen/react exec playwright install --with-deps chromium
 
       - name: e2e Tests
         run: pnpm run test:e2e

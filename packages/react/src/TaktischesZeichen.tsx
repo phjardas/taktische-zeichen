@@ -5,7 +5,7 @@ import {
   erzeugeTaktischesZeichen,
   TextNode,
   type TaktischesZeichen,
-} from "taktische-zeichen-core";
+} from "@taktische-zeichen/core";
 
 export type Props = TaktischesZeichen & SVGProps<SVGSVGElement>;
 

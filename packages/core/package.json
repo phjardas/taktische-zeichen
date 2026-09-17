@@ -1,5 +1,5 @@
 {
-  "name": "taktische-zeichen-core",
+  "name": "@taktische-zeichen/core",
   "version": "0.11.0",
   "description": "Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript",
   "repository": {
@@ -30,6 +30,7 @@
   "sideEffects": false,
   "files": ["dist"],
   "publishConfig": {
+    "access": "public",
     "provenance": true
   },
   "engines": {

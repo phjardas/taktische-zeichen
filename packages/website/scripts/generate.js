@@ -7,7 +7,7 @@ const {
   funktionen,
   organisationen,
   symbole,
-} = require("taktische-zeichen-core");
+} = require("@taktische-zeichen/core");
 const path = require("path");
 const fs = require("fs").promises;
 

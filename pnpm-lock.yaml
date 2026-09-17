@@ -220,12 +220,12 @@ importers:
 
   packages/cli:
     dependencies:
+      '@taktische-zeichen/core':
+        specifier: workspace:^
+        version: link:../core
       prettify-xml:
         specifier: ^1.2.0
         version: 1.2.0
-      taktische-zeichen-core:
-        specifier: workspace:^
-        version: link:../core
       yargs:
         specifier: ^18.1.0
         version: 18.1.0
@@ -270,7 +270,7 @@ importers:
 
   packages/react:
     dependencies:
-      taktische-zeichen-core:
+      '@taktische-zeichen/core':
         specifier: workspace:^
         version: link:../core
     devDependencies:
@@ -307,7 +307,7 @@ importers:
 
   packages/web-component:
     dependencies:
-      taktische-zeichen-core:
+      '@taktische-zeichen/core':
         specifier: workspace:^
         version: link:../core
     devDependencies:
@@ -332,18 +332,18 @@ importers:
 
   packages/website:
     dependencies:
+      '@taktische-zeichen/core':
+        specifier: workspace:^
+        version: link:../core
+      '@taktische-zeichen/react':
+        specifier: workspace:^
+        version: link:../react
       react:
         specifier: ^19.3.0
         version: 19.3.0
       react-dom:
         specifier: ^19.3.0
         version: 19.3.0(react@19.3.0)
-      taktische-zeichen-core:
-        specifier: workspace:^
-        version: link:../core
-      taktische-zeichen-react:
-        specifier: workspace:^
-        version: link:../react
     devDependencies:
       '@11ty/eleventy':
         specifier: ^3.1.6

@@ -27,7 +27,7 @@ pnpm run build
 ```
 
 `build` is required, not optional: `react`/`web-component`/`cli` resolve
-`taktische-zeichen-core` via its build output, so a `core` source change is
+`@taktische-zeichen/core` via its build output, so a `core` source change is
 invisible to them until `core` is rebuilt.
 
 ## Testing changes to `packages/core/src`
