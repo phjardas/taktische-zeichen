@@ -280,6 +280,9 @@ importers:
       '@playwright/test':
         specifier: 1.62.1
         version: 1.62.1
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.5.1
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
@@ -308,6 +311,9 @@ importers:
         specifier: workspace:^
         version: link:../core
     devDependencies:
+      '@playwright/test':
+        specifier: 1.62.1
+        version: 1.62.1
       '@types/node':
         specifier: 'catalog:'
         version: 26.5.1
