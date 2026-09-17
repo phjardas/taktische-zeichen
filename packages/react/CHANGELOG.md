@@ -1,5 +1,19 @@
 # taktische-zeichen-react
 
+## 0.11.0
+
+### Minor Changes
+
+- [`3aae0ef`](https://github.com/phjardas/taktische-zeichen/commit/3aae0efd92ed2a5d752af48de3198d3016299f41) Thanks [@phjardas](https://github.com/phjardas)! - Switch build tooling from npm workspaces + lerna to pnpm workspaces
+
+- [`7591263`](https://github.com/phjardas/taktische-zeichen/commit/7591263023c645db0dbda710722e1b0f01ecb270) Thanks [@phjardas](https://github.com/phjardas)! - Ship native ES modules only, no more CommonJS build. Requires Node 22 or newer.
+
+### Patch Changes
+
+- [`e101b90`](https://github.com/phjardas/taktische-zeichen/commit/e101b90c5ae9e827efdc6c9035ff45a1efe46157) Thanks [@phjardas](https://github.com/phjardas)! - Update documentation
+- Updated dependencies [[`e101b90`](https://github.com/phjardas/taktische-zeichen/commit/e101b90c5ae9e827efdc6c9035ff45a1efe46157), [`4aa1b0b`](https://github.com/phjardas/taktische-zeichen/commit/4aa1b0b01ccbba0ee330f5790bf7af45eaf3fead), [`3aae0ef`](https://github.com/phjardas/taktische-zeichen/commit/3aae0efd92ed2a5d752af48de3198d3016299f41), [`7591263`](https://github.com/phjardas/taktische-zeichen/commit/7591263023c645db0dbda710722e1b0f01ecb270)]:
+  - taktische-zeichen-core@0.11.0
+
 ## 0.10.0
 
 ### Minor Changes
