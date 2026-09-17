@@ -43,7 +43,7 @@
     "format:check": "prettier --check src"
   },
   "dependencies": {
-    "taktische-zeichen-core": "^0.10.0"
+    "taktische-zeichen-core": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "catalog:",

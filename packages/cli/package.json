@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "prettify-xml": "^1.2.0",
-    "taktische-zeichen-core": "^0.10.0",
+    "taktische-zeichen-core": "workspace:^",
     "yargs": "^18.1.0"
   },
   "devDependencies": {

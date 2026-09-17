@@ -224,8 +224,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       taktische-zeichen-core:
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: workspace:^
+        version: link:../core
       yargs:
         specifier: ^18.1.0
         version: 18.1.0
@@ -271,8 +271,8 @@ importers:
   packages/react:
     dependencies:
       taktische-zeichen-core:
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: workspace:^
+        version: link:../core
     devDependencies:
       '@types/react':
         specifier: ^19.3.0
@@ -293,8 +293,8 @@ importers:
   packages/web-component:
     dependencies:
       taktische-zeichen-core:
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: workspace:^
+        version: link:../core
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
