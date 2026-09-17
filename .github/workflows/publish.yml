@@ -45,5 +45,6 @@ jobs:
           version-script: bash .github/scripts/changeset-version.sh
           publish-script: pnpm exec changeset publish
           pr-title: Release
+          create-github-releases: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
