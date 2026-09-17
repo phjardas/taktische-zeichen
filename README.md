@@ -6,6 +6,10 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![CI](https://img.shields.io/github/actions/workflow/status/phjardas/taktische-zeichen/ci.yml?branch=main)](https://github.com/phjardas/taktische-zeichen/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/taktische-zeichen-core)](https://www.npmjs.com/package/taktische-zeichen-core)
+[![License: MIT](https://img.shields.io/npm/l/taktische-zeichen-core)](LICENSE)
+
 Bibliothek für die Erzeugung von taktischen Zeichen nach der DV 102 in JavaScript.
 
 Dokumentation aller verfügbaren Optionen: https://taktische-zeichen.dev/
