@@ -98,9 +98,9 @@ function render(element: Element) {
     element.name,
   );
 
-  Object.entries(element.attributes).forEach(([name, value]) =>
-    el.setAttribute(name, value),
-  );
+  Object.entries(element.attributes).forEach(([name, value]) => {
+    el.setAttribute(name, value);
+  });
 
   const style = Object.entries(element.styles)
     .map(([name, value]) => `${name}: ${value}`)

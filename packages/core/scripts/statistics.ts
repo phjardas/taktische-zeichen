@@ -26,7 +26,7 @@ async function main() {
   await fs.writeFile(filename, JSON.stringify(statistics, null, 2), "utf-8");
 }
 
-main().catch((error) => {
+main().catch((error: unknown) => {
   process.exitCode = 1;
   console.error(error);
 });

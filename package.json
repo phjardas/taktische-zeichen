@@ -9,6 +9,8 @@
     "test:coverage": "pnpm -r run test:coverage",
     "format": "pnpm -r run format",
     "format:check": "pnpm -r run format:check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test:e2e": "pnpm -r run test:e2e",
     "start": "pnpm -r --stream run start",
     "dev": "pnpm run build && concurrently \"pnpm run start\" \"pnpm run watch\"",
@@ -18,8 +20,14 @@
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.2",
+    "@eslint/js": "^9.39.5",
     "concurrently": "^10.0.5",
-    "nodemon": "^3.1.14"
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "nodemon": "^3.1.14",
+    "typescript-eslint": "^8.70.0"
   },
   "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c",
   "volta": {

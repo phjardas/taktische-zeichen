@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { erzeugeTaktischesZeichen } from "taktische-zeichen-core";
 import TaktischesZeichen, {
@@ -10,8 +10,6 @@ import TaktischesZeichen, {
   symbole,
   verwaltungsstufen,
 } from "taktische-zeichen-react";
-
-const x = React;
 
 const beispiele = [
   {
@@ -383,7 +381,7 @@ export function Demo() {
 function withoutEmptyValues(obj) {
   return Object.fromEntries(
     Object.entries(obj).filter(
-      ([_, value]) => value !== undefined && value !== null,
+      ([, value]) => value !== undefined && value !== null,
     ),
   );
 }

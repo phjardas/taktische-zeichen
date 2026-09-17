@@ -209,7 +209,7 @@ export function erzeugeTaktischesZeichen({
         grund.paintableArea ?? [[0, 0], grund.size];
       const fachaufgabeNameArea =
         fachaufgabe?.nameArea &&
-        transformRect(fachaufgabe?.nameArea?.(grundNameArea), {
+        transformRect(fachaufgabe.nameArea(grundNameArea), {
           offset: mainPosition,
           scale: mainScale,
         });
@@ -235,7 +235,7 @@ export function erzeugeTaktischesZeichen({
         grund.paintableArea ?? [[0, 0], grund.size];
       const fachaufgabeNameArea =
         fachaufgabe?.organisationNameArea &&
-        transformRect(fachaufgabe?.organisationNameArea?.(grundNameArea), {
+        transformRect(fachaufgabe.organisationNameArea(grundNameArea), {
           offset: mainPosition,
           scale: mainScale,
         });
@@ -261,7 +261,7 @@ export function erzeugeTaktischesZeichen({
         grund.paintableArea ?? [[0, 0], grund.size];
       const fachaufgabeTypArea =
         fachaufgabe?.typArea &&
-        transformRect(fachaufgabe?.typArea?.(grundTypArea), {
+        transformRect(fachaufgabe.typArea(grundTypArea), {
           offset: mainPosition,
           scale: mainScale,
         });

@@ -7,6 +7,7 @@ export type Parent = {
   paintableArea?: Rect;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- deliberately type-erases the differing Renderable<Props> variants (Symbol, Grundzeichen, Fachaufgabe, ...) so they can be handled uniformly here; `unknown` breaks assignability (contravariant render prop) at every call site.
 export type Component = Renderable<any> & {
   size: Point;
   cover?: boolean;

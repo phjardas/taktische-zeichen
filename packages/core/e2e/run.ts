@@ -164,7 +164,7 @@ async function main() {
   process.exitCode = 1;
 }
 
-main().catch((error) => {
+main().catch((error: unknown) => {
   console.error(error);
   process.exitCode = 1;
 });

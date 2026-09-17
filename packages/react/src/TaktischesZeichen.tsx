@@ -44,6 +44,7 @@ export default function TaktischesZeichen({
   return render(svg, props);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- `element.name` is a dynamic string tag; typing additionalProps as an object type makes TSX resolve the element's props to bare IntrinsicAttributes and reject `style`/spread props that are actually valid DOM attributes.
 function render(element: Element, additionalProps?: any) {
   const children =
     element instanceof Container
@@ -63,15 +64,19 @@ function render(element: Element, additionalProps?: any) {
   );
 }
 
-function withCamelCaseKeys(obj: Record<string, any>): Record<string, any> {
-  return Object.entries(obj)
-    .map(([key, value]) => [toCamelCase(key), value])
-    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+function withCamelCaseKeys<T>(obj: Record<string, T>): Record<string, T> {
+  return Object.entries(obj).reduce<Record<string, T>>(
+    (acc, [key, value]) => ({ ...acc, [toCamelCase(key)]: value }),
+    {},
+  );
 }
 
 function toCamelCase(str: string): string {
-  return str.replace(/^([A-Z])|[\s-_](\w)/g, function (_, p1, p2) {
-    if (p2) return p2.toUpperCase();
-    return p1.toLowerCase();
-  });
+  return str.replace(
+    /^([A-Z])|[\s-_](\w)/g,
+    function (_: string, p1: string | undefined, p2: string | undefined) {
+      if (p2) return p2.toUpperCase();
+      return (p1 ?? "").toLowerCase();
+    },
+  );
 }

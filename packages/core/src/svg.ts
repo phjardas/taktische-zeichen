@@ -46,10 +46,6 @@ export abstract class Element {
 }
 
 export class Leaf extends Element {
-  constructor(name: string) {
-    super(name);
-  }
-
   render() {
     return this.renderTag(true);
   }
@@ -57,10 +53,6 @@ export class Leaf extends Element {
 
 export class Container extends Element {
   readonly children: Array<Element> = [];
-
-  constructor(name: string) {
-    super(name);
-  }
 
   push(child: Element): this {
     this.children.push(child);

@@ -9,7 +9,6 @@ const {
   symbole,
 } = require("taktische-zeichen-core");
 const path = require("path");
-const { deprecate } = require("util");
 const fs = require("fs").promises;
 
 function erzeugeGrundzeichen() {
