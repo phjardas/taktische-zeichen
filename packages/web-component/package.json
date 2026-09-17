@@ -43,10 +43,10 @@
     "taktische-zeichen-core": "^0.10.0"
   },
   "devDependencies": {
-    "@types/node": "^26.5.1",
+    "@types/node": "catalog:",
     "parcel": "^2.16.4",
-    "prettier": "^3.9.6",
-    "shx": "^0.4.0",
-    "typescript": "^7.0.2"
+    "prettier": "catalog:",
+    "shx": "catalog:",
+    "typescript": "catalog:"
   }
 }

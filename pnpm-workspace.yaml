@@ -7,3 +7,8 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
   unrs-resolver: true
+catalog:
+  typescript: ^7.0.2
+  prettier: ^3.9.6
+  shx: ^0.4.0
+  "@types/node": ^26.5.1

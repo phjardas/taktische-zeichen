@@ -23,8 +23,8 @@
     "@babel/preset-env": "^8.0.5",
     "@babel/preset-react": "^8.0.1",
     "babel-loader": "^10.1.1",
-    "prettier": "^3.9.6",
-    "shx": "^0.4.0",
+    "prettier": "catalog:",
+    "shx": "catalog:",
     "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3"
   }

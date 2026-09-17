@@ -47,13 +47,13 @@
     "base64-js": "^1.5.1"
   },
   "devDependencies": {
-    "@types/node": "^26.5.1",
+    "@types/node": "catalog:",
     "@vitest/coverage-v8": "^5.0.0",
     "jest-diff": "^30.5.1",
-    "prettier": "^3.9.6",
-    "shx": "^0.4.0",
+    "prettier": "catalog:",
+    "shx": "catalog:",
     "tsx": "^4.23.13",
-    "typescript": "^7.0.2",
+    "typescript": "catalog:",
     "vitest": "^5.0.0"
   }
 }
