@@ -32,20 +32,29 @@
   "publishConfig": {
     "provenance": true
   },
+  "targets": {
+    "main": false,
+    "types": false,
+    "default": {
+      "includeNodeModules": true
+    }
+  },
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "clean": "shx rm -rf dist icon*.svg",
+    "clean": "shx rm -rf dist icon*.svg playwright-report test-results",
     "build": "tsc",
     "demo": "parcel demo/index.html",
     "format": "prettier --write src",
-    "format:check": "prettier --check src"
+    "format:check": "prettier --check src",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "taktische-zeichen-core": "workspace:^"
   },
   "devDependencies": {
+    "@playwright/test": "1.62.1",
     "@types/node": "catalog:",
     "parcel": "^2.16.4",
     "prettier": "catalog:",

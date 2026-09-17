@@ -71,6 +71,20 @@ export default tseslint.config(
     },
   },
   {
+    files: [
+      "packages/web-component/e2e/**/*.ts",
+      "packages/web-component/playwright.config.ts",
+    ],
+    extends: [js.configs.recommended, tseslint.configs.strictTypeChecked],
+    languageOptions: {
+      parserOptions: {
+        project: ["packages/web-component/tsconfig-e2e.json"],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
+  {
     // demo/*.ts is not covered by any tsconfig.json (parcel demo, no dedicated
     // project); use the project service's default-project fallback, backed by
     // web-component's own tsconfig for compiler options.
