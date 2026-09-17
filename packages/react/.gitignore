@@ -1,3 +1,6 @@
 /dist
 /node_modules
 *.log
+/playwright-report
+/test-results
+/playwright/.cache
