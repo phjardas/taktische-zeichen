@@ -1,0 +1,18 @@
+name: 💡 Feature-Wunsch
+description: Schlage ein neues Zeichen, eine neue Funktion oder eine Verbesserung vor
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Was möchtest du vorschlagen?
+      description: Geht es um ein neues Grundzeichen, Symbol oder eine Fachaufgabe, gib nach Möglichkeit eine Quelle an (z. B. DV 102).
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Warum wird das gebraucht?
+      description: Welches Problem löst das für dich?
+    validations:
+      required: false

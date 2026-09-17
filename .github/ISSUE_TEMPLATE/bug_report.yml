@@ -1,0 +1,39 @@
+name: 🐛 Fehlerbericht
+description: Melde einen Fehler in einem der Pakete oder der Website
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: package
+    attributes:
+      label: Betroffenes Paket
+      options:
+        - taktische-zeichen-core
+        - taktische-zeichen-react
+        - taktische-zeichen-web-component
+        - taktische-zeichen-cli
+        - Website (taktische-zeichen.dev)
+        - Sonstiges
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Welche Version des Pakets verwendest du?
+      placeholder: z. B. 0.10.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Was ist passiert?
+      description: Beschreibe den Fehler und was du stattdessen erwartet hättest.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Wie können wir den Fehler reproduzieren?
+      description: Am hilfreichsten sind die verwendeten Optionen (`grundzeichen`, `organisation`, `fachaufgabe`, ...) oder ein Minimalbeispiel.
+    validations:
+      required: true

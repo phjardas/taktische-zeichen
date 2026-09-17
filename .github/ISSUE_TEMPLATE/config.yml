@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Sicherheitslücke melden
+    url: https://github.com/phjardas/taktische-zeichen/security/advisories/new
+    about: Bitte melde Sicherheitslücken privat statt über ein öffentliches Issue (siehe SECURITY.md).
+  - name: 📖 Dokumentation
+    url: https://taktische-zeichen.dev/
+    about: Nutzungsfragen und alle verfügbaren Optionen findest du in der Dokumentation.
