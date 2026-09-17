@@ -38,14 +38,19 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm run lint
-
       - name: Check formatting
         run: pnpm run format:check
 
       - name: Build
         run: pnpm run build
+
+      # Cross-package imports (e.g. react/web-component importing types from
+      # core) resolve via each package's built dist/ output, workspace:^
+      # links straight to the source package directory rather than an
+      # installed copy - so type-aware linting needs the build to have
+      # already run, or those imports resolve to an unresolvable error type.
+      - name: Lint
+        run: pnpm run lint
 
       - name: Test
         run: pnpm run test:coverage
