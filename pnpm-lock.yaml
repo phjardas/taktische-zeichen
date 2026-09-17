@@ -321,11 +321,11 @@ importers:
         specifier: ^19.3.0
         version: 19.3.0(react@19.3.0)
       taktische-zeichen-core:
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: workspace:^
+        version: link:../core
       taktische-zeichen-react:
-        specifier: ^0.10.0
-        version: 0.10.0(react@19.3.0)
+        specifier: workspace:^
+        version: link:../react
     devDependencies:
       '@11ty/eleventy':
         specifier: ^3.1.6
@@ -4328,14 +4328,6 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  taktische-zeichen-core@0.10.0:
-    resolution: {integrity: sha512-jo4jZmAuBbAsKJrDppHY1hSprnZGmC8f8fRI1GwpZ6fOKDXXEaxVrNWJDfvywnjYXwEfOsRl7obbLW/LT77J9g==}
-
-  taktische-zeichen-react@0.10.0:
-    resolution: {integrity: sha512-tVoFQ7fmpBEC7eRL93oc0itJ4uX/eCmCkobHqZlj2nChRrDz7k9O/jksmVlTnnsy0eHZ4gd1V72AP4C/QpAraA==}
-    peerDependencies:
-      react: '>= 17.0.0'
 
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
@@ -9175,15 +9167,6 @@ snapshots:
       supports-color: 7.2.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
-
-  taktische-zeichen-core@0.10.0:
-    dependencies:
-      base64-js: 1.5.1
-
-  taktische-zeichen-react@0.10.0(react@19.3.0):
-    dependencies:
-      react: 19.3.0
-      taktische-zeichen-core: 0.10.0
 
   tapable@2.3.3: {}
 
