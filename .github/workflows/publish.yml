@@ -141,9 +141,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Ensure npm supports trusted publishing
-        run: npm install -g npm@latest
-
       - name: Publish to npm
         uses: changesets/action/publish@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
