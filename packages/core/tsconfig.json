@@ -4,5 +4,6 @@
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true
-  }
+  },
+  "exclude": ["src/**/*.spec.ts"]
 }

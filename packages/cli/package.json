@@ -22,6 +22,7 @@
   "bin": {
     "taktisches-zeichen": "bin/taktisches-zeichen.js"
   },
+  "files": ["bin"],
   "engines": {
     "node": ">=22"
   },

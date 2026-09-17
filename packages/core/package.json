@@ -28,6 +28,7 @@
     }
   },
   "sideEffects": false,
+  "files": ["dist"],
   "engines": {
     "node": ">=22"
   },
