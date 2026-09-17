@@ -85,6 +85,15 @@ regenerating README statistics:
 pnpm run update-docs
 ```
 
+### Documentation language
+
+User-facing documentation — README, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,
+issue templates — is German, matching the project's audience (German
+Feuerwehr/Katastrophenschutz organizations and German-speaking
+contributors). Technical/agent-facing documentation — this file, code
+comments, commit messages — is English. When adding a new doc, pick the
+language based on who reads it, not on the language of the file next to it.
+
 ## Node version note
 
 `core`, `react`, `web-component`, and `cli` are pure ESM (`"type": "module"`,

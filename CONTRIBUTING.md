@@ -2,6 +2,8 @@
 
 Vielen Dank, dass du an der Entwicklung der Taktischen Zeichen mitarbeiten möchtest! Diese Anleitung hilft dir hoffentlich dabei.
 
+Für die Zusammenarbeit in diesem Projekt gilt unser [Verhaltenskodex](CODE_OF_CONDUCT.md).
+
 ## Voraussetzungen
 
 Du benötigst [Node 22 oder neuer](https://nodejs.org/en/download/) und [pnpm](https://pnpm.io/). Fertig. Wir empfehlen [Volta](https://volta.sh/).
@@ -33,6 +35,17 @@ pnpm run dev
 ```
 
 Öffne http://localhost:8000. Alle Änderungen an Source-Dateien werden automatisch in der Website aktualisisert, das dauert aber ein paar Sekunden.
+
+## Tests
+
+Führe vor einem PR die Tests im betroffenen Paket aus, insbesondere in `packages/core`:
+
+```bash
+pnpm test
+pnpm run test:e2e
+```
+
+`test:e2e` vergleicht das erzeugte SVG jedes Grundzeichens/Symbols/Fachaufgabe mit hinterlegten Referenzdateien. Schlägt der Test fehl, weil deine Änderung die Ausgabe absichtlich verändert, aktualisiere die Referenzdateien mit `pnpm run test:e2e:update` und prüfe die entstandenen `.svg`-Diffs, bevor du sie committest — nicht einfach aktualisieren, um den Test grün zu bekommen.
 
 ## Pull Requests
 
